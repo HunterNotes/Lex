@@ -11,6 +11,7 @@ import AVFoundation
 import Photos
 import SVProgressHUD
 
+
 enum EditImgType : Int {
     
     case none = 0
@@ -23,8 +24,9 @@ class EditPhotoVC: UIViewController {
     
     var imgType                 : EditImgType = .none
     
+    var db : SQLiteDB!
     // 数据库文件
-//    var db: Connection?
+    //    var db: Connection?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +39,7 @@ class EditPhotoVC: UIViewController {
         
         self.userImgView.image = userImg
         imgType = .none
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -47,10 +50,7 @@ class EditPhotoVC: UIViewController {
             
             let userDefault = UserDefaults.standard
             userDefault.setValue(userImg?.description, forKey: saveImgFlag)
-            
-            
             SVProgressHUD.show(UIImage.init(named: "success"), status: "上传成功")
-            
         }
     }
     
@@ -172,15 +172,15 @@ class EditPhotoVC: UIViewController {
     //MARK: - 保存图片到数据库
     fileprivate func saveImageToSQL(_ img : UIImage) {
         
-        //能压缩图片质量 代替 UIImagePNGRepresentation
-        UIImageJPEGRepresentation(img, 0.5)
-        
-        let imgData : NSData = UIImagePNGRepresentation(img)! as NSData
+        //UIImage转为data
+        //UIImage转为data 不压缩
+//        let imgData : NSData = UIImagePNGRepresentation(img)! as NSData
+        //UIImage转为data 压缩图片质量 代替 UIImagePNGRepresentation
+        let imgData: NSData = UIImageJPEGRepresentation(img, 0.5)! as NSData
         
         
         // 把 data 转成 Base64 的 string
         let imgStr = imgData.base64EncodedString(options:.init(rawValue: 1))
-        
         
     }
     
@@ -199,6 +199,7 @@ extension EditPhotoVC : UIImagePickerControllerDelegate, UINavigationControllerD
         
         //再次赋值，防止图片显示状态未更新
         self.userImgView.image = userImg
+        saveImageToSQL(userImg)
         imgType = .changed
         
     }
@@ -207,55 +208,3 @@ extension EditPhotoVC : UIImagePickerControllerDelegate, UINavigationControllerD
         self.dismiss(animated: true, completion: nil)
     }
 }
-
-//{
-//    
-//    var db:SQLiteDB!
-//    
-//    @IBOutlet var txtUname: UITextField!
-//    @IBOutlet var txtMobile: UITextField!
-//    
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        
-//        //获取数据库实例
-//        db = SQLiteDB.sharedInstance
-//        //如果表还不存在则创建表（其中uid为自增主键）
-//        let result = db.execute(sql: "create table if not exists t_user(uid integer primary key,uname varchar(20),mobile varchar(20))")
-//        print(result)
-//        //如果有数据则加载
-//        initUser()
-//    }
-//    
-//    //点击保存
-//    @IBAction func saveClicked(_ sender: AnyObject) {
-//        saveUser()
-//    }
-//    
-//    //从SQLite加载数据
-//    func initUser() {
-//        let data = db.query(sql: "select * from t_user")
-//        if data.count > 0 {
-//            //获取最后一行数据显示
-//            let user = data[data.count - 1]
-//            txtUname.text = user["uname"] as? String
-//            txtMobile.text = user["mobile"] as? String
-//        }
-//    }
-//    
-//    //保存数据到SQLite
-//    func saveUser() {
-//        let uname = self.txtUname.text!
-//        let mobile = self.txtMobile.text!
-//        //插入数据库，这里用到了esc字符编码函数，其实是调用bridge.m实现的
-//        let sql = "insert into t_user(uname,mobile) values('\(uname)','\(mobile)')"
-//        print("sql: \(sql)")
-//        //通过封装的方法执行sql
-//        let result = db.execute(sql: sql)
-//        print(result)
-//    }
-//    
-//    override func didReceiveMemoryWarning() {
-//        super.didReceiveMemoryWarning()
-//    }
-//}

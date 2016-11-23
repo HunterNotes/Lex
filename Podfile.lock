@@ -9,6 +9,9 @@ PODS:
     - REValidation (~> 0.1.4)
   - REValidation (0.1.4)
   - SlackTextViewController (1.9.5)
+  - SQLite.swift (0.11.0):
+    - SQLite.swift/standard (= 0.11.0)
+  - SQLite.swift/standard (0.11.0)
   - SVProgressHUD (2.0.3)
   - TextFieldEffects (1.3.0)
 
@@ -19,6 +22,7 @@ DEPENDENCIES:
   - Reachability
   - RETableViewManager
   - SlackTextViewController
+  - SQLite.swift
   - SVProgressHUD
   - TextFieldEffects
 
@@ -31,9 +35,10 @@ SPEC CHECKSUMS:
   RETableViewManager: 0f24d796c42c0890d38c79cc9aeb3871e186726e
   REValidation: 38c4de1be58455f8b00aab208ac80db316a66b7f
   SlackTextViewController: fbcdadbb8090673f604484ff5b6eb8d77baed42a
+  SQLite.swift: 9a26273607d3077a2e5a8d33486e9989f8404c7d
   SVProgressHUD: b0830714205bea1317ea1a2ebc71e5633af334d4
   TextFieldEffects: ef594746f17997c813e07633f8ae5acaf9b04f27
 
-PODFILE CHECKSUM: 92117e42b90c9e5dc151f1a5983520814968ba3a
+PODFILE CHECKSUM: 35e5fb21297c4e9440fa3f2fa8504dad6cdcc64d
 
 COCOAPODS: 1.0.0

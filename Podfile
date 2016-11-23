@@ -11,7 +11,7 @@ target 'Lex' do
     pod 'SVProgressHUD'
     pod 'Kingfisher'
     pod 'Alamofire'
-    #     pod 'SQLite.swift'
+    pod 'SQLite.swift'
     pod 'DZNEmptyDataSet'
     pod 'RETableViewManager'
     pod 'SlackTextViewController'
