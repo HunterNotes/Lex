@@ -10,5 +10,7 @@
 #define Lex_Bridging_Header_h
 
 #import "UINavigationController+Extends.h"
+#import "sqlite3.h"
+#import <time.h>
 
 #endif /* Lex_Bridging_Header_h */

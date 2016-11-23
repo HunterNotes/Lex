@@ -47,25 +47,30 @@
 		A52239311DE545350037A5BB /* UserInfoQRCodeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A52238F01DE545350037A5BB /* UserInfoQRCodeCell.xib */; };
 		A52239321DE545350037A5BB /* ZCommonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52238F11DE545350037A5BB /* ZCommonCell.swift */; };
 		A52239331DE545350037A5BB /* ZCommonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A52238F21DE545350037A5BB /* ZCommonCell.xib */; };
-		A52239341DE545350037A5BB /* UserInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52238F41DE545350037A5BB /* UserInfoVC.swift */; };
-		A52239351DE545350037A5BB /* UserInfoVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = A52238F51DE545350037A5BB /* UserInfoVC.xib */; };
-		A52239361DE545350037A5BB /* EditPhotoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52238F71DE545350037A5BB /* EditPhotoVC.swift */; };
-		A52239371DE545350037A5BB /* EditPhotoVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = A52238F81DE545350037A5BB /* EditPhotoVC.xib */; };
-		A52239381DE545350037A5BB /* UserCenterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52238FA1DE545350037A5BB /* UserCenterVC.swift */; };
-		A52239391DE545350037A5BB /* UserCenterVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = A52238FB1DE545350037A5BB /* UserCenterVC.xib */; };
-		A522393A1DE545350037A5BB /* EditUserNameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52238FD1DE545350037A5BB /* EditUserNameVC.swift */; };
-		A522393B1DE545350037A5BB /* EditUserNameVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = A52238FE1DE545350037A5BB /* EditUserNameVC.xib */; };
-		A522393C1DE545350037A5BB /* ScanCodeTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52239011DE545350037A5BB /* ScanCodeTool.swift */; };
-		A522393D1DE545350037A5BB /* String+QRCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52239021DE545350037A5BB /* String+QRCode.swift */; };
-		A522393E1DE545350037A5BB /* UIImage+QRCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52239031DE545350037A5BB /* UIImage+QRCode.swift */; };
-		A522393F1DE545350037A5BB /* UserInfoQRCodeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52239041DE545350037A5BB /* UserInfoQRCodeVC.swift */; };
-		A52239401DE545350037A5BB /* UserInfoQRCodeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = A52239051DE545350037A5BB /* UserInfoQRCodeVC.xib */; };
-		A52239411DE545350037A5BB /* ScanCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52239071DE545350037A5BB /* ScanCodeViewController.swift */; };
-		A52239421DE545350037A5BB /* ScanCodeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A52239081DE545350037A5BB /* ScanCodeViewController.xib */; };
 		A52239431DE545350037A5BB /* HomePageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A522390B1DE545350037A5BB /* HomePageVC.swift */; };
 		A52239441DE545350037A5BB /* HomePageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A522390D1DE545350037A5BB /* HomePageCell.swift */; };
 		A52239451DE545350037A5BB /* HomePageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A522390E1DE545350037A5BB /* HomePageCell.xib */; };
 		A52239461DE545350037A5BB /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52239111DE545350037A5BB /* Config.swift */; };
+		A522394C1DE56E1B0037A5BB /* ScanCodeTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52239491DE56E1B0037A5BB /* ScanCodeTool.swift */; };
+		A522394D1DE56E1B0037A5BB /* String+QRCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = A522394A1DE56E1B0037A5BB /* String+QRCode.swift */; };
+		A522394E1DE56E1B0037A5BB /* UIImage+QRCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = A522394B1DE56E1B0037A5BB /* UIImage+QRCode.swift */; };
+		A52239621DE56E4E0037A5BB /* EditPhotoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52239501DE56E4E0037A5BB /* EditPhotoVC.swift */; };
+		A52239631DE56E4E0037A5BB /* EditPhotoVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = A52239511DE56E4E0037A5BB /* EditPhotoVC.xib */; };
+		A52239641DE56E4E0037A5BB /* UserInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52239531DE56E4E0037A5BB /* UserInfoVC.swift */; };
+		A52239651DE56E4E0037A5BB /* UserInfoVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = A52239541DE56E4E0037A5BB /* UserInfoVC.xib */; };
+		A52239661DE56E4E0037A5BB /* EditUserNameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52239561DE56E4E0037A5BB /* EditUserNameVC.swift */; };
+		A52239671DE56E4E0037A5BB /* EditUserNameVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = A52239571DE56E4E0037A5BB /* EditUserNameVC.xib */; };
+		A52239681DE56E4E0037A5BB /* UserInfoQRCodeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A522395A1DE56E4E0037A5BB /* UserInfoQRCodeVC.swift */; };
+		A52239691DE56E4E0037A5BB /* UserInfoQRCodeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = A522395B1DE56E4E0037A5BB /* UserInfoQRCodeVC.xib */; };
+		A522396A1DE56E4E0037A5BB /* ScanCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A522395D1DE56E4E0037A5BB /* ScanCodeViewController.swift */; };
+		A522396B1DE56E4E0037A5BB /* ScanCodeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A522395E1DE56E4E0037A5BB /* ScanCodeViewController.xib */; };
+		A522396C1DE56E4E0037A5BB /* UserCenterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52239601DE56E4E0037A5BB /* UserCenterVC.swift */; };
+		A522396D1DE56E4E0037A5BB /* UserCenterVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = A52239611DE56E4E0037A5BB /* UserCenterVC.xib */; };
+		A52239711DE58D190037A5BB /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52239701DE58D190037A5BB /* User.swift */; };
+		A52239761DE597940037A5BB /* SQLiteDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52239731DE597940037A5BB /* SQLiteDB.swift */; };
+		A52239771DE597940037A5BB /* SQLTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52239741DE597940037A5BB /* SQLTable.swift */; };
+		A52239781DE597940037A5BB /* String-Extras.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52239751DE597940037A5BB /* String-Extras.swift */; };
+		A522397A1DE597B00037A5BB /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A52239791DE597B00037A5BB /* libsqlite3.0.tbd */; };
 		B3F7470CC31AD98865B1EBEC /* Pods_Lex.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 047137E5694B0C4EE0C4B523 /* Pods_Lex.framework */; };
 /* End PBXBuildFile section */
 
@@ -139,26 +144,31 @@
 		A52238F01DE545350037A5BB /* UserInfoQRCodeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserInfoQRCodeCell.xib; sourceTree = "<group>"; };
 		A52238F11DE545350037A5BB /* ZCommonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZCommonCell.swift; sourceTree = "<group>"; };
 		A52238F21DE545350037A5BB /* ZCommonCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZCommonCell.xib; sourceTree = "<group>"; };
-		A52238F41DE545350037A5BB /* UserInfoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfoVC.swift; sourceTree = "<group>"; };
-		A52238F51DE545350037A5BB /* UserInfoVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserInfoVC.xib; sourceTree = "<group>"; };
-		A52238F71DE545350037A5BB /* EditPhotoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditPhotoVC.swift; sourceTree = "<group>"; };
-		A52238F81DE545350037A5BB /* EditPhotoVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditPhotoVC.xib; sourceTree = "<group>"; };
-		A52238FA1DE545350037A5BB /* UserCenterVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCenterVC.swift; sourceTree = "<group>"; };
-		A52238FB1DE545350037A5BB /* UserCenterVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserCenterVC.xib; sourceTree = "<group>"; };
-		A52238FD1DE545350037A5BB /* EditUserNameVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditUserNameVC.swift; sourceTree = "<group>"; };
-		A52238FE1DE545350037A5BB /* EditUserNameVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditUserNameVC.xib; sourceTree = "<group>"; };
-		A52239011DE545350037A5BB /* ScanCodeTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanCodeTool.swift; sourceTree = "<group>"; };
-		A52239021DE545350037A5BB /* String+QRCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+QRCode.swift"; sourceTree = "<group>"; };
-		A52239031DE545350037A5BB /* UIImage+QRCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+QRCode.swift"; sourceTree = "<group>"; };
-		A52239041DE545350037A5BB /* UserInfoQRCodeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfoQRCodeVC.swift; sourceTree = "<group>"; };
-		A52239051DE545350037A5BB /* UserInfoQRCodeVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserInfoQRCodeVC.xib; sourceTree = "<group>"; };
-		A52239071DE545350037A5BB /* ScanCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanCodeViewController.swift; sourceTree = "<group>"; };
-		A52239081DE545350037A5BB /* ScanCodeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScanCodeViewController.xib; sourceTree = "<group>"; };
 		A522390B1DE545350037A5BB /* HomePageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePageVC.swift; sourceTree = "<group>"; };
 		A522390D1DE545350037A5BB /* HomePageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePageCell.swift; sourceTree = "<group>"; };
 		A522390E1DE545350037A5BB /* HomePageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomePageCell.xib; sourceTree = "<group>"; };
 		A52239111DE545350037A5BB /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		A52239471DE545FC0037A5BB /* Lex-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Lex-Bridging-Header.h"; sourceTree = "<group>"; };
+		A52239491DE56E1B0037A5BB /* ScanCodeTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanCodeTool.swift; sourceTree = "<group>"; };
+		A522394A1DE56E1B0037A5BB /* String+QRCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+QRCode.swift"; sourceTree = "<group>"; };
+		A522394B1DE56E1B0037A5BB /* UIImage+QRCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+QRCode.swift"; sourceTree = "<group>"; };
+		A52239501DE56E4E0037A5BB /* EditPhotoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditPhotoVC.swift; sourceTree = "<group>"; };
+		A52239511DE56E4E0037A5BB /* EditPhotoVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditPhotoVC.xib; sourceTree = "<group>"; };
+		A52239531DE56E4E0037A5BB /* UserInfoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfoVC.swift; sourceTree = "<group>"; };
+		A52239541DE56E4E0037A5BB /* UserInfoVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserInfoVC.xib; sourceTree = "<group>"; };
+		A52239561DE56E4E0037A5BB /* EditUserNameVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditUserNameVC.swift; sourceTree = "<group>"; };
+		A52239571DE56E4E0037A5BB /* EditUserNameVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditUserNameVC.xib; sourceTree = "<group>"; };
+		A522395A1DE56E4E0037A5BB /* UserInfoQRCodeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfoQRCodeVC.swift; sourceTree = "<group>"; };
+		A522395B1DE56E4E0037A5BB /* UserInfoQRCodeVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserInfoQRCodeVC.xib; sourceTree = "<group>"; };
+		A522395D1DE56E4E0037A5BB /* ScanCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanCodeViewController.swift; sourceTree = "<group>"; };
+		A522395E1DE56E4E0037A5BB /* ScanCodeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScanCodeViewController.xib; sourceTree = "<group>"; };
+		A52239601DE56E4E0037A5BB /* UserCenterVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCenterVC.swift; sourceTree = "<group>"; };
+		A52239611DE56E4E0037A5BB /* UserCenterVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserCenterVC.xib; sourceTree = "<group>"; };
+		A52239701DE58D190037A5BB /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		A52239731DE597940037A5BB /* SQLiteDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLiteDB.swift; sourceTree = "<group>"; };
+		A52239741DE597940037A5BB /* SQLTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLTable.swift; sourceTree = "<group>"; };
+		A52239751DE597940037A5BB /* String-Extras.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String-Extras.swift"; sourceTree = "<group>"; };
+		A52239791DE597B00037A5BB /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		B13BC0B8A2D05ABC725B0793 /* Pods_LexUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LexUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3388DBF3891E847B529B70B /* Pods-Lex.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lex.release.xcconfig"; path = "Pods/Target Support Files/Pods-Lex/Pods-Lex.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -168,6 +178,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A522397A1DE597B00037A5BB /* libsqlite3.0.tbd in Frameworks */,
 				B3F7470CC31AD98865B1EBEC /* Pods_Lex.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -194,6 +205,7 @@
 		53D3FEB515EAA3B2E863264F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A52239791DE597B00037A5BB /* libsqlite3.0.tbd */,
 				047137E5694B0C4EE0C4B523 /* Pods_Lex.framework */,
 				87127CB891849E081AEBD3F3 /* Pods_LexTests.framework */,
 				B13BC0B8A2D05ABC725B0793 /* Pods_LexUITests.framework */,
@@ -389,6 +401,7 @@
 		A52238D21DE545350037A5BB /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				A52239701DE58D190037A5BB /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -497,11 +510,6 @@
 				A52238E41DE545350037A5BB /* C */,
 				A52238E51DE545350037A5BB /* M */,
 				A52238E61DE545350037A5BB /* V */,
-				A52238F31DE545350037A5BB /* 个人信息 */,
-				A52238F61DE545350037A5BB /* 个人头像 */,
-				A52238F91DE545350037A5BB /* 主页 */,
-				A52238FC1DE545350037A5BB /* 名字 */,
-				A52238FF1DE545350037A5BB /* 我的二维码 */,
 			);
 			path = "我的";
 			sourceTree = "<group>";
@@ -509,6 +517,11 @@
 		A52238E41DE545350037A5BB /* C */ = {
 			isa = PBXGroup;
 			children = (
+				A522394F1DE56E4E0037A5BB /* 个人头像 */,
+				A52239521DE56E4E0037A5BB /* 个人信息 */,
+				A52239551DE56E4E0037A5BB /* 名字 */,
+				A52239581DE56E4E0037A5BB /* 我的二维码 */,
+				A522395F1DE56E4E0037A5BB /* 主页 */,
 			);
 			path = C;
 			sourceTree = "<group>";
@@ -516,6 +529,7 @@
 		A52238E51DE545350037A5BB /* M */ = {
 			isa = PBXGroup;
 			children = (
+				A52239481DE56E1B0037A5BB /* QRCode */,
 			);
 			path = M;
 			sourceTree = "<group>";
@@ -537,72 +551,6 @@
 				A52238F21DE545350037A5BB /* ZCommonCell.xib */,
 			);
 			path = V;
-			sourceTree = "<group>";
-		};
-		A52238F31DE545350037A5BB /* 个人信息 */ = {
-			isa = PBXGroup;
-			children = (
-				A52238F41DE545350037A5BB /* UserInfoVC.swift */,
-				A52238F51DE545350037A5BB /* UserInfoVC.xib */,
-			);
-			path = "个人信息";
-			sourceTree = "<group>";
-		};
-		A52238F61DE545350037A5BB /* 个人头像 */ = {
-			isa = PBXGroup;
-			children = (
-				A52238F71DE545350037A5BB /* EditPhotoVC.swift */,
-				A52238F81DE545350037A5BB /* EditPhotoVC.xib */,
-			);
-			path = "个人头像";
-			sourceTree = "<group>";
-		};
-		A52238F91DE545350037A5BB /* 主页 */ = {
-			isa = PBXGroup;
-			children = (
-				A52238FA1DE545350037A5BB /* UserCenterVC.swift */,
-				A52238FB1DE545350037A5BB /* UserCenterVC.xib */,
-			);
-			path = "主页";
-			sourceTree = "<group>";
-		};
-		A52238FC1DE545350037A5BB /* 名字 */ = {
-			isa = PBXGroup;
-			children = (
-				A52238FD1DE545350037A5BB /* EditUserNameVC.swift */,
-				A52238FE1DE545350037A5BB /* EditUserNameVC.xib */,
-			);
-			path = "名字";
-			sourceTree = "<group>";
-		};
-		A52238FF1DE545350037A5BB /* 我的二维码 */ = {
-			isa = PBXGroup;
-			children = (
-				A52239001DE545350037A5BB /* QRCode */,
-				A52239041DE545350037A5BB /* UserInfoQRCodeVC.swift */,
-				A52239051DE545350037A5BB /* UserInfoQRCodeVC.xib */,
-				A52239061DE545350037A5BB /* 扫描二维码 */,
-			);
-			path = "我的二维码";
-			sourceTree = "<group>";
-		};
-		A52239001DE545350037A5BB /* QRCode */ = {
-			isa = PBXGroup;
-			children = (
-				A52239011DE545350037A5BB /* ScanCodeTool.swift */,
-				A52239021DE545350037A5BB /* String+QRCode.swift */,
-				A52239031DE545350037A5BB /* UIImage+QRCode.swift */,
-			);
-			path = QRCode;
-			sourceTree = "<group>";
-		};
-		A52239061DE545350037A5BB /* 扫描二维码 */ = {
-			isa = PBXGroup;
-			children = (
-				A52239071DE545350037A5BB /* ScanCodeViewController.swift */,
-				A52239081DE545350037A5BB /* ScanCodeViewController.xib */,
-			);
-			path = "扫描二维码";
 			sourceTree = "<group>";
 		};
 		A52239091DE545350037A5BB /* 首页 */ = {
@@ -634,6 +582,7 @@
 		A522390F1DE545350037A5BB /* Vender */ = {
 			isa = PBXGroup;
 			children = (
+				A52239721DE597940037A5BB /* SQLiteDB */,
 			);
 			path = Vender;
 			sourceTree = "<group>";
@@ -645,6 +594,89 @@
 				A52239471DE545FC0037A5BB /* Lex-Bridging-Header.h */,
 			);
 			path = "公共配置";
+			sourceTree = "<group>";
+		};
+		A52239481DE56E1B0037A5BB /* QRCode */ = {
+			isa = PBXGroup;
+			children = (
+				A52239491DE56E1B0037A5BB /* ScanCodeTool.swift */,
+				A522394A1DE56E1B0037A5BB /* String+QRCode.swift */,
+				A522394B1DE56E1B0037A5BB /* UIImage+QRCode.swift */,
+			);
+			path = QRCode;
+			sourceTree = "<group>";
+		};
+		A522394F1DE56E4E0037A5BB /* 个人头像 */ = {
+			isa = PBXGroup;
+			children = (
+				A52239501DE56E4E0037A5BB /* EditPhotoVC.swift */,
+				A52239511DE56E4E0037A5BB /* EditPhotoVC.xib */,
+			);
+			path = "个人头像";
+			sourceTree = "<group>";
+		};
+		A52239521DE56E4E0037A5BB /* 个人信息 */ = {
+			isa = PBXGroup;
+			children = (
+				A52239531DE56E4E0037A5BB /* UserInfoVC.swift */,
+				A52239541DE56E4E0037A5BB /* UserInfoVC.xib */,
+			);
+			path = "个人信息";
+			sourceTree = "<group>";
+		};
+		A52239551DE56E4E0037A5BB /* 名字 */ = {
+			isa = PBXGroup;
+			children = (
+				A52239561DE56E4E0037A5BB /* EditUserNameVC.swift */,
+				A52239571DE56E4E0037A5BB /* EditUserNameVC.xib */,
+			);
+			path = "名字";
+			sourceTree = "<group>";
+		};
+		A52239581DE56E4E0037A5BB /* 我的二维码 */ = {
+			isa = PBXGroup;
+			children = (
+				A52239591DE56E4E0037A5BB /* QRCode */,
+				A522395A1DE56E4E0037A5BB /* UserInfoQRCodeVC.swift */,
+				A522395B1DE56E4E0037A5BB /* UserInfoQRCodeVC.xib */,
+				A522395C1DE56E4E0037A5BB /* 扫描二维码 */,
+			);
+			path = "我的二维码";
+			sourceTree = "<group>";
+		};
+		A52239591DE56E4E0037A5BB /* QRCode */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = QRCode;
+			sourceTree = "<group>";
+		};
+		A522395C1DE56E4E0037A5BB /* 扫描二维码 */ = {
+			isa = PBXGroup;
+			children = (
+				A522395D1DE56E4E0037A5BB /* ScanCodeViewController.swift */,
+				A522395E1DE56E4E0037A5BB /* ScanCodeViewController.xib */,
+			);
+			path = "扫描二维码";
+			sourceTree = "<group>";
+		};
+		A522395F1DE56E4E0037A5BB /* 主页 */ = {
+			isa = PBXGroup;
+			children = (
+				A52239601DE56E4E0037A5BB /* UserCenterVC.swift */,
+				A52239611DE56E4E0037A5BB /* UserCenterVC.xib */,
+			);
+			path = "主页";
+			sourceTree = "<group>";
+		};
+		A52239721DE597940037A5BB /* SQLiteDB */ = {
+			isa = PBXGroup;
+			children = (
+				A52239731DE597940037A5BB /* SQLiteDB.swift */,
+				A52239741DE597940037A5BB /* SQLTable.swift */,
+				A52239751DE597940037A5BB /* String-Extras.swift */,
+			);
+			path = SQLiteDB;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -768,22 +800,22 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A52239371DE545350037A5BB /* EditPhotoVC.xib in Resources */,
-				A522393B1DE545350037A5BB /* EditUserNameVC.xib in Resources */,
+				A522396D1DE56E4E0037A5BB /* UserCenterVC.xib in Resources */,
 				A52239311DE545350037A5BB /* UserInfoQRCodeCell.xib in Resources */,
 				A52239331DE545350037A5BB /* ZCommonCell.xib in Resources */,
+				A522396B1DE56E4E0037A5BB /* ScanCodeViewController.xib in Resources */,
 				A52239291DE545350037A5BB /* UserImgCell.xib in Resources */,
-				A52239351DE545350037A5BB /* UserInfoVC.xib in Resources */,
 				A522392F1DE545350037A5BB /* UserInfoPhotoCell.xib in Resources */,
+				A52239651DE56E4E0037A5BB /* UserInfoVC.xib in Resources */,
 				A52239451DE545350037A5BB /* HomePageCell.xib in Resources */,
-				A52239421DE545350037A5BB /* ScanCodeViewController.xib in Resources */,
+				A52239671DE56E4E0037A5BB /* EditUserNameVC.xib in Resources */,
 				A52238851DE544B10037A5BB /* Assets.xcassets in Resources */,
 				A52238881DE544B10037A5BB /* LaunchScreen.storyboard in Resources */,
-				A52239401DE545350037A5BB /* UserInfoQRCodeVC.xib in Resources */,
 				A522391E1DE545350037A5BB /* ZTableViewCell.xib in Resources */,
+				A52239631DE56E4E0037A5BB /* EditPhotoVC.xib in Resources */,
 				A522392B1DE545350037A5BB /* UserInfoCommonCell.xib in Resources */,
-				A52239391DE545350037A5BB /* UserCenterVC.xib in Resources */,
 				A522392D1DE545350037A5BB /* UserInfoCommonNoneCell.xib in Resources */,
+				A52239691DE56E4E0037A5BB /* UserInfoQRCodeVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -931,42 +963,46 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A52239681DE56E4E0037A5BB /* UserInfoQRCodeVC.swift in Sources */,
 				A52239241DE545350037A5BB /* DetectionViewController.swift in Sources */,
+				A522396A1DE56E4E0037A5BB /* ScanCodeViewController.swift in Sources */,
 				A52239231DE545350037A5BB /* ZTabBarController.swift in Sources */,
 				A52239161DE545350037A5BB /* ZNavigationController.swift in Sources */,
 				A52239321DE545350037A5BB /* ZCommonCell.swift in Sources */,
 				A52239171DE545350037A5BB /* UIView+Extension.swift in Sources */,
+				A52239621DE56E4E0037A5BB /* EditPhotoVC.swift in Sources */,
 				A52239201DE545350037A5BB /* CCLocationManager.swift in Sources */,
 				A52239441DE545350037A5BB /* HomePageCell.swift in Sources */,
+				A522394E1DE56E1B0037A5BB /* UIImage+QRCode.swift in Sources */,
 				A52239261DE545350037A5BB /* DetectionCell.swift in Sources */,
-				A522393E1DE545350037A5BB /* UIImage+QRCode.swift in Sources */,
 				A52239431DE545350037A5BB /* HomePageVC.swift in Sources */,
 				A52239151DE545350037A5BB /* RootViewController.swift in Sources */,
 				A522391A1DE545350037A5BB /* ZLabel.swift in Sources */,
 				A52239281DE545350037A5BB /* UserImgCell.swift in Sources */,
+				A52239781DE597940037A5BB /* String-Extras.swift in Sources */,
 				A52239211DE545350037A5BB /* CCSingleton.swift in Sources */,
 				A52239131DE545350037A5BB /* ZAppDelegate.swift in Sources */,
+				A52239711DE58D190037A5BB /* User.swift in Sources */,
 				A52239271DE545350037A5BB /* PageNavigationVC.swift in Sources */,
-				A522393A1DE545350037A5BB /* EditUserNameVC.swift in Sources */,
 				A52239191DE545350037A5BB /* ZCanvasView.swift in Sources */,
-				A52239361DE545350037A5BB /* EditPhotoVC.swift in Sources */,
-				A52239411DE545350037A5BB /* ScanCodeViewController.swift in Sources */,
+				A522394D1DE56E1B0037A5BB /* String+QRCode.swift in Sources */,
+				A52239661DE56E4E0037A5BB /* EditUserNameVC.swift in Sources */,
 				A52239251DE545350037A5BB /* DetectionModel.swift in Sources */,
 				A52239141DE545350037A5BB /* UINavigationController+Extends.m in Sources */,
 				A522391B1DE545350037A5BB /* ZSegmentedControl.swift in Sources */,
-				A522393D1DE545350037A5BB /* String+QRCode.swift in Sources */,
-				A52239381DE545350037A5BB /* UserCenterVC.swift in Sources */,
 				A52239221DE545350037A5BB /* SaveUserImageHelper.swift in Sources */,
 				A522391C1DE545350037A5BB /* ZSlider.swift in Sources */,
-				A52239341DE545350037A5BB /* UserInfoVC.swift in Sources */,
-				A522393C1DE545350037A5BB /* ScanCodeTool.swift in Sources */,
-				A522393F1DE545350037A5BB /* UserInfoQRCodeVC.swift in Sources */,
 				A52239181DE545350037A5BB /* ZButton.swift in Sources */,
+				A52239771DE597940037A5BB /* SQLTable.swift in Sources */,
+				A52239641DE56E4E0037A5BB /* UserInfoVC.swift in Sources */,
 				A522391F1DE545350037A5BB /* ZView.swift in Sources */,
 				A52238831DE544B10037A5BB /* Lex.xcdatamodeld in Sources */,
 				A522392C1DE545350037A5BB /* UserInfoCommonNoneCell.swift in Sources */,
+				A522396C1DE56E4E0037A5BB /* UserCenterVC.swift in Sources */,
 				A522392E1DE545350037A5BB /* UserInfoPhotoCell.swift in Sources */,
+				A522394C1DE56E1B0037A5BB /* ScanCodeTool.swift in Sources */,
 				A522391D1DE545350037A5BB /* ZTableViewCell.swift in Sources */,
+				A52239761DE597940037A5BB /* SQLiteDB.swift in Sources */,
 				A52239461DE545350037A5BB /* Config.swift in Sources */,
 				A52239301DE545350037A5BB /* UserInfoQRCodeCell.swift in Sources */,
 				A522392A1DE545350037A5BB /* UserInfoCommonCell.swift in Sources */,
