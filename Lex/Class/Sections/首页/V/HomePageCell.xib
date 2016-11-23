@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="300" id="KGk-i7-Jjw" customClass="HomePageCell" customModule="Swift_Demo" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="300"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="299.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QjG-Or-9OP">
+                        <rect key="frame" x="5" y="10" width="310" height="280.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="310" id="823-uW-Rpu"/>
+                            <constraint firstAttribute="height" constant="280.5" id="Xcu-Wz-Fzn"/>
+                        </constraints>
+                    </imageView>
+                    <button opaque="NO" alpha="0.45000000000000001" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="53P-VI-RGR" userLabel="StarBtn">
+                        <rect key="frame" x="231" y="30" width="82" height="30"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="82" id="TKz-2s-UG3"/>
+                            <constraint firstAttribute="height" constant="30" id="W6U-zV-kmm"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <inset key="titleEdgeInsets" minX="5" minY="3" maxX="1" maxY="3"/>
+                        <inset key="imageEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        <state key="normal" title="520" image="PostItem_Like_18x16_"/>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Ql-Hn-aSI">
+                        <rect key="frame" x="5" y="265" width="310" height="25"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="310" id="7Oj-hV-RXE"/>
+                            <constraint firstAttribute="height" constant="25" id="8U0-pX-sks"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="7Ql-Hn-aSI" firstAttribute="top" secondItem="53P-VI-RGR" secondAttribute="bottom" constant="205" id="0n7-pn-gFw"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="7Ql-Hn-aSI" secondAttribute="trailing" constant="-3" id="2dN-oK-oJw"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="7Ql-Hn-aSI" secondAttribute="bottom" constant="1.5" id="6gY-VW-YAo"/>
+                    <constraint firstItem="QjG-Or-9OP" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-3" id="LOO-I4-Rdg"/>
+                    <constraint firstItem="QjG-Or-9OP" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="2" id="XHP-35-PG4"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="QjG-Or-9OP" secondAttribute="bottom" constant="1" id="Y6h-5d-13n"/>
+                    <constraint firstItem="7Ql-Hn-aSI" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-3" id="gxF-Cg-JN3"/>
+                    <constraint firstItem="53P-VI-RGR" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="22" id="lBd-gx-Iex"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="QjG-Or-9OP" secondAttribute="trailing" constant="-3" id="nx3-oH-afj"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="53P-VI-RGR" secondAttribute="trailing" constant="-1" id="zyA-ES-B59"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="imgTitle" destination="7Ql-Hn-aSI" id="go8-A2-1cz"/>
+                <outlet property="imgView" destination="QjG-Or-9OP" id="k9j-FS-fqo"/>
+                <outlet property="starBtn" destination="53P-VI-RGR" id="EUG-f8-cDF"/>
+            </connections>
+            <point key="canvasLocation" x="26" y="355"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="PostItem_Like_18x16_" width="18" height="16"/>
+    </resources>
+</document>

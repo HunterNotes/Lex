@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="65" id="KGk-i7-Jjw" customClass="UserInfoPhotoCell" customModule="Swift_Demo" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="65"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <frame key="frameInset" width="287" height="64"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar_circle_default" translatesAutoresizingMaskIntoConstraints="NO" id="05F-pc-F7M">
+                        <constraints>
+                            <constraint firstAttribute="width" constant="45" id="g5K-nG-rEY"/>
+                            <constraint firstAttribute="height" constant="45" id="xo9-lC-cSc"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="头像" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9mK-ga-OVr">
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="Wuk-V5-pYE"/>
+                            <constraint firstAttribute="width" constant="100" id="hET-ZZ-rwv"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="9mK-ga-OVr" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="67Z-rE-Buy"/>
+                    <constraint firstAttribute="trailing" secondItem="05F-pc-F7M" secondAttribute="trailing" constant="8" id="ZNo-1D-HVt"/>
+                    <constraint firstItem="05F-pc-F7M" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="iNM-tK-cV3"/>
+                    <constraint firstItem="9mK-ga-OVr" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="22" id="whL-ly-hmk"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="photo" destination="05F-pc-F7M" id="T5A-QX-b7y"/>
+            </connections>
+            <point key="canvasLocation" x="-470" y="-30"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="avatar_circle_default" width="62" height="62"/>
+    </resources>
+</document>

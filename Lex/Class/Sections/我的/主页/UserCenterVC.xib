@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UserCenterVC" customModule="Swift_Demo" customModuleProvider="target">
+            <connections>
+                <outlet property="tableView" destination="Dlh-hO-Qr3" id="xng-7Z-m2d"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="Dlh-hO-Qr3">
+                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="h9r-Ct-KCp"/>
+                        <outlet property="delegate" destination="-1" id="a1y-WG-i9n"/>
+                    </connections>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="Dlh-hO-Qr3" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="QBc-n4-chb"/>
+                <constraint firstItem="Dlh-hO-Qr3" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="ZE3-nd-4bW"/>
+                <constraint firstAttribute="trailing" secondItem="Dlh-hO-Qr3" secondAttribute="trailing" id="e73-gF-PcW"/>
+                <constraint firstAttribute="bottom" secondItem="Dlh-hO-Qr3" secondAttribute="bottom" id="eN2-u8-xaF"/>
+            </constraints>
+            <point key="canvasLocation" x="-309.5" y="19.5"/>
+        </view>
+        <tapGestureRecognizer id="6wx-QU-lXm">
+            <connections>
+                <action selector="tap:" destination="-1" id="1Le-la-358"/>
+            </connections>
+        </tapGestureRecognizer>
+    </objects>
+</document>

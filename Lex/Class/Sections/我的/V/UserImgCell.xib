@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="80" id="KGk-i7-Jjw" customClass="UserImgCell" customModule="Swift_Demo" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <frame key="frameInset" width="287" height="79"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar_circle_default" translatesAutoresizingMaskIntoConstraints="NO" id="kDE-J0-2JH">
+                        <constraints>
+                            <constraint firstAttribute="height" constant="50" id="Bia-6F-GEx"/>
+                            <constraint firstAttribute="width" constant="50" id="yvz-ma-u75"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="风一样的CC" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UDV-kK-1Gm">
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="136" id="vtR-J3-bpq"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mr.zhou10101010" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7a4-LL-1tf">
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="126" id="1WO-Fr-ZwT"/>
+                            <constraint firstAttribute="height" constant="21" id="mpF-WV-mJZ"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="二维码" translatesAutoresizingMaskIntoConstraints="NO" id="y5I-6d-A8z">
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="lJw-By-BAp"/>
+                            <constraint firstAttribute="width" constant="20" id="zrk-EP-7pI"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="kDE-J0-2JH" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="EeZ-eK-npw"/>
+                    <constraint firstItem="UDV-kK-1Gm" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="17" id="GKr-Xs-Ojs"/>
+                    <constraint firstAttribute="trailing" secondItem="y5I-6d-A8z" secondAttribute="trailing" constant="8" id="SNg-qp-IyF"/>
+                    <constraint firstItem="7a4-LL-1tf" firstAttribute="leading" secondItem="kDE-J0-2JH" secondAttribute="trailing" constant="8" symbolic="YES" id="Tfg-iD-au5"/>
+                    <constraint firstItem="kDE-J0-2JH" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="bFK-6p-M1h"/>
+                    <constraint firstItem="7a4-LL-1tf" firstAttribute="leading" secondItem="UDV-kK-1Gm" secondAttribute="leading" id="gEk-Gk-6V8"/>
+                    <constraint firstAttribute="bottom" secondItem="7a4-LL-1tf" secondAttribute="bottom" constant="17" id="maG-1o-Vvy"/>
+                    <constraint firstItem="y5I-6d-A8z" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="30" id="npm-Se-VsT"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="userImg" destination="kDE-J0-2JH" id="KlW-Ck-shR"/>
+                <outlet property="userNameLab" destination="UDV-kK-1Gm" id="1St-NS-eaK"/>
+                <outlet property="userNoLab" destination="7a4-LL-1tf" id="tM6-GZ-m4o"/>
+            </connections>
+            <point key="canvasLocation" x="-382" y="6"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="avatar_circle_default" width="62" height="62"/>
+        <image name="二维码" width="22" height="22"/>
+    </resources>
+</document>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="44" id="KGk-i7-Jjw" customClass="ZCommonCell" customModule="Swift_Demo" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <frame key="frameInset" width="287" height="43.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="category_ic_family" translatesAutoresizingMaskIntoConstraints="NO" id="3yO-kA-JGX">
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="30" id="TTp-NR-vhM"/>
+                            <constraint firstAttribute="height" constant="30" id="ddv-FK-yCI"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="相册" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rjV-rL-pXM">
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" white="1" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="120" id="IRC-jC-TBF"/>
+                            <constraint firstAttribute="height" constant="24" id="rZb-xB-l2u"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="3yO-kA-JGX" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="LPe-yS-eRb"/>
+                    <constraint firstItem="rjV-rL-pXM" firstAttribute="leading" secondItem="3yO-kA-JGX" secondAttribute="trailing" constant="20" id="eNj-fk-B1S"/>
+                    <constraint firstItem="rjV-rL-pXM" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="edo-OM-0n2"/>
+                    <constraint firstItem="3yO-kA-JGX" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="7" id="qHL-l8-8T5"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="iconImg" destination="3yO-kA-JGX" id="Rt3-IA-P9w"/>
+                <outlet property="titleLab" destination="rjV-rL-pXM" id="EN7-LL-xxj"/>
+            </connections>
+            <point key="canvasLocation" x="-171" y="60"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="category_ic_family" width="32" height="32"/>
+    </resources>
+</document>
