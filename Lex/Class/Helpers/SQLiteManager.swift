@@ -13,7 +13,7 @@ class SQLiteManager: NSObject {
     
     var db          : Connection? = nil
     var arr         : [AnyObject]!
-    
+    var table       : Table? = nil
     override init() {
         
         // 获取链接（不存在文件，则自动创建）
@@ -66,36 +66,45 @@ class SQLiteManager: NSObject {
             table.column(imgName)
             //            table.column(imgName, unique: true)
         }))
+        
+        //确保是同一张表
+        if tableName == TABLENAME {
+            self.table = users
+        }
         return users
     }
     
     //插入数据
-    func insert(tableName : String!, userName : String!, imgName : String!) {
+    func insert(tableName : String!, userName : String!, imageName : String!) {
         
-        let table = self.createTable(tableName: tableName)
+        if self.table == nil {
+            self.table = self.createTable(tableName: tableName)
+        }
         
         let name        : Expression<String?> = arr![1] as! Expression<String?>
         let imgName     : Expression<String?> = arr![2] as! Expression<String?>
-        let insert = table.insert(name <- userName, imgName <- imgName)
-        let rowid = (try! db?.run(insert))!
+        let insert = self.table?.insert(name <- userName, imgName <- imageName)
+        let rowid = (try! db?.run(insert!))!
         print(rowid);
     }
     
     //查询数据
     func select(tableName : String!) -> NSMutableDictionary {
         
-        let table = self.createTable(tableName: tableName)
+        if self.table == nil {
+            self.table = self.createTable(tableName: tableName)
+        }
         
         let id          : Expression<Int64> = arr![0] as! Expression<Int64>
         let name        : Expression<String?> = arr![1] as! Expression<String?>
         let imgName     : Expression<String?> = arr![2] as! Expression<String?>
         
         let dic = NSMutableDictionary()
-        for user in (try! db?.prepare(table))! {
-            print("Query:id: \(user[id]), name: \(user[name]), imgName: \(user[imgName])")
-            dic.setObject(table[id], forKey:id as! NSCopying)
-            dic.setObject(table[name], forKey: name as! NSCopying)
-            dic.setObject(table[imgName], forKey: imgName as! NSCopying)
+        for user in (try! db?.prepare(self.table!))! {
+            print("Query:id========================== \(user[id])\n, name=========================== \(user[name])\n, imgName========================== \(user[imgName])")
+            dic.setObject("\(user[id])", forKey:"id" as NSCopying)
+            dic.setObject("\(user[name])", forKey: "name" as NSCopying)
+            dic.setObject("\(user[imgName])", forKey: "imgName" as NSCopying)
         }
         return dic
     }
@@ -103,25 +112,27 @@ class SQLiteManager: NSObject {
     //修改数据
     func upDate(tableName : String!) {
         
-        let table = self.createTable(tableName: tableName)
+        if self.table == nil {
+            self.table = self.createTable(tableName: tableName)
+        }
         
         let id          : Expression<Int64> = arr![0] as! Expression<Int64>
         let name        : Expression<String?> = arr![1] as! Expression<String?>
         let imgName     : Expression<String?> = arr![2] as! Expression<String?>
         
-        for user in (try! db?.prepare(table))! {
+        for user in (try! db?.prepare(self.table!))! {
             
             let _name : String = user[name]!
             
             //数据不相等，不存储
             if (_name != USERNAME) {
                 
-                let list = table.filter(id == user[id])
-                _ = try! db?.run(list.update(name <- name.replace(user[name]!, with: USERNAME!)))
+                let list = self.table?.filter(id == user[id])
+                _ = try! db?.run((list?.update(name <- name.replace(user[name]!, with: USERNAME!)))!)
                 print("Update:id: \(user[id]), name: \(user[name]), imgName: \(user[imgName])")
             }
         }
-        for user in (try! db?.prepare(table.filter(name == USERNAME)))! {
+        for user in (try! db?.prepare((self.table?.filter(name == USERNAME))!))! {
             print("Update:id: \(user[id]), name: \(user[name]), imgName: \(user[imgName])")
         }
     }
@@ -129,18 +140,20 @@ class SQLiteManager: NSObject {
     //删除数据
     func delete(tableName : String!) {
         
-        let table = self.createTable(tableName: tableName)
+        if self.table == nil {
+            self.table = self.createTable(tableName: tableName)
+        }
         
         let id          : Expression<Int64> = arr![0] as! Expression<Int64>
         let name        : Expression<String?> = arr![1] as! Expression<String?>
         let imgName     : Expression<String?> = arr![2] as! Expression<String?>
         
-        for user in (try! db?.prepare(table))! {
+        for user in (try! db?.prepare(self.table!))! {
             
-            _ = try! db?.run(table.filter(id == user[id]).delete())
+            _ = try! db?.run((self.table?.filter(id == user[id]).delete())!)
             
         }
-        for user in (try! db?.prepare(table))! {
+        for user in (try! db?.prepare(self.table!))! {
             print("Delete:id: \(user[id]), name: \(user[name]), imgName: \(user[imgName])")
         }
     }
@@ -148,25 +161,56 @@ class SQLiteManager: NSObject {
     //MARK: - 从本地数据库中获取用户头像
     func getUserImageFromSQLite() -> UIImage {
         
-        //        let manager : SQLiteManager = SQLiteManager.defaultManager()
         let dic = self.select(tableName: TABLENAME)
         print(dic)
         
-        //获取数据库中存取图片名称
-        let imageName : NSString! = dic.object(forKey: "imgName") as! NSString!
-        
-        //字符串转化成NSData
-        let data : NSData! = imageName.data(using: String.Encoding.utf8.rawValue) as NSData!
-        
         //默认一张图片
-        var image : UIImage? = UIImage.init(named: "avatar_circle_default")!
+        var image : UIImage? = nil
         
-        if imageName.length != 0 {
-
-            //NSData 转化成UIImage
-            image = UIImage.init(data: data as Data)!
+        if dic.count > 0 {
+            
+            //获取数据库中存取图片名称
+            let imageName : String? = dic.object(forKey: "imgName") as? String
+            
+            if  Int((imageName?.characters.count)!) > 0  {
+                
+                print("imgName :", dic.object(forKey: "imgName") ?? "--")
+                
+                //Base64字符串转NSData：
+                let data : NSData! = NSData(base64Encoded: imageName!, options: NSData.Base64DecodingOptions.ignoreUnknownCharacters)!
+                print("data =================", data)
+                
+                //http://www.itstrike.cn/Question/338c49d2-82d6-4151-ac62-15607dd9fe55.html
+                let ciimage : CIImage = self.convertImageFromCMSampleBufferRef()
+                let context = CIContext(options:nil);
+                let tempImage : CGImageRef = context.createCGImage(ciImage, fromRect: ciImage.extent())
+                let image = UIImage(CGImage: tempImage);
+                let imageData: NSData? = UIImageJPEGRepresentation(image, 0.6);
+                //NSData 转化成UIImage
+                //                image = UIImage.init(data: data as Data)
+                image = UIImage.init(data: data as Data, scale: 0.5)
+            }
         }
-        print("name = %@", dic.object(forKey: "name") ?? "--")
+        if image == nil {
+            image =  UIImage.init(named: "avatar_circle_default")!
+        }
         return image!
     }
+    
+    func convertImageFromCMSampleBufferRef(sampleBuffer : CMSampleBuffer) -> CIImage {
+        let pixelBuffer : CVPixelBufferRef = CMSampleBufferGetImageBuffer(sampleBuffer)!
+        let ciImage:CIImage = CIImage(CVPixelBuffer: pixelBuffer)
+        
+        if done == true {
+            
+            newImage =  UIImage(CIImage:ciImage, scale: CGFloat(1.0), orientation: .DownMirrored)
+            
+            var imageData = UIImageJPEGRepresentation(newImage, 0.6)
+            var compressedJPGImage = UIImage(data: imageData)
+            UIImageWriteToSavedPhotosAlbum(compressedJPGImage!, nil, nil, nil)
+        }
+        
+        return ciImage;
+    }
+
 }

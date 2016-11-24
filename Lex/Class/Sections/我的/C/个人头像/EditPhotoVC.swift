@@ -172,16 +172,23 @@ class EditPhotoVC: UIViewController {
     //MARK: - 保存图片到数据库
     fileprivate func saveImageToSQL(_ img : UIImage) {
         
-        //UIImage转为data 不压缩
-        //        let imgData : NSData = UIImagePNGRepresentation(img)! as NSData
-        
-        //UIImage转为data 压缩图片质量 代替 UIImagePNGRepresentation
-        let imgData: NSData = UIImageJPEGRepresentation(img, 0.5)! as NSData
-        
-        
-        // 把 data 转成 Base64 的 string
-        let imgStr = imgData.base64EncodedString(options:.init(rawValue: 1))
-        manager.insert(tableName: "User", userName: USERNAME, imgName: imgStr)
+        DispatchQueue.global().async {
+            
+            //UIImage转为data 不压缩
+            //        let imgData : NSData = UIImagePNGRepresentation(img)! as NSData
+            
+            //UIImage转为data 压缩图片质量 代替 UIImagePNGRepresentation
+            let imgData: NSData = UIImageJPEGRepresentation(img, 1.0)! as NSData
+            // 把 data 转成 Base64 的 string
+            let imgStr = imgData.base64EncodedString(options:.init(rawValue: 0))
+            
+            //先清空数据库
+            self.manager.delete(tableName: TABLENAME)
+            self.manager.insert(tableName: "User", userName: USERNAME, imageName: imgStr)
+            DispatchQueue.main.async(execute: {
+                
+            })
+        }
     }
     
     // 文件路径
