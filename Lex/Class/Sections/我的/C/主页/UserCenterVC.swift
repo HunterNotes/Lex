@@ -9,12 +9,12 @@
 import UIKit
 
 
-var user            : User!
+//var user            : User!
 
-var userImg         : UIImage!
+//var userImg         : UIImage!
 
 /// 原name
-var userName        : String!
+//var userName        : String!
 
 class UserCenterVC: UIViewController {
     
@@ -23,7 +23,8 @@ class UserCenterVC: UIViewController {
     
     var userImgName     : String!
     
-    var dataArr : [[String]]!
+    var dataArr         : [[String]]!
+    var manager         : SQLiteManager!
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -34,13 +35,10 @@ class UserCenterVC: UIViewController {
         self.dataArr = [[""], ["相册", "收藏", "钱包", "卡包"], ["表情"], ["设置"]]
         self.gisterCell()
         
-        user = User()
-        user.userName = "风一样的CC"
-        user.imgStr = "--"
-        user.id = 1
-        userImg = UIImage(named: userImgName)
-        if userName == nil || userName == "" {
-            userName = "风一样的CC"
+        manager = SQLiteManager.defaultManager()
+        
+        if Int(USERNAME.characters.count) == 0 {
+            USERNAME = "风一样的CC"
         }
     }
     
@@ -51,7 +49,6 @@ class UserCenterVC: UIViewController {
         self.tableView.reloadData()
     }
     
-    //注册cell
     func gisterCell() {
         
         self.tableView.register(UINib.init(nibName: "UserImgCell", bundle: nil), forCellReuseIdentifier: cellID)
@@ -94,10 +91,10 @@ extension UserCenterVC: UITableViewDataSource, UITableViewDelegate {
             let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath)
                 as! UserImgCell
             cell.selectionStyle = .none
-            cell.userNameLab.text = userName
+            cell.userNameLab.text = USERNAME
             cell.userNameLab.adjustsFontSizeToFitWidth = true
             cell.userNoLab.adjustsFontSizeToFitWidth = true
-            cell.userImg.image = userImg
+            cell.userImg.image = manager.getUserImageFromSQLite()
             return cell
         }
         else {

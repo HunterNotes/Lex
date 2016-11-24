@@ -21,12 +21,19 @@ let app_width: CGFloat = UIScreen.main.bounds.size.width
 let app_height: CGFloat = UIScreen.main.bounds.size.height
 
 /**
+ * 本地数据库，用户信息表名称
+ */
+let TABLENAME : String = "USER"
+
+/**
+ * 用户名称
+ */
+var USERNAME : String! = ""
+
+/**
  * 系统版本
  */
-let IS_IOS7 = (UIDevice.current.systemVersion as NSString).doubleValue >= 7.0
-let IS_IOS8 = (UIDevice.current.systemVersion as NSString).doubleValue >= 8.0
-let IS_IOS9 = (UIDevice.current.systemVersion as NSString).doubleValue >= 9.0
-let IS_IOS10 = (UIDevice.current.systemVersion as NSString).doubleValue >= 10.0
+var IMGNAME : String!
 
 /**
  * tableView 基础高度
@@ -90,3 +97,4 @@ func globalBGColor() -> UIColor {
 func globalRedColor() -> UIColor {
     return RGBA(245, g: 80, b: 83, a: 1.0)
 }
+

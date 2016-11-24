@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		42DEE5CD1DE5CFF0000A2693 /* data.db in Resources */ = {isa = PBXBuildFile; fileRef = 42DEE5CC1DE5CFF0000A2693 /* data.db */; };
 		42DEE5CF1DE5E1FA000A2693 /* SQLiteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DEE5CE1DE5E1FA000A2693 /* SQLiteManager.swift */; };
 		663B7FB6572524891A3DBB79 /* Pods_LexUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B13BC0B8A2D05ABC725B0793 /* Pods_LexUITests.framework */; };
 		8F2B4D66BE9B748FC3A23322 /* Pods_LexTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87127CB891849E081AEBD3F3 /* Pods_LexTests.framework */; };
@@ -99,7 +98,6 @@
 		1A0EF923A73B8CDF889B4B5C /* Pods-Lex.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lex.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Lex/Pods-Lex.debug.xcconfig"; sourceTree = "<group>"; };
 		2EB7EBE5A30F6950BB9AFBE3 /* Pods-LexTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LexTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LexTests/Pods-LexTests.debug.xcconfig"; sourceTree = "<group>"; };
 		3A6C832CE54CB7E1A05ABC65 /* Pods-LexUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LexUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LexUITests/Pods-LexUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		42DEE5CC1DE5CFF0000A2693 /* data.db */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = data.db; sourceTree = "<group>"; };
 		42DEE5CE1DE5E1FA000A2693 /* SQLiteManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLiteManager.swift; sourceTree = "<group>"; };
 		6F267505429B8AA397CC999B /* Pods-LexTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LexTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LexTests/Pods-LexTests.release.xcconfig"; sourceTree = "<group>"; };
 		87127CB891849E081AEBD3F3 /* Pods_LexTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LexTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -209,7 +207,6 @@
 		53D3FEB515EAA3B2E863264F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				42DEE5CC1DE5CFF0000A2693 /* data.db */,
 				A52239791DE597B00037A5BB /* libsqlite3.0.tbd */,
 				047137E5694B0C4EE0C4B523 /* Pods_Lex.framework */,
 				87127CB891849E081AEBD3F3 /* Pods_LexTests.framework */,
@@ -814,7 +811,6 @@
 				A522392F1DE545350037A5BB /* UserInfoPhotoCell.xib in Resources */,
 				A52239651DE56E4E0037A5BB /* UserInfoVC.xib in Resources */,
 				A52239451DE545350037A5BB /* HomePageCell.xib in Resources */,
-				42DEE5CD1DE5CFF0000A2693 /* data.db in Resources */,
 				A52239671DE56E4E0037A5BB /* EditUserNameVC.xib in Resources */,
 				A52238851DE544B10037A5BB /* Assets.xcassets in Resources */,
 				A52238881DE544B10037A5BB /* LaunchScreen.storyboard in Resources */,

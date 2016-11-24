@@ -14,13 +14,14 @@ import CoreLocation
 
 class UserInfoQRCodeVC: UIViewController {
     
-    @IBOutlet weak var userImgView: UIImageView!
-    @IBOutlet weak var userNameLab: UILabel!
-    @IBOutlet weak var genderImgView: UIImageView!
-    @IBOutlet weak var locationLab: UILabel!
-    @IBOutlet weak var qrImgView: UIImageView!
+    @IBOutlet weak var userImgView      : UIImageView!
+    @IBOutlet weak var userNameLab      : UILabel!
+    @IBOutlet weak var genderImgView    : UIImageView!
+    @IBOutlet weak var locationLab      : UILabel!
+    @IBOutlet weak var qrImgView        : UIImageView!
     
-    var pushFlag : Int?
+    var pushFlag                        : Int?
+    var sqlManager                      : SQLiteManager!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +31,8 @@ class UserInfoQRCodeVC: UIViewController {
         
         self.initData()
         self.addLongpress()
+        
+        sqlManager = SQLiteManager.defaultManager()
         //        self.getLocation()
     }
     
@@ -41,8 +44,8 @@ class UserInfoQRCodeVC: UIViewController {
         self.userImgView.layer.cornerRadius = 10
         self.userImgView.layer.borderWidth = 0.5
         self.userImgView.layer.borderColor = UIColor.darkGray.cgColor
-        self.userImgView.image = userImg
-        self.userNameLab.text = userName
+        self.userImgView.image = sqlManager.getUserImageFromSQLite()
+        self.userNameLab.text = USERNAME
         self.locationLab.text = location
         self.qrImgView.image = self.creatQRCodeImage("https://github.com/HunterNotes/Swift_Debug")
     }
@@ -180,7 +183,7 @@ class UserInfoQRCodeVC: UIViewController {
         //                qrImg = image
         //            })
         //        }
-        return text!.generateQRCodeWithLogo(userImg)
+        return text!.generateQRCodeWithLogo(self.userImgView.image)
     }
     
     //MARK: 传进去字符串,生成二维码图片

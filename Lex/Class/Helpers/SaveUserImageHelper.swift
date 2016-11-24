@@ -7,7 +7,6 @@
 //
 
 import UIKit
-//import Foundation
 
 ///无参无返回值
 typealias funcBlock = () -> () //或者 () -> Void

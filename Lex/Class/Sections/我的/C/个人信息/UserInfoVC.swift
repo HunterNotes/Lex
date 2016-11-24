@@ -12,21 +12,21 @@ class UserInfoVC: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    let userInfoPhotoCell      : String = "UserInfoPhotoCell"
-    let userInfoCommonCell     : String = "UserInfoCommonCell"
-    let userInfoCommonNoneCell : String = "userInfoCommonNoneCell"
-    let userInfoQRCodeCell     : String = "UserInfoQRCodeCell"
+    let userInfoPhotoCell       : String = "UserInfoPhotoCell"
+    let userInfoCommonCell      : String = "UserInfoCommonCell"
+    let userInfoCommonNoneCell  : String = "userInfoCommonNoneCell"
+    let userInfoQRCodeCell      : String = "UserInfoQRCodeCell"
     
     /* 部分用户信息 */
-    //    var imgName         : String!
-    //    var userName        : String!
-    var address         : String!
-    var gender          : String!
-    var location        : String!
-    var signature       : String!
+    var address                 : String!
+    var gender                  : String!
+    var location                : String!
+    var signature               : String!
     
-    var titleArr        : [[String]]!
-    var detailArr       : [[String]]!
+    var titleArr                : [[String]]!
+    var detailArr               : [[String]]!
+    
+    var manager                 : SQLiteManager!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +34,7 @@ class UserInfoVC: UIViewController {
         self.navigationItem.title = "个人信息"
         self.initData()
         
+        manager = SQLiteManager.defaultManager()
         self.registerCell()
     }
     
@@ -53,7 +54,7 @@ class UserInfoVC: UIViewController {
         signature = ""
         
         titleArr = [["头像", "名字", "xx号", "我的二维码", "我的地址"], ["性别", "地区", "个性签名"], ["Linkedln账号"]]
-        detailArr = [["", userName, "xx号", "我的二维码", address], [gender, location, signature], ["展示"]]
+        detailArr = [["", USERNAME, "xx号", "我的二维码", address], [gender, location, signature], ["展示"]]
         
     }
     
@@ -108,7 +109,7 @@ extension UserInfoVC : UITableViewDataSource, UITableViewDelegate {
             
             let photoCell = tableView.dequeueReusableCell(withIdentifier: userInfoPhotoCell, for: indexPath) as! UserInfoPhotoCell
             photoCell.selectionStyle = .none
-            photoCell.photo.image = userImg
+            photoCell.photo.image = manager.getUserImageFromSQLite()
             return photoCell
         }
         else if section == 0 && row == 3 {

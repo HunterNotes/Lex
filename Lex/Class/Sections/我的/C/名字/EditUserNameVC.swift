@@ -32,11 +32,10 @@ class EditUserNameVC: UIViewController {
         self.navigationItem.leftBarButtonItem = self.leftItem
         self.navigationItem.rightBarButtonItem = self.rightItem
         
-        self.iTextField.text = userName
+        self.iTextField.text = USERNAME
         if self.iTextField.text == nil {
             self.clearBtn.isHidden = true
         }
-        
     }
     
     func left() {
@@ -46,8 +45,8 @@ class EditUserNameVC: UIViewController {
     
     func right() {
         
-        if userName != name {
-            userName = name
+        if USERNAME != name {
+            USERNAME = name
         }
         self.doBack()
     }
@@ -65,6 +64,7 @@ class EditUserNameVC: UIViewController {
     }
 }
 
+//MARK: - UITextFieldDelegate
 extension EditUserNameVC : UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -74,7 +74,7 @@ extension EditUserNameVC : UITextFieldDelegate {
         if string == "" {
             
             //删除
-            if text.characters.count > 0 {
+            if Int(text.characters.count) > 0 {
                 
                 //定位到截取位置
                 let index : Int = Int(text.characters.count - 1)
@@ -89,7 +89,7 @@ extension EditUserNameVC : UITextFieldDelegate {
             name = textField.text! + string
         }
         
-        if name == "" || name.isEmpty {
+        if Int(name.characters.count) == 0 {
             
             self.clearBtn.isHidden = true
         }
@@ -97,7 +97,7 @@ extension EditUserNameVC : UITextFieldDelegate {
             self.clearBtn.isHidden = false
         }
         
-        if userName == name {
+        if USERNAME == name {
             self.rightItem.isEnabled = false
         }
         else {
@@ -110,8 +110,8 @@ extension EditUserNameVC : UITextFieldDelegate {
         
         name = textField.text!
         textField.resignFirstResponder()
-        if userName != textField.text {
-            userName = textField.text
+        if Int(USERNAME.characters.count) != 0 && USERNAME != textField.text {
+            USERNAME = textField.text
             
             self.doBack()
         }

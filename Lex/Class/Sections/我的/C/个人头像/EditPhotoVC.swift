@@ -10,7 +10,7 @@ import UIKit
 import AVFoundation
 import Photos
 import SVProgressHUD
-
+import SQLite
 
 enum EditImgType : Int {
     
@@ -24,9 +24,8 @@ class EditPhotoVC: UIViewController {
     
     var imgType                 : EditImgType = .none
     
-    var db : SQLiteDB!
+    var manager : SQLiteManager!
     // 数据库文件
-    //    var db: Connection?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,9 +36,10 @@ class EditPhotoVC: UIViewController {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(image: UIImage.init(named: "ic_more"), style: .plain, target: self, action: #selector(editPhoto))
         self.addLongpress()
         
-        self.userImgView.image = userImg
-        imgType = .none
+        manager = SQLiteManager.defaultManager()
+        self.userImgView.image = manager.getUserImageFromSQLite()
         
+        imgType = .none
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -48,8 +48,8 @@ class EditPhotoVC: UIViewController {
         
         if imgType == .changed {
             
-            let userDefault = UserDefaults.standard
-            userDefault.setValue(userImg?.description, forKey: saveImgFlag)
+            //            let userDefault = UserDefaults.standard
+            //            userDefault.setValue(self.userImgView.image?.description, forKey: saveImgFlag)
             SVProgressHUD.show(UIImage.init(named: "success"), status: "上传成功")
         }
     }
@@ -172,16 +172,16 @@ class EditPhotoVC: UIViewController {
     //MARK: - 保存图片到数据库
     fileprivate func saveImageToSQL(_ img : UIImage) {
         
-        //UIImage转为data
         //UIImage转为data 不压缩
-//        let imgData : NSData = UIImagePNGRepresentation(img)! as NSData
+        //        let imgData : NSData = UIImagePNGRepresentation(img)! as NSData
+        
         //UIImage转为data 压缩图片质量 代替 UIImagePNGRepresentation
         let imgData: NSData = UIImageJPEGRepresentation(img, 0.5)! as NSData
         
         
         // 把 data 转成 Base64 的 string
         let imgStr = imgData.base64EncodedString(options:.init(rawValue: 1))
-        
+        manager.insert(tableName: "User", userName: USERNAME, imgName: imgStr)
     }
     
     // 文件路径
@@ -195,11 +195,11 @@ extension EditPhotoVC : UIImagePickerControllerDelegate, UINavigationControllerD
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
         self.dismiss(animated: true, completion: nil)
-        userImg = info[UIImagePickerControllerOriginalImage] as? UIImage
+        let image = info[UIImagePickerControllerOriginalImage] as? UIImage
         
         //再次赋值，防止图片显示状态未更新
-        self.userImgView.image = userImg
-        saveImageToSQL(userImg)
+        self.userImgView.image = image
+        saveImageToSQL(image!)
         imgType = .changed
         
     }
