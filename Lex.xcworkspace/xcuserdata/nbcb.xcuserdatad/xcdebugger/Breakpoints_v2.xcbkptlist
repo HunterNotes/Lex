@@ -19,13 +19,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Lex/Class/Helpers/SQLiteManager.swift"
-            timestampString = "501672675.799652"
+            filePath = "Lex/Class/Helpers/SavaImgHelper.swift"
+            timestampString = "501750795.021236"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "159"
-            endingLineNumber = "159"
-            landmarkName = "getUserImageFromSQLite()"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
+            landmarkName = "imageNameToBase64String(_:_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

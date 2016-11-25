@@ -31,9 +31,14 @@ let TABLENAME : String = "USER"
 var USERNAME : String! = ""
 
 /**
- * 系统版本
+ * 图片名称
  */
 var IMGNAME : String!
+
+/**
+ * 存储图片时，根据格式拼接数据头 添加header信息，扩展名信息
+ */
+let BASE64HEADER : String = "data:image/png;base64,"
 
 /**
  * tableView 基础高度

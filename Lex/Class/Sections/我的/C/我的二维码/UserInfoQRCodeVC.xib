@@ -52,7 +52,7 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="qr_default" translatesAutoresizingMaskIntoConstraints="NO" id="Ee3-Hk-XmD">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ee3-Hk-XmD">
                             <rect key="frame" x="15" y="90" width="305" height="283"/>
                         </imageView>
                     </subviews>
@@ -83,6 +83,5 @@
     </objects>
     <resources>
         <image name="avatar_circle_default" width="62" height="62"/>
-        <image name="qr_default" width="537" height="538"/>
     </resources>
 </document>

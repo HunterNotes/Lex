@@ -16,7 +16,7 @@ class UserInfoQRCodeVC: UIViewController {
     
     @IBOutlet weak var userImgView      : UIImageView!
     @IBOutlet weak var userNameLab      : UILabel!
-    @IBOutlet weak var genderImgView    : UIImageView!
+    //    @IBOutlet weak var genderImgView    : UIImageView!
     @IBOutlet weak var locationLab      : UILabel!
     @IBOutlet weak var qrImgView        : UIImageView!
     
@@ -29,15 +29,13 @@ class UserInfoQRCodeVC: UIViewController {
         self.navigationItem.title = "我的二维码"
         self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(image: UIImage.init(named: "ic_more"), style: .plain, target: self, action: #selector(edit))
         
-        self.initData()
+        self.getDisplayInfo()
         self.addLongpress()
-        
-        sqlManager = SQLiteManager.defaultManager()
-        //        self.getLocation()
     }
     
-    func initData () {
+    func getDisplayInfo() {
         
+        sqlManager = SQLiteManager.defaultManager()
         let manager : CCSingleton = CCSingleton.sharedUser()
         let location : String = manager.state_Format! + " " + manager.city_Format!
         
@@ -47,7 +45,8 @@ class UserInfoQRCodeVC: UIViewController {
         self.userImgView.image = sqlManager.getUserImageFromSQLite()
         self.userNameLab.text = USERNAME
         self.locationLab.text = location
-        self.qrImgView.image = self.creatQRCodeImage("https://github.com/HunterNotes/Swift_Debug")
+        
+        self.creatQRCodeImage("https://github.com/HunterNotes/Swift_Debug")
     }
     
     func getLocation () {
@@ -173,73 +172,18 @@ class UserInfoQRCodeVC: UIViewController {
         }
     }
     
-    fileprivate func creatQRCodeImage(_ text: String?) -> UIImage {
+    fileprivate func creatQRCodeImage(_ text: String?) {
         
-        //        var qrImg : UIImage? = nil
-        //        DispatchQueue.global().async {
-        
-        //            DispatchQueue.main.async(execute: {
-        //                let image = text?.generateQRCodeWithLogo(logo:userImg)
-        //                qrImg = image
-        //            })
-        //        }
-        return text!.generateQRCodeWithLogo(self.userImgView.image)
+        weak var weakSelf = self
+        DispatchQueue.global().async {
+            
+            let image = text!.generateQRCodeWithLogo(weakSelf?.userImgView.image)
+            DispatchQueue.main.async(execute: {
+                self.qrImgView.image = image
+            })
+        }
+        //        return text!.generateQRCodeWithLogo(self.userImgView.image)
     }
-    
-    //MARK: 传进去字符串,生成二维码图片
-    //    private func creatQRCodeImage(text: String) -> UIImage {
-    //
-    //        //创建滤镜
-    //        let filter = CIFilter(name: "CIQRCodeGenerator")
-    //
-    //        //还原滤镜的默认属性
-    //        filter?.setDefaults()
-    //
-    //        //设置需要生成二维码的数据
-    //        filter?.setValue(text.data(using: String.Encoding.utf8), forKey: "inputMessage")
-    //
-    //        //从滤镜中取出生成的图片
-    //        let ciImage = filter?.outputImage
-    //
-    //        // 接着利用KVO设置二维码的文字
-    //        filter?.setValue(text.data(using: String.Encoding.utf8, allowLossyConversion: false), forKey: "inputMessage")
-    //
-    //        // 最后获取滤镜生成的二维码高清图片
-    //        let bgImage = UIImage(ciImage:(ciImage!.applying(CGAffineTransform(scaleX: 10, y: 10))))
-    //
-    //        //合成图片(把二维码和头像合并)
-    //        let newImage = creatImage(bgImage: bgImage, iconImage: userImg!)
-    //
-    //        //返回生成好的二维码
-    //        return newImage
-    //    }
-    
-    //MARK: 根据背景图片和头像合成头像二维码
-    //    private func creatImage(bgImage: UIImage, iconImage:UIImage) -> UIImage {
-    //
-    //        //开启图片上下文
-    //        UIGraphicsBeginImageContext(bgImage.size)
-    //
-    //        //绘制背景图片
-    //        bgImage.draw(in: CGRect(origin: CGPoint.init(x: 0, y: 0), size: bgImage.size))
-    //
-    //        //绘制头像
-    //        let width: CGFloat = 60
-    //        let height: CGFloat = width
-    //
-    //        let x = (bgImage.size.width - width) * 0.5
-    //        let y = (bgImage.size.height - height) * 0.5
-    //        iconImage.draw(in: CGRect(x: x, y: y, width: width, height: height))
-    //
-    //        //取出绘制好的图片
-    //        let newImage = UIGraphicsGetImageFromCurrentImageContext()
-    //
-    //        //关闭上下文
-    //        UIGraphicsEndImageContext()
-    //
-    //        return newImage!
-    //    }
-    
     
     // MARK: - 1. 懒加载: 会话,输入设备,输出设备,预览图层
     //会话
@@ -304,8 +248,6 @@ class UserInfoQRCodeVC: UIViewController {
         session.startRunning()
     }
 }
-
-
 
 //MARK: - AVCaptureMetadataOutputObjectsDelegate
 extension UserInfoQRCodeVC : AVCaptureMetadataOutputObjectsDelegate {

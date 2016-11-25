@@ -11,9 +11,13 @@ import SQLite
 
 class SQLiteManager: NSObject {
     
-    var db          : Connection? = nil
-    var arr         : [AnyObject]!
-    var table       : Table? = nil
+    var db                  : Connection? = nil
+    var arr                 : [AnyObject]!
+    private var table       : Table? = nil
+    
+    //多个地方调用获取图片的方法，消耗性能，故将获取到的图片设置成属性， 增、删、改之后会将图片置为nil，确保重新获取图片时，获取到的是最新的图片
+    private var userImg     : UIImage? = nil
+    
     override init() {
         
         // 获取链接（不存在文件，则自动创建）
@@ -47,11 +51,12 @@ class SQLiteManager: NSObject {
     //    }
     
     // 创建表
-    private func createTable(tableName : String!) -> Table {
+    private func createTable(_ tableName : String!) -> Table {
         
-        print("\(path)")
         //        _ = getConnection()
         
+        self.userImg = nil
+
         let users = Table(tableName)
         let id = Expression<Int64>("id")
         let name = Expression<String?>("name")
@@ -75,11 +80,13 @@ class SQLiteManager: NSObject {
     }
     
     //插入数据
-    func insert(tableName : String!, userName : String!, imageName : String!) {
+    func insert(_ tableName : String!, _ userName : String!, _ imageName : String!) {
         
         if self.table == nil {
-            self.table = self.createTable(tableName: tableName)
+            self.table = self.createTable(tableName)
         }
+        
+        self.userImg = nil
         
         let name        : Expression<String?> = arr![1] as! Expression<String?>
         let imgName     : Expression<String?> = arr![2] as! Expression<String?>
@@ -89,19 +96,18 @@ class SQLiteManager: NSObject {
     }
     
     //查询数据
-    func select(tableName : String!) -> NSMutableDictionary {
+    func select(_ tableName : String!) -> NSMutableDictionary {
         
         if self.table == nil {
-            self.table = self.createTable(tableName: tableName)
+            self.table = self.createTable(tableName)
         }
-        
         let id          : Expression<Int64> = arr![0] as! Expression<Int64>
         let name        : Expression<String?> = arr![1] as! Expression<String?>
         let imgName     : Expression<String?> = arr![2] as! Expression<String?>
         
         let dic = NSMutableDictionary()
         for user in (try! db?.prepare(self.table!))! {
-            print("Query:id========================== \(user[id])\n, name=========================== \(user[name])\n, imgName========================== \(user[imgName])")
+//            print("Query:id========================== \(user[id])\n name=========================== \(user[name])\n imgName========================== \(user[imgName])")
             dic.setObject("\(user[id])", forKey:"id" as NSCopying)
             dic.setObject("\(user[name])", forKey: "name" as NSCopying)
             dic.setObject("\(user[imgName])", forKey: "imgName" as NSCopying)
@@ -110,12 +116,12 @@ class SQLiteManager: NSObject {
     }
     
     //修改数据
-    func upDate(tableName : String!) {
+    func upDate(_ tableName : String!) {
         
         if self.table == nil {
-            self.table = self.createTable(tableName: tableName)
+            self.table = self.createTable(tableName)
         }
-        
+        self.userImg = nil
         let id          : Expression<Int64> = arr![0] as! Expression<Int64>
         let name        : Expression<String?> = arr![1] as! Expression<String?>
         let imgName     : Expression<String?> = arr![2] as! Expression<String?>
@@ -138,12 +144,12 @@ class SQLiteManager: NSObject {
     }
     
     //删除数据
-    func delete(tableName : String!) {
+    func delete(_ tableName : String!) {
         
         if self.table == nil {
-            self.table = self.createTable(tableName: tableName)
+            self.table = self.createTable(tableName)
         }
-        
+        self.userImg = nil
         let id          : Expression<Int64> = arr![0] as! Expression<Int64>
         let name        : Expression<String?> = arr![1] as! Expression<String?>
         let imgName     : Expression<String?> = arr![2] as! Expression<String?>
@@ -161,11 +167,7 @@ class SQLiteManager: NSObject {
     //MARK: - 从本地数据库中获取用户头像
     func getUserImageFromSQLite() -> UIImage {
         
-        let dic = self.select(tableName: TABLENAME)
-        print(dic)
-        
-        //默认一张图片
-        var image : UIImage? = nil
+        let dic = self.select(TABLENAME)
         
         if dic.count > 0 {
             
@@ -173,44 +175,15 @@ class SQLiteManager: NSObject {
             let imageName : String? = dic.object(forKey: "imgName") as? String
             
             if  Int((imageName?.characters.count)!) > 0  {
-                
-                print("imgName :", dic.object(forKey: "imgName") ?? "--")
-                
-                //Base64字符串转NSData：
-                let data : NSData! = NSData(base64Encoded: imageName!, options: NSData.Base64DecodingOptions.ignoreUnknownCharacters)!
-                print("data =================", data)
-                
-                //http://www.itstrike.cn/Question/338c49d2-82d6-4151-ac62-15607dd9fe55.html
-                let ciimage : CIImage = self.convertImageFromCMSampleBufferRef()
-                let context = CIContext(options:nil);
-                let tempImage : CGImageRef = context.createCGImage(ciImage, fromRect: ciImage.extent())
-                let image = UIImage(CGImage: tempImage);
-                let imageData: NSData? = UIImageJPEGRepresentation(image, 0.6);
-                //NSData 转化成UIImage
-                //                image = UIImage.init(data: data as Data)
-                image = UIImage.init(data: data as Data, scale: 0.5)
+                if self.userImg == nil {
+                    self.userImg = SavaImgHelper.base64StringToUIImage(imageName!)
+                    print("成功获取数据库中的图片")
+                }
             }
         }
-        if image == nil {
-            image =  UIImage.init(named: "avatar_circle_default")!
+        if self.userImg == nil {
+            self.userImg =  UIImage.init(named: "avatar_circle_default")!
         }
-        return image!
+        return self.userImg!
     }
-    
-    func convertImageFromCMSampleBufferRef(sampleBuffer : CMSampleBuffer) -> CIImage {
-        let pixelBuffer : CVPixelBufferRef = CMSampleBufferGetImageBuffer(sampleBuffer)!
-        let ciImage:CIImage = CIImage(CVPixelBuffer: pixelBuffer)
-        
-        if done == true {
-            
-            newImage =  UIImage(CIImage:ciImage, scale: CGFloat(1.0), orientation: .DownMirrored)
-            
-            var imageData = UIImageJPEGRepresentation(newImage, 0.6)
-            var compressedJPGImage = UIImage(data: imageData)
-            UIImageWriteToSavedPhotosAlbum(compressedJPGImage!, nil, nil, nil)
-        }
-        
-        return ciImage;
-    }
-
 }

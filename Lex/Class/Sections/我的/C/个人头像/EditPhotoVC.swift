@@ -10,7 +10,7 @@ import UIKit
 import AVFoundation
 import Photos
 import SVProgressHUD
-import SQLite
+//import SQLite
 
 enum EditImgType : Int {
     
@@ -61,6 +61,7 @@ class EditPhotoVC: UIViewController {
         self.view.addGestureRecognizer(longPress)
     }
     
+    //MARK: - 编辑图片
     func editPhoto() {
         
         let optionMenu = UIAlertController.init(title: nil, message: "编辑头像", preferredStyle: .actionSheet)
@@ -108,7 +109,7 @@ class EditPhotoVC: UIViewController {
         self.present(optionMenu, animated: true, completion: nil)
     }
     
-    //调用照相机方法
+    //MARK: - 调用相机
     fileprivate func camera() {
         
         let pick : UIImagePickerController = UIImagePickerController()
@@ -117,7 +118,7 @@ class EditPhotoVC: UIViewController {
         self.present(pick, animated: true, completion: nil)
     }
     
-    //调用照片方法
+    //MARK: - 调用照片
     fileprivate func photo() {
         
         let pick : UIImagePickerController = UIImagePickerController()
@@ -126,13 +127,7 @@ class EditPhotoVC: UIViewController {
         self.present(pick, animated: true, completion: nil)
     }
     
-    //保存图片到相册
-    fileprivate func save() {
-        
-        UIImageWriteToSavedPhotosAlbum(self.userImgView.image!, self, #selector(saveImage( image:didFinishSavingWithError:contextInfo:)), nil)
-    }
-    
-    //判断相机权限
+    //MARK: - 判断相机权限
     fileprivate func cameraPermissions() -> Bool {
         
         let authStatus : AVAuthorizationStatus = AVCaptureDevice.authorizationStatus(forMediaType: AVMediaTypeVideo)
@@ -144,7 +139,7 @@ class EditPhotoVC: UIViewController {
         }
     }
     
-    //判断相册权限
+    //MARK: - 判断相册权限
     fileprivate func PhotoLibraryPermissions() -> Bool {
         
         let library : PHAuthorizationStatus = PHPhotoLibrary.authorizationStatus()
@@ -156,45 +151,40 @@ class EditPhotoVC: UIViewController {
         }
     }
     
-    //保存图片到相册
+    //MARK: - 保存图片到相册
+    fileprivate func save() {
+        
+        UIImageWriteToSavedPhotosAlbum(self.userImgView.image!, self, #selector(saveImage(image:didFinishSavingWithError:contextInfo:)), nil)
+    }
+
     @objc fileprivate func saveImage(image: UIImage, didFinishSavingWithError error: NSError?, contextInfo: AnyObject) {
         
-        if error != nil {
-            SVProgressHUD.show(UIImage.init(named: "icon_close"), status: "保存失败")
-            SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
-        }
-        else {
-            SVProgressHUD.show(UIImage.init(named: "success"), status: "已保存到系统相册")
-            SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+        DispatchQueue.global().async {
+            if error != nil {
+                SVProgressHUD.show(UIImage.init(named: "icon_close"), status: "保存失败")
+                SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+            }
+            else {
+                SVProgressHUD.show(UIImage.init(named: "success"), status: "已保存到系统相册")
+                SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+            }
         }
     }
     
     //MARK: - 保存图片到数据库
-    fileprivate func saveImageToSQL(_ img : UIImage) {
+    fileprivate func saveImageToSQL(_ image : UIImage) {
         
         DispatchQueue.global().async {
             
-            //UIImage转为data 不压缩
-            //        let imgData : NSData = UIImagePNGRepresentation(img)! as NSData
+            let imgStr : String = SavaImgHelper.imageToBase64String(image)!
             
-            //UIImage转为data 压缩图片质量 代替 UIImagePNGRepresentation
-            let imgData: NSData = UIImageJPEGRepresentation(img, 1.0)! as NSData
-            // 把 data 转成 Base64 的 string
-            let imgStr = imgData.base64EncodedString(options:.init(rawValue: 0))
+            //先清空表
+            self.manager.delete(TABLENAME)
             
-            //先清空数据库
-            self.manager.delete(tableName: TABLENAME)
-            self.manager.insert(tableName: "User", userName: USERNAME, imageName: imgStr)
-            DispatchQueue.main.async(execute: {
-                
-            })
+            //写入数据
+            self.manager.insert(TABLENAME, USERNAME, imgStr)
         }
     }
-    
-    // 文件路径
-    let path = NSSearchPathForDirectoriesInDomains(
-        .documentDirectory, .userDomainMask, true
-        ).first!
 }
 
 extension EditPhotoVC : UIImagePickerControllerDelegate, UINavigationControllerDelegate {

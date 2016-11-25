@@ -72,6 +72,7 @@
 		A52239771DE597940037A5BB /* SQLTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52239741DE597940037A5BB /* SQLTable.swift */; };
 		A52239781DE597940037A5BB /* String-Extras.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52239751DE597940037A5BB /* String-Extras.swift */; };
 		A522397A1DE597B00037A5BB /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A52239791DE597B00037A5BB /* libsqlite3.0.tbd */; };
+		A5B80D5E1DE7D6FC00A3986C /* SavaImgHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B80D5D1DE7D6FC00A3986C /* SavaImgHelper.swift */; };
 		B3F7470CC31AD98865B1EBEC /* Pods_Lex.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 047137E5694B0C4EE0C4B523 /* Pods_Lex.framework */; };
 /* End PBXBuildFile section */
 
@@ -171,6 +172,7 @@
 		A52239741DE597940037A5BB /* SQLTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLTable.swift; sourceTree = "<group>"; };
 		A52239751DE597940037A5BB /* String-Extras.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String-Extras.swift"; sourceTree = "<group>"; };
 		A52239791DE597B00037A5BB /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		A5B80D5D1DE7D6FC00A3986C /* SavaImgHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavaImgHelper.swift; sourceTree = "<group>"; };
 		B13BC0B8A2D05ABC725B0793 /* Pods_LexUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LexUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3388DBF3891E847B529B70B /* Pods-Lex.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lex.release.xcconfig"; path = "Pods/Target Support Files/Pods-Lex/Pods-Lex.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -375,6 +377,7 @@
 				A52238CC1DE545350037A5BB /* CCSingleton.swift */,
 				A52238CD1DE545350037A5BB /* SaveUserImageHelper.swift */,
 				42DEE5CE1DE5E1FA000A2693 /* SQLiteManager.swift */,
+				A5B80D5D1DE7D6FC00A3986C /* SavaImgHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -995,6 +998,7 @@
 				A52239141DE545350037A5BB /* UINavigationController+Extends.m in Sources */,
 				A522391B1DE545350037A5BB /* ZSegmentedControl.swift in Sources */,
 				A52239221DE545350037A5BB /* SaveUserImageHelper.swift in Sources */,
+				A5B80D5E1DE7D6FC00A3986C /* SavaImgHelper.swift in Sources */,
 				A522391C1DE545350037A5BB /* ZSlider.swift in Sources */,
 				A52239181DE545350037A5BB /* ZButton.swift in Sources */,
 				A52239771DE597940037A5BB /* SQLTable.swift in Sources */,
