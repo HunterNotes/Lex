@@ -68,9 +68,6 @@
 		A522396C1DE56E4E0037A5BB /* UserCenterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52239601DE56E4E0037A5BB /* UserCenterVC.swift */; };
 		A522396D1DE56E4E0037A5BB /* UserCenterVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = A52239611DE56E4E0037A5BB /* UserCenterVC.xib */; };
 		A52239711DE58D190037A5BB /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52239701DE58D190037A5BB /* User.swift */; };
-		A52239761DE597940037A5BB /* SQLiteDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52239731DE597940037A5BB /* SQLiteDB.swift */; };
-		A52239771DE597940037A5BB /* SQLTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52239741DE597940037A5BB /* SQLTable.swift */; };
-		A52239781DE597940037A5BB /* String-Extras.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52239751DE597940037A5BB /* String-Extras.swift */; };
 		A522397A1DE597B00037A5BB /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A52239791DE597B00037A5BB /* libsqlite3.0.tbd */; };
 		A5B80D5E1DE7D6FC00A3986C /* SavaImgHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B80D5D1DE7D6FC00A3986C /* SavaImgHelper.swift */; };
 		B3F7470CC31AD98865B1EBEC /* Pods_Lex.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 047137E5694B0C4EE0C4B523 /* Pods_Lex.framework */; };
@@ -168,9 +165,6 @@
 		A52239601DE56E4E0037A5BB /* UserCenterVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCenterVC.swift; sourceTree = "<group>"; };
 		A52239611DE56E4E0037A5BB /* UserCenterVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserCenterVC.xib; sourceTree = "<group>"; };
 		A52239701DE58D190037A5BB /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		A52239731DE597940037A5BB /* SQLiteDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLiteDB.swift; sourceTree = "<group>"; };
-		A52239741DE597940037A5BB /* SQLTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLTable.swift; sourceTree = "<group>"; };
-		A52239751DE597940037A5BB /* String-Extras.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String-Extras.swift"; sourceTree = "<group>"; };
 		A52239791DE597B00037A5BB /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		A5B80D5D1DE7D6FC00A3986C /* SavaImgHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavaImgHelper.swift; sourceTree = "<group>"; };
 		B13BC0B8A2D05ABC725B0793 /* Pods_LexUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LexUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -588,7 +582,6 @@
 		A522390F1DE545350037A5BB /* Vender */ = {
 			isa = PBXGroup;
 			children = (
-				A52239721DE597940037A5BB /* SQLiteDB */,
 			);
 			path = Vender;
 			sourceTree = "<group>";
@@ -673,16 +666,6 @@
 				A52239611DE56E4E0037A5BB /* UserCenterVC.xib */,
 			);
 			path = "主页";
-			sourceTree = "<group>";
-		};
-		A52239721DE597940037A5BB /* SQLiteDB */ = {
-			isa = PBXGroup;
-			children = (
-				A52239731DE597940037A5BB /* SQLiteDB.swift */,
-				A52239741DE597940037A5BB /* SQLTable.swift */,
-				A52239751DE597940037A5BB /* String-Extras.swift */,
-			);
-			path = SQLiteDB;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -986,7 +969,6 @@
 				A522391A1DE545350037A5BB /* ZLabel.swift in Sources */,
 				42DEE5CF1DE5E1FA000A2693 /* SQLiteManager.swift in Sources */,
 				A52239281DE545350037A5BB /* UserImgCell.swift in Sources */,
-				A52239781DE597940037A5BB /* String-Extras.swift in Sources */,
 				A52239211DE545350037A5BB /* CCSingleton.swift in Sources */,
 				A52239131DE545350037A5BB /* ZAppDelegate.swift in Sources */,
 				A52239711DE58D190037A5BB /* User.swift in Sources */,
@@ -1001,7 +983,6 @@
 				A5B80D5E1DE7D6FC00A3986C /* SavaImgHelper.swift in Sources */,
 				A522391C1DE545350037A5BB /* ZSlider.swift in Sources */,
 				A52239181DE545350037A5BB /* ZButton.swift in Sources */,
-				A52239771DE597940037A5BB /* SQLTable.swift in Sources */,
 				A52239641DE56E4E0037A5BB /* UserInfoVC.swift in Sources */,
 				A522391F1DE545350037A5BB /* ZView.swift in Sources */,
 				A52238831DE544B10037A5BB /* Lex.xcdatamodeld in Sources */,
@@ -1010,7 +991,6 @@
 				A522392E1DE545350037A5BB /* UserInfoPhotoCell.swift in Sources */,
 				A522394C1DE56E1B0037A5BB /* ScanCodeTool.swift in Sources */,
 				A522391D1DE545350037A5BB /* ZTableViewCell.swift in Sources */,
-				A52239761DE597940037A5BB /* SQLiteDB.swift in Sources */,
 				A52239461DE545350037A5BB /* Config.swift in Sources */,
 				A52239301DE545350037A5BB /* UserInfoQRCodeCell.swift in Sources */,
 				A522392A1DE545350037A5BB /* UserInfoCommonCell.swift in Sources */,
