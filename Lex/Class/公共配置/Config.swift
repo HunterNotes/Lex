@@ -31,14 +31,35 @@ let TABLENAME : String = "USER"
 var USERNAME : String! = ""
 
 /**
- * 图片名称
+ * 数据库表->主键
  */
-var IMGNAME : String!
+let USER_ID : String = "userID"
+
+/**
+ * 数据库表->用户名称
+ */
+let USER_NAME : String = "userName"
+
+/**
+ * 数据库表->用户头像名称
+ */
+let USER_IMGNAME : String = "userImage"
+
+/**
+ * 数据库表->用户二维码图片名称
+ */
+let USER_QRIMGNAME : String = "qrImage"
 
 /**
  * 存储图片时，根据格式拼接数据头 添加header信息，扩展名信息
  */
 let BASE64HEADER : String = "data:image/png;base64,"
+
+/**
+ * 二维码内容
+ */
+
+var QRTEXT : String = "https://github.com/HunterNotes/Swift_Debug"
 
 /**
  * tableView 基础高度

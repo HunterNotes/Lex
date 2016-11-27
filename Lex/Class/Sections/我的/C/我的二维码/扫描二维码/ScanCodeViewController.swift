@@ -39,7 +39,7 @@ class ScanCodeViewController: UIViewController {
     lazy var scanLine : UIImageView = {
         
         let scanLine = UIImageView()
-        scanLine.frame = CGRect(x: 0, y: 0, width: self.scanPane.bounds.width, height: 3)
+        scanLine.frame = CGRect(x: 0, y: 0, width: app_width - 150, height: 3)
         scanLine.image = UIImage(named: "QRCode_ScanLine")
         return scanLine
     }()
@@ -97,7 +97,7 @@ class ScanCodeViewController: UIViewController {
         catch {
             
             //摄像头不可用
-            ScanCodeTool.confirm("温馨提示", message: "摄像头不可用", controller: self)
+            ScanCodeTool.confirm("温馨提示", "摄像头不可用", self)
             return
         }
     }
@@ -105,7 +105,7 @@ class ScanCodeViewController: UIViewController {
     //MARK: - 相册
     @IBAction func photo() {
         
-        ScanCodeTool.shareTool().choosePicture(self, editor: true, options: .photoLibrary) {[weak self] (image) in
+        ScanCodeTool.shareTool().choosePicture(self, true, .photoLibrary) {[weak self] (image) in
             
             self!.activityIndicatorView.startAnimating()
             
@@ -114,7 +114,7 @@ class ScanCodeViewController: UIViewController {
                 let result = recognizeResult?.characters.count > 0 ? recognizeResult : "无法识别"
                 DispatchQueue.main.async {
                     self!.activityIndicatorView.stopAnimating()
-                    ScanCodeTool.confirm("扫描结果", message: result, controller: self!)
+                    ScanCodeTool.confirm("扫描结果", result, self!)
                 }
             }
         }
@@ -173,7 +173,7 @@ class ScanCodeViewController: UIViewController {
         guard let device = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo) else {
             
             if lightOn {
-                ScanCodeTool.confirm("温馨提示", message: "闪光灯不可用", controller: self)
+                ScanCodeTool.confirm("温馨提示", "闪光灯不可用", self)
             }
             return
         }
@@ -218,7 +218,7 @@ extension ScanCodeViewController : AVCaptureMetadataOutputObjectsDelegate {
             
             if let resultObj = metadataObjects.first as? AVMetadataMachineReadableCodeObject {
                 
-                ScanCodeTool.confirm("扫描结果", message: resultObj.stringValue, controller: self,handler: { (_) in
+                ScanCodeTool.confirm("扫描结果", resultObj.stringValue, self, handler: { (_) in
                     //继续扫描
                     self.startScan()
                 })

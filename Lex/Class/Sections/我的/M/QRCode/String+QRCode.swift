@@ -42,9 +42,9 @@ extension String {
      
      - returns: 生成带大小参数的黑白普通二维码
      */
-    func generateQRCodeWithSize(_ size:CGFloat?) -> UIImage {
+    func generateQRCodeWithSize(_ size : CGFloat?) -> UIImage {
         
-        return generateQRCode(size, logo: nil)
+        return generateQRCode(size, nil)
     }
     
     /**
@@ -54,9 +54,9 @@ extension String {
      
      - returns: 生成带Logo二维码(大小:300)
      */
-    func generateQRCodeWithLogo(_ logo:UIImage?) -> UIImage {
+    func generateQRCodeWithLogo(_ logo : UIImage?) -> UIImage {
         
-        return generateQRCode(nil, logo: logo)
+        return generateQRCode(nil, logo)
     }
     
     /**
@@ -67,12 +67,12 @@ extension String {
      
      - returns: 生成大小和Logo的二维码
      */
-    func generateQRCode(_ size:CGFloat?,logo:UIImage?) -> UIImage {
+    func generateQRCode(_ size : CGFloat?, _ logo : UIImage?) -> UIImage {
         
         let color = UIColor.black//二维码颜色
         let bgColor = UIColor.white//二维码背景颜色
         
-        return generateQRCode(size, color: color, bgColor: bgColor, logo: logo)
+        return generateQRCode(size, color, bgColor, logo)
     }
     
     /**
@@ -85,7 +85,7 @@ extension String {
      
      - returns: 带Logo、颜色二维码
      */
-    func generateQRCode(_ size:CGFloat?,color:UIColor?,bgColor:UIColor?,logo:UIImage?) -> UIImage {
+    func generateQRCode(_ size : CGFloat?, _ color : UIColor?, _ bgColor : UIColor?, _ logo : UIImage?) -> UIImage {
         
         let radius : CGFloat = 5//圆角
         let borderLineWidth : CGFloat = 1.5//线宽
@@ -93,7 +93,7 @@ extension String {
         let boderWidth : CGFloat = 8//白带宽度
         let borderColor = UIColor.white//白带颜色
         
-        return generateQRCode(size, color: color, bgColor: bgColor, logo: logo,radius:radius,borderLineWidth: borderLineWidth,borderLineColor: borderLineColor,boderWidth: boderWidth,borderColor: borderColor)
+        return generateQRCode(size, color, bgColor, logo, radius, borderLineWidth, borderLineColor, boderWidth, borderColor)
     }
     
     /**
@@ -111,9 +111,9 @@ extension String {
      
      - returns: 自定义二维码
      */
-    func generateQRCode(_ size:CGFloat?,color:UIColor?,bgColor:UIColor?,logo:UIImage?,radius:CGFloat,borderLineWidth:CGFloat?,borderLineColor:UIColor?,boderWidth:CGFloat?,borderColor:UIColor?) -> UIImage {
+    func generateQRCode(_ size : CGFloat?, _ color : UIColor?, _ bgColor : UIColor?, _ logo : UIImage?, _ radius : CGFloat, _ borderLineWidth : CGFloat?, _ borderLineColor : UIColor?, _ boderWidth : CGFloat?, _ borderColor : UIColor?) -> UIImage {
         
-        let ciImage = generateCIImage(size, color: color, bgColor: bgColor)
+        let ciImage = generateCIImage(size, color, bgColor)
         let image = UIImage(ciImage: ciImage)
         
         guard let QRCodeLogo = logo else { return image }
@@ -126,9 +126,9 @@ extension String {
         image.draw(in: CGRect(x: 0, y: 0, width: image.size.width, height: image.size.height))
         
         //线框
-        let logoBorderLineImagae = QRCodeLogo.getRoundRectImage(logoWidth, radius: radius, borderWidth: borderLineWidth, borderColor: borderLineColor)
+        let logoBorderLineImagae = QRCodeLogo.getRoundRectImage(logoWidth, radius, borderLineWidth, borderLineColor)
         //边框
-        let logoBorderImagae = logoBorderLineImagae.getRoundRectImage(logoWidth, radius: radius, borderWidth: boderWidth, borderColor: borderColor)
+        let logoBorderImagae = logoBorderLineImagae.getRoundRectImage(logoWidth, radius, boderWidth, borderColor)
         
         logoBorderImagae.draw(in: logoFrame)
         
@@ -147,7 +147,7 @@ extension String {
      
      - returns: CIImage
      */
-    func generateCIImage(_ size:CGFloat?,color:UIColor?,bgColor:UIColor?) -> CIImage {
+    func generateCIImage(_ size : CGFloat?, _ color : UIColor?, _ bgColor : UIColor?) -> CIImage {
         
         //1.缺省值
         var QRCodeSize : CGFloat = 300//默认300

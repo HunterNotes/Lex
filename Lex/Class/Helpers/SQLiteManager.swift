@@ -15,8 +15,11 @@ class SQLiteManager: NSObject {
     var arr                 : [AnyObject]!
     private var table       : Table? = nil
     
-    //多个地方调用获取图片的方法，消耗性能，故将获取到的图片设置成属性， 增、删、改之后会将图片置为nil，确保重新获取图片时，获取到的是最新的图片
-    private var userImg     : UIImage? = nil
+    /**
+     * 多个地方调用获取图片的方法，消耗性能，故将获取到的图片设置成属性， 增、删、改之后会将图片置为nil，确保重新获取图片时，获取到的是最新的图片
+     */
+    private var userImg     : UIImage? = nil     //用户头像
+    private var qrImg       : UIImage? = nil     //用户二维码
     
     override init() {
         
@@ -56,19 +59,22 @@ class SQLiteManager: NSObject {
         //        _ = getConnection()
         
         self.userImg = nil
-
-        let users = Table(tableName)
-        let id = Expression<Int64>("id")
-        let name = Expression<String?>("name")
-        let imgName = Expression<String?>("imgName")
+        self.qrImg = nil
         
-        arr = [id as AnyObject, name as AnyObject, imgName as AnyObject]
+        let users = Table(tableName)
+        let id = Expression<Int64>(USER_ID)
+        let name = Expression<String?>(USER_NAME)
+        let imgName = Expression<String?>(USER_IMGNAME)
+        let qrName = Expression<String?>(USER_QRIMGNAME)
+        
+        arr = [id as AnyObject, name as AnyObject, imgName as AnyObject, qrName as AnyObject]
         
         //创建表 不存在就创建
         try! db?.run(users.create(ifNotExists: true, block: { (table) in
             table.column(id, primaryKey: true)
             table.column(name)
             table.column(imgName)
+            table.column(qrName)
             //            table.column(imgName, unique: true)
         }))
         
@@ -80,17 +86,19 @@ class SQLiteManager: NSObject {
     }
     
     //插入数据
-    func insert(_ tableName : String!, _ userName : String!, _ imageName : String!) {
+    func insert(_ tableName : String!, _ userName : String!, _ imageName : String!, _ qrImgName : String!) {
         
         if self.table == nil {
             self.table = self.createTable(tableName)
         }
         
         self.userImg = nil
+        self.qrImg = nil
         
         let name        : Expression<String?> = arr![1] as! Expression<String?>
         let imgName     : Expression<String?> = arr![2] as! Expression<String?>
-        let insert = self.table?.insert(name <- userName, imgName <- imageName)
+        let qrName   : Expression<String?> = arr![3] as! Expression<String?>
+        let insert = self.table?.insert(name <- userName, imgName <- imageName,  qrName <- qrImgName)
         let rowid = (try! db?.run(insert!))!
         print(rowid);
     }
@@ -104,13 +112,15 @@ class SQLiteManager: NSObject {
         let id          : Expression<Int64> = arr![0] as! Expression<Int64>
         let name        : Expression<String?> = arr![1] as! Expression<String?>
         let imgName     : Expression<String?> = arr![2] as! Expression<String?>
+        let qrName      : Expression<String?> = arr![3] as! Expression<String?>
         
         let dic = NSMutableDictionary()
         for user in (try! db?.prepare(self.table!))! {
-//            print("Query:id========================== \(user[id])\n name=========================== \(user[name])\n imgName========================== \(user[imgName])")
-            dic.setObject("\(user[id])", forKey:"id" as NSCopying)
-            dic.setObject("\(user[name])", forKey: "name" as NSCopying)
-            dic.setObject("\(user[imgName])", forKey: "imgName" as NSCopying)
+            //            print("Query: id========================== \(user[id]), \n name=========================== \(user[name]), \n imgName========================== \(user[imgName]), \n qrName =====================\(user[qrName])")
+            dic.setObject("\(user[id])", forKey: USER_ID as NSCopying)
+            dic.setObject("\(user[name])", forKey: USER_NAME as NSCopying)
+            dic.setObject("\(user[imgName])", forKey: USER_IMGNAME as NSCopying)
+            dic.setObject("\(user[qrName])", forKey: USER_QRIMGNAME as NSCopying)
         }
         return dic
     }
@@ -122,9 +132,12 @@ class SQLiteManager: NSObject {
             self.table = self.createTable(tableName)
         }
         self.userImg = nil
+        self.qrImg = nil
+        
         let id          : Expression<Int64> = arr![0] as! Expression<Int64>
         let name        : Expression<String?> = arr![1] as! Expression<String?>
         let imgName     : Expression<String?> = arr![2] as! Expression<String?>
+        let qrName      : Expression<String?> = arr![3] as! Expression<String?>
         
         for user in (try! db?.prepare(self.table!))! {
             
@@ -134,12 +147,16 @@ class SQLiteManager: NSObject {
             if (_name != USERNAME) {
                 
                 let list = self.table?.filter(id == user[id])
+                
+                //更新数据
                 _ = try! db?.run((list?.update(name <- name.replace(user[name]!, with: USERNAME!)))!)
-                print("Update:id: \(user[id]), name: \(user[name]), imgName: \(user[imgName])")
+                print("Update: id==================== \(user[id]), \n name==================== \(user[name]), \n imgName==================== \(user[imgName])\n qrName==================== \(user[qrName])")
             }
         }
+        
+        //读取数据
         for user in (try! db?.prepare((self.table?.filter(name == USERNAME))!))! {
-            print("Update:id: \(user[id]), name: \(user[name]), imgName: \(user[imgName])")
+            print("Update: id==================== \(user[id]), \n name==================== \(user[name]), \n imgName==================== \(user[imgName])\n qrName==================== \(user[qrName])")
         }
     }
     
@@ -150,40 +167,81 @@ class SQLiteManager: NSObject {
             self.table = self.createTable(tableName)
         }
         self.userImg = nil
+        self.qrImg = nil
+        
         let id          : Expression<Int64> = arr![0] as! Expression<Int64>
         let name        : Expression<String?> = arr![1] as! Expression<String?>
         let imgName     : Expression<String?> = arr![2] as! Expression<String?>
+        let qrName      : Expression<String?> = arr![3] as! Expression<String?>
         
+        //读取数据
         for user in (try! db?.prepare(self.table!))! {
             
             _ = try! db?.run((self.table?.filter(id == user[id]).delete())!)
             
         }
         for user in (try! db?.prepare(self.table!))! {
-            print("Delete:id: \(user[id]), name: \(user[name]), imgName: \(user[imgName])")
+            print("Update: id==================== \(user[id]), \n name==================== \(user[name]), \n imgName==================== \(user[imgName])\n qrName==================== \(user[qrName])")
         }
     }
     
     //MARK: - 从本地数据库中获取用户头像
-    func getUserImageFromSQLite() -> UIImage {
+    func getImageFromSQLite(_ name : String) -> UIImage {
         
-        let dic = self.select(TABLENAME)
+        var dic : NSMutableDictionary? = nil
         
-        if dic.count > 0 {
+        if name == USER_IMGNAME {   //头像
             
-            //获取数据库中存取图片名称
-            let imageName : String? = dic.object(forKey: "imgName") as? String
-            
-            if  Int((imageName?.characters.count)!) > 0  {
+            if self.userImg == nil {
+                
+                dic = self.select(name)
+                
+                if dic?.count > 0 {
+                    
+                    //获取数据库中存取图片名称
+                    let imageName : String? = dic?.object(forKey: USER_IMGNAME) as? String
+                    
+                    if  Int((imageName?.characters.count)!) > 0  {
+                        if self.userImg == nil {
+                            self.userImg = SavaImgHelper.base64StringToUIImage(imageName!)
+                            print("成功获取数据库中的用户头像")
+                        }
+                    }
+                }
+                
+                //默认一张头像
                 if self.userImg == nil {
-                    self.userImg = SavaImgHelper.base64StringToUIImage(imageName!)
-                    print("成功获取数据库中的图片")
+                    self.userImg =  UIImage.init(named: "avatar_circle_default")!
                 }
             }
+            
+            return self.userImg!
         }
-        if self.userImg == nil {
-            self.userImg =  UIImage.init(named: "avatar_circle_default")!
+        else {   //二维码
+            
+            if self.qrImg == nil {
+                
+                dic = self.select(name)
+                
+                if dic?.count > 0 {
+                    
+                    //获取数据库中存取图片名称
+                    let imageName : String? = dic?.object(forKey: USER_QRIMGNAME) as? String
+                    
+                    if  Int((imageName?.characters.count)!) > 0  {
+                        if self.qrImg == nil {
+                            self.qrImg = SavaImgHelper.base64StringToUIImage(imageName!)
+                            print("成功获取数据库中的二维码图片")
+                        }
+                    }
+                }
+                
+                //默认一张二维码
+                if self.qrImg == nil {
+                    self.qrImg =  UIImage.init(named: "QR_Default")!
+                }
+            }
+            return self.qrImg!
         }
-        return self.userImg!
     }
 }

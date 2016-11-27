@@ -37,7 +37,7 @@ class EditPhotoVC: UIViewController {
         self.addLongpress()
         
         manager = SQLiteManager.defaultManager()
-        self.userImgView.image = manager.getUserImageFromSQLite()
+        self.userImgView.image = manager.getImageFromSQLite(USER_IMGNAME)
         
         imgType = .none
     }
@@ -174,15 +174,23 @@ class EditPhotoVC: UIViewController {
     //MARK: - 保存图片到数据库
     fileprivate func saveImageToSQL(_ image : UIImage) {
         
+        weak var weakSelf = self
+        
         DispatchQueue.global().async {
             
             let imgStr : String = SavaImgHelper.imageToBase64String(image)!
             
+            //生成二维码
+            let qrImg  : UIImage = QRTEXT.generateQRCodeWithLogo(image)
+            let qrStr  : String = SavaImgHelper.imageToBase64String(qrImg)!
+            
             //先清空表
-            self.manager.delete(TABLENAME)
+            weakSelf?.manager.delete(TABLENAME)
             
             //写入数据
-            self.manager.insert(TABLENAME, USERNAME, imgStr)
+            weakSelf?.manager.insert(TABLENAME, USERNAME, imgStr, qrStr)
+            
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "userImgChanged"), object: self, userInfo: ["userImgChanged": "userImgChanged"])
         }
     }
 }

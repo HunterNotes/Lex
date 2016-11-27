@@ -17,6 +17,7 @@ class UserInfoQRCodeVC: UIViewController {
     @IBOutlet weak var userImgView      : UIImageView!
     @IBOutlet weak var userNameLab      : UILabel!
     //    @IBOutlet weak var genderImgView    : UIImageView!
+    
     @IBOutlet weak var locationLab      : UILabel!
     @IBOutlet weak var qrImgView        : UIImageView!
     
@@ -39,16 +40,20 @@ class UserInfoQRCodeVC: UIViewController {
         let manager : CCSingleton = CCSingleton.sharedUser()
         let location : String = manager.state_Format! + " " + manager.city_Format!
         
-        self.userImgView.layer.cornerRadius = 10
-        self.userImgView.layer.borderWidth = 0.5
-        self.userImgView.layer.borderColor = UIColor.darkGray.cgColor
-        self.userImgView.image = sqlManager.getUserImageFromSQLite()
+        let image = sqlManager.getImageFromSQLite(USER_IMGNAME)
+        
+        //绘制圆角UIImage
+        self.userImgView.image = image.getRoundRectImage(self.userImgView.size.width, 10, 0.5, UIColor.darkGray)
+        
+        //从本地数据库获取头像
         self.userNameLab.text = USERNAME
         self.locationLab.text = location
         
-        self.creatQRCodeImage("https://github.com/HunterNotes/Swift_Debug")
+        self.qrImgView.image = sqlManager.getImageFromSQLite(USER_QRIMGNAME)
+//        self.creatQRCodeImage(QRTEXT)
     }
     
+    //MARK: - 获取定位权限
     func getLocation () {
         
         if(CLLocationManager.authorizationStatus() != .denied) {
@@ -159,7 +164,7 @@ class UserInfoQRCodeVC: UIViewController {
         }
     }
     
-    //MARK: 保存图片提示
+    //MARK: - 保存图片提示
     func saveImage(image: UIImage, didFinishSavingWithError error: NSError?, contextInfo: AnyObject) {
         
         if error != nil {
@@ -172,18 +177,19 @@ class UserInfoQRCodeVC: UIViewController {
         }
     }
     
-    fileprivate func creatQRCodeImage(_ text: String?) {
-        
-        weak var weakSelf = self
-        DispatchQueue.global().async {
-            
-            let image = text!.generateQRCodeWithLogo(weakSelf?.userImgView.image)
-            DispatchQueue.main.async(execute: {
-                self.qrImgView.image = image
-            })
-        }
-        //        return text!.generateQRCodeWithLogo(self.userImgView.image)
-    }
+    //MARK: - 生成二维码
+//    fileprivate func creatQRCodeImage(_ text: String?) {
+//        
+//        weak var weakSelf = self
+//        DispatchQueue.global().async {
+//            
+//            let img = weakSelf?.sqlManager.getImageFromSQLite(USER_IMGNAME)
+//            let image = text!.generateQRCodeWithLogo(img)
+//            DispatchQueue.main.async(execute: {
+//                weakSelf?.qrImgView.image = image
+//            })
+//        }
+//    }
     
     // MARK: - 1. 懒加载: 会话,输入设备,输出设备,预览图层
     //会话

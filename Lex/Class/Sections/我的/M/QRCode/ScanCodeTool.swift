@@ -44,7 +44,7 @@ func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
     }
 }
 
-typealias finishedImage = (_ image:UIImage) -> ()
+typealias finishedImage = (_ image : UIImage) -> ()
 
 class ScanCodeTool: NSObject {
     
@@ -57,14 +57,11 @@ class ScanCodeTool: NSObject {
         return single.tool!
     }
     
-    //    static let shareTool = ScanCodeTool()
-    //    private override init() {}
-    
     var finishedImg : finishedImage?
     var isEditor = false
     
     //MARK: - 选择图片
-    func choosePicture(_ controller : UIViewController,  editor : Bool,options : PhotoSource = [.camera,.photoLibrary], finished : @escaping finishedImage) {
+    func choosePicture(_ controller : UIViewController,  _ editor : Bool, _ options : PhotoSource = [.camera, .photoLibrary], _ finished : @escaping finishedImage) {
         
         finishedImg = finished
         isEditor = editor
@@ -74,11 +71,11 @@ class ScanCodeTool: NSObject {
             let alertController = UIAlertController(title: "请选择图片", message: nil, preferredStyle: .actionSheet)
             let photographAction = UIAlertAction(title: "拍照", style: .default) { (_) in
                 
-                self.openCamera(controller, editor: editor)
+                self.openCamera(controller, editor)
             }
             let photoAction = UIAlertAction(title: "从相册选取", style: .default) { (_) in
                 
-                self.openPhotoLibrary(controller, editor: editor)
+                self.openPhotoLibrary(controller, editor)
             }
             
             let cannelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
@@ -89,15 +86,15 @@ class ScanCodeTool: NSObject {
             controller.present(alertController, animated: true, completion: nil)
         }
         else  if options.contains(.photoLibrary) {
-            self.openPhotoLibrary(controller, editor: editor)
+            self.openPhotoLibrary(controller, editor)
         }
         else if options.contains(.camera) {
-            self.openCamera(controller, editor: editor)
+            self.openCamera(controller, editor)
         }
     }
     
     //MARK: - 打开相册
-    func openPhotoLibrary(_ controller : UIViewController,  editor : Bool) {
+    func openPhotoLibrary(_ controller : UIViewController, _ editor : Bool) {
         
         let photo = UIImagePickerController()
         photo.delegate = self
@@ -107,7 +104,7 @@ class ScanCodeTool: NSObject {
     }
     
     //MARK: -打开相机
-    func openCamera(_ controller : UIViewController,  editor : Bool) {
+    func openCamera(_ controller : UIViewController,  _ editor : Bool) {
         
         guard UIImagePickerController.isSourceTypeAvailable(.camera) else { return }
         
@@ -119,7 +116,7 @@ class ScanCodeTool: NSObject {
     }
     
     //MARK: - 确认弹出框
-    class func confirm(_ title:String?,message:String?,controller:UIViewController,handler: ( (UIAlertAction) -> Swift.Void)? = nil) {
+    class func confirm(_ title : String?, _ message : String?, _ controller : UIViewController, handler: ( (UIAlertAction) -> Swift.Void)? = nil) {
         
         let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let entureAction = UIAlertAction(title: "确定", style: .destructive, handler: handler)
@@ -128,7 +125,7 @@ class ScanCodeTool: NSObject {
     }
     
     //MARK: - 播放声音
-    class func playAlertSound(_ sound:String) {
+    class func playAlertSound(_ sound : String) {
         
         guard let soundPath = Bundle.main.path(forResource: sound, ofType: nil)  else { return }
         guard let soundUrl = URL(string: soundPath) else { return }

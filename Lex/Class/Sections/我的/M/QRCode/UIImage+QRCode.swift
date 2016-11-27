@@ -25,13 +25,13 @@ extension UIImage {
     }
     
     //MARK: - 获取圆角图片
-    func getRoundRectImage(_ size:CGFloat,radius:CGFloat) -> UIImage {
+    func getRoundRectImage(_ size : CGFloat, _ radius : CGFloat) -> UIImage {
         
-        return getRoundRectImage(size, radius: radius, borderWidth: nil, borderColor: nil)
+        return getRoundRectImage(size, radius, nil, nil)
     }
     
     //MARK: - 获取圆角图片(带边框)
-    func getRoundRectImage(_ size:CGFloat,radius:CGFloat,borderWidth:CGFloat?,borderColor:UIColor?) -> UIImage {
+    func getRoundRectImage(_ size : CGFloat, _ radius : CGFloat, _ borderWidth : CGFloat?, _ borderColor : UIColor?) -> UIImage {
         
         let scale = self.size.width / size ;
         
@@ -64,3 +64,5 @@ extension UIImage {
         return newImage!;
     }
 }
+
+

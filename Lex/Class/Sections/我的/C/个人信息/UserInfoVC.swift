@@ -27,6 +27,7 @@ class UserInfoVC: UIViewController {
     var detailArr               : [[String]]!
     
     var manager                 : SQLiteManager!
+    var userImg                 : UIImage? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,15 +35,24 @@ class UserInfoVC: UIViewController {
         self.navigationItem.title = "个人信息"
         self.initData()
         
+        NotificationCenter.default.addObserver(self, selector: #selector(userImgStatus), name: NSNotification.Name("userImgChanged"), object: nil)
         manager = SQLiteManager.defaultManager()
         self.registerCell()
+    }
+    
+    func userImgStatus(notification : Notification) {
+        
+        let dic = notification.userInfo
+        if dic?.count > 0 {
+            self.userImg = nil
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         
         super.viewWillAppear(animated)
         
-        self.initData()
+//        self.initData()
         self.tableView.reloadData()
     }
     
@@ -66,6 +76,18 @@ class UserInfoVC: UIViewController {
         
         self.tableView.register(UINib.init(nibName: "UserInfoQRCodeCell", bundle: nil), forCellReuseIdentifier: userInfoQRCodeCell)
     }
+    
+    
+    fileprivate func getUserImageFromSQLite(_ width : CGFloat = 62) -> UIImage {
+        
+        if self.userImg == nil {
+            
+            let img = self.manager.getImageFromSQLite(USER_IMGNAME)
+            let image = img.getRoundRectImage(width, 10, 1, UIColor.darkGray)
+            self.userImg = image
+        }
+        return self.userImg!
+    }
 }
 
 extension UserInfoVC : UITableViewDataSource, UITableViewDelegate {
@@ -85,7 +107,6 @@ extension UserInfoVC : UITableViewDataSource, UITableViewDelegate {
         }
         return 44
     }
-    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -109,7 +130,7 @@ extension UserInfoVC : UITableViewDataSource, UITableViewDelegate {
             
             let photoCell = tableView.dequeueReusableCell(withIdentifier: userInfoPhotoCell, for: indexPath) as! UserInfoPhotoCell
             photoCell.selectionStyle = .none
-            photoCell.photo.image = manager.getUserImageFromSQLite()
+            photoCell.photo.image = self.getUserImageFromSQLite()
             return photoCell
         }
         else if section == 0 && row == 3 {

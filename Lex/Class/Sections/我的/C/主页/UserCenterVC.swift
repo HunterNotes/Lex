@@ -8,14 +8,6 @@
 
 import UIKit
 
-
-//var user            : User!
-
-//var userImg         : UIImage!
-
-/// 原name
-//var userName        : String!
-
 class UserCenterVC: UIViewController {
     
     let cellID          : String = "UserImgCell"
@@ -53,6 +45,14 @@ class UserCenterVC: UIViewController {
         
         self.tableView.register(UINib.init(nibName: "UserImgCell", bundle: nil), forCellReuseIdentifier: cellID)
         self.tableView.register(UINib.init(nibName: "ZCommonCell", bundle: nil), forCellReuseIdentifier: cell1ID)
+    }
+    
+    fileprivate func getUserImage(imgView : UIImageView) -> UIImage {
+        
+        let img = manager.getImageFromSQLite(USER_IMGNAME)
+        
+        let image = img.getRoundRectImage(imgView.size.width, 10, 0.5, UIColor.darkGray)
+        return image
     }
 }
 
@@ -94,7 +94,7 @@ extension UserCenterVC: UITableViewDataSource, UITableViewDelegate {
             cell.userNameLab.text = USERNAME
             cell.userNameLab.adjustsFontSizeToFitWidth = true
             cell.userNoLab.adjustsFontSizeToFitWidth = true
-            cell.userImg.image = manager.getUserImageFromSQLite()
+            cell.userImg.image = self.getUserImage(imgView: cell.imageView!)
             return cell
         }
         else {
