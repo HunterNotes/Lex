@@ -42,17 +42,22 @@ class UserInfoVC: UIViewController {
     
     func userImgStatus(notification : Notification) {
         
-        let dic = notification.userInfo
-        if dic?.count > 0 {
+        let value : String = notification.userInfo?["userImgChanged"] as! String
+        if value == "userImgChanged" {
             self.userImg = nil
         }
+    }
+    
+    deinit {
+        //记得移除通知监听
+        NotificationCenter.default.removeObserver(self)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         
         super.viewWillAppear(animated)
         
-//        self.initData()
+        _ = self.getUserImageFromSQLite()
         self.tableView.reloadData()
     }
     
@@ -64,8 +69,7 @@ class UserInfoVC: UIViewController {
         signature = ""
         
         titleArr = [["头像", "名字", "xx号", "我的二维码", "我的地址"], ["性别", "地区", "个性签名"], ["Linkedln账号"]]
-        detailArr = [["", USERNAME, "xx号", "我的二维码", address], [gender, location, signature], ["展示"]]
-        
+        detailArr = [["", USERNAME, "HunterNotes  ", "我的二维码", address], [gender, location, signature], ["展示"]]
     }
     
     func registerCell() {
@@ -77,13 +81,13 @@ class UserInfoVC: UIViewController {
         self.tableView.register(UINib.init(nibName: "UserInfoQRCodeCell", bundle: nil), forCellReuseIdentifier: userInfoQRCodeCell)
     }
     
-    
-    fileprivate func getUserImageFromSQLite(_ width : CGFloat = 62) -> UIImage {
+    //MARK: - 获取用户头像
+    fileprivate func getUserImageFromSQLite(_ width : CGFloat = 45) -> UIImage {
         
         if self.userImg == nil {
             
             let img = self.manager.getImageFromSQLite(USER_IMGNAME)
-            let image = img.getRoundRectImage(width, 10, 1, UIColor.darkGray)
+            let image = img.getRoundRectImage(width, 5, 1, UIColor.gray)
             self.userImg = image
         }
         return self.userImg!

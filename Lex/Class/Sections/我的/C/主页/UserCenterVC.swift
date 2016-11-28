@@ -13,7 +13,8 @@ class UserCenterVC: UIViewController {
     let cellID          : String = "UserImgCell"
     let cell1ID         : String = "ZCommonCell"
     
-    var userImgName     : String!
+    private var userImg : UIImage? = nil
+    
     
     var dataArr         : [[String]]!
     var manager         : SQLiteManager!
@@ -23,7 +24,6 @@ class UserCenterVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        userImgName = "avatar_circle_default"
         self.dataArr = [[""], ["相册", "收藏", "钱包", "卡包"], ["表情"], ["设置"]]
         self.gisterCell()
         
@@ -31,6 +31,14 @@ class UserCenterVC: UIViewController {
         
         if Int(USERNAME.characters.count) == 0 {
             USERNAME = "风一样的CC"
+        }
+        
+        weak var weakSelf = self
+        saveImageBlock = { (str : String) -> () in
+            
+            if str == "saveImage" {
+                weakSelf?.userImg = nil
+            }
         }
     }
     
@@ -47,12 +55,15 @@ class UserCenterVC: UIViewController {
         self.tableView.register(UINib.init(nibName: "ZCommonCell", bundle: nil), forCellReuseIdentifier: cell1ID)
     }
     
-    fileprivate func getUserImage(imgView : UIImageView) -> UIImage {
+    fileprivate func getUserImageFromSQLite(_ width : CGFloat = 50) -> UIImage {
         
-        let img = manager.getImageFromSQLite(USER_IMGNAME)
-        
-        let image = img.getRoundRectImage(imgView.size.width, 10, 0.5, UIColor.darkGray)
-        return image
+        if self.userImg == nil {
+            
+            let img : UIImage = manager.getImageFromSQLite(USER_IMGNAME)
+            let image = img.getRoundRectImage(width, 5, 1, UIColor.gray)
+            self.userImg = image
+        }
+        return self.userImg!
     }
 }
 
@@ -94,7 +105,7 @@ extension UserCenterVC: UITableViewDataSource, UITableViewDelegate {
             cell.userNameLab.text = USERNAME
             cell.userNameLab.adjustsFontSizeToFitWidth = true
             cell.userNoLab.adjustsFontSizeToFitWidth = true
-            cell.userImg.image = self.getUserImage(imgView: cell.imageView!)
+            cell.userImg.image = self.getUserImageFromSQLite()
             return cell
         }
         else {

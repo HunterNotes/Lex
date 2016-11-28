@@ -76,7 +76,7 @@
                                     </connections>
                                 </button>
                             </subviews>
-                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="backgroundColor" red="0.99368046470000004" green="0.05199775685" blue="0.077628724299999993" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="80" id="Fe6-eX-qsj"/>
                                 <constraint firstAttribute="height" constant="80" id="uZi-VA-rl5"/>
@@ -108,7 +108,7 @@
                         <constraint firstAttribute="width" constant="75" id="fii-gQ-9hI"/>
                     </constraints>
                 </view>
-                <imageView userInteractionEnabled="NO" alpha="0.25" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CAD882C4-8073-4323-9D37-BEDAC07237F4" translatesAutoresizingMaskIntoConstraints="NO" id="Wzi-0V-26q">
+                <imageView userInteractionEnabled="NO" alpha="0.25" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="793DD0F6-ADDD-4ACE-8F66-2C8797044A02" translatesAutoresizingMaskIntoConstraints="NO" id="Wzi-0V-26q">
                     <rect key="frame" x="75" y="224" width="225" height="222"/>
                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                 </imageView>
@@ -149,7 +149,7 @@
         </view>
     </objects>
     <resources>
-        <image name="CAD882C4-8073-4323-9D37-BEDAC07237F4" width="180" height="180">
+        <image name="793DD0F6-ADDD-4ACE-8F66-2C8797044A02" width="180" height="180">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw

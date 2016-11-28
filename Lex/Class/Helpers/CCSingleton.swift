@@ -33,11 +33,12 @@ class CCSingleton: NSObject {
     // 具体位置
     var name                        : String! 
     
+    //防止内网下，反编译位置失败时，他处引用此属性🔙nil造成的crash
     // 去掉 "省"
-    var state_Format                : String! 
+    var state_Format                : String? = "--"
     
     // 去掉 "市"
-    var city_Format                 : String! 
+    var city_Format                 : String? = "--"
     
     //MARK: - 单例 创建 CCSingleton
     class func sharedUser() -> CCSingleton {

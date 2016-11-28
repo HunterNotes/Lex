@@ -40,6 +40,7 @@ class EditPhotoVC: UIViewController {
         self.userImgView.image = manager.getImageFromSQLite(USER_IMGNAME)
         
         imgType = .none
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -48,8 +49,6 @@ class EditPhotoVC: UIViewController {
         
         if imgType == .changed {
             
-            //            let userDefault = UserDefaults.standard
-            //            userDefault.setValue(self.userImgView.image?.description, forKey: saveImgFlag)
             SVProgressHUD.show(UIImage.init(named: "success"), status: "上传成功")
         }
     }
@@ -156,7 +155,7 @@ class EditPhotoVC: UIViewController {
         
         UIImageWriteToSavedPhotosAlbum(self.userImgView.image!, self, #selector(saveImage(image:didFinishSavingWithError:contextInfo:)), nil)
     }
-
+    
     @objc fileprivate func saveImage(image: UIImage, didFinishSavingWithError error: NSError?, contextInfo: AnyObject) {
         
         DispatchQueue.global().async {
@@ -178,20 +177,28 @@ class EditPhotoVC: UIViewController {
         
         DispatchQueue.global().async {
             
+            //获取头像并转为base64字符串
             let imgStr : String = SavaImgHelper.imageToBase64String(image)!
             
             //生成二维码
             let qrImg  : UIImage = QRTEXT.generateQRCodeWithLogo(image)
+            
+            //二维码图片转为base64字符串
             let qrStr  : String = SavaImgHelper.imageToBase64String(qrImg)!
             
             //先清空表
             weakSelf?.manager.delete(TABLENAME)
             
-            //写入数据
+            //插入数据
             weakSelf?.manager.insert(TABLENAME, USERNAME, imgStr, qrStr)
-            
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "userImgChanged"), object: self, userInfo: ["userImgChanged": "userImgChanged"])
         }
+        
+        //主页保存头像block
+        let saveImageHelper : SaveUserImageHelper = SaveUserImageHelper()
+        saveImageHelper.saveImage(saveImageBlock!, msg: "saveImage")
+        
+        //上个页面刷新头像通知
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "userImgChanged"), object: self, userInfo: ["userImgChanged": "userImgChanged"])
     }
 }
 

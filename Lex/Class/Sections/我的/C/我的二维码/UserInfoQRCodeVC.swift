@@ -43,7 +43,7 @@ class UserInfoQRCodeVC: UIViewController {
         let image = sqlManager.getImageFromSQLite(USER_IMGNAME)
         
         //绘制圆角UIImage
-        self.userImgView.image = image.getRoundRectImage(self.userImgView.size.width, 10, 0.5, UIColor.darkGray)
+        self.userImgView.image = image.getRoundRectImage(self.userImgView.size.width, 5, 1, UIColor.gray)
         
         //从本地数据库获取头像
         self.userNameLab.text = USERNAME

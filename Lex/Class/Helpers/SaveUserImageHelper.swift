@@ -8,6 +8,7 @@
 
 import UIKit
 
+/*
 ///无参无返回值
 typealias funcBlock = () -> () //或者 () -> Void
 
@@ -19,11 +20,12 @@ typealias funcBlockB = (String, String) -> (String) -> ()
 
 ///返回值是一个函数指针，入参为String 返回值也是String
 typealias funcBlockC = (Int, Int) -> (String) -> String
+*/
 
 /// 有参数无返回值
 typealias SaveUserImageBlock = (String) -> ()
 
-let saveImgFlag : String = "saveUserImgFlag"
+var saveImageBlock : SaveUserImageBlock?
 
 class SaveUserImageHelper: NSObject {
     
@@ -31,25 +33,11 @@ class SaveUserImageHelper: NSObject {
      这写法也可以初始时为nil了,因为生命周其中，(理想状态)认为不可能为nil,所以用!
      */
     var saveImgBlock : SaveUserImageBlock?
-    
-    var isSaveFlag : Bool = false
-    
-    func saveImage(_ saveBlock : @escaping SaveUserImageBlock) {
+    func saveImage(_ block : @escaping SaveUserImageBlock, msg : String) {
         
-        saveImgBlock = saveBlock
-        let string : String = self.getSaveFlag()
-        
-        if (saveImgBlock != nil && isSaveFlag) {
-            saveImgBlock!(string)
+        saveImgBlock = block
+        if ((saveImgBlock) != nil) {
+            saveImgBlock!(msg)
         }
-    }
-    
-    func getSaveFlag() -> String {
-        
-        let userDefaults         = UserDefaults.standard
-        let string : String      = userDefaults.object(forKey: saveImgFlag) as! String
-        isSaveFlag = true
-        
-        return string
     }
 }

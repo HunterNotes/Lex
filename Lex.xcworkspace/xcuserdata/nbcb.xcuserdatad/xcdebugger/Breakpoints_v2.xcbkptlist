@@ -19,13 +19,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Lex/Class/Helpers/SavaImgHelper.swift"
-            timestampString = "501750795.021236"
+            filePath = "Lex/Class/Sections/&#x6211;&#x7684;/C/&#x4e3b;&#x9875;/UserCenterVC.swift"
+            timestampString = "502011827.134091"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "46"
-            endingLineNumber = "46"
-            landmarkName = "imageNameToBase64String(_:_:)"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
+            landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
