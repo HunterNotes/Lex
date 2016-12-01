@@ -8,14 +8,20 @@
 
 import UIKit
 import AVFoundation
+import SnapKit
 
-private let scanAnimationDuration = 3.0//扫描时长
+private let scanAnimationDuration = 3.0 //扫描时长
 
 class ScanCodeViewController: UIViewController {
     
     //MARK: Global Variables
-    @IBOutlet weak var scanPane: UIImageView!///扫描框
+    @IBOutlet weak var scanPane: UIImageView! ///扫描框
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
+    @IBOutlet weak var topView: UIView!
+    @IBOutlet weak var leftView: UIView!
+    @IBOutlet weak var bottomView: UIView!
+    @IBOutlet weak var rightView: UIView!
+    @IBOutlet weak var tabBarView: UIView!
     
     var lightOn = false ///闪光灯
     var scanSession :  AVCaptureSession?
@@ -24,9 +30,22 @@ class ScanCodeViewController: UIViewController {
         
         super.viewDidLoad()
         
-        view.layoutIfNeeded()
+//        view.layoutIfNeeded()
         scanPane.addSubview(scanLine)
         setupScanSession()
+    }
+    
+    func setViewsMakeConstraints() {
+        
+        weak var weakSelf : ScanCodeViewController? = self
+        self.bottomView.snp.makeConstraints { (make) -> Void in
+            
+            make.top.equalTo((weakSelf?.view)!).offset(app_height - 80)
+            make.bottom.equalTo((weakSelf?.view)!).offset(0)
+            make.right.equalTo((weakSelf?.view)!).offset(0)
+            make.width.equalTo(app_width)
+        }
+       
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -39,7 +58,7 @@ class ScanCodeViewController: UIViewController {
     lazy var scanLine : UIImageView = {
         
         let scanLine = UIImageView()
-        scanLine.frame = CGRect(x: 0, y: 0, width: app_width - 150, height: 3)
+        scanLine.frame = CGRect(x: 0, y: 0, width: 225, height: 3)
         scanLine.image = UIImage(named: "QRCode_ScanLine")
         return scanLine
     }()
@@ -131,7 +150,7 @@ class ScanCodeViewController: UIViewController {
     
     //MARK: - 我的二维码
     @IBAction func myQRCode(_ sender: Any) {
-        
+    
         let vc = UserInfoQRCodeVC()
         vc.pushFlag = 1
         self.navigationController?.pushViewController(vc, animated: true)

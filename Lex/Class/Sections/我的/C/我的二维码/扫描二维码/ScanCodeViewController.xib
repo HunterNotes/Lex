@@ -11,7 +11,12 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ScanCodeViewController" customModule="Lex" customModuleProvider="target">
             <connections>
                 <outlet property="activityIndicatorView" destination="VYC-4d-AbO" id="0fY-zZ-dAE"/>
+                <outlet property="bottomView" destination="fQk-7A-vGa" id="PXa-t1-mfS"/>
+                <outlet property="leftView" destination="Za0-1s-ypu" id="lVt-8G-ia6"/>
+                <outlet property="rightView" destination="8wR-cP-LBR" id="xSM-t2-mEc"/>
                 <outlet property="scanPane" destination="Wzi-0V-26q" id="Max-Gg-f6E"/>
+                <outlet property="tabBarView" destination="YSc-Nx-Pe0" id="t1q-20-ZV0"/>
+                <outlet property="topView" destination="pcB-k9-0V3" id="xsb-OD-caG"/>
                 <outlet property="view" destination="Y1n-VR-3oV" id="GMS-gV-PJl"/>
             </connections>
         </placeholder>
@@ -20,7 +25,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view alpha="0.75" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pcB-k9-0V3" userLabel="topView">
+                <view alpha="0.59999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pcB-k9-0V3" userLabel="topView">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="224"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="将取景框对准二维/条形码，即可自动扫描" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dTe-Zh-2hT">
@@ -41,7 +46,7 @@
                         <constraint firstAttribute="trailing" secondItem="dTe-Zh-2hT" secondAttribute="trailing" constant="65" id="tN4-j4-AzL"/>
                     </constraints>
                 </view>
-                <view alpha="0.75" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fQk-7A-vGa" userLabel="bottomView">
+                <view alpha="0.59999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fQk-7A-vGa" userLabel="bottomView">
                     <rect key="frame" x="0.0" y="446" width="375" height="221"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YSc-Nx-Pe0" userLabel="tabBarVIew">
@@ -76,7 +81,7 @@
                                     </connections>
                                 </button>
                             </subviews>
-                            <color key="backgroundColor" red="0.99368046470000004" green="0.05199775685" blue="0.077628724299999993" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="80" id="Fe6-eX-qsj"/>
                                 <constraint firstAttribute="height" constant="80" id="uZi-VA-rl5"/>
@@ -93,7 +98,7 @@
                         <constraint firstItem="YSc-Nx-Pe0" firstAttribute="leading" secondItem="fQk-7A-vGa" secondAttribute="leading" id="spL-7t-egA"/>
                     </constraints>
                 </view>
-                <view alpha="0.75" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8wR-cP-LBR" userLabel="rightView">
+                <view alpha="0.59999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8wR-cP-LBR" userLabel="rightView">
                     <rect key="frame" x="300" y="224" width="75" height="222"/>
                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
@@ -101,14 +106,14 @@
                         <constraint firstAttribute="height" constant="222" id="aiA-7v-SzT"/>
                     </constraints>
                 </view>
-                <view alpha="0.75" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Za0-1s-ypu" userLabel="leftView">
+                <view alpha="0.59999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Za0-1s-ypu" userLabel="leftView">
                     <rect key="frame" x="0.0" y="224" width="75" height="222"/>
                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="75" id="fii-gQ-9hI"/>
                     </constraints>
                 </view>
-                <imageView userInteractionEnabled="NO" alpha="0.25" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="793DD0F6-ADDD-4ACE-8F66-2C8797044A02" translatesAutoresizingMaskIntoConstraints="NO" id="Wzi-0V-26q">
+                <imageView userInteractionEnabled="NO" alpha="0.25" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="7D51976F-E2DB-4DC3-8E40-0DC5F80F7F72" translatesAutoresizingMaskIntoConstraints="NO" id="Wzi-0V-26q">
                     <rect key="frame" x="75" y="224" width="225" height="222"/>
                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                 </imageView>
@@ -145,11 +150,11 @@
                 <constraint firstItem="pcB-k9-0V3" firstAttribute="leading" secondItem="Y1n-VR-3oV" secondAttribute="leading" id="tMe-JL-rVC"/>
                 <constraint firstAttribute="trailing" secondItem="fQk-7A-vGa" secondAttribute="trailing" id="xMU-Qy-9ZR"/>
             </constraints>
-            <point key="canvasLocation" x="-110.5" y="157.5"/>
+            <point key="canvasLocation" x="-384" y="158"/>
         </view>
     </objects>
     <resources>
-        <image name="793DD0F6-ADDD-4ACE-8F66-2C8797044A02" width="180" height="180">
+        <image name="7D51976F-E2DB-4DC3-8E40-0DC5F80F7F72" width="180" height="180">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw

@@ -79,6 +79,11 @@
 			<key>orderHint</key>
 			<integer>12</integer>
 		</dict>
+		<key>SnapKit.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>17</integer>
+		</dict>
 		<key>TextFieldEffects.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -92,12 +97,27 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>03D44C1293EEDAFD53CBFA35280DB174</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>05BC3FFE60E8BA7942B9A46426DFDCF7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>065027EFC2FBEF8A3C7B76D201DD2EB6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>074FBEE16C9B80512D1F6B66F990580C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>0763267440C142611E2544C5E35AE006</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -122,12 +142,27 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>1CDABF837E17BC2806F2EBBCFC1FA0F1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>1DE93A359FA21F91DFBE81309E851A4A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>22372E03C7911D3F9920625214EC024D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>2975ACC7D44E2E195684BE0D0910CD27</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3117235D4C922204E27CE246C265C245</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -177,6 +212,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>7263AD70FF6B08F5BE894FED5BAA79F7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>79C040AFDDCE1BCBF6D8B5EB0B85887F</key>
 		<dict>
 			<key>primary</key>
@@ -188,6 +228,11 @@
 			<true/>
 		</dict>
 		<key>84D97A13BF397846581259DC3C9E3182</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8C61CE78C2940D274123AB6BDBB46C51</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -212,6 +257,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>B263F9ED8A7F7B6A06E4F4EB65F8728A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>BDB8204F066213D7490001570F95486E</key>
 		<dict>
 			<key>primary</key>
@@ -227,7 +277,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>C80AF72B45AE2D4B6805DCE1ED2FF4BD</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>CF3E56EA7C11BE2941D84DCDB1CC12C2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CF43CE3718F51A9BF9FB213EC18CE25A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
