@@ -7,10 +7,8 @@
 //
 
 import UIKit
-import AVFoundation
 import Photos
 import SVProgressHUD
-import CoreLocation
 
 class UserInfoQRCodeVC: UIViewController {
     
@@ -21,7 +19,7 @@ class UserInfoQRCodeVC: UIViewController {
     @IBOutlet weak var locationLab      : UILabel!
     @IBOutlet weak var qrImgView        : UIImageView!
     
-    var pushFlag                        : Int?
+    var pushFlag                        : Int? = nil  //扫描二维码页面跳转
     var sqlManager                      : SQLiteManager!
     
     override func viewDidLoad() {
@@ -50,7 +48,7 @@ class UserInfoQRCodeVC: UIViewController {
         self.locationLab.text = location
         
         self.qrImgView.image = sqlManager.getImageFromSQLite(USER_QRIMGNAME)
-//        self.creatQRCodeImage(QRTEXT)
+        //        self.creatQRCodeImage(QRTEXT)
     }
     
     //MARK: - 获取定位权限
@@ -110,7 +108,6 @@ class UserInfoQRCodeVC: UIViewController {
                 
                 let vc = ScanCodeViewController()
                 self.navigationController?.pushViewController(vc, animated: true)
-                //            self.starScan()
                 print("File camera")
             })
             optionMenu.addAction(scanAction)
@@ -123,15 +120,6 @@ class UserInfoQRCodeVC: UIViewController {
         
         optionMenu.addAction(cancelAction)
         self.present(optionMenu, animated: true, completion: nil)
-    }
-    
-    //MARK: 调用照片方法
-    func photo() {
-        
-        let pick : UIImagePickerController = UIImagePickerController()
-        pick.delegate = self
-        pick.sourceType = UIImagePickerControllerSourceType.photoLibrary
-        self.present(pick, animated: true, completion: nil)
     }
     
     //MARK: 保存图片到相册
@@ -176,97 +164,7 @@ class UserInfoQRCodeVC: UIViewController {
             SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
         }
     }
-    
-    //MARK: - 生成二维码
-//    fileprivate func creatQRCodeImage(_ text: String?) {
-//        
-//        weak var weakSelf = self
-//        DispatchQueue.global().async {
-//            
-//            let img = weakSelf?.sqlManager.getImageFromSQLite(USER_IMGNAME)
-//            let image = text!.generateQRCodeWithLogo(img)
-//            DispatchQueue.main.async(execute: {
-//                weakSelf?.qrImgView.image = image
-//            })
-//        }
-//    }
-    
-    // MARK: - 1. 懒加载: 会话,输入设备,输出设备,预览图层
-    //会话
-    fileprivate lazy var session: AVCaptureSession = AVCaptureSession()
-    
-    //拿到输入设备
-    fileprivate lazy var deviceInput: AVCaptureDeviceInput? = {
-        
-        //获取摄像头
-        let device = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
-        
-        do {
-            
-            let input = try AVCaptureDeviceInput(device: device)
-            return input
-        }
-        catch {
-            print(error)
-            return nil
-        }
-    }()
-    
-    //拿到输出设备
-    fileprivate lazy var output: AVCaptureMetadataOutput = AVCaptureMetadataOutput()
-    
-    //创建预览图层
-    fileprivate lazy var previewLayer: AVCaptureVideoPreviewLayer = {
-        
-        let layer = AVCaptureVideoPreviewLayer(session: self.session)
-        layer?.frame = UIScreen.main.bounds
-        return layer!
-    }()
-    
-    //MARK: - 2. 扫描二维码
-    func starScan() {
-        
-        //先判断是否能将设备添加到回话中
-        if !session.canAddInput(deviceInput) {
-            return
-        }
-        
-        //判断是否能够将输出添加到回话中
-        if !session .canAddOutput(output) {
-            return
-        }
-        
-        //将输入和输出添加到回话中
-        session.addInput(deviceInput)
-        session.addOutput(output)
-        
-        //设置输入能够解析的数据类型
-        //设置能解析的数据类型,一定要在输出对象添加到会员之后设置
-        output.metadataObjectTypes = output.availableMetadataObjectTypes
-        
-        //设置输出对象的代理,只要解析成功,就会通知代理
-        output.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
-        
-        //添加预览图层
-        view.layer.insertSublayer(previewLayer, at: 0)
-        
-        //告诉session开始扫描
-        session.startRunning()
-    }
 }
-
-//MARK: - AVCaptureMetadataOutputObjectsDelegate
-extension UserInfoQRCodeVC : AVCaptureMetadataOutputObjectsDelegate {
-    
-    //只要解析到数据就会调用
-    fileprivate func captureOutput(_ captureOutput: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [AnyObject]!, fromConnection connection: AVCaptureConnection!) {
-        
-        //获取扫描结果
-        //注意是: stringValue
-        print(metadataObjects.last?.stringValue ?? "")
-    }
-}
-
 
 //MARK: - UIImagePickerControllerDelegate UINavigationControllerDelegate
 extension UserInfoQRCodeVC : UIImagePickerControllerDelegate, UINavigationControllerDelegate {

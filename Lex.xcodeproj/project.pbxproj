@@ -68,11 +68,13 @@
 		A52239681DE56E4E0037A5BB /* UserInfoQRCodeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A522395A1DE56E4E0037A5BB /* UserInfoQRCodeVC.swift */; };
 		A52239691DE56E4E0037A5BB /* UserInfoQRCodeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = A522395B1DE56E4E0037A5BB /* UserInfoQRCodeVC.xib */; };
 		A522396A1DE56E4E0037A5BB /* ScanCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A522395D1DE56E4E0037A5BB /* ScanCodeViewController.swift */; };
-		A522396B1DE56E4E0037A5BB /* ScanCodeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A522395E1DE56E4E0037A5BB /* ScanCodeViewController.xib */; };
 		A522396C1DE56E4E0037A5BB /* UserCenterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52239601DE56E4E0037A5BB /* UserCenterVC.swift */; };
 		A522396D1DE56E4E0037A5BB /* UserCenterVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = A52239611DE56E4E0037A5BB /* UserCenterVC.xib */; };
 		A522397A1DE597B00037A5BB /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A52239791DE597B00037A5BB /* libsqlite3.0.tbd */; };
+		A56EDCFA1DF10D310069E5FC /* ScanCodeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A56EDCF91DF10D310069E5FC /* ScanCodeViewController.xib */; };
+		A56EDCFF1DF110C50069E5FC /* ScanCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56EDCFE1DF110C50069E5FC /* ScanCodeView.swift */; };
 		A5B80D5E1DE7D6FC00A3986C /* SavaImgHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B80D5D1DE7D6FC00A3986C /* SavaImgHelper.swift */; };
+		A5CC1B711DF1748F0054E6AE /* tabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CC1B701DF1748F0054E6AE /* tabBarView.swift */; };
 		B3F7470CC31AD98865B1EBEC /* Pods_Lex.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 047137E5694B0C4EE0C4B523 /* Pods_Lex.framework */; };
 /* End PBXBuildFile section */
 
@@ -168,11 +170,13 @@
 		A522395A1DE56E4E0037A5BB /* UserInfoQRCodeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfoQRCodeVC.swift; sourceTree = "<group>"; };
 		A522395B1DE56E4E0037A5BB /* UserInfoQRCodeVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserInfoQRCodeVC.xib; sourceTree = "<group>"; };
 		A522395D1DE56E4E0037A5BB /* ScanCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanCodeViewController.swift; sourceTree = "<group>"; };
-		A522395E1DE56E4E0037A5BB /* ScanCodeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScanCodeViewController.xib; sourceTree = "<group>"; };
 		A52239601DE56E4E0037A5BB /* UserCenterVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCenterVC.swift; sourceTree = "<group>"; };
 		A52239611DE56E4E0037A5BB /* UserCenterVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserCenterVC.xib; sourceTree = "<group>"; };
 		A52239791DE597B00037A5BB /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		A56EDCF91DF10D310069E5FC /* ScanCodeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScanCodeViewController.xib; sourceTree = "<group>"; };
+		A56EDCFE1DF110C50069E5FC /* ScanCodeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanCodeView.swift; sourceTree = "<group>"; };
 		A5B80D5D1DE7D6FC00A3986C /* SavaImgHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavaImgHelper.swift; sourceTree = "<group>"; };
+		A5CC1B701DF1748F0054E6AE /* tabBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tabBarView.swift; sourceTree = "<group>"; };
 		B13BC0B8A2D05ABC725B0793 /* Pods_LexUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LexUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3388DBF3891E847B529B70B /* Pods-Lex.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lex.release.xcconfig"; path = "Pods/Target Support Files/Pods-Lex/Pods-Lex.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -623,7 +627,9 @@
 			isa = PBXGroup;
 			children = (
 				A522395D1DE56E4E0037A5BB /* ScanCodeViewController.swift */,
-				A522395E1DE56E4E0037A5BB /* ScanCodeViewController.xib */,
+				A56EDCFE1DF110C50069E5FC /* ScanCodeView.swift */,
+				A5CC1B701DF1748F0054E6AE /* tabBarView.swift */,
+				A56EDCF91DF10D310069E5FC /* ScanCodeViewController.xib */,
 			);
 			path = "扫描二维码";
 			sourceTree = "<group>";
@@ -761,10 +767,10 @@
 				A522396D1DE56E4E0037A5BB /* UserCenterVC.xib in Resources */,
 				A52239311DE545350037A5BB /* UserInfoQRCodeCell.xib in Resources */,
 				A52239331DE545350037A5BB /* ZCommonCell.xib in Resources */,
-				A522396B1DE56E4E0037A5BB /* ScanCodeViewController.xib in Resources */,
 				A52239291DE545350037A5BB /* UserImgCell.xib in Resources */,
 				A522392F1DE545350037A5BB /* UserInfoPhotoCell.xib in Resources */,
 				A52239651DE56E4E0037A5BB /* UserInfoVC.xib in Resources */,
+				A56EDCFA1DF10D310069E5FC /* ScanCodeViewController.xib in Resources */,
 				A52239451DE545350037A5BB /* HomePageCell.xib in Resources */,
 				A52239671DE56E4E0037A5BB /* EditUserNameVC.xib in Resources */,
 				A52238851DE544B10037A5BB /* Assets.xcassets in Resources */,
@@ -939,12 +945,14 @@
 				A52239151DE545350037A5BB /* RootViewController.swift in Sources */,
 				A522391A1DE545350037A5BB /* ZLabel.swift in Sources */,
 				423A9C891DE8767800FB0D81 /* LaunchViewController.swift in Sources */,
+				A56EDCFF1DF110C50069E5FC /* ScanCodeView.swift in Sources */,
 				42DEE5CF1DE5E1FA000A2693 /* SQLiteManager.swift in Sources */,
 				A52239281DE545350037A5BB /* UserImgCell.swift in Sources */,
 				A52239211DE545350037A5BB /* CCSingleton.swift in Sources */,
 				A52239131DE545350037A5BB /* ZAppDelegate.swift in Sources */,
 				A52239271DE545350037A5BB /* PageNavigationVC.swift in Sources */,
 				A52239191DE545350037A5BB /* ZCanvasView.swift in Sources */,
+				A5CC1B711DF1748F0054E6AE /* tabBarView.swift in Sources */,
 				A522394D1DE56E1B0037A5BB /* String+QRCode.swift in Sources */,
 				A52239661DE56E4E0037A5BB /* EditUserNameVC.swift in Sources */,
 				A52239251DE545350037A5BB /* DetectionModel.swift in Sources */,

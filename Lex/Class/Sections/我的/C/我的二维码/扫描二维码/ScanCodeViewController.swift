@@ -22,6 +22,7 @@ class ScanCodeViewController: UIViewController {
     @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var rightView: UIView!
     @IBOutlet weak var tabBarView: UIView!
+    @IBOutlet weak var alertTitle: UILabel!
     
     var lightOn = false ///闪光灯
     var scanSession :  AVCaptureSession?
@@ -30,23 +31,70 @@ class ScanCodeViewController: UIViewController {
         
         super.viewDidLoad()
         
-//        view.layoutIfNeeded()
+        //        view.layoutIfNeeded()
         scanPane.addSubview(scanLine)
         setupScanSession()
+        
+//        setViewsMakeConstraints()
     }
     
-    func setViewsMakeConstraints() {
-        
-        weak var weakSelf : ScanCodeViewController? = self
-        self.bottomView.snp.makeConstraints { (make) -> Void in
-            
-            make.top.equalTo((weakSelf?.view)!).offset(app_height - 80)
-            make.bottom.equalTo((weakSelf?.view)!).offset(0)
-            make.right.equalTo((weakSelf?.view)!).offset(0)
-            make.width.equalTo(app_width)
-        }
-       
-    }
+//    func setViewsMakeConstraints() {
+//        
+//        let common_Height : CGFloat = app_height / 3
+//        let center_space : CGFloat = (app_width - common_Height) / 2
+//        weak var weakSelf : ScanCodeViewController? = self
+//        
+//        self.topView.alpha = 0.6
+//        self.leftView.alpha = 0.6
+//        self.rightView.alpha = 0.6
+//        self.bottomView.alpha = 0.6
+//        self.scanPane.alpha = 0.2
+//        self.tabBarView.alpha = 0.6
+//
+//        self.topView.snp.makeConstraints { (make) -> Void in
+//            
+//            make.top.equalTo((weakSelf?.view)!).offset(0)
+//            make.left.equalTo((weakSelf?.view)!).offset(0)
+//            make.size.equalTo(CGSize.init(width: app_width, height: common_Height))
+//        }
+//        
+//        self.leftView.snp.makeConstraints { (make) -> Void in
+//            make.top.equalTo((weakSelf?.view)!).offset(common_Height)
+//            make.left.equalTo((weakSelf?.view)!).offset(0)
+//            make.size.equalTo(CGSize.init(width: center_space, height: common_Height))
+//        }
+//        
+//        self.rightView.snp.makeConstraints { (make) -> Void in
+//            make.top.equalTo((weakSelf?.view)!).offset(common_Height)
+//            make.right.equalTo((weakSelf?.view)!).offset(0)
+//            make.size.equalTo(CGSize.init(width: center_space, height: common_Height))
+//        }
+//        
+//        self.scanPane.snp.makeConstraints { (make) -> Void in
+//            make.top.equalTo((weakSelf?.view)!).offset(common_Height)
+//            make.left.equalTo((weakSelf?.view)!).offset(center_space)
+//            make.size.equalTo(CGSize.init(width: common_Height, height: common_Height))
+//        }
+//        
+//        self.activityIndicatorView.snp.makeConstraints { (make) -> Void in
+//            make.center.equalTo((weakSelf?.view)!)
+//            make.size.equalTo(CGSize.init(width: 37, height: 37))
+//        }
+//        
+//        self.bottomView.snp.makeConstraints { (make) -> Void in
+//            make.top.equalTo((weakSelf?.scanPane)!).offset(0)
+//            make.bottom.equalTo((weakSelf?.view)!).offset(0)
+//            make.left.equalTo((weakSelf?.view)!).offset(0)
+//            make.right.equalTo((weakSelf?.view)!).offset(0)
+//            //            make.size.equalTo(CGSize.init(width: app_width, height: common_Height))
+//        }
+//        
+//        self.tabBarView.snp.makeConstraints { (make) -> Void in
+//            make.bottom.equalTo((weakSelf?.bottomView)!).offset(0)
+//            make.left.equalTo((weakSelf?.bottomView)!).offset(0)
+//            make.size.equalTo(CGSize.init(width: app_width, height: 80))
+//        }
+//    }
     
     override func viewWillAppear(_ animated: Bool) {
         
@@ -58,7 +106,7 @@ class ScanCodeViewController: UIViewController {
     lazy var scanLine : UIImageView = {
         
         let scanLine = UIImageView()
-        scanLine.frame = CGRect(x: 0, y: 0, width: 225, height: 3)
+        scanLine.frame = CGRect(x: 0, y: 0, width: app_height / 3, height: 3)
         scanLine.image = UIImage(named: "QRCode_ScanLine")
         return scanLine
     }()
@@ -150,7 +198,7 @@ class ScanCodeViewController: UIViewController {
     
     //MARK: - 我的二维码
     @IBAction func myQRCode(_ sender: Any) {
-    
+        
         let vc = UserInfoQRCodeVC()
         vc.pushFlag = 1
         self.navigationController?.pushViewController(vc, animated: true)
