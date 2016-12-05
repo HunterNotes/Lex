@@ -14,102 +14,77 @@ private let scanAnimationDuration = 3.0 //扫描时长
 
 class ScanCodeViewController: UIViewController {
     
-    //MARK: Global Variables
-    @IBOutlet weak var scanPane: UIImageView! ///扫描框
-    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
-    @IBOutlet weak var topView: UIView!
-    @IBOutlet weak var leftView: UIView!
-    @IBOutlet weak var bottomView: UIView!
-    @IBOutlet weak var rightView: UIView!
-    @IBOutlet weak var tabBarView: UIView!
-    @IBOutlet weak var alertTitle: UILabel!
-    
-    var lightOn = false ///闪光灯
-    var scanSession :  AVCaptureSession?
+    var lightOn       : Bool = false //闪光灯
+    var scanSession   : AVCaptureSession?
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
         
-        //        view.layoutIfNeeded()
-        scanPane.addSubview(scanLine)
+        self.navigationItem.title = "二维码扫描"
+        _ = self.scanCodeView
         setupScanSession()
-        
-//        setViewsMakeConstraints()
     }
     
-//    func setViewsMakeConstraints() {
-//        
-//        let common_Height : CGFloat = app_height / 3
-//        let center_space : CGFloat = (app_width - common_Height) / 2
-//        weak var weakSelf : ScanCodeViewController? = self
-//        
-//        self.topView.alpha = 0.6
-//        self.leftView.alpha = 0.6
-//        self.rightView.alpha = 0.6
-//        self.bottomView.alpha = 0.6
-//        self.scanPane.alpha = 0.2
-//        self.tabBarView.alpha = 0.6
-//
-//        self.topView.snp.makeConstraints { (make) -> Void in
-//            
-//            make.top.equalTo((weakSelf?.view)!).offset(0)
-//            make.left.equalTo((weakSelf?.view)!).offset(0)
-//            make.size.equalTo(CGSize.init(width: app_width, height: common_Height))
-//        }
-//        
-//        self.leftView.snp.makeConstraints { (make) -> Void in
-//            make.top.equalTo((weakSelf?.view)!).offset(common_Height)
-//            make.left.equalTo((weakSelf?.view)!).offset(0)
-//            make.size.equalTo(CGSize.init(width: center_space, height: common_Height))
-//        }
-//        
-//        self.rightView.snp.makeConstraints { (make) -> Void in
-//            make.top.equalTo((weakSelf?.view)!).offset(common_Height)
-//            make.right.equalTo((weakSelf?.view)!).offset(0)
-//            make.size.equalTo(CGSize.init(width: center_space, height: common_Height))
-//        }
-//        
-//        self.scanPane.snp.makeConstraints { (make) -> Void in
-//            make.top.equalTo((weakSelf?.view)!).offset(common_Height)
-//            make.left.equalTo((weakSelf?.view)!).offset(center_space)
-//            make.size.equalTo(CGSize.init(width: common_Height, height: common_Height))
-//        }
-//        
-//        self.activityIndicatorView.snp.makeConstraints { (make) -> Void in
-//            make.center.equalTo((weakSelf?.view)!)
-//            make.size.equalTo(CGSize.init(width: 37, height: 37))
-//        }
-//        
-//        self.bottomView.snp.makeConstraints { (make) -> Void in
-//            make.top.equalTo((weakSelf?.scanPane)!).offset(0)
-//            make.bottom.equalTo((weakSelf?.view)!).offset(0)
-//            make.left.equalTo((weakSelf?.view)!).offset(0)
-//            make.right.equalTo((weakSelf?.view)!).offset(0)
-//            //            make.size.equalTo(CGSize.init(width: app_width, height: common_Height))
-//        }
-//        
-//        self.tabBarView.snp.makeConstraints { (make) -> Void in
-//            make.bottom.equalTo((weakSelf?.bottomView)!).offset(0)
-//            make.left.equalTo((weakSelf?.bottomView)!).offset(0)
-//            make.size.equalTo(CGSize.init(width: app_width, height: 80))
-//        }
-//    }
+    lazy var scanCodeView : ScanCodeView = {
+        
+        var scanCode : ScanCodeView = ScanCodeView()
+        scanCode.newViews()
+        
+        scanCode.tabBarView.photoBtn.addTarget(self, action: #selector(photo), for: .touchUpInside)
+        scanCode.tabBarView.lightBtn.addTarget(self, action: #selector(light), for: .touchUpInside)
+        scanCode.tabBarView.myQRCodeBtn.addTarget(self, action: #selector(myQRCode), for: .touchUpInside)
+        
+        self.view.addSubview(scanCode)
+        weak var weakSelf : ScanCodeViewController? = self
+        scanCode.snp.makeConstraints { (make) -> Void in
+            make.top.equalTo((weakSelf?.view)!).offset(0)
+            make.left.equalTo((weakSelf?.view)!).offset(0)
+            make.size.equalTo(CGSize.init(width: app_width, height: app_height))
+        }
+        return scanCode
+    }()
+    
+    //MARK: Action - 相册
+    func photo(sender : UIButton) {
+        
+        weak var weakSelf : ScanCodeViewController? = self
+        //[weak self]
+        ScanCodeTool.shareTool().choosePicture(self, true, .photoLibrary) {[weak self] (image) in
+            weakSelf?.scanCodeView.activityIndicatorView.startAnimating()
+            
+            DispatchQueue.global().async {
+                let recognizeResult = image.recognizeQRCode()
+                let result = recognizeResult?.characters.count > 0 ? recognizeResult : "无法识别"
+                DispatchQueue.main.async {
+                    weakSelf?.scanCodeView.activityIndicatorView.stopAnimating()
+                    ScanCodeTool.confirm("扫描结果", result, weakSelf!)
+                }
+            }
+        }
+    }
+    
+    //MARK: Action - 灯光
+    func light(sender : UIButton) {
+        
+        lightOn = !lightOn
+        sender.isSelected = lightOn
+        turnTorchOn()
+    }
+    
+    //MARK: Action - 我的二维码
+    func myQRCode(sender : UIButton) {
+        
+        let vc = UserInfoQRCodeVC()
+        vc.pushFlag = 1
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         
         super.viewWillAppear(animated)
         startScan()
     }
-    
-    //MARK: Lazy Components
-    lazy var scanLine : UIImageView = {
-        
-        let scanLine = UIImageView()
-        scanLine.frame = CGRect(x: 0, y: 0, width: app_height / 3, height: 3)
-        scanLine.image = UIImage(named: "QRCode_ScanLine")
-        return scanLine
-    }()
     
     //MARK: Interface Components
     func setupScanSession() {
@@ -153,9 +128,13 @@ class ScanCodeViewController: UIViewController {
             
             view.layer.insertSublayer(scanPreviewLayer!, at: 0)
             
+            weak var weakSelf : ScanCodeViewController! = self
+            
+            /* 此处不能使用weakSelf 会crash */
+            
             //设置扫描区域
             NotificationCenter.default.addObserver(forName: NSNotification.Name.AVCaptureInputPortFormatDescriptionDidChange, object: nil, queue: nil, using: { (noti) in
-                output.rectOfInterest = (scanPreviewLayer?.metadataOutputRectOfInterest(for: self.scanPane.frame))!
+                output.rectOfInterest = (scanPreviewLayer?.metadataOutputRectOfInterest(for: weakSelf.scanCodeView.scanPane.frame))!
             })
             
             //保存会话
@@ -169,46 +148,10 @@ class ScanCodeViewController: UIViewController {
         }
     }
     
-    //MARK: - 相册
-    @IBAction func photo() {
-        
-        ScanCodeTool.shareTool().choosePicture(self, true, .photoLibrary) {[weak self] (image) in
-            
-            self!.activityIndicatorView.startAnimating()
-            
-            DispatchQueue.global().async {
-                let recognizeResult = image.recognizeQRCode()
-                let result = recognizeResult?.characters.count > 0 ? recognizeResult : "无法识别"
-                DispatchQueue.main.async {
-                    self!.activityIndicatorView.stopAnimating()
-                    ScanCodeTool.confirm("扫描结果", result, self!)
-                }
-            }
-        }
-    }
-    
-    //MARK: - 闪光灯
-    @IBAction func light(_ sender: UIButton) {
-        
-        lightOn = !lightOn
-        sender.isSelected = lightOn
-        turnTorchOn()
-        
-    }
-    
-    //MARK: - 我的二维码
-    @IBAction func myQRCode(_ sender: Any) {
-        
-        let vc = UserInfoQRCodeVC()
-        vc.pushFlag = 1
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    
     //开始扫描
     fileprivate func startScan() {
         
-        scanLine.layer.add(scanAnimation(), forKey: "scan")
+        self.scanCodeView.scanLine.layer.add(scanAnimation(), forKey: "scan")
         
         guard let scanSession = scanSession else { return }
         
@@ -220,8 +163,8 @@ class ScanCodeViewController: UIViewController {
     //扫描动画
     private func scanAnimation() -> CABasicAnimation {
         
-        let startPoint = CGPoint(x: scanLine .center.x  , y: 1)
-        let endPoint = CGPoint(x: scanLine.center.x, y: scanPane.bounds.size.height - 2)
+        let startPoint = CGPoint(x: (self.scanCodeView.scanLine.center.x)  , y: 1)
+        let endPoint = CGPoint(x: (self.scanCodeView.scanLine.center.x), y: (self.scanCodeView.scanPane.bounds.size.height) - 2)
         
         let translation = CABasicAnimation(keyPath: "position")
         translation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
@@ -274,20 +217,22 @@ extension ScanCodeViewController : AVCaptureMetadataOutputObjectsDelegate {
     func captureOutput(_ captureOutput: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [Any]!, from connection: AVCaptureConnection!) {
         
         //停止扫描
-        self.scanLine.layer.removeAllAnimations()
+        self.scanCodeView.scanLine.layer.removeAllAnimations()
         self.scanSession!.stopRunning()
         
         //播放声音
         ScanCodeTool.playAlertSound("noticeMusic.caf")
+        
+        weak var weakSelf : ScanCodeViewController? = self
         
         //扫完完成
         if metadataObjects.count > 0 {
             
             if let resultObj = metadataObjects.first as? AVMetadataMachineReadableCodeObject {
                 
-                ScanCodeTool.confirm("扫描结果", resultObj.stringValue, self, handler: { (_) in
+                ScanCodeTool.confirm("扫描结果", resultObj.stringValue, weakSelf!, handler: { (_) in
                     //继续扫描
-                    self.startScan()
+                    weakSelf?.startScan()
                 })
             }
         }

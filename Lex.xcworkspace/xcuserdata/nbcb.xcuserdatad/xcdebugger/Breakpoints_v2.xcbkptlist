@@ -19,22 +19,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Lex/Class/Sections/&#x6211;&#x7684;/C/&#x4e3b;&#x9875;/UserCenterVC.swift"
-            timestampString = "502011827.134091"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "39"
-            endingLineNumber = "39"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "Pods/SnapKit/Source/Constraint.swift"
             timestampString = "502271185.580612"
             startingColumnNumber = "9223372036854775807"
@@ -68,12 +52,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Lex/Class/Sections/&#x6211;&#x7684;/C/&#x6211;&#x7684;&#x4e8c;&#x7ef4;&#x7801;/&#x626b;&#x63cf;&#x4e8c;&#x7ef4;&#x7801;/ScanCodeViewController.swift"
-            timestampString = "502337097.219403"
+            timestampString = "502621924.193243"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "200"
-            endingLineNumber = "200"
-            landmarkName = "myQRCode(_:)"
+            startingLineNumber = "235"
+            endingLineNumber = "235"
+            landmarkName = "captureOutput(_:didOutputMetadataObjects:from:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
