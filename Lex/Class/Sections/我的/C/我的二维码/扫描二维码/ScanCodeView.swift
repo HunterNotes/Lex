@@ -168,8 +168,8 @@ class ScanCodeView: UIView {
         
         var tabBarViews : TabBarView = TabBarView()
         tabBarViews.newView()
-        tabBarViews.backgroundColor = UIColor.clear
-//        tabBarViews.alpha = 0.65
+        tabBarViews.backgroundColor = UIColor.black
+        tabBarViews.alpha = 0.4
         self.addSubview(tabBarViews)
         weak var weakSelf : ScanCodeView? = self
         tabBarViews.snp.makeConstraints { (make) -> Void in
