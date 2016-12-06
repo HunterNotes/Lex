@@ -1,6 +1,7 @@
 PODS:
   - Alamofire (4.0.1)
   - DZNEmptyDataSet (1.8.1)
+  - FDFullscreenPopGesture (1.1)
   - Kingfisher (3.2.0)
   - Reachability (3.2)
   - REFormattedNumberField (1.1.6)
@@ -19,6 +20,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire
   - DZNEmptyDataSet
+  - FDFullscreenPopGesture
   - Kingfisher
   - Reachability
   - RETableViewManager
@@ -31,6 +33,7 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   Alamofire: 7682d43245de14874acd142ec137b144aa1dd335
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
+  FDFullscreenPopGesture: a8a620179e3d9c40e8e00256dcee1c1a27c6d0f0
   Kingfisher: 50407d1d5dbc34965009d425a286342ff36a84ea
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   REFormattedNumberField: 70fc5fb1218ebd5ee9983820defd12806d5c6ec6
@@ -42,6 +45,6 @@ SPEC CHECKSUMS:
   SVProgressHUD: b0830714205bea1317ea1a2ebc71e5633af334d4
   TextFieldEffects: ef594746f17997c813e07633f8ae5acaf9b04f27
 
-PODFILE CHECKSUM: 448aa1f7bc0e9e39f52bfea63e7f8a07eb21736a
+PODFILE CHECKSUM: 353c5e6a3317da79de9bafba02bb8efdb2cabdd0
 
 COCOAPODS: 1.0.0

@@ -17,7 +17,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="287" height="79"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar_circle_default" translatesAutoresizingMaskIntoConstraints="NO" id="kDE-J0-2JH">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="UserImg" translatesAutoresizingMaskIntoConstraints="NO" id="kDE-J0-2JH">
                         <rect key="frame" x="15" y="15" width="50" height="50"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="50" id="Bia-6F-GEx"/>
@@ -73,7 +73,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="avatar_circle_default" width="62" height="62"/>
+        <image name="UserImg" width="720" height="720"/>
         <image name="二维码" width="22" height="22"/>
     </resources>
 </document>

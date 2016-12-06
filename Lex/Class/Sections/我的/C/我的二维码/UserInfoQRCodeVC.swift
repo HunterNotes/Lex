@@ -29,7 +29,7 @@ class UserInfoQRCodeVC: UIViewController {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(image: UIImage.init(named: "ic_more"), style: .plain, target: self, action: #selector(edit))
         
         self.getDisplayInfo()
-        self.addLongpress()
+        self.addTapGesture()
     }
     
     func getDisplayInfo() {
@@ -73,11 +73,10 @@ class UserInfoQRCodeVC: UIViewController {
         }
     }
     
-    func addLongpress() {
+    func addTapGesture() {
         
-        let longPress : UILongPressGestureRecognizer = UILongPressGestureRecognizer.init(target: self, action: #selector(edit))
-        longPress.numberOfTouchesRequired = 1
-        self.qrImgView.addGestureRecognizer(longPress)
+        let tap : UITapGestureRecognizer = UITapGestureRecognizer.init(target: self, action: #selector(edit))
+        self.qrImgView.addGestureRecognizer(tap)
     }
     
     //MARK: 编辑二维码
@@ -106,7 +105,10 @@ class UserInfoQRCodeVC: UIViewController {
                     return
                 }
                 
-                let vc = ScanCodeViewController()
+                let vc = ScanCodeVC()
+                UIView.transition(from: self.view, to: vc.view, duration: 0.2, options: UIViewAnimationOptions.transitionCrossDissolve, completion: { (finish : Bool) in
+                    //动画
+                })
                 self.navigationController?.pushViewController(vc, animated: true)
                 print("File camera")
             })

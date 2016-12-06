@@ -14,6 +14,11 @@
 			<key>orderHint</key>
 			<integer>2</integer>
 		</dict>
+		<key>FDFullscreenPopGesture.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>18</integer>
+		</dict>
 		<key>Kingfisher.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -127,6 +132,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>091D11D5E5859C25DD615A6212FA4D03</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>0B9B521A96A9972861407A9B668174F2</key>
 		<dict>
 			<key>primary</key>
@@ -162,7 +172,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>303B3AC6DD17B1EE7D98EF8BF8898BEB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>3117235D4C922204E27CE246C265C245</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>32F01335461DFC2F80E84E83784E7692</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>356D63BC30382B966BC1E60A2694F960</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -187,6 +212,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>49A41B98E67CC2F94FA1B03D55F2288B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>517190BA1A6ED7F74374296C3F237079</key>
 		<dict>
 			<key>primary</key>
@@ -198,6 +228,11 @@
 			<true/>
 		</dict>
 		<key>5FB3DF6B83A58BF6455D057D09670565</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>61444F927A5BF763461BAAC81FCE7697</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -237,7 +272,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>8F9B53552714E3E70B1B1B767F28C191</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>941B4513D25C9BDA56781C44E4F38C98</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>948B11C95E2C54BD1F7178EB83092E01</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -252,12 +297,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>AF12AF037098BEBCD17628B68D8DF9EF</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>B026BBC514CBDB962F438AE6FEC9509C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>B263F9ED8A7F7B6A06E4F4EB65F8728A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B7DD2609D9EFC27B5DC9712E76DA4348</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -308,6 +363,16 @@
 			<true/>
 		</dict>
 		<key>E76466CC3393A0D75AB7C936CADAEBD1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>ED912B9496D1D8E51613C50C5CF7CCB5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F060EF6DB3954F8D24578EAD58B81A64</key>
 		<dict>
 			<key>primary</key>
 			<true/>

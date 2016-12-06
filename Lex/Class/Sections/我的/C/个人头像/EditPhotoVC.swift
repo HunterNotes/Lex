@@ -30,8 +30,6 @@ class EditPhotoVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //        self.navigationController?.navigationBar.barTintColor = UIColor.gray
-        //        self.navigationController?.navigationBar.tintColor = UIColor.white
         self.navigationItem.title = "个人头像"
         self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(image: UIImage.init(named: "ic_more"), style: .plain, target: self, action: #selector(editPhoto))
         self.addLongpress()
@@ -63,7 +61,7 @@ class EditPhotoVC: UIViewController {
     //MARK: - 编辑图片
     func editPhoto() {
         
-        let optionMenu = UIAlertController.init(title: nil, message: "编辑头像", preferredStyle: .actionSheet)
+        let optionMenu = UIAlertController.init(title: nil, message: nil, preferredStyle: .actionSheet)
         let cameraAction = UIAlertAction.init(title: "拍照", style: .default, handler: {
             (alert: UIAlertAction!) -> Void in
             

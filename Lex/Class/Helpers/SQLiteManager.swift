@@ -211,7 +211,7 @@ class SQLiteManager: NSObject {
                 
                 //默认一张头像
                 if self.userImg == nil {
-                    self.userImg =  UIImage.init(named: "avatar_circle_default")!
+                    self.userImg =  UIImage.init(named: "UserImg")!
                 }
             }
             

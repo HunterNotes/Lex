@@ -86,6 +86,7 @@ strip_invalid_archs() {
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/Alamofire/Alamofire.framework"
   install_framework "$BUILT_PRODUCTS_DIR/DZNEmptyDataSet/DZNEmptyDataSet.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/FDFullscreenPopGesture/FDFullscreenPopGesture.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Kingfisher/Kingfisher.framework"
   install_framework "$BUILT_PRODUCTS_DIR/REFormattedNumberField/REFormattedNumberField.framework"
   install_framework "$BUILT_PRODUCTS_DIR/RETableViewManager/RETableViewManager.framework"
@@ -100,6 +101,7 @@ fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/Alamofire/Alamofire.framework"
   install_framework "$BUILT_PRODUCTS_DIR/DZNEmptyDataSet/DZNEmptyDataSet.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/FDFullscreenPopGesture/FDFullscreenPopGesture.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Kingfisher/Kingfisher.framework"
   install_framework "$BUILT_PRODUCTS_DIR/REFormattedNumberField/REFormattedNumberField.framework"
   install_framework "$BUILT_PRODUCTS_DIR/RETableViewManager/RETableViewManager.framework"

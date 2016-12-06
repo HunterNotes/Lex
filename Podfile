@@ -17,8 +17,8 @@ target 'Lex' do
     pod 'SlackTextViewController'
     pod 'TextFieldEffects'
     pod 'SnapKit', '~> 3.0'
+    pod 'FDFullscreenPopGesture'
     #    pod 'LTMorphingLabel'
-    #     pod "FDFullscreenPopGesture", "~> 1.1"
     #     pod 'MJRefresh', '~> 0.0.1'
     #     pod 'SnapKit'
     #     pod 'SQLite.swift'

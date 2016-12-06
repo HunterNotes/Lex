@@ -58,8 +58,17 @@ let BASE64HEADER : String = "data:image/png;base64,"
 /**
  * 二维码内容
  */
-
 var QRTEXT : String = "https://github.com/HunterNotes/Swift_Debug"
+
+/**
+ * 二维码尺寸
+ */
+let ScanCode_Height : CGFloat = app_height / 3
+
+/**
+ * 二维码↔️间距
+ */
+let ScanCode_Space : CGFloat = (app_width - (app_height / 3)) / 2
 
 /**
  * tableView 基础高度

@@ -81,7 +81,7 @@ class CCLocationManager: NSObject {
             single.locationManager?.manager.requestWhenInUseAuthorization()
         }
         //变化距离 超过20米 重新定位
-        single.locationManager?.manager.distanceFilter = 20 //kCLLocationAccuracyKilometer
+        single.locationManager?.manager.distanceFilter = kCLLocationAccuracyKilometer
         return single.locationManager!
     }
     

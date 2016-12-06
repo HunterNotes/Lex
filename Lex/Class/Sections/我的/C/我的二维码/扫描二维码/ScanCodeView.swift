@@ -11,17 +11,6 @@ import SnapKit
 
 class ScanCodeView: UIView {
     
-    
-    lazy var common_Height : CGFloat = {
-        
-        return app_height / 3
-    }()
-    
-    lazy var center_space : CGFloat = {
-        
-        return (app_width - (app_height / 3)) / 2
-    }()
-    
     //MARK: 初始化后调用
     func newViews() {
         
@@ -41,11 +30,11 @@ class ScanCodeView: UIView {
         
         weak var weakSelf : ScanCodeView? = self
         let imgView : UIImageView = UIImageView(image: UIImage(named: "QRCode_ScanBox"))
-        imgView.alpha = 0
+        imgView.alpha = 0.3
         self.addSubview(imgView)
         imgView.snp.makeConstraints { (make) -> Void in
             make.center.equalTo(weakSelf!)
-            make.size.equalTo(CGSize(width: (weakSelf?.common_Height)!, height: (weakSelf?.common_Height)!))
+            make.size.equalTo(CGSize(width: ScanCode_Height, height: ScanCode_Height))
         }
         return imgView
     }()
@@ -53,28 +42,24 @@ class ScanCodeView: UIView {
     //MARK: 扫描框动画
     lazy var scanLine : UIImageView = {
         
-        let line = UIImageView()
-        line.image = UIImage(named: "QRCode_ScanLine")
+        let line = UIImageView.init(image: UIImage.init(named: "QRCode_ScanLine"))
+        
+        //此处不能➕约束，block异步，导致实际加约束时间延迟
+        line.frame = CGRect.init(x: 0, y: 0, width: ScanCode_Height, height: 3)
         self.scanPane.addSubview(line)
-        weak var weakSelf : ScanCodeView? = self
-        line.snp.makeConstraints { (make) -> Void in
-            make.left.equalTo(weakSelf!.scanPane).offset(0)
-            make.top.equalTo(weakSelf!.scanPane).offset(0)
-            make.size.equalTo(CGSize(width:app_width, height:weakSelf!.common_Height))
-        }
         return line
     }()
     
     //指示器
-    lazy var activityIndicatorView  : UIActivityIndicatorView = {
+    lazy var activityIndicatorView : UIActivityIndicatorView = {
         
-        let activity : UIActivityIndicatorView = UIActivityIndicatorView()
-        activity.color = UIColor.orange
+        let activity : UIActivityIndicatorView = UIActivityIndicatorView.init(activityIndicatorStyle: .white)
+        activity.color = UIColor.white
         self.scanPane.addSubview(activity)
         weak var weakSelf : ScanCodeView? = self
         activity.snp.makeConstraints { (make) -> Void in
             make.center.equalTo((weakSelf?.scanPane)!)
-            make.size.equalTo(CGSize(width: 37, height: 37))
+            make.size.equalTo(CGSize(width: 60, height: 60))
         }
         return activity
     }()
@@ -90,7 +75,7 @@ class ScanCodeView: UIView {
         top.snp.makeConstraints { (make) -> Void in
             make.left.equalTo(weakSelf!).offset(0)
             make.top.equalTo(weakSelf!).offset(0)
-            make.size.equalTo(CGSize(width:app_width, height:weakSelf!.common_Height))
+            make.size.equalTo(CGSize(width:app_width, height:ScanCode_Height))
         }
         return top
     }()
@@ -120,13 +105,13 @@ class ScanCodeView: UIView {
         
         let left : UIView = UIView()
         left.backgroundColor = UIColor.black
-                left.alpha = 0.8
+        left.alpha = 0.8
         self.addSubview(left)
         weak var weakSelf : ScanCodeView? = self
         left.snp.makeConstraints { (make) -> Void in
             make.left.equalTo(weakSelf!).offset(0)
-            make.top.equalTo(weakSelf!).offset((weakSelf?.common_Height)!)
-            make.size.equalTo(CGSize(width:(weakSelf?.center_space)!, height:(weakSelf?.common_Height)!))
+            make.top.equalTo(weakSelf!).offset(ScanCode_Height)
+            make.size.equalTo(CGSize(width:ScanCode_Space, height:ScanCode_Height))
         }
         return left
     }()
@@ -136,13 +121,13 @@ class ScanCodeView: UIView {
         
         let right : UIView = UIView()
         right.backgroundColor = UIColor.black
-                right.alpha = 0.8
+        right.alpha = 0.8
         self.addSubview(right)
         weak var weakSelf : ScanCodeView? = self
         right.snp.makeConstraints { (make) -> Void in
             make.right.equalTo(weakSelf!).offset(0)
-            make.top.equalTo(weakSelf!).offset((weakSelf?.common_Height)!)
-            make.size.equalTo(CGSize(width:(weakSelf?.center_space)!, height:(weakSelf?.common_Height)!))
+            make.top.equalTo(weakSelf!).offset(ScanCode_Height)
+            make.size.equalTo(CGSize(width:ScanCode_Space, height:ScanCode_Height))
         }
         return right
     }()
@@ -158,7 +143,7 @@ class ScanCodeView: UIView {
         bottom.snp.makeConstraints { (make) -> Void in
             make.bottom.equalTo(weakSelf!).offset(0)
             make.right.equalTo(weakSelf!).offset(0)
-            make.size.equalTo(CGSize(width: app_width, height:(weakSelf?.common_Height)!))
+            make.size.equalTo(CGSize(width: app_width, height:ScanCode_Height))
         }
         return bottom
     }()

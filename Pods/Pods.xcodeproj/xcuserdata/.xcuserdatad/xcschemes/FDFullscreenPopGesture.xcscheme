@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '61444F927A5BF763461BAAC81FCE7697'
-               BlueprintName = 'SnapKit'
+               BlueprintIdentifier = '303B3AC6DD17B1EE7D98EF8BF8898BEB'
+               BlueprintName = 'FDFullscreenPopGesture'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'SnapKit.framework'>
+               BuildableName = 'FDFullscreenPopGesture.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
