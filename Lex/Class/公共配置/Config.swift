@@ -9,6 +9,10 @@
 import Foundation
 import UIKit
 
+/**
+ * 宽
+ */
+let FirstLaunch : String = "FirstLaunch"
 
 /**
  * 宽

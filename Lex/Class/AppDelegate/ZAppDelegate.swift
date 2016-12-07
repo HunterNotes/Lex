@@ -18,15 +18,24 @@ class ZAppDelegate: UIResponder, UIApplicationDelegate {
     var isReachable     : Bool = true
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
         self.window = UIWindow(frame: UIScreen.main.bounds)
         // Override point for customization after application launch.
         self.window!.backgroundColor = UIColor.white
-        
-        self.window?.rootViewController = ZTabBarController()
         self.window!.makeKeyAndVisible()
         
         self.registerAppNotificationSettings(launchOptions)
         self.getLocation()
+        
+        // 检测用户是不是第一次启动
+        if !UserDefaults.standard.bool(forKey: FirstLaunch) {
+            
+            window?.rootViewController = LaunchViewController()
+            UserDefaults.standard.set(true, forKey: FirstLaunch)
+        }
+        else {
+            self.window?.rootViewController = ZTabBarController()
+        }
         return true
     }
     
