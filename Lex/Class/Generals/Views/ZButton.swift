@@ -15,18 +15,18 @@ enum selectedButtonType : Int {
 }
 
 @IBDesignable open class ZButton: UIButton {
-
- var selectedType : selectedButtonType = .first
+    
+    var selectedType : selectedButtonType = .first
     
     var button: ZButton!
     
     open func newButton(_ frame: CGRect) -> ZButton {
         var btn : ZButton
         
-            btn = ZButton.init(frame: frame)
-            btn.setTitle("点击按钮", for: UIControlState())
-            btn.setTitle("未点击", for: UIControlState.highlighted)
-            btn.backgroundColor = UIColor.black
+        btn = ZButton.init(frame: frame)
+        btn.setTitle("点击按钮", for: UIControlState())
+        btn.setTitle("未点击", for: UIControlState.highlighted)
+        btn.backgroundColor = UIColor.black
         btn.addTarget(self, action: #selector(clickEvent), for: .touchUpInside)
         return btn
     }

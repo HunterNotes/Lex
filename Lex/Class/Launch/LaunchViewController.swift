@@ -11,9 +11,9 @@ import SnapKit
 
 class LaunchViewController: UICollectionViewController {
     
-    let kNewFeatureCount = 4
-    let newFeatureID = "newFeatureID"
-
+    let kNewFeatureCount    = 4
+    let newFeatureID        = "newFeatureID"
+    
     // 布局对象
     fileprivate var layout: UICollectionViewFlowLayout = CollectionViewLayout()
     
@@ -28,8 +28,8 @@ class LaunchViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView?.register(CollectionViewCell.self, forCellWithReuseIdentifier: newFeatureID)
         
+        collectionView?.register(CollectionViewCell.self, forCellWithReuseIdentifier: newFeatureID)
     }
 }
 
@@ -40,8 +40,12 @@ extension LaunchViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let item : Int = (indexPath as NSIndexPath).item
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: newFeatureID, for: indexPath) as! CollectionViewCell
-        cell.imageIndex = indexPath.item
+        cell.imageIndex = item
+        cell.leapfrogBtn.isHidden = (item == 0) ? false : true
+        cell.startButton.isHidden = (item == kNewFeatureCount - 1) ? false : true
         return cell
     }
     
@@ -49,9 +53,12 @@ extension LaunchViewController {
     override func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         
         let path = collectionView.indexPathsForVisibleItems.last!
+        let cell = collectionView.cellForItem(at: path) as! CollectionViewCell
         if path.item == (kNewFeatureCount - 1) {
-            let cell = collectionView.cellForItem(at: path) as! CollectionViewCell
             cell.startBtnAnimation()
+        }
+        else {
+            cell.startButton.isHidden = true
         }
     }
 }
@@ -59,6 +66,8 @@ extension LaunchViewController {
 /// YMNewfeatureCell
 private class CollectionViewCell: UICollectionViewCell {
     
+    var time                : TimeInterval = 0.0
+
     fileprivate var imageIndex: Int? {
         didSet {
             iconView.image = UIImage(named: "walkthrough_\(imageIndex! + 1)")
@@ -96,7 +105,10 @@ private class CollectionViewCell: UICollectionViewCell {
     func setupUI() {
         
         contentView.addSubview(iconView)
+        contentView.addSubview(leapfrogBtn)
         contentView.addSubview(startButton)
+        contentView.addSubview(progressView)
+        
         
         iconView.snp.makeConstraints { (make) in
             make.edges.equalTo(contentView)
@@ -109,9 +121,52 @@ private class CollectionViewCell: UICollectionViewCell {
         }
     }
     
-    fileprivate lazy var 
-    
     fileprivate lazy var iconView = UIImageView()
+    
+    //MARK: 跳过按钮外层环
+    fileprivate lazy var progressView : ProgressView = {
+        
+        let progress : ProgressView = ProgressView()
+        progress.frame = CGRect.init(x: app_width - 80, y: 30, width: 80, height: 80)
+        let timer = Timer.init(timeInterval: 0.1, target: self, selector: #selector(timer(_:)), userInfo: nil, repeats: true)
+        RunLoop.current.add(timer, forMode: RunLoopMode.defaultRunLoopMode)
+        self.time = 0.0
+        timer.fire()
+        return progress
+        
+    }()
+    
+    func timer(_ sender : Timer) {
+        
+       self.time += 1
+        if self.time == 10 {
+            sender.invalidate()
+        }
+        progressView.setProgress(progressView.progress - (progressView.progress / 10), animated: true)
+    }
+    
+    //MARK: 跳过按钮
+    fileprivate lazy var leapfrogBtn : UIButton = {
+        
+        let button = UIButton()
+        button.setTitle("跳过", for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 14.0)
+        button.addTarget(self, action: #selector(leapfrog), for: .touchUpInside)
+        button.isHidden = true
+        
+        //此处绘图需要设置frame, 故不使用SnapKit
+        let rec : CGRect = CGRect.init(x: app_width - 80, y: 30, width: 40, height: 40)
+        button.frame = rec
+        button.drawCorner(rec, .allCorners, 20, .orange, .clear, 1.0)
+        return button
+    }()
+    
+    func leapfrog() {
+        
+        startButtonClick()
+    }
+    
+    //MARK: 开始按钮
     fileprivate lazy var startButton: UIButton = {
         let btn = UIButton()
         btn.setBackgroundImage(UIImage(named: "btn_begin"), for: UIControlState())

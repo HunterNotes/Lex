@@ -25,13 +25,11 @@
 		A52239161DE545350037A5BB /* ZNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52238BD1DE545350037A5BB /* ZNavigationController.swift */; };
 		A52239171DE545350037A5BB /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52238C11DE545350037A5BB /* UIView+Extension.swift */; };
 		A52239181DE545350037A5BB /* ZButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52238C21DE545350037A5BB /* ZButton.swift */; };
-		A52239191DE545350037A5BB /* ZCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52238C31DE545350037A5BB /* ZCanvasView.swift */; };
 		A522391A1DE545350037A5BB /* ZLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52238C41DE545350037A5BB /* ZLabel.swift */; };
 		A522391B1DE545350037A5BB /* ZSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52238C51DE545350037A5BB /* ZSegmentedControl.swift */; };
 		A522391C1DE545350037A5BB /* ZSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52238C61DE545350037A5BB /* ZSlider.swift */; };
 		A522391D1DE545350037A5BB /* ZTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52238C71DE545350037A5BB /* ZTableViewCell.swift */; };
 		A522391E1DE545350037A5BB /* ZTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A52238C81DE545350037A5BB /* ZTableViewCell.xib */; };
-		A522391F1DE545350037A5BB /* ZView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52238C91DE545350037A5BB /* ZView.swift */; };
 		A52239201DE545350037A5BB /* CCLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52238CB1DE545350037A5BB /* CCLocationManager.swift */; };
 		A52239211DE545350037A5BB /* CCSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52238CC1DE545350037A5BB /* CCSingleton.swift */; };
 		A52239221DE545350037A5BB /* SaveUserImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52238CD1DE545350037A5BB /* SaveUserImageHelper.swift */; };
@@ -73,6 +71,7 @@
 		A56EDCFF1DF110C50069E5FC /* ScanCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56EDCFE1DF110C50069E5FC /* ScanCodeView.swift */; };
 		A574D9C21DF5580F00F89EE3 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A574D9C11DF5580F00F89EE3 /* TabBarView.swift */; };
 		A5B80D5E1DE7D6FC00A3986C /* SavaImgHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B80D5D1DE7D6FC00A3986C /* SavaImgHelper.swift */; };
+		A5D3F9FC1DF9383100902CB7 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D3F9FB1DF9383100902CB7 /* ProgressView.swift */; };
 		A5E76DF81DF6921000815BA1 /* ScanCodeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E76DF71DF6921000815BA1 /* ScanCodeVC.swift */; };
 		B3F7470CC31AD98865B1EBEC /* Pods_Lex.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 047137E5694B0C4EE0C4B523 /* Pods_Lex.framework */; };
 /* End PBXBuildFile section */
@@ -125,13 +124,11 @@
 		A52238BD1DE545350037A5BB /* ZNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZNavigationController.swift; sourceTree = "<group>"; };
 		A52238C11DE545350037A5BB /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		A52238C21DE545350037A5BB /* ZButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZButton.swift; sourceTree = "<group>"; };
-		A52238C31DE545350037A5BB /* ZCanvasView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZCanvasView.swift; sourceTree = "<group>"; };
 		A52238C41DE545350037A5BB /* ZLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZLabel.swift; sourceTree = "<group>"; };
 		A52238C51DE545350037A5BB /* ZSegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZSegmentedControl.swift; sourceTree = "<group>"; };
 		A52238C61DE545350037A5BB /* ZSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZSlider.swift; sourceTree = "<group>"; };
 		A52238C71DE545350037A5BB /* ZTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZTableViewCell.swift; sourceTree = "<group>"; };
 		A52238C81DE545350037A5BB /* ZTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZTableViewCell.xib; sourceTree = "<group>"; };
-		A52238C91DE545350037A5BB /* ZView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZView.swift; sourceTree = "<group>"; };
 		A52238CB1DE545350037A5BB /* CCLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCLocationManager.swift; sourceTree = "<group>"; };
 		A52238CC1DE545350037A5BB /* CCSingleton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCSingleton.swift; sourceTree = "<group>"; };
 		A52238CD1DE545350037A5BB /* SaveUserImageHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveUserImageHelper.swift; sourceTree = "<group>"; };
@@ -174,6 +171,7 @@
 		A56EDCFE1DF110C50069E5FC /* ScanCodeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanCodeView.swift; sourceTree = "<group>"; };
 		A574D9C11DF5580F00F89EE3 /* TabBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		A5B80D5D1DE7D6FC00A3986C /* SavaImgHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavaImgHelper.swift; sourceTree = "<group>"; };
+		A5D3F9FB1DF9383100902CB7 /* ProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		A5E76DF71DF6921000815BA1 /* ScanCodeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanCodeVC.swift; sourceTree = "<group>"; };
 		B13BC0B8A2D05ABC725B0793 /* Pods_LexUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LexUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3388DBF3891E847B529B70B /* Pods-Lex.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lex.release.xcconfig"; path = "Pods/Target Support Files/Pods-Lex/Pods-Lex.release.xcconfig"; sourceTree = "<group>"; };
@@ -358,13 +356,11 @@
 			children = (
 				A52238C11DE545350037A5BB /* UIView+Extension.swift */,
 				A52238C21DE545350037A5BB /* ZButton.swift */,
-				A52238C31DE545350037A5BB /* ZCanvasView.swift */,
 				A52238C41DE545350037A5BB /* ZLabel.swift */,
 				A52238C51DE545350037A5BB /* ZSegmentedControl.swift */,
 				A52238C61DE545350037A5BB /* ZSlider.swift */,
 				A52238C71DE545350037A5BB /* ZTableViewCell.swift */,
 				A52238C81DE545350037A5BB /* ZTableViewCell.xib */,
-				A52238C91DE545350037A5BB /* ZView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -386,6 +382,7 @@
 			children = (
 				423A9C871DE8767800FB0D81 /* LaunchViewController.swift */,
 				423A9C881DE8767800FB0D81 /* LaunchViewController.xib */,
+				A5D3F9FB1DF9383100902CB7 /* ProgressView.swift */,
 			);
 			path = Launch;
 			sourceTree = "<group>";
@@ -946,8 +943,8 @@
 				A52239281DE545350037A5BB /* UserImgCell.swift in Sources */,
 				A52239211DE545350037A5BB /* CCSingleton.swift in Sources */,
 				A52239131DE545350037A5BB /* ZAppDelegate.swift in Sources */,
+				A5D3F9FC1DF9383100902CB7 /* ProgressView.swift in Sources */,
 				A52239271DE545350037A5BB /* PageNavigationVC.swift in Sources */,
-				A52239191DE545350037A5BB /* ZCanvasView.swift in Sources */,
 				A522394D1DE56E1B0037A5BB /* String+QRCode.swift in Sources */,
 				A52239661DE56E4E0037A5BB /* EditUserNameVC.swift in Sources */,
 				A52239251DE545350037A5BB /* DetectionModel.swift in Sources */,
@@ -960,7 +957,6 @@
 				A52239181DE545350037A5BB /* ZButton.swift in Sources */,
 				423A9C8C1DE876A500FB0D81 /* User.swift in Sources */,
 				A52239641DE56E4E0037A5BB /* UserInfoVC.swift in Sources */,
-				A522391F1DE545350037A5BB /* ZView.swift in Sources */,
 				A52238831DE544B10037A5BB /* Lex.xcdatamodeld in Sources */,
 				A522392C1DE545350037A5BB /* UserInfoCommonNoneCell.swift in Sources */,
 				A522396C1DE56E4E0037A5BB /* UserCenterVC.swift in Sources */,

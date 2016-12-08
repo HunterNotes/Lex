@@ -10,15 +10,26 @@ import UIKit
 
 extension UIView {
     
-    /// 裁剪 view 的圆角
-    func clipRectCorner(_ direction: UIRectCorner, cornerRadius: CGFloat) {
+    /** 裁剪 view 的圆角
+     * rect : frame
+     * direction : 角落 左上、下角， 右上、下角，allCorners: 所有角
+     * cornerRadius : 圆角幅度
+     * cornerColor : 边框颜色
+     * cornerBGColor :裁剪部分背景颜色
+     * lineWidth : 边框宽度
+     */
+    
+    func drawCorner(_ rect : CGRect, _ direction : UIRectCorner, _ cornerRadius : CGFloat, _ cornerColor : UIColor, _ cornerBGColor : UIColor, _ lineWidth : CGFloat) {
+        
         let cornerSize = CGSize(width: cornerRadius, height: cornerRadius)
-        let maskPath = UIBezierPath(roundedRect: bounds, byRoundingCorners: direction, cornerRadii: cornerSize)
-        let maskLayer = CAShapeLayer()
-        maskLayer.frame = bounds
-        maskLayer.path = maskPath.cgPath
-        layer.addSublayer(maskLayer)
+        let path = UIBezierPath(roundedRect: bounds, byRoundingCorners: .allCorners, cornerRadii: cornerSize)
+        let maskLayer = CAShapeLayer();
+        maskLayer.path = path.cgPath;
+        maskLayer.fillColor = cornerBGColor.cgColor;
+        maskLayer.lineWidth = lineWidth;
+        maskLayer.strokeColor = cornerColor.cgColor;
         layer.mask = maskLayer
+        self.layer.addSublayer(maskLayer);
     }
     
     /// x
