@@ -105,6 +105,16 @@ let klineWidth: CGFloat = 1.0
 let kIndicatorViewH: CGFloat = 2.0
 
 /**
+ * 用户引导页倒计时总进度
+ */
+let LAUNCHPROGRESS : Double = 100
+
+/**
+ * 用户引导页倒计时
+ */
+var LAUNCHCOUNTDOWN : Double = 3
+
+/**
  * 配色
  */
 func RGBA (_ r: CGFloat, g: CGFloat, b: CGFloat, a: CGFloat) -> UIColor {

@@ -15,17 +15,16 @@ extension UIView {
      * direction : 角落 左上、下角， 右上、下角，allCorners: 所有角
      * cornerRadius : 圆角幅度
      * cornerColor : 边框颜色
-     * cornerBGColor :裁剪部分背景颜色
      * lineWidth : 边框宽度
      */
     
-    func drawCorner(_ rect : CGRect, _ direction : UIRectCorner, _ cornerRadius : CGFloat, _ cornerColor : UIColor, _ cornerBGColor : UIColor, _ lineWidth : CGFloat) {
+    func drawCorner(_ rect : CGRect, _ direction : UIRectCorner, _ cornerRadius : CGFloat, _ cornerColor : UIColor, _ lineWidth : CGFloat) {
         
         let cornerSize = CGSize(width: cornerRadius, height: cornerRadius)
         let path = UIBezierPath(roundedRect: bounds, byRoundingCorners: .allCorners, cornerRadii: cornerSize)
         let maskLayer = CAShapeLayer();
         maskLayer.path = path.cgPath;
-        maskLayer.fillColor = cornerBGColor.cgColor;
+        maskLayer.fillColor = UIColor.clear.cgColor; //此处必须clear，因layer是直接添加在self.layer上的，若不为clear，title会被layer层的颜色所覆盖，若想设置button的颜色，可直接设置backGroundIame
         maskLayer.lineWidth = lineWidth;
         maskLayer.strokeColor = cornerColor.cgColor;
         layer.mask = maskLayer

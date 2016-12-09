@@ -8,12 +8,13 @@
 
 import UIKit
 
+//环形进度条
 @IBDesignable class ProgressView: UIView {
     
     struct Constant {
         
         //进度条宽度
-        static let lineWidth: CGFloat = 10
+        static let lineWidth: CGFloat = 2
         
         //进度槽颜色
         static let trackColor = UIColor(red: 245 / 255.0, green: 245 / 255.0, blue: 245 / 255.0, alpha: 1)
@@ -32,7 +33,7 @@ import UIKit
     let path = UIBezierPath()
     
     //当前进度
-    @IBInspectable var progress: Int = 0 {
+    @IBInspectable var progress: Double = LAUNCHPROGRESS {
         
         didSet {
             
@@ -80,13 +81,13 @@ import UIKit
     }
     
     //设置进度（可以设置是否播放动画）
-    func setProgress(_ pro: Int,animated anim: Bool) {
+    func setProgress(_ pro: Double, animated anim: Bool) {
         
         setProgress(pro, animated: anim, withDuration: 0.55)
     }
     
     //设置进度（可以设置是否播放动画，以及动画时间）
-    func setProgress(_ pro: Int,animated anim: Bool, withDuration duration: Double) {
+    func setProgress(_ pro: Double, animated anim: Bool, withDuration duration: Double) {
         
         progress = pro
         
@@ -103,6 +104,6 @@ import UIKit
     //将角度转为弧度
     fileprivate func angleToRadian(_ angle: Double) -> CGFloat {
         
-        return CGFloat(angle/Double(180.0) * M_PI)
+        return CGFloat(angle / Double(180.0) * M_PI)
     }
 }
