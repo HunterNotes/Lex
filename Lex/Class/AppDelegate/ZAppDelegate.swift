@@ -27,17 +27,15 @@ class ZAppDelegate: UIResponder, UIApplicationDelegate {
         self.registerAppNotificationSettings(launchOptions)
         self.getLocation()
         
-        window?.rootViewController = LaunchViewController()
-
         // 检测用户是不是第一次启动
-//        if !UserDefaults.standard.bool(forKey: FirstLaunch) {
-//            
-//            window?.rootViewController = LaunchViewController()
-//            UserDefaults.standard.set(true, forKey: FirstLaunch)
-//        }
-//        else {
-//            self.window?.rootViewController = ZTabBarController()
-//        }
+        if !UserDefaults.standard.bool(forKey: FirstLaunch) {
+            
+            window?.rootViewController = LaunchViewController()
+            UserDefaults.standard.set(true, forKey: FirstLaunch)
+        }
+        else {
+            self.window?.rootViewController = ZTabBarController()
+        }
         return true
     }
     

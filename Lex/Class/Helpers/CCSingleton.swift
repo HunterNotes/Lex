@@ -33,7 +33,7 @@ class CCSingleton: NSObject {
     // 具体位置
     var name                        : String! 
     
-    //防止内网下，反编译位置失败时，他处引用此属性🔙nil造成的crash
+    //防止内网下，反编译位置失败时，他处引用（此属性🔙nil）造成的crash
     // 去掉 "省"
     var state_Format                : String? = "--"
     
