@@ -44,28 +44,19 @@ class LaunchViewController: UICollectionViewController {
             
             LAUNCHCOUNTDOWN = (LAUNCHCOUNTDOWN - 0.5)  //0.5s执行
             if LAUNCHCOUNTDOWN >= 0 {
-                lView?.leapfrogBtn.setTitle("跳过\(LAUNCHCOUNTDOWN)s", for: .normal)
+                
+                lView?.leapfrogBtn.setTitle("跳过 \(Int(LAUNCHCOUNTDOWN))s", for: .normal)
             }
             var progress : Double = lView!.progressView.progress
             
-            //防止➖➖之后的结果不为0
-            if Int(progress) < Int(LAUNCHPROGRESS / 6) {
-                LAUNCHCOUNTDOWN = progress * 6
-            }
-            else if Int(progress) == Int(LAUNCHPROGRESS / 6) {
-                progress = (LAUNCHPROGRESS / 6) + 1
-            }
-            else {
-                progress -= (LAUNCHPROGRESS / 6)
-            }
+            progress -= (LAUNCHPROGRESS / 6.0)
+            lView?.progressView.setProgress(progress, animated: true)
             
-            if progress == 0 {
+            if progress <= 0 {
                 
                 sender.invalidate()
-                startButtonClick()
+//                startButtonClick()
             }
-            
-            lView?.progressView.setProgress(progress, animated: true)
         }
     }
     

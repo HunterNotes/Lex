@@ -41,12 +41,13 @@ class LeapfrogView: UIView {
     lazy var leapfrogBtn : UIButton = {
         
         let button = UIButton()
-        button.setTitle("跳过\(LAUNCHCOUNTDOWN)s", for: .normal)
+        button.setTitle("跳过 \(Int(LAUNCHCOUNTDOWN))s", for: .normal)
         button.setTitleColor(UIColor.white, for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 12.0)
-        button.titleLabel?.adjustsFontSizeToFitWidth = true
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 11)
+        button.titleLabel?.textAlignment = .center
+        button.titleLabel?.numberOfLines = 0
         
-        //此处绘图需要设置frame, 故不使用SnapKit
+        //此处绘图需要设置frame, 故不添加约束
         let rec : CGRect = CGRect.init(x: 3.5, y: 3.5, width: 35, height: 35)
         button.frame = rec
         button.drawCorner(rec, .allCorners, 20, .cyan, 1.5)

@@ -49,7 +49,7 @@ class UserInfoVC: UIViewController {
     }
     
     deinit {
-        //记得移除通知监听
+
         NotificationCenter.default.removeObserver(self)
     }
     

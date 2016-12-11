@@ -27,38 +27,6 @@
             endingLineNumber = "158"
             landmarkName = "upDate(_:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Lex.SQLiteManager.upDate (Swift.ImplicitlyUnwrappedOptional&lt;Swift.String&gt;) -&gt; ()"
-                  moduleName = "Lex"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/zhouqingcheng/Desktop/git/Lex/Lex/Class/Helpers/SQLiteManager.swift"
-                  timestampString = "501929681.180884"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "158"
-                  endingLineNumber = "158"
-                  offsetFromSymbolStart = "13948">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Lex.SQLiteManager.upDate (Swift.ImplicitlyUnwrappedOptional&lt;Swift.String&gt;) -&gt; ()"
-                  moduleName = "Lex"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/zhouqingcheng/Desktop/git/Lex/Lex/Class/Helpers/SQLiteManager.swift"
-                  timestampString = "501929681.18235"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "158"
-                  endingLineNumber = "158"
-                  offsetFromSymbolStart = "18760">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -106,22 +74,6 @@
             startingLineNumber = "46"
             endingLineNumber = "46"
             landmarkName = "userImgStatus(notification:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Lex/Class/Sections/&#x6211;&#x7684;/C/&#x4e2a;&#x4eba;&#x4fe1;&#x606f;/UserInfoVC.swift"
-            timestampString = "501929637.826543"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "83"
-            endingLineNumber = "83"
-            landmarkName = "getUserImageFromSQLite(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
