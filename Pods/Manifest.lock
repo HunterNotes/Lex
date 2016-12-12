@@ -1,29 +1,50 @@
 PODS:
   - Alamofire (4.0.1)
+  - DZNEmptyDataSet (1.8.1)
+  - FDFullscreenPopGesture (1.1)
   - Kingfisher (3.2.0)
+  - MJRefresh (3.1.12)
   - Reachability (3.2)
+  - REFormattedNumberField (1.1.6)
+  - RETableViewManager (1.7):
+    - REFormattedNumberField (~> 1.1.5)
+    - REValidation (~> 0.1.4)
+  - REValidation (0.1.4)
   - SnapKit (3.0.2)
   - SQLite.swift (0.11.0):
     - SQLite.swift/standard (= 0.11.0)
   - SQLite.swift/standard (0.11.0)
   - SVProgressHUD (2.0.3)
+  - SwiftyJSON (3.1.1)
 
 DEPENDENCIES:
   - Alamofire
+  - DZNEmptyDataSet
+  - FDFullscreenPopGesture
   - Kingfisher
+  - MJRefresh
   - Reachability
+  - RETableViewManager
   - SnapKit (~> 3.0)
   - SQLite.swift
   - SVProgressHUD
+  - SwiftyJSON
 
 SPEC CHECKSUMS:
   Alamofire: 7682d43245de14874acd142ec137b144aa1dd335
+  DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
+  FDFullscreenPopGesture: a8a620179e3d9c40e8e00256dcee1c1a27c6d0f0
   Kingfisher: 50407d1d5dbc34965009d425a286342ff36a84ea
+  MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
+  REFormattedNumberField: 70fc5fb1218ebd5ee9983820defd12806d5c6ec6
+  RETableViewManager: 0f24d796c42c0890d38c79cc9aeb3871e186726e
+  REValidation: 38c4de1be58455f8b00aab208ac80db316a66b7f
   SnapKit: 2e456761aa92d4d4067a7a5594c18769d451a8ad
   SQLite.swift: 9a26273607d3077a2e5a8d33486e9989f8404c7d
   SVProgressHUD: b0830714205bea1317ea1a2ebc71e5633af334d4
+  SwiftyJSON: f0be2e604f83e8405a624e9f891898bf6ed4e019
 
-PODFILE CHECKSUM: 48ea284c9519a48ac67c078d155ffbbcb5928c18
+PODFILE CHECKSUM: ee1d0a352a7902c91f3bc8505e51ee235935745d
 
 COCOAPODS: 1.0.0

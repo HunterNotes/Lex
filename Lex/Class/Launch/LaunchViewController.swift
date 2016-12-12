@@ -38,7 +38,7 @@ class LaunchViewController: UICollectionViewController {
         timer.fire()
     }
     
-    func timer(_ sender : Timer) {
+    @objc fileprivate func timer(_ sender : Timer) {
         
         if lView != nil {
             
@@ -55,17 +55,17 @@ class LaunchViewController: UICollectionViewController {
             if progress <= 0 {
                 
                 sender.invalidate()
-//                startButtonClick()
+                startButtonClick()
             }
         }
     }
     
-    func leapfrog(_ sender : UIButton) {
+    @objc fileprivate func leapfrog(_ sender : UIButton) {
         
         startButtonClick()
     }
     
-    func startButtonClick() {
+    @objc fileprivate func startButtonClick() {
         UIApplication.shared.keyWindow?.rootViewController = ZTabBarController()
     }
 }

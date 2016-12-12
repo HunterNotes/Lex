@@ -6,8 +6,8 @@
 //  Copyright © 2016年 Synjones. All rights reserved.
 //
 
-import Foundation
-import UIKit
+//import Foundation
+//import UIKit
 
 /**
  * 宽
@@ -83,6 +83,10 @@ let tableView_height: CGFloat = UIScreen.main.bounds.size.height - 44 - 20 - 49
  * tableView 基础frame
  */
 let tableView_frame: CGRect = CGRect(x: 0, y: 44 + 20, width: app_width, height: tableView_height)
+/**
+ * 间距
+ */
+let kMargin: CGFloat = 10.0
 
 /**
  * 顶部标题的高度
@@ -115,6 +119,21 @@ let LAUNCHPROGRESS : Double = 100
 var LAUNCHCOUNTDOWN : Double = 3
 
 /**
+ * 服务器地址
+ */
+let BASE_URL = "http://api.dantangapp.com/"
+
+/**
+ * code 码 200 操作成功
+ */
+let RETURN_OK = 200
+
+/**
+ * 动画时长
+ */
+let kAnimationDuration = 0.25
+
+/**
  * 配色
  */
 func RGBA (_ r: CGFloat, g: CGFloat, b: CGFloat, a: CGFloat) -> UIColor {
@@ -127,12 +146,14 @@ func RGBA (_ r: CGFloat, g: CGFloat, b: CGFloat, a: CGFloat) -> UIColor {
 func base_color() -> UIColor {
     return RGBA(225, g: 236, b: 244, a: 0.85)
 }
+
 /**
  * 导航条颜色
  */
 func nav_color() -> UIColor {
     return RGBA(2, g: 2, b: 2, a: 0.8)
 }
+
 /**
  * 背景灰色
  */

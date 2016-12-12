@@ -8,9 +8,9 @@
 
 import UIKit
 
-class User: NSObject {
-
-    var id              : Int64?
-    var userName        : String?
-    var imgStr          : String?
-}
+//class User: NSObject {
+//
+//    var id              : Int64?
+//    var userName        : String?
+//    var imgStr          : String?
+//}

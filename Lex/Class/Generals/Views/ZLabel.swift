@@ -9,13 +9,39 @@
 import UIKit
 
 @IBDesignable open class ZLabel: UILabel {
+    
     //IBDesignable: 显示出来使用代码写的界面
     
     /*Swift 有三种访问修饰符： public、internal、private
-    public：可以访问自己模块中任何 public，被 import 到其他模块，也可以被访问
-    internal：只能访问自己模块中任何 internal 实体，不能访问其他模块中的 internal 实体
-    private：私有的，只能在当前源文件中使用。*/
+     public：可以访问自己模块中任何 public，被 import 到其他模块，也可以被访问
+     internal：只能访问自己模块中任何 internal 实体，不能访问其他模块中的 internal 实体
+     private：私有的，只能在当前源文件中使用。*/
     
+    /* 一、各个修饰符区别
+     1，private
+     private访问级别所修饰的属性或者方法只能在当前类里访问。
+     
+     2，fileprivate
+     fileprivate访问级别所修饰的属性或者方法在当前的Swift源文件里可以访问。
+     
+     3，internal（默认访问级别，internal修饰符可写可不写）
+     internal访问级别所修饰的属性或方法在源代码所在的整个模块都可以访问。
+     如果是框架或者库代码，则在整个框架内部都可以访问，框架由外部代码所引用时，则不可以访问。
+     如果是App代码，也是在整个App代码，也是在整个App内部可以访问。
+     
+     4，public
+     可以被任何人访问。但其他module中不可以被override和继承，而在module内可以被override和继承。
+     
+     5，open
+     可以被任何人使用，包括override和继承。
+     
+     
+     二、5种修饰符访问权限排序
+     
+     从高到低排序如下：
+     open > public > interal > fileprivate > private
+     
+     */
     
     @IBInspectable open var charInterval: Double = 1
     //IBInspectable: 是View内的变量可视化，并且在修改后能马上看到

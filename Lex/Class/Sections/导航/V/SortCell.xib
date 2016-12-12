@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="sortTableViewCellID" id="S8t-SK-uHd" customClass="SortCell" customModule="Lex" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="S8t-SK-uHd" id="iz9-Is-bun">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JpZ-y9-4mX">
+                        <rect key="frame" x="0.0" y="42" width="320" height="1"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="r3U-b8-xA9"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="21d-1d-eSL">
+                        <rect key="frame" x="10" y="0.0" width="310" height="42"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="JpZ-y9-4mX" secondAttribute="bottom" id="4Xc-sr-aVV"/>
+                    <constraint firstItem="JpZ-y9-4mX" firstAttribute="top" secondItem="21d-1d-eSL" secondAttribute="bottom" id="D47-Tc-bSO"/>
+                    <constraint firstItem="21d-1d-eSL" firstAttribute="leading" secondItem="iz9-Is-bun" secondAttribute="leading" constant="10" id="LH6-Oh-yQ6"/>
+                    <constraint firstAttribute="trailing" secondItem="21d-1d-eSL" secondAttribute="trailing" id="Vnz-KL-wWW"/>
+                    <constraint firstItem="JpZ-y9-4mX" firstAttribute="leading" secondItem="iz9-Is-bun" secondAttribute="leading" id="fMY-vH-RmT"/>
+                    <constraint firstAttribute="trailing" secondItem="JpZ-y9-4mX" secondAttribute="trailing" id="mfc-FB-DNq"/>
+                    <constraint firstItem="21d-1d-eSL" firstAttribute="top" secondItem="iz9-Is-bun" secondAttribute="top" id="sdv-5D-cGI"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+            <connections>
+                <outlet property="titleLabel" destination="21d-1d-eSL" id="3jG-hb-Np6"/>
+            </connections>
+            <point key="canvasLocation" x="206" y="225"/>
+        </tableViewCell>
+    </objects>
+</document>
