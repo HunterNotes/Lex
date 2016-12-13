@@ -21,7 +21,7 @@ class SavaImgHelper: NSObject {
         
         //根据图片得到对应的二进制编码
         guard let imgData : Data = UIImageJPEGRepresentation(image, 1.0) else {
-            return nil
+            return "--"
         }
         
         //根据二进制编码得到对应的base64字符串

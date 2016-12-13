@@ -6,14 +6,70 @@
 //  Copyright © 2016年 Synjones. All rights reserved.
 //
 
-//import Foundation
-//import UIKit
+import UIKit
 
+//MARK: -------------------------- 枚举 --------------------------
+enum TopicType: Int {
+    /// 精选
+    case selection = 4
+    /// 美食
+    case food = 14
+    /// 家居
+    case household = 16
+    /// 数码
+    case digital = 17
+    /// 美物
+    case goodThing = 13
+    /// 杂货
+    case grocery = 22
+}
+
+enum ShareButtonType: Int {
+    /// 微信朋友圈
+    case weChatTimeline = 0
+    /// 微信好友
+    case weChatSession = 1
+    /// 微博
+    case weibo = 2
+    /// QQ 空间
+    case qZone = 3
+    /// QQ 好友
+    case qqFriends = 4
+    /// 复制链接
+    case copyLink = 5
+}
+
+enum OtherLoginButtonType: Int {
+    /// 微博
+    case weiboLogin = 100
+    /// 微信
+    case weChatLogin = 101
+    /// QQ
+    case qqLogin = 102
+}
+
+//MARK: -------------------------- app启动/登录 --------------------------
 /**
- * 宽
+ * 是否第一次启动
  */
 let FirstLaunch : String = "FirstLaunch"
 
+/**
+ * 是否登录
+ */
+let isLogin = "isLogin"
+
+/**
+ * 用户引导页倒计时总进度
+ */
+let LAUNCHPROGRESS : Double = 100
+
+/**
+ * 用户引导页倒计时
+ */
+var LAUNCHCOUNTDOWN : Double = 3
+
+//MARK: -------------------------- 尺寸 --------------------------
 /**
  * 宽
  */
@@ -23,56 +79,6 @@ let app_width: CGFloat = UIScreen.main.bounds.size.width
  * 高
  */
 let app_height: CGFloat = UIScreen.main.bounds.size.height
-
-/**
- * 本地数据库，用户信息表名称
- */
-let TABLENAME : String = "USER"
-
-/**
- * 用户名称
- */
-var USERNAME : String! = ""
-
-/**
- * 数据库表->主键
- */
-let USER_ID : String = "userID"
-
-/**
- * 数据库表->用户名称
- */
-let USER_NAME : String = "userName"
-
-/**
- * 数据库表->用户头像名称
- */
-let USER_IMGNAME : String = "userImage"
-
-/**
- * 数据库表->用户二维码图片名称
- */
-let USER_QRIMGNAME : String = "qrImage"
-
-/**
- * 存储图片时，根据格式拼接数据头 添加header信息，扩展名信息
- */
-let BASE64HEADER : String = "data:image/png;base64,"
-
-/**
- * 二维码内容
- */
-var QRTEXT : String = "https://github.com/HunterNotes/Swift_Debug"
-
-/**
- * 二维码尺寸
- */
-let ScanCode_Height : CGFloat = app_height / 3
-
-/**
- * 二维码↔️间距
- */
-let ScanCode_Space : CGFloat = (app_width - (app_height / 3)) / 2
 
 /**
  * tableView 基础高度
@@ -109,15 +115,63 @@ let klineWidth: CGFloat = 1.0
 let kIndicatorViewH: CGFloat = 2.0
 
 /**
- * 用户引导页倒计时总进度
+ * 分享按钮背景高度
  */
-let LAUNCHPROGRESS : Double = 100
+let kTopViewH: CGFloat = 230
+
+//MARK: -------------------------- 数据库/图片存储 --------------------------
+/**
+ * 本地数据库，用户信息表名称
+ */
+let TABLENAME : String = "USER"
 
 /**
- * 用户引导页倒计时
+ * 用户名称
  */
-var LAUNCHCOUNTDOWN : Double = 3
+var USERNAME : String! = ""
 
+/**
+ * 数据库表->主键
+ */
+let USER_ID : String = "userID"
+
+/**
+ * 数据库表->用户名称
+ */
+let USER_NAME : String = "userName"
+
+/**
+ * 数据库表->用户头像名称
+ */
+let USER_IMGNAME : String = "userImage"
+
+/**
+ * 数据库表->用户二维码图片名称
+ */
+let USER_QRIMGNAME : String = "qrImage"
+
+/**
+ * 存储图片时，根据格式拼接数据头 添加header信息，扩展名信息
+ */
+let BASE64HEADER : String = "data:image/png;base64,"
+
+//MARK: -------------------------- 二维码相关 --------------------------
+/**
+ * 二维码内容
+ */
+var QRTEXT : String = "https://github.com/HunterNotes/Swift_Debug"
+
+/**
+ * 二维码尺寸
+ */
+let ScanCode_Height : CGFloat = app_height / 3
+
+/**
+ * 二维码↔️间距
+ */
+let ScanCode_Space : CGFloat = (app_width - (app_height / 3)) / 2
+
+//MARK: -------------------------- 网络请求相关 --------------------------
 /**
  * 服务器地址
  */
@@ -133,6 +187,7 @@ let RETURN_OK = 200
  */
 let kAnimationDuration = 0.25
 
+//MARK: -------------------------- 颜色 --------------------------
 /**
  * 配色
  */

@@ -184,6 +184,10 @@ class EditPhotoVC: UIViewController {
             //二维码图片转为base64字符串
             let qrStr  : String = SavaImgHelper.imageToBase64String(qrImg)!
             
+            let qrImgSize : Double = Double(qrStr.characters.count) / 1024.00
+                
+            print("二维码大小为", qrImgSize, "KB");
+            
             //先清空表
             weakSelf?.manager.delete(TABLENAME)
             

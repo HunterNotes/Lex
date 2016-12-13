@@ -18,10 +18,9 @@ class HomePageCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.imgView.layer.cornerRadius = 10
         self.starBtn.setImage(UIImage.init(named: "PostItem_Like_18x16_"), for: UIControlState())
         self.starBtn.setImage(UIImage.init(named: "PostItem_Liked_18x16_"), for: .selected)
-        self.starBtn.layer.cornerRadius = 15.0
+        self.starBtn.drawCorner(self.starBtn.frame, .allCorners, 15.0, .clear, 0.5)
         self.starBtn.titleEdgeInsets = UIEdgeInsetsMake(3.5, 18, 3.5, -1)
         self.starBtn.titleLabel?.adjustsFontSizeToFitWidth = true
         self.selectionStyle = .none

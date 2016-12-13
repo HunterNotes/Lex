@@ -27,6 +27,8 @@ class ZAppDelegate: UIResponder, UIApplicationDelegate {
         self.registerAppNotificationSettings(launchOptions)
         self.getLocation()
         
+        _ = SQLiteManager.defaultManager().getImageFromSQLite(USER_IMGNAME)
+        
         // 检测用户是不是第一次启动
         if !UserDefaults.standard.bool(forKey: FirstLaunch) {
             
