@@ -32,7 +32,7 @@ class ZAppDelegate: UIResponder, UIApplicationDelegate {
         // 检测用户是不是第一次启动
         if !UserDefaults.standard.bool(forKey: FirstLaunch) {
             
-            window?.rootViewController = LaunchViewController()
+            window?.rootViewController = UserGuideVC()
             UserDefaults.standard.set(true, forKey: FirstLaunch)
         }
         else {
