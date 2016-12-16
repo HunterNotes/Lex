@@ -11,60 +11,53 @@ import AVFoundation
 import SnapKit
 
 
-class ScanCodeVC: UIViewController {
+class ScanCodeVC : BaseViewController {
     
-    private let scanAnimationDuration : Double = 3.0 //扫描时长
-    var lightOn       : Bool = false //闪光灯
-    var scanSession   : AVCaptureSession?
+    @IBOutlet weak var scanPane                 : UIImageView! //扫描框
+    @IBOutlet weak var activityIndicatorView    : UIActivityIndicatorView!
+    
+    private let scanAnimationDuration           : Double = 3.0 //扫描时长
+    var lightOn                                 : Bool = false //闪光灯
+    var scanSession                             : AVCaptureSession?
+    
+    lazy var scanLine : UIImageView = {
+        
+        let scanLine = UIImageView()
+        scanLine.frame = CGRect(x: 0, y: 0, width: self.scanPane.bounds.width, height: 3)
+        scanLine.image = UIImage(named: "QRCode_ScanLine")
+        return scanLine
+    }()
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
         self.navigationItem.title = "二维码扫描"
+        view.layoutIfNeeded()
+        scanPane.addSubview(scanLine)
+        
+        setupScanSession()
     }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        _ = self.scanCodeView
-        setupScanSession()
         startScan()
     }
-    
-    lazy var scanCodeView : ScanCodeView = {
-        
-        var scanCode : ScanCodeView = ScanCodeView()
-        scanCode.newViews()
-        
-        scanCode.tabBarView.photoBtn.addTarget(self, action: #selector(photo), for: .touchUpInside)
-        scanCode.tabBarView.lightBtn.addTarget(self, action: #selector(light), for: .touchUpInside)
-        scanCode.tabBarView.myQRCodeBtn.addTarget(self, action: #selector(myQRCode), for: .touchUpInside)
-        
-        self.view.addSubview(scanCode)
-        weak var weakSelf : ScanCodeVC? = self
-        scanCode.snp.makeConstraints { (make) -> Void in
-            make.top.equalTo((weakSelf?.view)!).offset(0)
-            make.left.equalTo((weakSelf?.view)!).offset(0)
-            make.size.equalTo(CGSize.init(width: app_width, height: app_height))
-        }
-        return scanCode
-    }()
     
     //MARK: Action - 相册
     func photo(sender : UIButton) {
         
-        weak var weakSelf : ScanCodeVC? = self
-        //[weak self]
-        ScanCodeTool.shareTool().choosePicture(self, true, .photoLibrary) {/*[weak self]*/ (image) in
-            weakSelf?.scanCodeView.activityIndicatorView.startAnimating()
+        ScanCodeTool.shareTool().choosePicture(self, true, .photoLibrary) {[weak self] (image) in
+            
+            self!.activityIndicatorView.startAnimating()
             
             DispatchQueue.global().async {
                 let recognizeResult = image.recognizeQRCode()
                 let result = recognizeResult?.characters.count > 0 ? recognizeResult : "无法识别"
                 DispatchQueue.main.async {
-                    weakSelf?.scanCodeView.activityIndicatorView.stopAnimating()
-                    ScanCodeTool.confirm("扫描结果", result, weakSelf!)
+                    self!.activityIndicatorView.stopAnimating()
+                    ScanCodeTool.confirm("扫描结果", result, self!)
                 }
             }
         }
@@ -97,7 +90,7 @@ class ScanCodeVC: UIViewController {
             let input = try AVCaptureDeviceInput(device: device)
             
             let output = AVCaptureMetadataOutput()
-            output.setMetadataObjectsDelegate(self, queue: DispatchQueue.global()) //main
+            output.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
             
             //设置会话
             let  scanSession = AVCaptureSession()
@@ -128,13 +121,9 @@ class ScanCodeVC: UIViewController {
             
             view.layer.insertSublayer(scanPreviewLayer!, at: 0)
             
-            weak var weakSelf : ScanCodeVC! = self
-            
-            /* 此处不能使用weakSelf 会crash */
-            
             //设置扫描区域
             NotificationCenter.default.addObserver(forName: NSNotification.Name.AVCaptureInputPortFormatDescriptionDidChange, object: nil, queue: nil, using: { (noti) in
-                output.rectOfInterest = (scanPreviewLayer?.metadataOutputRectOfInterest(for: weakSelf.scanCodeView.scanPane.frame))!
+                output.rectOfInterest = (scanPreviewLayer?.metadataOutputRectOfInterest(for: self.scanPane.frame))!
             })
             
             //保存会话
@@ -143,14 +132,15 @@ class ScanCodeVC: UIViewController {
         catch {
             
             //摄像头不可用
-            ScanCodeTool.confirm("提示", "摄像头不可用", self)
+            ScanCodeTool.confirm("温馨提示", "摄像头不可用", self)
             return
         }
     }
+    
     //开始扫描
     fileprivate func startScan() {
         
-        self.scanCodeView.scanLine.layer.add(scanAnimation(), forKey: "scan")
+        scanLine.layer.add(scanAnimation(), forKey: "scan")
         
         guard let scanSession = scanSession else { return }
         
@@ -162,8 +152,8 @@ class ScanCodeVC: UIViewController {
     //扫描动画
     private func scanAnimation() -> CABasicAnimation {
         
-        let startPoint = CGPoint(x: (self.scanCodeView.scanLine.center.x)  , y: 1)
-        let endPoint = CGPoint(x: (self.scanCodeView.scanLine.center.x), y: ScanCode_Height - 2)
+        let startPoint = CGPoint(x: scanPane .center.x  , y: 1)
+        let endPoint = CGPoint(x: scanPane.center.x, y: scanPane.bounds.size.height - 2)
         
         let translation = CABasicAnimation(keyPath: "position")
         translation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
@@ -188,6 +178,7 @@ class ScanCodeVC: UIViewController {
         }
         
         if device.hasTorch {
+            
             do {
                 try device.lockForConfiguration()
                 
@@ -216,20 +207,19 @@ extension ScanCodeVC : AVCaptureMetadataOutputObjectsDelegate {
     func captureOutput(_ captureOutput: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [Any]!, from connection: AVCaptureConnection!) {
         
         //停止扫描
-        self.scanCodeView.scanLine.layer.removeAllAnimations()
+        self.scanPane.layer.removeAllAnimations()
         self.scanSession!.stopRunning()
         
         //播放声音
         ScanCodeTool.playAlertSound("noticeMusic.caf")
         
-        weak var weakSelf : ScanCodeVC? = self
-        
+        weak var weakSelf = self
         //扫完完成
         if metadataObjects.count > 0 {
             
             if let resultObj = metadataObjects.first as? AVMetadataMachineReadableCodeObject {
                 
-                ScanCodeTool.confirm("扫描结果", resultObj.stringValue, weakSelf!, handler: { (_) in
+                ScanCodeTool.confirm("扫描结果", resultObj.stringValue, self,handler: { (_) in
                     //继续扫描
                     weakSelf?.startScan()
                 })

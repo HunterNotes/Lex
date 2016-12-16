@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UserCenterVC: UIViewController {
+class UserCenterVC: BaseViewController {
     
     let cellID          : String = "UserImgCell"
     let cell1ID         : String = "ZCommonCell"
@@ -50,6 +50,9 @@ class UserCenterVC: UIViewController {
     }
     
     func gisterCell() {
+        
+        //        self.tableView.register(UserImgCell.self, forCellReuseIdentifier: cellID)
+        //        self.tableView.register(ZCommonCell.self, forCellReuseIdentifier: cell1ID)
         
         self.tableView.register(UINib.init(nibName: "UserImgCell", bundle: nil), forCellReuseIdentifier: cellID)
         self.tableView.register(UINib.init(nibName: "ZCommonCell", bundle: nil), forCellReuseIdentifier: cell1ID)
@@ -142,7 +145,8 @@ extension UserCenterVC: UITableViewDataSource, UITableViewDelegate {
         
         if section == 0 && row == 0 {
             
-            let vc = UserInfoVC()
+            let vc = UIStoryboard.init(name: "UserCenter", bundle: nil).instantiateViewController(withIdentifier: "UserInfoVC") as! UserInfoVC
+
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }

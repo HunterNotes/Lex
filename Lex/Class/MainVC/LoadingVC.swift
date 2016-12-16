@@ -28,18 +28,16 @@ class LoadingVC: UIViewController {
     //MARK: - 检测app是不是第一次启动
     private func getAppLaunchInfo() {
         
-//        if !UserDefaults.standard.bool(forKey: FirstLaunch) {
-//            
-//            isFirstLaunch = true
-//            UserDefaults.standard.set(true, forKey: FirstLaunch)
-//        }
-//        else {
-//            isFirstLaunch = false
-//            setupUI()
-//        }
+        if !UserDefaults.standard.bool(forKey: FirstLaunch) {
+            
+            isFirstLaunch = true
+            UserDefaults.standard.set(true, forKey: FirstLaunch)
+        }
+        else {
+            isFirstLaunch = false
+            setupUI()
+        }
     
-        isFirstLaunch = true
-
         let timer = Timer.init(timeInterval: 1, target: self, selector: #selector(countDown(_:)), userInfo: nil, repeats: true)
         RunLoop.current.add(timer, forMode: RunLoopMode.defaultRunLoopMode)
         timer.fire()

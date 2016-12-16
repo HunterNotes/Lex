@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "AB1019C14C7A31F861F8394CEF1014CB"
+               BlueprintIdentifier = "66092C21784C75863C31D3F5381DE92B"
                BuildableName = "REValidation.framework"
                BlueprintName = "REValidation"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "AB1019C14C7A31F861F8394CEF1014CB"
+            BlueprintIdentifier = "66092C21784C75863C31D3F5381DE92B"
             BuildableName = "REValidation.framework"
             BlueprintName = "REValidation"
             ReferencedContainer = "container:Pods.xcodeproj">
@@ -63,7 +63,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "AB1019C14C7A31F861F8394CEF1014CB"
+            BlueprintIdentifier = "66092C21784C75863C31D3F5381DE92B"
             BuildableName = "REValidation.framework"
             BlueprintName = "REValidation"
             ReferencedContainer = "container:Pods.xcodeproj">

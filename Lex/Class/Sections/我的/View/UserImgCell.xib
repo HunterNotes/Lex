@@ -69,7 +69,7 @@
                 <outlet property="userNameLab" destination="UDV-kK-1Gm" id="1St-NS-eaK"/>
                 <outlet property="userNoLab" destination="7a4-LL-1tf" id="tM6-GZ-m4o"/>
             </connections>
-            <point key="canvasLocation" x="-382" y="6"/>
+            <point key="canvasLocation" x="-147" y="-2"/>
         </tableViewCell>
     </objects>
     <resources>

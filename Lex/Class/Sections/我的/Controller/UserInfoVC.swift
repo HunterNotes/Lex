@@ -185,19 +185,18 @@ extension UserInfoVC : UITableViewDataSource, UITableViewDelegate {
         case 0:
             switch row {
             case 0:
-                
-                let vc = UserPhotoVC()
+                let vc = UIStoryboard.init(name: "UserCenter", bundle: nil).instantiateViewController(withIdentifier: "UserPhotoVC") as! UserPhotoVC
                 self.navigationController?.pushViewController(vc, animated: true)
                 break
             case 1:
-                let vc = UserNameVC()
+                let vc = UIStoryboard.init(name: "UserCenter", bundle: nil).instantiateViewController(withIdentifier: "UserNameVC") as! UserNameVC
                 self.navigationController?.pushViewController(vc, animated: true)
                 break
             case 2:
                 
                 break
             case 3:
-                let vc = MyQRCodeVC()
+                let vc = UIStoryboard.init(name: "UserCenter", bundle: nil).instantiateViewController(withIdentifier: "MyQRCodeVC") as! MyQRCodeVC
                 vc.pushFlag = 0;
                 self.navigationController?.pushViewController(vc, animated: true)
                 break

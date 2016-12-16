@@ -4,10 +4,10 @@ project 'Lex.xcodeproj'
 # platform :ios, '9.0'
 
 target 'Lex' do
-    # Comment this line if you're not using Swift and don't want to use dynamic frameworks
-    use_frameworks!
-    
-    pod 'Reachability'
+  # Comment this line if you're not using Swift and don't want to use dynamic frameworks
+  use_frameworks!
+
+pod 'Reachability'
     pod 'SVProgressHUD'
     pod 'Kingfisher'
     pod 'Alamofire'
@@ -34,17 +34,17 @@ target 'Lex' do
     #     pod 'PermissionScope'
     #     pod 'MagicalRecord'
     #     pod 'Charts'
-    
-    # Pods for Lex
-    
-    target 'LexTests' do
-        inherit! :search_paths
-        # Pods for testing
-    end
-    
-    target 'LexUITests' do
-        inherit! :search_paths
-        # Pods for testing
-    end
-    
+
+  # Pods for Lex
+
+  target 'LexTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'LexUITests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
 end

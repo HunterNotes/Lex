@@ -227,5 +227,7 @@ func globalRedColor() -> UIColor {
  * 进入主界面
  */
 func enterMainInterface() {
-    UIApplication.shared.keyWindow?.rootViewController = ZTabBarController()
+    
+    let zTabBarVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ZTabBarController") as! ZTabBarController
+    UIApplication.shared.keyWindow?.rootViewController = zTabBarVC
 }

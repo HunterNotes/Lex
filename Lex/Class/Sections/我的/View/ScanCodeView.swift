@@ -9,6 +9,8 @@
 import UIKit
 import SnapKit
 
+/* 代码布局扫一扫界面 */
+
 class ScanCodeView: UIView {
     
     //MARK: 初始化后调用

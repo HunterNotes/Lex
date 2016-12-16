@@ -105,7 +105,8 @@ class MyQRCodeVC: UIViewController {
                     return
                 }
                 
-                let vc = ScanCodeVC()
+                let vc = UIStoryboard.init(name: "UserCenter", bundle: nil).instantiateViewController(withIdentifier: "ScanCodeVC") as! ScanCodeVC
+                
                 UIView.transition(from: self.view, to: vc.view, duration: 0.2, options: UIViewAnimationOptions.transitionCrossDissolve, completion: { (finish : Bool) in
                     //动画
                 })

@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A522387B1DE544B10037A5BB"
+               BlueprintIdentifier = "A5C443031E039DB400C33517"
                BuildableName = "Lex.app"
                BlueprintName = "Lex"
                ReferencedContainer = "container:Lex.xcodeproj">
@@ -32,7 +32,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A522388D1DE544B10037A5BB"
+               BlueprintIdentifier = "A5C443171E039DB500C33517"
                BuildableName = "LexTests.xctest"
                BlueprintName = "LexTests"
                ReferencedContainer = "container:Lex.xcodeproj">
@@ -42,7 +42,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A52238981DE544B10037A5BB"
+               BlueprintIdentifier = "A5C443221E039DB500C33517"
                BuildableName = "LexUITests.xctest"
                BlueprintName = "LexUITests"
                ReferencedContainer = "container:Lex.xcodeproj">
@@ -52,7 +52,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A522387B1DE544B10037A5BB"
+            BlueprintIdentifier = "A5C443031E039DB400C33517"
             BuildableName = "Lex.app"
             BlueprintName = "Lex"
             ReferencedContainer = "container:Lex.xcodeproj">
@@ -75,25 +75,13 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A522387B1DE544B10037A5BB"
+            BlueprintIdentifier = "A5C443031E039DB400C33517"
             BuildableName = "Lex.app"
             BlueprintName = "Lex"
             ReferencedContainer = "container:Lex.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
-      <EnvironmentVariables>
-         <EnvironmentVariable
-            key = "OS_ACTIVITY_MODE"
-            value = "Disable"
-            isEnabled = "YES">
-         </EnvironmentVariable>
-      </EnvironmentVariables>
       <AdditionalOptions>
-         <AdditionalOption
-            key = "NSZombieEnabled"
-            value = "YES"
-            isEnabled = "YES">
-         </AdditionalOption>
       </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
@@ -106,7 +94,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A522387B1DE544B10037A5BB"
+            BlueprintIdentifier = "A5C443031E039DB400C33517"
             BuildableName = "Lex.app"
             BlueprintName = "Lex"
             ReferencedContainer = "container:Lex.xcodeproj">
