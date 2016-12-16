@@ -62,12 +62,12 @@ let isLogin = "isLogin"
 /**
  * 用户引导页倒计时总进度
  */
-let LAUNCHPROGRESS : Double = 100
+let LAUNCHPROGRESS : Double = 90.0
 
 /**
  * 用户引导页倒计时
  */
-var LAUNCHCOUNTDOWN : Double = 3
+var LAUNCHCOUNTDOWN : Double = 3.0
 
 //MARK: -------------------------- 尺寸 --------------------------
 /**
@@ -223,3 +223,9 @@ func globalRedColor() -> UIColor {
     return RGBA(245, g: 80, b: 83, a: 1.0)
 }
 
+/**
+ * 进入主界面
+ */
+func enterMainInterface() {
+    UIApplication.shared.keyWindow?.rootViewController = ZTabBarController()
+}

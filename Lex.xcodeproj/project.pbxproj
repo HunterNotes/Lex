@@ -11,9 +11,9 @@
 		423A9C8E1DE8781800FB0D81 /* noticeMusic.caf in Resources */ = {isa = PBXBuildFile; fileRef = 423A9C8D1DE8781800FB0D81 /* noticeMusic.caf */; };
 		663B7FB6572524891A3DBB79 /* Pods_LexUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B13BC0B8A2D05ABC725B0793 /* Pods_LexUITests.framework */; };
 		8F2B4D66BE9B748FC3A23322 /* Pods_LexTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87127CB891849E081AEBD3F3 /* Pods_LexTests.framework */; };
+		A5105C541E03856E0010AEF8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5105C531E03856E0010AEF8 /* Main.storyboard */; };
 		A52238831DE544B10037A5BB /* Lex.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A52238811DE544B10037A5BB /* Lex.xcdatamodeld */; };
 		A52238851DE544B10037A5BB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A52238841DE544B10037A5BB /* Assets.xcassets */; };
-		A52238881DE544B10037A5BB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A52238861DE544B10037A5BB /* LaunchScreen.storyboard */; };
 		A52238931DE544B10037A5BB /* LexTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52238921DE544B10037A5BB /* LexTests.swift */; };
 		A522389E1DE544B10037A5BB /* LexUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A522389D1DE544B10037A5BB /* LexUITests.swift */; };
 		A52239131DE545350037A5BB /* ZAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52238B61DE545350037A5BB /* ZAppDelegate.swift */; };
@@ -74,6 +74,8 @@
 		A52E36F11E00E9130012AA52 /* HomePageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A52E36EE1E00E9130012AA52 /* HomePageCell.xib */; };
 		A52E36F41E00EBDB0012AA52 /* ScanCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52E36F21E00EBDB0012AA52 /* ScanCodeView.swift */; };
 		A52E36F51E00EBDB0012AA52 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52E36F31E00EBDB0012AA52 /* TabBarView.swift */; };
+		A59493BD1E024BBD00D939E0 /* LoadingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59493BB1E024BBD00D939E0 /* LoadingVC.swift */; };
+		A59493C11E027D1800D939E0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A59493BF1E027D1800D939E0 /* LaunchScreen.storyboard */; };
 		A5CD4DB61DFE5274007DBDAF /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CD4DB51DFE5274007DBDAF /* BaseViewController.swift */; };
 		B3F7470CC31AD98865B1EBEC /* Pods_Lex.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 047137E5694B0C4EE0C4B523 /* Pods_Lex.framework */; };
 /* End PBXBuildFile section */
@@ -105,10 +107,10 @@
 		423A9C8D1DE8781800FB0D81 /* noticeMusic.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = noticeMusic.caf; sourceTree = "<group>"; };
 		6F267505429B8AA397CC999B /* Pods-LexTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LexTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LexTests/Pods-LexTests.release.xcconfig"; sourceTree = "<group>"; };
 		87127CB891849E081AEBD3F3 /* Pods_LexTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LexTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A5105C531E03856E0010AEF8 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		A522387C1DE544B10037A5BB /* Lex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lex.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A52238821DE544B10037A5BB /* Lex.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Lex.xcdatamodel; sourceTree = "<group>"; };
 		A52238841DE544B10037A5BB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		A52238871DE544B10037A5BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A52238891DE544B10037A5BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A522388E1DE544B10037A5BB /* LexTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LexTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A52238921DE544B10037A5BB /* LexTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LexTests.swift; sourceTree = "<group>"; };
@@ -176,6 +178,8 @@
 		A52E36EE1E00E9130012AA52 /* HomePageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomePageCell.xib; sourceTree = "<group>"; };
 		A52E36F21E00EBDB0012AA52 /* ScanCodeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanCodeView.swift; sourceTree = "<group>"; };
 		A52E36F31E00EBDB0012AA52 /* TabBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
+		A59493BB1E024BBD00D939E0 /* LoadingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingVC.swift; sourceTree = "<group>"; };
+		A59493C01E027D1800D939E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A5CD4DB51DFE5274007DBDAF /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		B13BC0B8A2D05ABC725B0793 /* Pods_LexUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LexUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3388DBF3891E847B529B70B /* Pods-Lex.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lex.release.xcconfig"; path = "Pods/Target Support Files/Pods-Lex/Pods-Lex.release.xcconfig"; sourceTree = "<group>"; };
@@ -261,7 +265,8 @@
 			children = (
 				A52238B41DE545350037A5BB /* Class */,
 				A52238841DE544B10037A5BB /* Assets.xcassets */,
-				A52238861DE544B10037A5BB /* LaunchScreen.storyboard */,
+				A59493BF1E027D1800D939E0 /* LaunchScreen.storyboard */,
+				A5105C531E03856E0010AEF8 /* Main.storyboard */,
 				A52238891DE544B10037A5BB /* Info.plist */,
 				A52238811DE544B10037A5BB /* Lex.xcdatamodeld */,
 			);
@@ -456,6 +461,7 @@
 		A52E365F1E00DE6A0012AA52 /* MainVC */ = {
 			isa = PBXGroup;
 			children = (
+				A59493BB1E024BBD00D939E0 /* LoadingVC.swift */,
 				A52E36601E00DE6A0012AA52 /* UserGuideVC.swift */,
 				A52E36611E00DE6A0012AA52 /* ZTabBarController.swift */,
 			);
@@ -750,9 +756,10 @@
 				A52E36B61E00E3470012AA52 /* UserInfoCommonNoneCell.xib in Resources */,
 				A52E36DA1E00E50A0012AA52 /* UserInfoVC.xib in Resources */,
 				A52E36B81E00E3470012AA52 /* UserInfoPhotoCell.xib in Resources */,
+				A59493C11E027D1800D939E0 /* LaunchScreen.storyboard in Resources */,
+				A5105C541E03856E0010AEF8 /* Main.storyboard in Resources */,
 				A52E36B41E00E3470012AA52 /* UserInfoCommonCell.xib in Resources */,
 				A52E36D81E00E50A0012AA52 /* MyQRCodeVC.xib in Resources */,
-				A52238881DE544B10037A5BB /* LaunchScreen.storyboard in Resources */,
 				A52E36D61E00E50A0012AA52 /* UserCenterVC.xib in Resources */,
 				A522391E1DE545350037A5BB /* ZTableViewCell.xib in Resources */,
 				A52E36D31E00E50A0012AA52 /* RegisterViewController.xib in Resources */,
@@ -947,6 +954,7 @@
 				A52E36B11E00E3470012AA52 /* UserImgCell.swift in Sources */,
 				A52E36631E00DE6A0012AA52 /* ZTabBarController.swift in Sources */,
 				A52E36AE1E00E3470012AA52 /* ScanCodeTool.swift in Sources */,
+				A59493BD1E024BBD00D939E0 /* LoadingVC.swift in Sources */,
 				A52E36B01E00E3470012AA52 /* UIImage+QRCode.swift in Sources */,
 				A52E36D21E00E50A0012AA52 /* RegisterViewController.swift in Sources */,
 				A522391D1DE545350037A5BB /* ZTableViewCell.swift in Sources */,
@@ -986,10 +994,10 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		A52238861DE544B10037A5BB /* LaunchScreen.storyboard */ = {
+		A59493BF1E027D1800D939E0 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				A52238871DE544B10037A5BB /* Base */,
+				A59493C01E027D1800D939E0 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";

@@ -15,29 +15,30 @@ import Reachability
 class ZAppDelegate: UIResponder, UIApplicationDelegate {
     
     var window          : UIWindow?
-    var isReachable     : Bool = true
+//    var isReachable     : Bool = true
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        self.window = UIWindow(frame: UIScreen.main.bounds)
+//        self.window = UIWindow(frame: UIScreen.main.bounds)
         // Override point for customization after application launch.
-        self.window!.backgroundColor = UIColor.white
-        self.window!.makeKeyAndVisible()
+//        self.window!.backgroundColor = UIColor.white
+//        self.window!.makeKeyAndVisible()
         
         self.registerAppNotificationSettings(launchOptions)
         self.getLocation()
         
         _ = SQLiteManager.defaultManager().getImageFromSQLite(USER_IMGNAME)
-        
-        // 检测用户是不是第一次启动
-        if !UserDefaults.standard.bool(forKey: FirstLaunch) {
-            
-            window?.rootViewController = UserGuideVC()
-            UserDefaults.standard.set(true, forKey: FirstLaunch)
-        }
-        else {
-            self.window?.rootViewController = ZTabBarController()
-        }
+//        window?.rootViewController = LoadingVC()
+
+//        // 检测用户是不是第一次启动
+//        if !UserDefaults.standard.bool(forKey: FirstLaunch) {
+//            
+//            window?.rootViewController = UserGuideVC()
+//            UserDefaults.standard.set(true, forKey: FirstLaunch)
+//        }
+//        else {
+//            self.window?.rootViewController = ZTabBarController()
+//        }
         return true
     }
     
