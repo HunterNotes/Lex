@@ -13,14 +13,12 @@ class SavaImgHelper: NSObject {
     //MARK: - UIImage转base64字符串, 默认带有data标识,
     class func imageToBase64String(_ image : UIImage, _ headerSign : Bool = true) -> String? {
         
+        //根据图片得到对应的二进制编码
         //UIImage转为data 不压缩
         //        let imgData : NSData = UIImagePNGRepresentation(img)! as NSData
         
         //UIImage转为data 压缩图片质量 代替 UIImagePNGRepresentation
-        //        let imgData: NSData = UIImageJPEGRepresentation(img, 1.0)! as NSData
-        
-        //根据图片得到对应的二进制编码
-        guard let imgData : Data = UIImageJPEGRepresentation(image, 1.0) else {
+        guard let imgData : Data = UIImageJPEGRepresentation(image, 0.1) else {
             return "--"
         }
         
@@ -47,7 +45,7 @@ class SavaImgHelper: NSObject {
     }
     
     //MARK: - base64字符串，可以是没有经过修改的转换成的以data开头的，也可以是base64的内容字符串，然后转换成UIImage
-    class func base64StringToUIImage(_ base64String : String) -> UIImage? {
+    class func base64StringToImage(_ base64String : String) -> UIImage? {
         
         var str : String! = base64String
         
@@ -60,6 +58,7 @@ class SavaImgHelper: NSObject {
             str = newBase64String
             //            }
         }
+        
         // 2、将处理好的base64String代码转换成NSData
         guard let imgNSData = Data.init(base64Encoded: str, options: .ignoreUnknownCharacters) else {
             return nil

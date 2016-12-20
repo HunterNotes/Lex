@@ -4,16 +4,17 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--User CenterVC-->
+        <!--用户中心-->
         <scene sceneID="8QA-i2-Oza">
             <objects>
-                <viewController storyboardIdentifier="UserCenterVC" id="l3k-Yg-zL8" customClass="UserCenterVC" customModule="Lex" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="UserCenterVC" id="l3k-Yg-zL8" userLabel="用户中心" customClass="UserCenterVC" customModule="Lex" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="pgx-X8-UdT"/>
                         <viewControllerLayoutGuide type="bottom" id="kvI-za-KQj"/>
@@ -47,10 +48,10 @@
             </objects>
             <point key="canvasLocation" x="-3428" y="-795"/>
         </scene>
-        <!--User NameVC-->
+        <!--用户名字-->
         <scene sceneID="KhR-OE-ChF">
             <objects>
-                <viewController storyboardIdentifier="UserNameVC" id="iMs-wf-DVM" customClass="UserNameVC" customModule="Lex" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="UserNameVC" id="iMs-wf-DVM" userLabel="用户名字" customClass="UserNameVC" customModule="Lex" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="dzy-AB-WMY"/>
                         <viewControllerLayoutGuide type="bottom" id="0o4-vA-VnD"/>
@@ -96,10 +97,138 @@
             </objects>
             <point key="canvasLocation" x="-3428" y="-140"/>
         </scene>
-        <!--User PhotoVC-->
+        <!--我的地址-->
+        <scene sceneID="MAx-am-vFO">
+            <objects>
+                <viewController storyboardIdentifier="UserAddressVC" id="meR-CS-hJ1" userLabel="我的地址" customClass="UserAddressVC" customModule="Lex" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="n6f-Vd-03B"/>
+                        <viewControllerLayoutGuide type="bottom" id="QVv-qW-FPR"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ddq-sq-fnX">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ChN-Kh-M8b">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ShowAddressCell" rowHeight="50" id="7AR-2q-vUh" customClass="ShowAddressCell" customModule="Lex" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7AR-2q-vUh" id="5n0-hh-tZN">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Zk-eC-C3I">
+                                                    <rect key="frame" x="325" y="4.5" width="35" height="35"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="35" id="C5g-D0-Riw"/>
+                                                        <constraint firstAttribute="height" constant="35" id="eym-Nq-Gam"/>
+                                                    </constraints>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x7m-VR-5A2">
+                                                    <rect key="frame" x="15" y="14" width="255" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="4SR-cA-wEh"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="4Zk-eC-C3I" secondAttribute="trailing" constant="15" id="Afe-XJ-dvI"/>
+                                                <constraint firstAttribute="bottom" secondItem="4Zk-eC-C3I" secondAttribute="bottom" constant="10" id="SGx-KB-K2X"/>
+                                                <constraint firstItem="4Zk-eC-C3I" firstAttribute="leading" secondItem="x7m-VR-5A2" secondAttribute="trailing" constant="55" id="bfm-KR-yIi"/>
+                                                <constraint firstItem="x7m-VR-5A2" firstAttribute="leading" secondItem="5n0-hh-tZN" secondAttribute="leading" constant="15" id="n7p-It-Jox"/>
+                                                <constraint firstAttribute="bottom" secondItem="x7m-VR-5A2" secondAttribute="bottom" constant="14" id="piD-Mt-ldp"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="address" destination="x7m-VR-5A2" id="QCT-pU-9aO"/>
+                                            <outlet property="editAddressBtn" destination="4Zk-eC-C3I" id="KUn-2W-pY4"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="NewlyAddedAddressCell" rowHeight="45" id="ZuD-6A-vAb" customClass="NewlyAddedAddressCell" customModule="Lex" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="78" width="375" height="45"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZuD-6A-vAb" id="98V-nd-X6e">
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MK9-Hx-paw">
+                                                    <rect key="frame" x="15" y="5" width="35" height="35"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="35" id="Tf8-5h-cql"/>
+                                                        <constraint firstAttribute="height" constant="35" id="W2z-fY-aOD"/>
+                                                    </constraints>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="新增地址" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iNn-5V-BaY">
+                                                    <rect key="frame" x="65" y="12" width="80" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="Qom-jZ-UFd"/>
+                                                        <constraint firstAttribute="width" constant="80" id="cZI-a6-cZP"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="iNn-5V-BaY" firstAttribute="leading" secondItem="MK9-Hx-paw" secondAttribute="trailing" constant="15" id="K32-Mj-zTC"/>
+                                                <constraint firstItem="MK9-Hx-paw" firstAttribute="top" secondItem="98V-nd-X6e" secondAttribute="top" constant="5" id="aJU-V1-tr2"/>
+                                                <constraint firstItem="iNn-5V-BaY" firstAttribute="top" secondItem="98V-nd-X6e" secondAttribute="top" constant="11.5" id="bbh-ME-v5L"/>
+                                                <constraint firstItem="MK9-Hx-paw" firstAttribute="leading" secondItem="98V-nd-X6e" secondAttribute="leading" constant="15" id="qUs-p8-Ar0"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="addedAddressBtn" destination="MK9-Hx-paw" id="jAc-kU-V6G"/>
+                                            <outlet property="title" destination="iNn-5V-BaY" id="6xj-x5-CNV"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="meR-CS-hJ1" id="dFm-It-o5d"/>
+                                    <outlet property="delegate" destination="meR-CS-hJ1" id="dQT-0C-Xsa"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ChN-Kh-M8b" firstAttribute="leading" secondItem="ddq-sq-fnX" secondAttribute="leading" id="QpY-8h-fPo"/>
+                            <constraint firstItem="ChN-Kh-M8b" firstAttribute="top" secondItem="n6f-Vd-03B" secondAttribute="bottom" id="XaA-F5-8i5"/>
+                            <constraint firstItem="QVv-qW-FPR" firstAttribute="top" secondItem="ChN-Kh-M8b" secondAttribute="bottom" id="jZe-Oj-uCk"/>
+                            <constraint firstAttribute="trailing" secondItem="ChN-Kh-M8b" secondAttribute="trailing" id="qiR-Xa-Szw"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="c70-Fq-wtP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2663.1999999999998" y="505.99700149925042"/>
+        </scene>
+        <!--二维码扫描结果-->
+        <scene sceneID="pzn-e8-XLq">
+            <objects>
+                <viewController storyboardIdentifier="ScanCodeResultVC" id="nEy-ta-UML" userLabel="二维码扫描结果" customClass="ScanCodeResultVC" customModule="Lex" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="UPz-M7-GsE"/>
+                        <viewControllerLayoutGuide type="bottom" id="N1R-5O-TDP"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Q40-Pv-I4Y">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JVs-mp-Awz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3428" y="505.99700149925042"/>
+        </scene>
+        <!--用户头像-->
         <scene sceneID="h84-A1-gkB">
             <objects>
-                <viewController storyboardIdentifier="UserPhotoVC" id="0kB-dM-SW1" customClass="UserPhotoVC" customModule="Lex" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="UserPhotoVC" id="0kB-dM-SW1" userLabel="用户头像" customClass="UserPhotoVC" customModule="Lex" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="cev-M7-IGJ"/>
                         <viewControllerLayoutGuide type="bottom" id="ry3-y8-aTG"/>
@@ -129,10 +258,10 @@
             </objects>
             <point key="canvasLocation" x="-2663" y="-141"/>
         </scene>
-        <!--User InfoVC-->
+        <!--用户信息-->
         <scene sceneID="PFC-bT-RaT">
             <objects>
-                <viewController storyboardIdentifier="UserInfoVC" id="hV5-Ye-e74" customClass="UserInfoVC" customModule="Lex" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="UserInfoVC" id="hV5-Ye-e74" userLabel="用户信息" customClass="UserInfoVC" customModule="Lex" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ud5-Eb-6XP"/>
                         <viewControllerLayoutGuide type="bottom" id="FvD-xr-ACP"/>
@@ -166,10 +295,10 @@
             </objects>
             <point key="canvasLocation" x="-1858" y="-141"/>
         </scene>
-        <!--Login View Controller-->
+        <!--登录-->
         <scene sceneID="aLZ-hS-J3Q">
             <objects>
-                <viewController storyboardIdentifier="LoginViewController" id="fbz-Pp-Gpn" customClass="LoginViewController" customModule="Lex" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" id="fbz-Pp-Gpn" userLabel="登录" customClass="LoginViewController" customModule="Lex" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Pac-rh-s3a"/>
                         <viewControllerLayoutGuide type="bottom" id="CN8-wa-Xiu"/>
@@ -254,6 +383,9 @@
                                         <integer key="value" value="5"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="loginButtonClick:" destination="fbz-Pp-Gpn" eventType="touchUpInside" id="2Lz-7o-YrK"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nQd-tm-fEF">
                                 <rect key="frame" x="302" y="267" width="58" height="30"/>
@@ -310,6 +442,9 @@
                                     <constraint firstAttribute="height" constant="70" id="dJy-np-bAe"/>
                                 </constraints>
                                 <state key="normal" image="Share_WeChatSessionIcon_70x70_"/>
+                                <connections>
+                                    <action selector="otherLoginButtonClick:" destination="fbz-Pp-Gpn" eventType="touchUpInside" id="gcE-BB-TyU"/>
+                                </connections>
                             </button>
                             <button opaque="NO" tag="102" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7KD-9A-Sd9" userLabel="QQ">
                                 <rect key="frame" x="252.5" y="362" width="70" height="70"/>
@@ -318,6 +453,9 @@
                                     <constraint firstAttribute="width" constant="70" id="Wb7-Aa-ISw"/>
                                 </constraints>
                                 <state key="normal" image="Share_QQIcon_70x70_"/>
+                                <connections>
+                                    <action selector="otherLoginButtonClick:" destination="fbz-Pp-Gpn" eventType="touchUpInside" id="NAH-IN-H4a"/>
+                                </connections>
                             </button>
                             <button opaque="NO" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Tq-Ne-I0A" userLabel="微博">
                                 <rect key="frame" x="52.5" y="362" width="70" height="70"/>
@@ -326,6 +464,9 @@
                                     <constraint firstAttribute="width" constant="70" id="YgA-0W-pmC"/>
                                 </constraints>
                                 <state key="normal" image="Share_WeiboIcon_70x70_"/>
+                                <connections>
+                                    <action selector="otherLoginButtonClick:" destination="fbz-Pp-Gpn" eventType="touchUpInside" id="dXV-43-KL1"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -360,10 +501,10 @@
             </objects>
             <point key="canvasLocation" x="-2663" y="-797"/>
         </scene>
-        <!--MyQR CodeVC-->
+        <!--我的二维码-->
         <scene sceneID="ZZZ-sB-EHi">
             <objects>
-                <viewController storyboardIdentifier="MyQRCodeVC" id="whh-h8-WJ8" customClass="MyQRCodeVC" customModule="Lex" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MyQRCodeVC" id="whh-h8-WJ8" userLabel="我的二维码" customClass="MyQRCodeVC" customModule="Lex" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ov4-As-KR9"/>
                         <viewControllerLayoutGuide type="bottom" id="nVx-hV-uFV"/>
@@ -440,10 +581,10 @@
             </objects>
             <point key="canvasLocation" x="-1857" y="-796"/>
         </scene>
-        <!--Register View Controller-->
+        <!--注册-->
         <scene sceneID="185-8x-1yA">
             <objects>
-                <viewController storyboardIdentifier="RegisterViewController" id="KGk-d2-TZN" customClass="RegisterViewController" customModule="Lex" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RegisterViewController" id="KGk-d2-TZN" userLabel="注册" customClass="RegisterViewController" customModule="Lex" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="sQO-ge-dzF"/>
                         <viewControllerLayoutGuide type="bottom" id="Rbu-t0-gGr"/>
@@ -521,6 +662,7 @@
         <!--扫一扫-->
         <scene sceneID="jcX-fr-XjL">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9Ef-fq-oLv" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="ScanCodeVC" title="扫一扫" hidesBottomBarWhenPushed="YES" id="tob-sC-1gs" customClass="ScanCodeVC" customModule="Lex" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ykj-2a-ers"/>
@@ -530,19 +672,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view alpha="0.40000000596046448" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Juk-28-1zd">
-                                <rect key="frame" x="0.0" y="412" width="375" height="175"/>
+                            <view alpha="0.40000000596046448" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Juk-28-1zd" userLabel="BottomView">
+                                <rect key="frame" x="0.0" y="412.5" width="375" height="174.5"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
-                            <view alpha="0.40000000596046448" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0gG-7H-WAO">
-                                <rect key="frame" x="301" y="224" width="74" height="188"/>
+                            <view alpha="0.40000000596046448" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0gG-7H-WAO" userLabel="RightView">
+                                <rect key="frame" x="300.5" y="223.5" width="74.5" height="189"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
-                            <view alpha="0.40000000596046448" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B95-Pa-65O">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="224"/>
+                            <view alpha="0.40000000596046448" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B95-Pa-65O" userLabel="TopView">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="223.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="将取景框对准二维/条形码，即可自动扫描" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tmr-8M-qsO">
-                                        <rect key="frame" x="66" y="178" width="244" height="16"/>
+                                        <rect key="frame" x="66" y="177.5" width="244" height="16"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -554,7 +696,7 @@
                                     <constraint firstItem="tmr-8M-qsO" firstAttribute="centerX" secondItem="B95-Pa-65O" secondAttribute="centerX" id="cX5-Dc-s9e"/>
                                 </constraints>
                             </view>
-                            <view alpha="0.80000001192092896" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ijv-WV-t7O">
+                            <view alpha="0.80000001192092896" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ijv-WV-t7O" userLabel="TabBarView">
                                 <rect key="frame" x="0.0" y="587" width="375" height="80"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kV5-Ae-fwx">
@@ -562,7 +704,7 @@
                                         <state key="normal" image="qrcode_scan_btn_photo_nor"/>
                                         <state key="highlighted" image="qrcode_scan_btn_photo_down.png"/>
                                         <connections>
-                                            <action selector="photo" destination="tob-sC-1gs" eventType="touchUpInside" id="hJe-gD-hUB"/>
+                                            <action selector="photo:" destination="tob-sC-1gs" eventType="touchUpInside" id="gtV-KK-Ojk"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VHP-Vi-0z1">
@@ -575,13 +717,16 @@
                                         <state key="selected" image="qrcode_scan_btn_scan_off.png"/>
                                         <state key="highlighted" image="qrcode_scan_btn_flash_down.png"/>
                                         <connections>
-                                            <action selector="light:" destination="tob-sC-1gs" eventType="touchUpInside" id="N7g-Oj-1lM"/>
+                                            <action selector="light:" destination="tob-sC-1gs" eventType="touchUpInside" id="EpA-iu-PXh"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cfw-od-jiz">
                                         <rect key="frame" x="280" y="10" width="45" height="60"/>
                                         <state key="normal" image="qrcode_scan_btn_myqrcode_nor"/>
                                         <state key="highlighted" image="qrcode_scan_btn_myqrcode_down.png"/>
+                                        <connections>
+                                            <action selector="myQRCode:" destination="tob-sC-1gs" eventType="touchUpInside" id="eOl-K0-aAN"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -599,11 +744,11 @@
                                     <constraint firstItem="Cfw-od-jiz" firstAttribute="width" secondItem="kV5-Ae-fwx" secondAttribute="width" id="xBb-LE-1lv"/>
                                 </constraints>
                             </view>
-                            <view alpha="0.40000000596046448" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jfJ-tY-udg">
-                                <rect key="frame" x="0.0" y="224" width="76" height="188"/>
+                            <view alpha="0.40000000596046448" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jfJ-tY-udg" userLabel="LeftView">
+                                <rect key="frame" x="0.0" y="223.5" width="75.5" height="189"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
-                            <imageView userInteractionEnabled="NO" alpha="0.40000000596046448" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="QRCode_ScanBox" translatesAutoresizingMaskIntoConstraints="NO" id="Cw1-b4-sTu">
+                            <imageView userInteractionEnabled="NO" alpha="0.40000000596046448" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="QRCode_ScanBox" translatesAutoresizingMaskIntoConstraints="NO" id="Cw1-b4-sTu" userLabel="ScanPane">
                                 <rect key="frame" x="75" y="224" width="226" height="188"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -611,7 +756,7 @@
                                 </constraints>
                             </imageView>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="c55-4k-AtD">
-                                <rect key="frame" x="170" y="300" width="37" height="37"/>
+                                <rect key="frame" x="169" y="300" width="37" height="37"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="37" id="6Ye-kJ-ZkJ"/>
                                     <constraint firstAttribute="height" constant="37" id="x0x-w8-5L5"/>
@@ -619,7 +764,7 @@
                                 <color key="color" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </activityIndicatorView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Cw1-b4-sTu" firstAttribute="top" secondItem="B95-Pa-65O" secondAttribute="bottom" id="2Ko-dg-Tgx"/>
                             <constraint firstItem="0gG-7H-WAO" firstAttribute="top" secondItem="Cw1-b4-sTu" secondAttribute="top" id="6Ab-Vg-Yxk"/>
@@ -654,9 +799,8 @@
                         <outlet property="scanPane" destination="Cw1-b4-sTu" id="E1L-P4-TpP"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="9Ef-fq-oLv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1151" y="-141"/>
+            <point key="canvasLocation" x="-1151.2" y="-141.67916041979012"/>
         </scene>
     </scenes>
     <resources>

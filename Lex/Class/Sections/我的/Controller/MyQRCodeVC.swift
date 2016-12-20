@@ -10,7 +10,7 @@ import UIKit
 import Photos
 import SVProgressHUD
 
-class MyQRCodeVC: UIViewController {
+class MyQRCodeVC: BaseViewController {
     
     @IBOutlet weak var userImgView      : UIImageView!
     @IBOutlet weak var userNameLab      : UILabel!
@@ -29,7 +29,6 @@ class MyQRCodeVC: UIViewController {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(image: UIImage.init(named: "ic_more"), style: .plain, target: self, action: #selector(edit))
         
         self.getDisplayInfo()
-        self.addTapGesture()
     }
     
     func getDisplayInfo() {
@@ -73,12 +72,6 @@ class MyQRCodeVC: UIViewController {
         }
     }
     
-    func addTapGesture() {
-        
-        let tap : UITapGestureRecognizer = UITapGestureRecognizer.init(target: self, action: #selector(edit))
-        self.qrImgView.addGestureRecognizer(tap)
-    }
-    
     //MARK: 编辑二维码
     func edit() {
         
@@ -106,8 +99,7 @@ class MyQRCodeVC: UIViewController {
                 }
                 
                 let vc = UIStoryboard.init(name: "UserCenter", bundle: nil).instantiateViewController(withIdentifier: "ScanCodeVC") as! ScanCodeVC
-                
-                UIView.transition(from: self.view, to: vc.view, duration: 0.2, options: UIViewAnimationOptions.transitionCrossDissolve, completion: { (finish : Bool) in
+                UIView.transition(from: self.view, to: vc.view, duration: 0.1, options: UIViewAnimationOptions.transitionCrossDissolve, completion: { (finish : Bool) in
                     //动画
                 })
                 self.navigationController?.pushViewController(vc, animated: true)

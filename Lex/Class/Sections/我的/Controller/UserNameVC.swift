@@ -9,7 +9,7 @@
 import UIKit
 import Foundation
 
-class UserNameVC: UIViewController {
+class UserNameVC: BaseViewController {
     
     @IBOutlet weak var iTextField: UITextField!
     @IBOutlet weak var clearBtn: UIButton!
@@ -110,7 +110,7 @@ extension UserNameVC : UITextFieldDelegate {
         
         name = textField.text!
         textField.resignFirstResponder()
-        if Int(USERNAME.characters.count) != 0 && USERNAME != textField.text {
+        if Int((USERNAME?.characters.count)!) != 0 && USERNAME != textField.text {
             USERNAME = textField.text
             
             self.doBack()

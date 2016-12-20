@@ -21,8 +21,9 @@ class ZAppDelegate: UIResponder, UIApplicationDelegate {
         self.window!.backgroundColor = UIColor.white
         self.registerAppNotificationSettings(launchOptions)
         self.getLocation()
-        _ = SQLiteManager.defaultManager().getImageFromSQLite(USER_IMGNAME)
-        
+        let manager : SQLiteManager = SQLiteManager.defaultManager()
+        manager.delete(TABLENAME)
+        _ = manager.getImageFromSQLite(USER_IMGNAME)
         return true
     }
     
@@ -69,6 +70,9 @@ class ZAppDelegate: UIResponder, UIApplicationDelegate {
             
             //不能用(placeMarks?.count)! > 0 去判断，因WiFi下无法判断连接的是内网还是外网, 内网下(placeMarks?.count)!为nil会直接crash
             if (errors == nil) {
+                
+                reachabilityType = true
+                
                 let array = placeMarks! as NSArray
                 
                 let mark = array.firstObject as! CLPlacemark
@@ -108,6 +112,7 @@ class ZAppDelegate: UIResponder, UIApplicationDelegate {
             }
             else {
                 
+                reachabilityType = false
                 print("请确认连接的是外网")
             }
         })
@@ -190,12 +195,17 @@ extension ZAppDelegate : CCLocationManagerStatusDelegate {
         
         //判断连接类型
         if reachability!.isReachableViaWiFi() {
+            
+            reachabilityType = true
             print("连接类型：WiFi")
         }
         else if reachability!.isReachableViaWWAN() {
+            
+            reachabilityType = true
             print("连接类型：蜂窝移动网络")
         }
         else {
+            reachabilityType = false
             print("连接类型：没有网络连接")
         }
     }

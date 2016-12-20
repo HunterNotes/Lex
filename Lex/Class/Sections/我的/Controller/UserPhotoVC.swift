@@ -18,7 +18,7 @@ enum EditImgType : Int {
     case changed
 }
 
-class UserPhotoVC: UIViewController {
+class UserPhotoVC: BaseViewController {
     
     @IBOutlet weak var userImgView  : UIImageView!
     
@@ -184,9 +184,11 @@ class UserPhotoVC: UIViewController {
             //二维码图片转为base64字符串
             let qrStr  : String = SavaImgHelper.imageToBase64String(qrImg)!
             
-            let qrImgSize : Double = Double(qrStr.characters.count) / 1024.00
+            if qrStr == "--" {
                 
-            print("二维码大小为", qrImgSize, "KB");
+                let qrImgSize : Int = qrStr.characters.count / 1024
+                print("二维码大小为", qrImgSize, "KB");
+            }
             
             //先清空表
             weakSelf?.manager.delete(TABLENAME)

@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		44B4DF923B6FD99E5E262F4C /* Pods_Lex.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0EEB82FD92088A2281A975F /* Pods_Lex.framework */; };
 		86DCA0D831C89B2211EE8F5D /* Pods_LexTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F4F964113A6FCEC3396D41B /* Pods_LexTests.framework */; };
+		A55696E11E091D2F00E06E2D /* ScanCodeLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55696E01E091D2F00E06E2D /* ScanCodeLoadingView.swift */; };
+		A55696E31E09266B00E06E2D /* UserAddressVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55696E21E09266B00E06E2D /* UserAddressVC.swift */; };
+		A55696E51E092BE000E06E2D /* ShowAddressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55696E41E092BE000E06E2D /* ShowAddressCell.swift */; };
+		A55696E71E092C1900E06E2D /* NewlyAddedAddressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55696E61E092C1900E06E2D /* NewlyAddedAddressCell.swift */; };
+		A55B14D91E07924B008F3465 /* ScanCodeResultVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55B14D81E07924B008F3465 /* ScanCodeResultVC.swift */; };
 		A5906CFD1E03CBE300D3909D /* UserCenter.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5906CFC1E03CBE300D3909D /* UserCenter.storyboard */; };
 		A5906CFF1E03CBF900D3909D /* PageNavigation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5906CFE1E03CBF900D3909D /* PageNavigation.storyboard */; };
 		A5906D011E03CC1000D3909D /* Detection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5906D001E03CC1000D3909D /* Detection.storyboard */; };
@@ -24,7 +29,6 @@
 		A5C4439D1E03BCDF00C33517 /* UINavigationController+Extends.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C4433B1E03BCDF00C33517 /* UINavigationController+Extends.m */; };
 		A5C4439E1E03BCDF00C33517 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C4433D1E03BCDF00C33517 /* BaseViewController.swift */; };
 		A5C4439F1E03BCDF00C33517 /* ZNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C4433E1E03BCDF00C33517 /* ZNavigationController.swift */; };
-		A5C443A01E03BCDF00C33517 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C443411E03BCDF00C33517 /* User.swift */; };
 		A5C443A11E03BCDF00C33517 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C443431E03BCDF00C33517 /* UIView+Extension.swift */; };
 		A5C443A21E03BCDF00C33517 /* ZButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C443441E03BCDF00C33517 /* ZButton.swift */; };
 		A5C443A31E03BCDF00C33517 /* ZLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C443451E03BCDF00C33517 /* ZLabel.swift */; };
@@ -98,6 +102,11 @@
 		6893F3029BE2526A3B1A76B4 /* Pods-LexUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LexUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LexUITests/Pods-LexUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		6D5251EBF330E33AC88BFDEA /* Pods-LexUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LexUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LexUITests/Pods-LexUITests.release.xcconfig"; sourceTree = "<group>"; };
 		809B7B3FCDF73E9626E62DB8 /* Pods-LexTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LexTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LexTests/Pods-LexTests.release.xcconfig"; sourceTree = "<group>"; };
+		A55696E01E091D2F00E06E2D /* ScanCodeLoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanCodeLoadingView.swift; sourceTree = "<group>"; };
+		A55696E21E09266B00E06E2D /* UserAddressVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAddressVC.swift; sourceTree = "<group>"; };
+		A55696E41E092BE000E06E2D /* ShowAddressCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowAddressCell.swift; sourceTree = "<group>"; };
+		A55696E61E092C1900E06E2D /* NewlyAddedAddressCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewlyAddedAddressCell.swift; sourceTree = "<group>"; };
+		A55B14D81E07924B008F3465 /* ScanCodeResultVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanCodeResultVC.swift; sourceTree = "<group>"; };
 		A5906CFC1E03CBE300D3909D /* UserCenter.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UserCenter.storyboard; sourceTree = "<group>"; };
 		A5906CFE1E03CBF900D3909D /* PageNavigation.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PageNavigation.storyboard; sourceTree = "<group>"; };
 		A5906D001E03CC1000D3909D /* Detection.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Detection.storyboard; sourceTree = "<group>"; };
@@ -120,7 +129,6 @@
 		A5C4433B1E03BCDF00C33517 /* UINavigationController+Extends.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+Extends.m"; sourceTree = "<group>"; };
 		A5C4433D1E03BCDF00C33517 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		A5C4433E1E03BCDF00C33517 /* ZNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZNavigationController.swift; sourceTree = "<group>"; };
-		A5C443411E03BCDF00C33517 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		A5C443431E03BCDF00C33517 /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		A5C443441E03BCDF00C33517 /* ZButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZButton.swift; sourceTree = "<group>"; };
 		A5C443451E03BCDF00C33517 /* ZLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZLabel.swift; sourceTree = "<group>"; };
@@ -320,7 +328,6 @@
 		A5C443401E03BCDF00C33517 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				A5C443411E03BCDF00C33517 /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -521,9 +528,11 @@
 				A5C4436F1E03BCDF00C33517 /* MyQRCodeVC.swift */,
 				A5C443711E03BCDF00C33517 /* RegisterViewController.swift */,
 				A5C443731E03BCDF00C33517 /* ScanCodeVC.swift */,
+				A55B14D81E07924B008F3465 /* ScanCodeResultVC.swift */,
 				A5C443761E03BCDF00C33517 /* UserInfoVC.swift */,
 				A5C443781E03BCDF00C33517 /* UserNameVC.swift */,
 				A5C4437A1E03BCDF00C33517 /* UserPhotoVC.swift */,
+				A55696E21E09266B00E06E2D /* UserAddressVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -563,6 +572,9 @@
 				A5C4438B1E03BCDF00C33517 /* UserInfoPhotoCell.xib */,
 				A5C4438C1E03BCDF00C33517 /* UserInfoQRCodeCell.swift */,
 				A5C4438D1E03BCDF00C33517 /* UserInfoQRCodeCell.xib */,
+				A55696E01E091D2F00E06E2D /* ScanCodeLoadingView.swift */,
+				A55696E41E092BE000E06E2D /* ShowAddressCell.swift */,
+				A55696E61E092C1900E06E2D /* NewlyAddedAddressCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -932,10 +944,12 @@
 				A5C4439F1E03BCDF00C33517 /* ZNavigationController.swift in Sources */,
 				A5C443D61E03BCDF00C33517 /* HomePageVC.swift in Sources */,
 				A5C4439E1E03BCDF00C33517 /* BaseViewController.swift in Sources */,
+				A55696E51E092BE000E06E2D /* ShowAddressCell.swift in Sources */,
 				A5C443C91E03BCDF00C33517 /* TabBarView.swift in Sources */,
 				A5C443CE1E03BCDF00C33517 /* UserInfoCommonNoneCell.swift in Sources */,
 				A5C443C11E03BCDF00C33517 /* UserNameVC.swift in Sources */,
 				A5C443A31E03BCDF00C33517 /* ZLabel.swift in Sources */,
+				A55B14D91E07924B008F3465 /* ScanCodeResultVC.swift in Sources */,
 				A5C443D71E03BCDF00C33517 /* HomePageCell.swift in Sources */,
 				A5C443B41E03BCDF00C33517 /* DetectionCell.swift in Sources */,
 				A5C443A91E03BCDF00C33517 /* CCSingleton.swift in Sources */,
@@ -963,12 +977,14 @@
 				A5C443A51E03BCDF00C33517 /* ZSlider.swift in Sources */,
 				A5C443D01E03BCDF00C33517 /* UserInfoPhotoCell.swift in Sources */,
 				A5C443C31E03BCDF00C33517 /* UserPhotoVC.swift in Sources */,
+				A55696E11E091D2F00E06E2D /* ScanCodeLoadingView.swift in Sources */,
 				A5C443AC1E03BCDF00C33517 /* SQLiteManager.swift in Sources */,
+				A55696E31E09266B00E06E2D /* UserAddressVC.swift in Sources */,
 				A5C443BA1E03BCDF00C33517 /* RegisterViewController.swift in Sources */,
 				A5C443B01E03BCDF00C33517 /* ZTabBarController.swift in Sources */,
-				A5C443A01E03BCDF00C33517 /* User.swift in Sources */,
 				A5C443B61E03BCDF00C33517 /* LoginViewController.swift in Sources */,
 				A5C443A61E03BCDF00C33517 /* ZTableViewCell.swift in Sources */,
+				A55696E71E092C1900E06E2D /* NewlyAddedAddressCell.swift in Sources */,
 				A5C443BC1E03BCDF00C33517 /* ScanCodeVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1117,7 +1133,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: Zhang Chao (U9YF328994)";
 				DEVELOPMENT_TEAM = PU39U8DFF5;
 				INFOPLIST_FILE = Lex/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nbcb.mobilebank.Lex;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1136,7 +1152,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: Zhang Chao (U9YF328994)";
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Lex/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nbcb.mobilebank.Lex;
 				PRODUCT_NAME = "$(TARGET_NAME)";

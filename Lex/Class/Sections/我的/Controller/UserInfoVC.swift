@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UserInfoVC: UIViewController {
+class UserInfoVC: BaseViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -69,7 +69,7 @@ class UserInfoVC: UIViewController {
         signature = ""
         
         titleArr = [["头像", "名字", "xx号", "我的二维码", "我的地址"], ["性别", "地区", "个性签名"], ["Linkedln账号"]]
-        detailArr = [["", USERNAME, "HunterNotes  ", "我的二维码", address], [gender, location, signature], ["展示"]]
+        detailArr = [["", USERNAME!, "HunterNotes  ", "我的二维码", address], [gender, location, signature], ["展示"]]
     }
     
     func registerCell() {
@@ -201,7 +201,9 @@ extension UserInfoVC : UITableViewDataSource, UITableViewDelegate {
                 self.navigationController?.pushViewController(vc, animated: true)
                 break
             case 4:
-                
+                self.pushVC("UserCenter", "UserAddressVC")
+//                let vc = UIStoryboard.init(name: "UserCenter", bundle: nil).instantiateViewController(withIdentifier: "UserAddressVC") as! UserAddressVC
+//                self.navigationController?.pushViewController(vc, animated: true)
                 break
             default:
                 break

@@ -9,12 +9,15 @@
 import UIKit
 import AVFoundation
 import SnapKit
+import SVProgressHUD
 
 
 class ScanCodeVC : BaseViewController {
     
     @IBOutlet weak var scanPane                 : UIImageView! //扫描框
     @IBOutlet weak var activityIndicatorView    : UIActivityIndicatorView!
+    
+    var countDown                               : Int = 0
     
     private let scanAnimationDuration           : Double = 3.0 //扫描时长
     var lightOn                                 : Bool = false //闪光灯
@@ -28,16 +31,58 @@ class ScanCodeVC : BaseViewController {
         return scanLine
     }()
     
+    lazy var maskView : UIView = {
+        
+        let view : UIView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: app_width, height: app_height))
+        view.backgroundColor = UIColor.black
+        self.view.addSubview(view)
+        return view
+    }()
+    
+    lazy var loadingView : ScanCodeLoadingView = {
+        
+        weak var weakSelf = self
+        let activity : ScanCodeLoadingView = ScanCodeLoadingView()
+        self.maskView.addSubview(activity)
+        activity.snp.makeConstraints { (make) in
+            make.center.equalTo((weakSelf?.maskView)!)
+            make.size.equalTo(CGSize.init(width: 100, height: 100))
+        }
+        return activity
+    }()
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
         self.navigationItem.title = "二维码扫描"
+        
+        loading()
         view.layoutIfNeeded()
         scanPane.addSubview(scanLine)
-        
         setupScanSession()
     }
     
+    func loading() {
+        
+        //        SVProgressHUD.show(withStatus: "加载中……")
+        loadingView.activity.startAnimating()
+        _ = self.maskView
+        let timer : Timer = Timer.init(timeInterval: 1, target: self, selector: #selector(loadingCountDown), userInfo: nil, repeats: true)
+        RunLoop.current.add(timer, forMode: RunLoopMode.defaultRunLoopMode)
+        timer.fire()
+    }
+    
+    @objc private func loadingCountDown(timer : Timer) {
+        
+        countDown += 1
+        if countDown == 2 {
+            loadingView.activity.stopAnimating()
+            //            SVProgressHUD.dismiss()
+            timer.invalidate()
+            maskView.isHidden = true
+        }
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -46,7 +91,9 @@ class ScanCodeVC : BaseViewController {
     }
     
     //MARK: Action - 相册
-    func photo(sender : UIButton) {
+    @IBAction func photo(_ sender: UIButton) {
+        
+        weak var weakSelf = self
         
         ScanCodeTool.shareTool().choosePicture(self, true, .photoLibrary) {[weak self] (image) in
             
@@ -57,14 +104,24 @@ class ScanCodeVC : BaseViewController {
                 let result = recognizeResult?.characters.count > 0 ? recognizeResult : "无法识别"
                 DispatchQueue.main.async {
                     self!.activityIndicatorView.stopAnimating()
+                    if reachabilityType! && result != "无法识别" {
+                        
+                        let vc = UIStoryboard.init(name: "UserCenter", bundle: nil).instantiateViewController(withIdentifier: "ScanCodeResultVC") as! ScanCodeResultVC
+                        vc.urlStr = result
+                        weakSelf?.navigationController?.pushViewController(vc, animated: true)
+                        return
+                    }
                     ScanCodeTool.confirm("扫描结果", result, self!)
+                    //                    ScanCodeTool.confirm("扫描结果", result, weakSelf!, handler: { (_) in
+                    //
+                    //                    })
                 }
             }
         }
     }
     
     //MARK: Action - 灯光
-    func light(sender : UIButton) {
+    @IBAction func light(_ sender: UIButton) {
         
         lightOn = !lightOn
         sender.isSelected = lightOn
@@ -72,9 +129,9 @@ class ScanCodeVC : BaseViewController {
     }
     
     //MARK: Action - 我的二维码
-    func myQRCode(sender : UIButton) {
+    @IBAction func myQRCode(_ sender: UIButton) {
         
-        let vc = MyQRCodeVC()
+        let vc = UIStoryboard.init(name: "UserCenter", bundle: nil).instantiateViewController(withIdentifier: "MyQRCodeVC") as! MyQRCodeVC
         vc.pushFlag = 1
         self.navigationController?.pushViewController(vc, animated: true)
     }
@@ -152,8 +209,10 @@ class ScanCodeVC : BaseViewController {
     //扫描动画
     private func scanAnimation() -> CABasicAnimation {
         
-        let startPoint = CGPoint(x: scanPane .center.x  , y: 1)
-        let endPoint = CGPoint(x: scanPane.center.x, y: scanPane.bounds.size.height - 2)
+        let x : CGFloat =  scanPane.x / 2 * 3
+        
+        let startPoint = CGPoint(x: x, y: 1)
+        let endPoint = CGPoint(x: x, y: scanPane.bounds.size.height - 2)
         
         let translation = CABasicAnimation(keyPath: "position")
         translation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
@@ -220,6 +279,7 @@ extension ScanCodeVC : AVCaptureMetadataOutputObjectsDelegate {
             if let resultObj = metadataObjects.first as? AVMetadataMachineReadableCodeObject {
                 
                 ScanCodeTool.confirm("扫描结果", resultObj.stringValue, self,handler: { (_) in
+                    
                     //继续扫描
                     weakSelf?.startScan()
                 })

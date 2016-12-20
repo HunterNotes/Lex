@@ -29,7 +29,7 @@ class UserCenterVC: BaseViewController {
         
         manager = SQLiteManager.defaultManager()
         
-        if Int(USERNAME.characters.count) == 0 {
+        if Int((USERNAME?.characters.count)!) == 0 {
             USERNAME = "风一样的CC"
         }
         

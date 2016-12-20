@@ -21,6 +21,9 @@ class SQLiteManager: NSObject {
     private var userImg     : UIImage? = nil     //用户头像
     private var qrImg       : UIImage? = nil     //用户二维码
     
+    private var userImgStr  : String? = nil      //用户头像名称
+    private var qrImgStr    : String? = nil      //用户二维码图片名称
+    
     override init() {
         
         // 获取链接（不存在文件，则自动创建）
@@ -104,7 +107,7 @@ class SQLiteManager: NSObject {
     }
     
     //查询数据
-    func select(_ tableName : String!) -> NSMutableDictionary {
+    func select(_ tableName : String!) -> Dictionary<String, String> {
         
         if self.table == nil {
             self.table = self.createTable(tableName)
@@ -114,13 +117,10 @@ class SQLiteManager: NSObject {
         let imgName     : Expression<String?> = arr![2] as! Expression<String?>
         let qrName      : Expression<String?> = arr![3] as! Expression<String?>
         
-        let dic = NSMutableDictionary()
+        var dic = Dictionary<String, String>()
         for user in (try! db?.prepare(self.table!))! {
             //            print("Query: id========================== \(user[id]), \n name=========================== \(user[name]), \n imgName========================== \(user[imgName]), \n qrName =====================\(user[qrName])")
-            dic.setObject("\(user[id])", forKey: USER_ID as NSCopying)
-            dic.setObject("\(user[name])", forKey: USER_NAME as NSCopying)
-            dic.setObject("\(user[imgName])", forKey: USER_IMGNAME as NSCopying)
-            dic.setObject("\(user[qrName])", forKey: USER_QRIMGNAME as NSCopying)
+            dic = [USER_ID : "\(user[id])", USER_NAME : "\(user[name])", USER_IMGNAME : "\(user[imgName])", USER_QRIMGNAME : "\(user[qrName])"]
         }
         return dic
     }
@@ -178,43 +178,40 @@ class SQLiteManager: NSObject {
         for user in (try! db?.prepare(self.table!))! {
             
             _ = try! db?.run((self.table?.filter(id == user[id]).delete())!)
-            
         }
         for user in (try! db?.prepare(self.table!))! {
             print("Update: id==================== \(user[id]), \n name==================== \(user[name]), \n imgName==================== \(user[imgName])\n qrName==================== \(user[qrName])")
         }
     }
     
-    //MARK: - 从本地数据库中获取用户头像
+    //MARK: - 从本地数据库中获取用户头像/二维码
     func getImageFromSQLite(_ name : String) -> UIImage {
         
-        var dic : NSMutableDictionary? = nil
+        var dic : Dictionary<String, String>? = nil
         
         if name == USER_IMGNAME {   //头像
-            
             if self.userImg == nil {
                 
-                dic = self.select(name)
-                
+                dic = select(name)
                 if dic?.count > 0 {
                     
                     //获取数据库中存取图片名称
-                    let imageName : String? = dic?.object(forKey: USER_IMGNAME) as? String
-                    
-                    if  Int((imageName?.characters.count)!) > 0  {
+                    self.userImgStr = dic?[USER_IMGNAME]
+                    if Int((self.userImgStr?.characters.count)!) > 0  {
                         if self.userImg == nil {
-                            self.userImg = SavaImgHelper.base64StringToUIImage(imageName!)
+                            
+                            self.userImg = SavaImgHelper.base64StringToImage(self.userImgStr!)
                             print("成功获取数据库中的用户头像")
                         }
                     }
                 }
-                
                 //默认一张头像
                 if self.userImg == nil {
+                    
                     self.userImg =  UIImage.init(named: "UserImg")!
+                    self.userImgStr = SavaImgHelper.imageToBase64String(self.userImg!)
                 }
             }
-            
             return self.userImg!
         }
         else {   //二维码
@@ -222,24 +219,47 @@ class SQLiteManager: NSObject {
             if self.qrImg == nil {
                 
                 dic = self.select(name)
-                
                 if dic?.count > 0 {
                     
                     //获取数据库中存取图片名称
-                    let imageName : String? = dic?.object(forKey: USER_QRIMGNAME) as? String
+                    self.qrImgStr = dic?[USER_QRIMGNAME]
                     
-                    if  Int((imageName?.characters.count)!) > 0  {
+                    if  Int((self.qrImgStr?.characters.count)!) > 0  {
                         if self.qrImg == nil {
-                            self.qrImg = SavaImgHelper.base64StringToUIImage(imageName!)
+                            
+                            self.qrImg = SavaImgHelper.base64StringToImage(self.qrImgStr!)
                             print("成功获取数据库中的二维码图片")
                         }
                     }
                 }
                 
-                //默认一张二维码
+                //默认一张二维码 防止反复生成二维码
                 if self.qrImg == nil {
-                    self.qrImg =  UIImage.init(named: "QR_Default")!
+                    
+                    //生成高清二维码
+                    let image: UIImage = QRTEXT.generateQRCodeWithLogo(self.userImg)
+                    
+                    //生成base64为字符串
+                    self.qrImgStr = SavaImgHelper.imageToBase64String(image)!
+                    
+                    if self.qrImgStr != "--" {
+                        
+                        let qrImgSize : Int = self.qrImgStr!.characters.count / 1024
+                        print("二维码大小为", qrImgSize, "KB");
+                    }
+                    
+                    //压缩图片
+                    self.qrImg = SavaImgHelper.base64StringToImage(self.qrImgStr!)
+                    
+                    //先清空表
+                    delete(TABLENAME)
+                    
+                    //插入数据
+                    insert(TABLENAME, USERNAME, self.userImgStr, self.qrImgStr)
                 }
+                
+                self.userImg = getImageFromSQLite(USER_IMGNAME)
+                self.qrImg = getImageFromSQLite(USER_QRIMGNAME)
             }
             return self.qrImg!
         }

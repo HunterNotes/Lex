@@ -49,6 +49,12 @@ enum OtherLoginButtonType: Int {
 }
 
 //MARK: -------------------------- app启动/登录 --------------------------
+
+/**
+ * 网络连接类型
+ */
+var reachabilityType : Bool? = true
+
 /**
  * 是否第一次启动
  */
@@ -128,7 +134,7 @@ let TABLENAME : String = "USER"
 /**
  * 用户名称
  */
-var USERNAME : String! = ""
+var USERNAME : String? = ""
 
 /**
  * 数据库表->主键
@@ -159,7 +165,7 @@ let BASE64HEADER : String = "data:image/png;base64,"
 /**
  * 二维码内容
  */
-var QRTEXT : String = "https://github.com/HunterNotes/Swift_Debug"
+var QRTEXT : String = "https://www.baidu.com"
 
 /**
  * 二维码尺寸

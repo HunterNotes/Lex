@@ -11,13 +11,12 @@
 
 @interface UINavigationController (Extends)
 
-//- (void)popToSpecifiedViewController:(NSString *)viewControllerName animated:(BOOL)animated;
-
-
 //返回到第一个aClass类对应的viewCtrl（如果没发现aClass对应的viewCtrl，返回NO）
--(BOOL) poptoClass:(Class) aClass;
-//页面栈内查找aClass对应的viewCtrl（发现返回YES，没发现返回NO）
--(BOOL) canFindClassInNaviControllers:(Class) aClass;
+- (BOOL)poptoClass:(Class)aClass;
 
--(id) findvcOfClass:(Class) aClass;
+//页面栈内查找aClass对应的viewCtrl（发现返回YES，没发现返回NO）
+- (BOOL)canFindClassInNaviControllers:(Class)aClass;
+
+- (id)findvcOfClass:(Class)aClass;
+
 @end

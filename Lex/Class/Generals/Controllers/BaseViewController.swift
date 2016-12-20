@@ -11,7 +11,7 @@ import SVProgressHUD
 import FDFullscreenPopGesture
 
 class BaseViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = globalBGColor()
@@ -22,8 +22,14 @@ class BaseViewController: UIViewController {
         SVProgressHUD.setForegroundColor(UIColor.white)
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func pushVC(_ storyboardName : String, _ vcName : String) {
+        
+        let vc = UIStoryboard.init(name: storyboardName, bundle: nil).instantiateViewController(withIdentifier: vcName) as! BaseViewController
+        UIView.transition(from: self.view, to: vc.view, duration: 0.1, options: UIViewAnimationOptions.transitionCrossDissolve, completion: { (finish : Bool) in
+            //动画
+        })
+        self.navigationController?.pushViewController(vc, animated: true)
+
     }
+    
 }

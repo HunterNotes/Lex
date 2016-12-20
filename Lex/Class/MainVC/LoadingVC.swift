@@ -17,12 +17,8 @@ class LoadingVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setupUI()
         getAppLaunchInfo()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
     }
     
     //MARK: - 检测app是不是第一次启动
@@ -31,11 +27,12 @@ class LoadingVC: UIViewController {
         if !UserDefaults.standard.bool(forKey: FirstLaunch) {
             
             isFirstLaunch = true
+            self.progressView.isHidden = true
             UserDefaults.standard.set(true, forKey: FirstLaunch)
         }
         else {
             isFirstLaunch = false
-            setupUI()
+            self.progressView.isHidden = false
         }
     
         let timer = Timer.init(timeInterval: 1, target: self, selector: #selector(countDown(_:)), userInfo: nil, repeats: true)
@@ -67,7 +64,7 @@ class LoadingVC: UIViewController {
         
         timer += 1
         if isFirstLaunch {
-            if timer == 2 {
+            if timer >= 2 {
                 sender.invalidate()
                 UIApplication.shared.keyWindow?.rootViewController = UserGuideVC()
             }
