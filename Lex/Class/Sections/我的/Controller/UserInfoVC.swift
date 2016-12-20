@@ -49,7 +49,7 @@ class UserInfoVC: BaseViewController {
     }
     
     deinit {
-
+        
         NotificationCenter.default.removeObserver(self)
     }
     
@@ -186,11 +186,11 @@ extension UserInfoVC : UITableViewDataSource, UITableViewDelegate {
             switch row {
             case 0:
                 let vc = UIStoryboard.init(name: "UserCenter", bundle: nil).instantiateViewController(withIdentifier: "UserPhotoVC") as! UserPhotoVC
-                self.navigationController?.pushViewController(vc, animated: true)
+                self.pushVC(self.view, vc)
                 break
             case 1:
                 let vc = UIStoryboard.init(name: "UserCenter", bundle: nil).instantiateViewController(withIdentifier: "UserNameVC") as! UserNameVC
-                self.navigationController?.pushViewController(vc, animated: true)
+                self.pushVC(self.view, vc)
                 break
             case 2:
                 
@@ -198,12 +198,11 @@ extension UserInfoVC : UITableViewDataSource, UITableViewDelegate {
             case 3:
                 let vc = UIStoryboard.init(name: "UserCenter", bundle: nil).instantiateViewController(withIdentifier: "MyQRCodeVC") as! MyQRCodeVC
                 vc.pushFlag = 0;
-                self.navigationController?.pushViewController(vc, animated: true)
+                self.pushVC(self.view, vc)
                 break
             case 4:
-                self.pushVC("UserCenter", "UserAddressVC")
-//                let vc = UIStoryboard.init(name: "UserCenter", bundle: nil).instantiateViewController(withIdentifier: "UserAddressVC") as! UserAddressVC
-//                self.navigationController?.pushViewController(vc, animated: true)
+                let vc = UIStoryboard.init(name: "UserCenter", bundle: nil).instantiateViewController(withIdentifier: "UserAddressVC") as! UserAddressVC
+                self.pushVC(self.view, vc)
                 break
             default:
                 break

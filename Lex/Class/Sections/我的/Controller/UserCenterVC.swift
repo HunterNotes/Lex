@@ -25,7 +25,7 @@ class UserCenterVC: BaseViewController {
         super.viewDidLoad()
         
         self.dataArr = [[""], ["相册", "收藏", "钱包", "卡包"], ["表情"], ["设置"]]
-        self.gisterCell()
+        self.registerCell()
         
         manager = SQLiteManager.defaultManager()
         
@@ -49,7 +49,7 @@ class UserCenterVC: BaseViewController {
         self.tableView.reloadData()
     }
     
-    func gisterCell() {
+    func registerCell() {
         
         //        self.tableView.register(UserImgCell.self, forCellReuseIdentifier: cellID)
         //        self.tableView.register(ZCommonCell.self, forCellReuseIdentifier: cell1ID)
@@ -146,8 +146,7 @@ extension UserCenterVC: UITableViewDataSource, UITableViewDelegate {
         if section == 0 && row == 0 {
             
             let vc = UIStoryboard.init(name: "UserCenter", bundle: nil).instantiateViewController(withIdentifier: "UserInfoVC") as! UserInfoVC
-
-            self.navigationController?.pushViewController(vc, animated: true)
+            self.pushVC(self.view, vc)
         }
     }
 }

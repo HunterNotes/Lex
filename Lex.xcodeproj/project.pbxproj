@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4213EDCF1E097F4C00E78696 /* showAddressCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4213EDCE1E097F4C00E78696 /* showAddressCell.xib */; };
+		4213EDD11E0980A100E78696 /* NewlyAddedAddressCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4213EDD01E0980A100E78696 /* NewlyAddedAddressCell.xib */; };
 		44B4DF923B6FD99E5E262F4C /* Pods_Lex.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0EEB82FD92088A2281A975F /* Pods_Lex.framework */; };
 		86DCA0D831C89B2211EE8F5D /* Pods_LexTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F4F964113A6FCEC3396D41B /* Pods_LexTests.framework */; };
 		A55696E11E091D2F00E06E2D /* ScanCodeLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55696E01E091D2F00E06E2D /* ScanCodeLoadingView.swift */; };
@@ -98,6 +100,8 @@
 
 /* Begin PBXFileReference section */
 		0F4F964113A6FCEC3396D41B /* Pods_LexTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LexTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4213EDCE1E097F4C00E78696 /* showAddressCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = showAddressCell.xib; sourceTree = "<group>"; };
+		4213EDD01E0980A100E78696 /* NewlyAddedAddressCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewlyAddedAddressCell.xib; sourceTree = "<group>"; };
 		499767940E751928E382D833 /* Pods_LexUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LexUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6893F3029BE2526A3B1A76B4 /* Pods-LexUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LexUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LexUITests/Pods-LexUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		6D5251EBF330E33AC88BFDEA /* Pods-LexUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LexUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LexUITests/Pods-LexUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -525,8 +529,8 @@
 				A5906CFC1E03CBE300D3909D /* UserCenter.storyboard */,
 				A5C443741E03BCDF00C33517 /* UserCenterVC.swift */,
 				A5C4436D1E03BCDF00C33517 /* LoginViewController.swift */,
-				A5C4436F1E03BCDF00C33517 /* MyQRCodeVC.swift */,
 				A5C443711E03BCDF00C33517 /* RegisterViewController.swift */,
+				A5C4436F1E03BCDF00C33517 /* MyQRCodeVC.swift */,
 				A5C443731E03BCDF00C33517 /* ScanCodeVC.swift */,
 				A55B14D81E07924B008F3465 /* ScanCodeResultVC.swift */,
 				A5C443761E03BCDF00C33517 /* UserInfoVC.swift */,
@@ -574,7 +578,9 @@
 				A5C4438D1E03BCDF00C33517 /* UserInfoQRCodeCell.xib */,
 				A55696E01E091D2F00E06E2D /* ScanCodeLoadingView.swift */,
 				A55696E41E092BE000E06E2D /* ShowAddressCell.swift */,
+				4213EDCE1E097F4C00E78696 /* showAddressCell.xib */,
 				A55696E61E092C1900E06E2D /* NewlyAddedAddressCell.swift */,
+				4213EDD01E0980A100E78696 /* NewlyAddedAddressCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -729,9 +735,9 @@
 				TargetAttributes = {
 					A5C443031E039DB400C33517 = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = PU39U8DFF5;
+						DevelopmentTeam = C8X66624WA;
 						LastSwiftMigration = 0810;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 					};
 					A5C443171E039DB500C33517 = {
 						CreatedOnToolsVersion = 8.1;
@@ -785,8 +791,10 @@
 				A5C443CD1E03BCDF00C33517 /* UserInfoCommonCell.xib in Resources */,
 				A5C443B11E03BCDF00C33517 /* noticeMusic.caf in Resources */,
 				A5C443121E039DB400C33517 /* LaunchScreen.storyboard in Resources */,
+				4213EDD11E0980A100E78696 /* NewlyAddedAddressCell.xib in Resources */,
 				A5906CFF1E03CBF900D3909D /* PageNavigation.storyboard in Resources */,
 				A5C443D81E03BCDF00C33517 /* HomePageCell.xib in Resources */,
+				4213EDCF1E097F4C00E78696 /* showAddressCell.xib in Resources */,
 				A5C4430F1E039DB400C33517 /* Assets.xcassets in Resources */,
 				A5906D081E03DF4600D3909D /* UserImgCell.xib in Resources */,
 				A5C443CF1E03BCDF00C33517 /* UserInfoCommonNoneCell.xib in Resources */,
@@ -1130,15 +1138,16 @@
 			baseConfigurationReference = E8F590628160E2B1AC023B01 /* Pods-Lex.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Zhang Chao (U9YF328994)";
-				DEVELOPMENT_TEAM = PU39U8DFF5;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = C8X66624WA;
 				INFOPLIST_FILE = Lex/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.nbcb.mobilebank.Lex;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mr.zhou.cc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "71b7b5b1-7f2b-4bfe-9c2f-6a2e16b65fb8";
-				PROVISIONING_PROFILE_SPECIFIER = AlexSongDev;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Lex/Class/公共配置/Lex-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
@@ -1149,15 +1158,16 @@
 			baseConfigurationReference = E95D2E80F5D13CCCEAB83591 /* Pods-Lex.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Zhang Chao (U9YF328994)";
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = C8X66624WA;
 				INFOPLIST_FILE = Lex/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.nbcb.mobilebank.Lex;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mr.zhou.cc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "71b7b5b1-7f2b-4bfe-9c2f-6a2e16b65fb8";
-				PROVISIONING_PROFILE_SPECIFIER = AlexSongDev;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Lex/Class/公共配置/Lex-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};

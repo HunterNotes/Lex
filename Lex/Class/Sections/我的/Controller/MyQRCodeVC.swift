@@ -99,10 +99,7 @@ class MyQRCodeVC: BaseViewController {
                 }
                 
                 let vc = UIStoryboard.init(name: "UserCenter", bundle: nil).instantiateViewController(withIdentifier: "ScanCodeVC") as! ScanCodeVC
-                UIView.transition(from: self.view, to: vc.view, duration: 0.1, options: UIViewAnimationOptions.transitionCrossDissolve, completion: { (finish : Bool) in
-                    //动画
-                })
-                self.navigationController?.pushViewController(vc, animated: true)
+                self.pushVC(self.view, vc)
                 print("File camera")
             })
             optionMenu.addAction(scanAction)

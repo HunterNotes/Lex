@@ -51,7 +51,7 @@ class LoginViewController: BaseViewController {
     func regiisterButtonClick() {
         let registerVC = RegisterViewController()
         registerVC.title = "注册"
-        navigationController?.pushViewController(registerVC, animated: true)
+        self.pushVC(self.view, registerVC)
     }
     
     /// - 其他社交账号登录
