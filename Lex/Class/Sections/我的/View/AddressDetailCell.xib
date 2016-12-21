@@ -29,7 +29,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="j86-c5-VC6" customClass="REPlaceholderTextView">
-                        <rect key="frame" x="87.5" y="5" width="217.5" height="45"/>
+                        <rect key="frame" x="85" y="5" width="220" height="45"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="45" id="FAh-ts-0C2"/>
@@ -41,7 +41,7 @@
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="j86-c5-VC6" secondAttribute="trailing" constant="15" id="TuE-ay-taS"/>
                     <constraint firstItem="j86-c5-VC6" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="UXc-y1-IXi"/>
-                    <constraint firstItem="j86-c5-VC6" firstAttribute="leading" secondItem="14V-D4-aFU" secondAttribute="trailing" constant="2.5" id="f0R-6O-OVj"/>
+                    <constraint firstItem="j86-c5-VC6" firstAttribute="leading" secondItem="14V-D4-aFU" secondAttribute="trailing" id="f0R-6O-OVj"/>
                     <constraint firstItem="14V-D4-aFU" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="xb7-SX-28f"/>
                     <constraint firstItem="14V-D4-aFU" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="zC7-26-uPB"/>
                 </constraints>
