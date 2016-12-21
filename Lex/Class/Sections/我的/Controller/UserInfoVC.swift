@@ -166,14 +166,14 @@ extension UserInfoVC : UITableViewDataSource, UITableViewDelegate {
         
         if section == 0 {
             
-            return 25
+            return 20
         }
         return 5
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         
-        return 20
+        return 15
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -186,11 +186,14 @@ extension UserInfoVC : UITableViewDataSource, UITableViewDelegate {
             switch row {
             case 0:
                 let vc = UIStoryboard.init(name: "UserCenter", bundle: nil).instantiateViewController(withIdentifier: "UserPhotoVC") as! UserPhotoVC
-                self.pushVC(self.view, vc)
+                self.navigationController?.pushViewController(vc, animated: true)
                 break
             case 1:
                 let vc = UIStoryboard.init(name: "UserCenter", bundle: nil).instantiateViewController(withIdentifier: "UserNameVC") as! UserNameVC
-                self.pushVC(self.view, vc)
+                UIView.transition(from: self.view, to: vc.view, duration: 0.1, options: UIViewAnimationOptions.transitionCrossDissolve, completion: { (finish : Bool) in
+                    //动画
+                })
+                self.navigationController?.pushViewController(vc, animated: true)
                 break
             case 2:
                 
@@ -198,11 +201,11 @@ extension UserInfoVC : UITableViewDataSource, UITableViewDelegate {
             case 3:
                 let vc = UIStoryboard.init(name: "UserCenter", bundle: nil).instantiateViewController(withIdentifier: "MyQRCodeVC") as! MyQRCodeVC
                 vc.pushFlag = 0;
-                self.pushVC(self.view, vc)
+                self.navigationController?.pushViewController(vc, animated: true)
                 break
             case 4:
                 let vc = UIStoryboard.init(name: "UserCenter", bundle: nil).instantiateViewController(withIdentifier: "UserAddressVC") as! UserAddressVC
-                self.pushVC(self.view, vc)
+                self.navigationController?.pushViewController(vc, animated: true)
                 break
             default:
                 break

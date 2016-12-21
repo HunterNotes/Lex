@@ -24,6 +24,12 @@ class UserAddressVC: BaseViewController {
         self.tableView.register(UINib.init(nibName: "ShowAddressCell", bundle: nil), forCellReuseIdentifier: "ShowAddressCell")
         self.tableView.register(UINib.init(nibName: "NewlyAddedAddressCell", bundle: nil), forCellReuseIdentifier: "NewlyAddedAddressCell")
     }
+    
+    func editAddress() {
+        
+        let vc = UIStoryboard.init(name: "UserCenter", bundle: nil).instantiateViewController(withIdentifier: "UpDateAddressVC") as! UpDateAddressVC
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
 }
 
 extension UserAddressVC : UITableViewDataSource, UITableViewDelegate {
@@ -44,7 +50,7 @@ extension UserAddressVC : UITableViewDataSource, UITableViewDelegate {
         
         if row == 0 {
             
-            return 50
+            return 60
         }
         else {
             return 45
@@ -60,6 +66,7 @@ extension UserAddressVC : UITableViewDataSource, UITableViewDelegate {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ShowAddressCell", for: indexPath)
                 as! ShowAddressCell
             cell.selectionStyle = .none
+            cell.editAddressBtn.addTarget(self, action: #selector(editAddress), for: .touchUpInside)
             return cell
         }
         else {
@@ -68,6 +75,11 @@ extension UserAddressVC : UITableViewDataSource, UITableViewDelegate {
             cell.selectionStyle = .none
             return cell
         }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        
+        return 20
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

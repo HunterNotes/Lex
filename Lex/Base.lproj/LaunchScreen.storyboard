@@ -21,7 +21,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchImage_1" translatesAutoresizingMaskIntoConstraints="NO" id="FTe-zZ-aeU">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchImage_2" translatesAutoresizingMaskIntoConstraints="NO" id="FTe-zZ-aeU">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                             </imageView>
                         </subviews>
@@ -36,10 +36,10 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="98" y="245"/>
+            <point key="canvasLocation" x="96.799999999999997" y="244.22788605697153"/>
         </scene>
     </scenes>
     <resources>
-        <image name="LaunchImage_1" width="375" height="667"/>
+        <image name="LaunchImage_2" width="375" height="666"/>
     </resources>
 </document>

@@ -22,13 +22,4 @@ class BaseViewController: UIViewController {
         SVProgressHUD.setBackgroundColor(UIColor(red: 0, green: 0, blue: 0, alpha: 0.5))
         SVProgressHUD.setForegroundColor(UIColor.white)
     }
-    
-    func pushVC(_ fromView: UIView, _ vc: BaseViewController) {
-        
-        UIView.transition(from: fromView, to: vc.view, duration: 0.1, options: UIViewAnimationOptions.transitionCrossDissolve, completion: { (finish : Bool) in
-            //动画
-        })
-        self.navigationController?.pushViewController(vc, animated: true)
-        
-    }
 }

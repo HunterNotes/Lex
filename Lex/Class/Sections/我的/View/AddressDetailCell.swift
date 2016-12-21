@@ -1,5 +1,5 @@
 //
-//  ShowAddressCell.swift
+//  AddressDetailCell.swift
 //  Lex
 //
 //  Created by nbcb on 2016/12/21.
@@ -7,14 +7,17 @@
 //
 
 import UIKit
+import RETableViewManager
 
-class ShowAddressCell: UITableViewCell {
+class AddressDetailCell: UITableViewCell {
 
-    @IBOutlet weak var address: UILabel!
-    @IBOutlet weak var editAddressBtn: UIButton!
-
+    @IBOutlet weak var leftLab: UILabel!
+    @IBOutlet weak var textView: REPlaceholderTextView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        self.textView.placeholderColor = globalBGColor()
         // Initialization code
     }
 

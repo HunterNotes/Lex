@@ -73,10 +73,10 @@ class LoadingVC: UIViewController {
             if timer >= 2 {
                 
                 var pro : Double = self.progressView.progress
-                pro -= 50
+                pro -= 90
                 self.progressView.setProgress(pro, animated: true)
                 
-                if pro <= -50 { //进度条显示实际进度延迟约1秒，确保进度条走完才进入主界面
+                if pro <= -90 { //进度条显示实际进度延迟约1秒，确保进度条走完才进入主界面
                     sender.invalidate()
                     enterMainInterface()
                 }

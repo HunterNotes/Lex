@@ -26,6 +26,7 @@ class MyQRCodeVC: BaseViewController {
         super.viewDidLoad()
         
         self.navigationItem.title = "我的二维码"
+        self.view.backgroundColor = UIColor.black
         self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(image: UIImage.init(named: "ic_more"), style: .plain, target: self, action: #selector(edit))
         
         self.getDisplayInfo()
@@ -99,7 +100,10 @@ class MyQRCodeVC: BaseViewController {
                 }
                 
                 let vc = UIStoryboard.init(name: "UserCenter", bundle: nil).instantiateViewController(withIdentifier: "ScanCodeVC") as! ScanCodeVC
-                self.pushVC(self.view, vc)
+//                UIView.transition(from: self.view, to: vc.view, duration: 0.1, options: UIViewAnimationOptions.transitionCrossDissolve, completion: { (finish : Bool) in
+//                    //动画
+//                })
+                self.navigationController?.pushViewController(vc, animated: true)
                 print("File camera")
             })
             optionMenu.addAction(scanAction)

@@ -128,14 +128,14 @@ extension UserCenterVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         
         if section == 0 {
-            return 10
+            return 20
         }
         return 5
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         
-        return 5
+        return 15
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -146,7 +146,7 @@ extension UserCenterVC: UITableViewDataSource, UITableViewDelegate {
         if section == 0 && row == 0 {
             
             let vc = UIStoryboard.init(name: "UserCenter", bundle: nil).instantiateViewController(withIdentifier: "UserInfoVC") as! UserInfoVC
-            self.pushVC(self.view, vc)
+            self.navigationController?.pushViewController(vc, animated: true)
         }
     }
 }

@@ -10,10 +10,8 @@
 #define Lex_Bridging_Header_h
 
 #import "UINavigationController+Extends.h"
+
 #import "sqlite3.h"
 #import <time.h>
-//#import "SVProgressHUD.h"
-//#import "UINavigationController+FDFullscreenPopGesture.h"
-//#import "Reachability.h"
 
 #endif /* Lex_Bridging_Header_h */

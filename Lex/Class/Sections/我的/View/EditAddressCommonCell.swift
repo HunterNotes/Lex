@@ -1,5 +1,5 @@
 //
-//  ShowAddressCell.swift
+//  EditAddressCommonCell.swift
 //  Lex
 //
 //  Created by nbcb on 2016/12/21.
@@ -8,11 +8,12 @@
 
 import UIKit
 
-class ShowAddressCell: UITableViewCell {
+class EditAddressCommonCell: UITableViewCell {
 
-    @IBOutlet weak var address: UILabel!
-    @IBOutlet weak var editAddressBtn: UIButton!
-
+    @IBOutlet weak var leftLab: UILabel!
+    @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var button: UIButton!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

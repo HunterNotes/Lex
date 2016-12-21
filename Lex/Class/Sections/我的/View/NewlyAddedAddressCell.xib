@@ -1,52 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="NewlyAddedAddressCell" rowHeight="45" id="Hiy-Ir-vct" customClass="NewlyAddedAddressCell" customModule="Lex" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="45"/>
-            <autoresizingMask key="autoresizingMask"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Hiy-Ir-vct" id="MDg-pG-rdS">
-                <rect key="frame" x="0.0" y="0.0" width="342" height="44"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="45" id="2S8-CR-TVS" customClass="NewlyAddedAddressCell" customModule="Lex" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="45"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2S8-CR-TVS" id="aBX-sf-bu8">
+                <rect key="frame" x="0.0" y="0.0" width="287" height="44"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p7h-09-ZiU">
-                        <rect key="frame" x="15" y="5" width="35" height="35"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="新增地址" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WAl-8u-pfE">
+                        <rect key="frame" x="65" y="12" width="80" height="20"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="35" id="m8A-8y-m2I"/>
-                            <constraint firstAttribute="height" constant="35" id="nej-8S-aqi"/>
+                            <constraint firstAttribute="height" constant="20" id="lyp-kk-vAg"/>
+                            <constraint firstAttribute="width" constant="80" id="snf-g2-sWW"/>
                         </constraints>
-                    </button>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="新增地址" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CT0-l8-Tdg">
-                        <rect key="frame" x="65" y="12" width="80" height="21"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="21" id="fN0-eW-chA"/>
-                            <constraint firstAttribute="width" constant="80" id="rAW-4L-5s0"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xOA-Gy-IlV">
+                        <rect key="frame" x="15" y="5" width="35" height="35"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="35" id="VHP-Wa-mRx"/>
+                            <constraint firstAttribute="height" constant="35" id="VHr-jz-wdD"/>
+                        </constraints>
+                    </button>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="CT0-l8-Tdg" firstAttribute="top" secondItem="MDg-pG-rdS" secondAttribute="top" constant="11.5" id="Z1X-ym-qC6"/>
-                    <constraint firstItem="p7h-09-ZiU" firstAttribute="leading" secondItem="MDg-pG-rdS" secondAttribute="leading" constant="15" id="dpn-bg-rYk"/>
-                    <constraint firstItem="p7h-09-ZiU" firstAttribute="top" secondItem="MDg-pG-rdS" secondAttribute="top" constant="5" id="hvf-hl-EQE"/>
-                    <constraint firstItem="CT0-l8-Tdg" firstAttribute="leading" secondItem="p7h-09-ZiU" secondAttribute="trailing" constant="15" id="xST-Hx-Ewz"/>
+                    <constraint firstItem="WAl-8u-pfE" firstAttribute="top" secondItem="aBX-sf-bu8" secondAttribute="top" constant="12.5" id="1rx-Pc-xTk"/>
+                    <constraint firstItem="WAl-8u-pfE" firstAttribute="leading" secondItem="xOA-Gy-IlV" secondAttribute="trailing" constant="15" id="ePA-dl-jvt"/>
+                    <constraint firstItem="xOA-Gy-IlV" firstAttribute="top" secondItem="aBX-sf-bu8" secondAttribute="top" constant="5" id="kbD-zO-Cgl"/>
+                    <constraint firstItem="xOA-Gy-IlV" firstAttribute="leading" secondItem="aBX-sf-bu8" secondAttribute="leading" constant="15" id="xN1-Y6-srB"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="addedAddressBtn" destination="p7h-09-ZiU" id="MMN-4z-aBC"/>
-                <outlet property="title" destination="CT0-l8-Tdg" id="jjl-ze-Sa2"/>
+                <outlet property="addedAddressBtn" destination="xOA-Gy-IlV" id="TWU-Ut-O6h"/>
+                <outlet property="title" destination="WAl-8u-pfE" id="meU-CX-4wt"/>
             </connections>
+            <point key="canvasLocation" x="-130" y="43"/>
         </tableViewCell>
     </objects>
 </document>

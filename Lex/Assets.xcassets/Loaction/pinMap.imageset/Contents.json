@@ -2,11 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "walkthrough_2.jpg",
+      "filename" : "pinMap.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "pinMap@2x.png",
       "scale" : "2x"
     },
     {

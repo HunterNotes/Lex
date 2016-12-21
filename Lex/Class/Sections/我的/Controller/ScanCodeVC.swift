@@ -108,7 +108,7 @@ class ScanCodeVC : BaseViewController {
                         
                         let vc = UIStoryboard.init(name: "UserCenter", bundle: nil).instantiateViewController(withIdentifier: "ScanCodeResultVC") as! ScanCodeResultVC
                         vc.urlStr = result
-                        weakSelf?.pushVC((weakSelf?.view)!, vc)
+                        weakSelf?.navigationController?.pushViewController(vc, animated: true)
                         return
                     }
                     ScanCodeTool.confirm("扫描结果", result, self!)
@@ -133,7 +133,7 @@ class ScanCodeVC : BaseViewController {
         
         let vc = UIStoryboard.init(name: "UserCenter", bundle: nil).instantiateViewController(withIdentifier: "MyQRCodeVC") as! MyQRCodeVC
         vc.pushFlag = 1
-        self.pushVC(self.view, vc)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     //MARK: Interface Components
