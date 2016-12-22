@@ -27,8 +27,13 @@ class UserAddressVC: BaseViewController {
     
     func editAddress() {
         
+        doGoUpDateAddressVC(0)
+    }
+    
+    func doGoUpDateAddressVC(_ index: Int) {
+        
         let vc = UIStoryboard.init(name: "UserCenter", bundle: nil).instantiateViewController(withIdentifier: "UpDateAddressVC") as! UpDateAddressVC
-        self.navigationController?.pushViewController(vc, animated: true)
+        self.present(vc, animated: true, completion: nil)
     }
 }
 
@@ -66,6 +71,7 @@ extension UserAddressVC : UITableViewDataSource, UITableViewDelegate {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ShowAddressCell", for: indexPath)
                 as! ShowAddressCell
             cell.selectionStyle = .none
+            cell.editAddressBtn.tag = row
             cell.editAddressBtn.addTarget(self, action: #selector(editAddress), for: .touchUpInside)
             return cell
         }
@@ -86,10 +92,8 @@ extension UserAddressVC : UITableViewDataSource, UITableViewDelegate {
         
         let row     : Int = (indexPath as NSIndexPath).row
         
-        if row == 0 {
-            
-//            let vc = UIStoryboard.init(name: "UserCenter", bundle: nil).instantiateViewController(withIdentifier: "UserInfoVC") as! UserInfoVC
-//            self.pushVC(self.view, vc)
+        if row == 1 {
+            doGoUpDateAddressVC(1)
         }
     }
 }

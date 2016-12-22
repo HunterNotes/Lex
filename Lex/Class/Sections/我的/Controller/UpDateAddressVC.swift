@@ -7,30 +7,47 @@
 //
 
 import UIKit
+import SVProgressHUD
 import Contacts
 import ContactsUI
-//import AddressBook
-//import AddressBookUI
 
 class UpDateAddressVC: BaseViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
     var titleArr        : [String]!
+    var index           : Int!
+    
+    /* 通讯录信息 */
     var name            : String? = ""
     var phoneNum        : String? = ""
     var address         : String? = ""
     var addressDetail   : String? = ""
     var locality        : String? = ""
+    var postalCode      : String? = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.navigationItem.title = "修改地址"
         
+        //设置状态栏的文字颜色
+        UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
+        self.view.addSubview(self.naBar)
+        
         titleArr = ["姓名", "手机号码", "选择地区", "", "邮编"]
         self.registerCell()
     }
+    
+    lazy var naBar: PresentNaBarView = {
+        
+        let bar : PresentNaBarView = PresentNaBarView.init(frame: CGRect.init(x: 0, y: 0, width: app_width, height: 64));
+        bar.backgroundColor = nav_color()
+        bar.saveBtn.isEnabled = false
+        bar.cancelBtn.addTarget(self, action: #selector(cancel), for: .touchUpInside)
+        bar.saveBtn.addTarget(self, action: #selector(save), for: .touchUpInside)
+        return bar
+    }()
     
     func registerCell() {
         
@@ -38,14 +55,26 @@ class UpDateAddressVC: BaseViewController {
         self.tableView.register(UINib.init(nibName: "AddressDetailCell", bundle: nil), forCellReuseIdentifier: "AddressDetailCell")
     }
     
+    //MARK: action
+    func cancel() {
+        
+        let alertVC : UIAlertController = UIAlertController.init(title: nil, message: "确定放弃此次编辑", preferredStyle: .alert)
+        let cancelAction : UIAlertAction = UIAlertAction.init(title: "取消", style: .cancel, handler: nil)
+        let confirmAction : UIAlertAction = UIAlertAction.init(title: "确定", style: .default, handler: { (_) in
+            self.dismiss(animated: true, completion: nil)
+        })
+        alertVC.addAction(cancelAction)
+        alertVC.addAction(confirmAction)
+        self.present(alertVC, animated: true, completion: nil)
+    }
+    
+    func save() {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     @objc func edit(_ sender: UIButton) {
         
         if sender.tag == 0 {
-            
-            //            let picker = ABPeoplePickerNavigationController()
-            //            picker.peoplePickerDelegate = self
-            //            self.present(picker, animated: true) { () -> Void in
-            //            }
             
             if #available(iOS 9.0, *) {
                 
@@ -54,9 +83,8 @@ class UpDateAddressVC: BaseViewController {
                 present(cpvc, animated: true, completion: nil)
             }
             else {
-                // Fallback on earlier versions
+                SVProgressHUD.showError(withStatus: "仅支持iOS9及以上系统")
             }
-            
         }
         else if sender.tag == 2 {
             
@@ -98,14 +126,16 @@ extension UpDateAddressVC : UITableViewDataSource, UITableViewDelegate {
                 as! AddressDetailCell
             cell.selectionStyle = .none
             cell.leftLab.text = "详细地址"
+            cell.textView.delegate = self
             cell.textView.placeholder = "街道门牌信息"
-            
+            cell.textView.text = self.addressDetail!
             return cell
         }
         else {
             let cell1 = tableView.dequeueReusableCell(withIdentifier: "EditAddressCommonCell", for: indexPath)
                 as! EditAddressCommonCell
             cell1.selectionStyle = .none
+            cell1.textField.isEnabled = true
             cell1.button.tag = row
             cell1.button.addTarget(self, action: #selector(edit(_:)), for: .touchUpInside)
             cell1.leftLab.text = self.titleArr[row]
@@ -113,22 +143,24 @@ extension UpDateAddressVC : UITableViewDataSource, UITableViewDelegate {
             case 0:
                 cell1.textField.placeholder = "名字"
                 cell1.button.isHidden = false
-                cell1.textField.text = self.name
+                cell1.textField.text = self.name!
                 cell1.button.setImage(UIImage.init(named: "contacts"), for: .normal)
                 break
             case 1:
                 cell1.textField.placeholder = "11位手机号"
-                cell1.textField.text = self.phoneNum
+                cell1.textField.text = self.phoneNum!
                 cell1.button.isHidden = true
                 break
             case 2:
                 cell1.textField.placeholder = "地区信息"
-                cell1.textField.text = self.addressDetail
+                cell1.textField.isEnabled = false
+                cell1.textField.text = self.address!
                 cell1.button.isHidden = false
                 cell1.button.setImage(UIImage.init(named: "loaction"), for: .normal)
                 break
             case 4:
                 cell1.textField.placeholder = "邮政编码"
+                cell1.textField.text = self.postalCode!
                 cell1.button.isHidden = true
                 break
             default:
@@ -155,95 +187,44 @@ extension UpDateAddressVC : UITableViewDataSource, UITableViewDelegate {
     }
 }
 
-//MARK: ABPeoplePickerNavigationControllerDelegate
-//extension UpDateAddressVC: ABPeoplePickerNavigationControllerDelegate {
-//    
-//    
-//    func peoplePickerNavigationController(_ peoplePicker: ABPeoplePickerNavigationController,
-//                                          didSelectPerson person: ABRecord) {
-//        //获取姓
-//        let lastName = ABRecordCopyValue(person, kABPersonLastNameProperty).takeRetainedValue()
-//            as! String
-//        //获取名
-//        let firstName = ABRecordCopyValue(person, kABPersonFirstNameProperty).takeRetainedValue()
-//            as! String
-//        
-//        self.name = "\(lastName)\(firstName)"
-//        print("姓名：", self.name ?? "")
-//        
-//        //获取电话
-//        let phoneValues: ABMutableMultiValue? =
-//            ABRecordCopyValue(person, kABPersonPhoneProperty).takeRetainedValue()
-//        
-//        if phoneValues != nil {
-//            
-//            self.phoneNum = "\(phoneValues)"
-//            print("电话：\(phoneValues)")
-//        }
-//        
-//        //获取地址
-//        let addressValues:ABMutableMultiValue? =
-//            ABRecordCopyValue(person, kABPersonAddressProperty).takeRetainedValue()
-//        
-//        if addressValues != nil {
-//            
-//            self.addressDetail = "\(addressValues)"
-//            print("地址：\(addressValues)")
-//            
-//            for i in 0 ..< ABMultiValueGetCount(addressValues) {
-//                
-//                // 获得标签名
-//                let label = ABMultiValueCopyLabelAtIndex(addressValues, i).takeRetainedValue()
-//                    as CFString;
-//                let localizedLabel = ABAddressBookCopyLocalizedLabel(label)
-//                    .takeRetainedValue() as String
-//                
-//                let value = ABMultiValueCopyValueAtIndex(addressValues, i)
-//                let addrNSDict:NSMutableDictionary = value!.takeRetainedValue()
-//                    as! NSMutableDictionary
-//                let country: String = addrNSDict.value(forKey: kABPersonAddressCountryKey as String)
-//                    as? String ?? ""
-//                let state: String = addrNSDict.value(forKey: kABPersonAddressStateKey as String)
-//                    as? String ?? ""
-//                let city: String = addrNSDict.value(forKey: kABPersonAddressCityKey as String)
-//                    as? String ?? ""
-//                let street: String = addrNSDict.value(forKey: kABPersonAddressStreetKey as String)
-//                    as? String ?? ""
-//                let contryCode: String = addrNSDict
-//                    .value(forKey: kABPersonAddressCountryCodeKey as String) as? String ?? ""
-//                print("\(localizedLabel): Contry:\(country) State:\(state) ")
-//                print("City:\(city) Street:\(street) ContryCode:\(contryCode) ")
-//            }
-//        }
-//        self.tableView.reloadData()
-//    }
-//    func peoplePickerNavigationController(_ peoplePicker: ABPeoplePickerNavigationController,
-//                                          didSelectPerson person: ABRecord, property: ABPropertyID,
-//                                          identifier: ABMultiValueIdentifier) {
-//        
-//    }
-//    
-//    //取消按钮点击
-//    func peoplePickerNavigationControllerDidCancel(_ peoplePicker: ABPeoplePickerNavigationController) {
-//        
-//        //去除地址选择界面
-//        peoplePicker.dismiss(animated: true, completion: { () -> Void in
-//            
-//        })
-//    }
-//    
-//    func peoplePickerNavigationController(_ peoplePicker: ABPeoplePickerNavigationController,
-//                                          shouldContinueAfterSelectingPerson person: ABRecord) -> Bool {
-//        return true
-//    }
-//    
-//    func peoplePickerNavigationController(_ peoplePicker: ABPeoplePickerNavigationController,
-//                                          shouldContinueAfterSelectingPerson person: ABRecord, property: ABPropertyID,
-//                                          identifier: ABMultiValueIdentifier) -> Bool {
-//        return true
-//    }
-//}
+//MARK: UITextViewDelegate
 
+extension UpDateAddressVC : UITextViewDelegate {
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        
+        self.naBar.saveBtn.isEnabled = true
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        
+        return true
+    }
+}
+
+//MARK: UITextFieldDelegate
+extension UpDateAddressVC : UITextFieldDelegate {
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        
+        self.naBar.saveBtn.isEnabled = true
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        return true
+    }
+}
+
+//MARK: CNContactPickerDelegate
 extension UpDateAddressVC:  CNContactPickerDelegate {
     
     @available(iOS 9.0, *)
@@ -267,14 +248,46 @@ extension UpDateAddressVC:  CNContactPickerDelegate {
             print(self.phoneNum ?? "")
         }
         
+        // 3.获取用户地址
+        let postalAddresses = contact.postalAddresses
+        for i in 0 ..< postalAddresses.count - 1 {
+            
+            let ad = postalAddresses[i]
+            print("\(ad)")
+            
+            //国家
+            _ = ad.value.country
+            
+            //省
+            let state : String = ad.value.state
+            
+            //市
+            let city : String = ad.value.city
+            
+            //街道
+            self.addressDetail = ad.value.street
+            
+            let arr = self.addressDetail?.components(separatedBy: "区")
+            
+            //区
+            var area : String? = ""
+            if arr?.count > 0 {
+                area = (arr?[0])! + "区"
+            }
+            
+            //邮编
+            self.postalCode = ad.value.postalCode
+            
+            self.address = "\(state)" + "   \(city)" + "   \(area!)"
+        }
         self.tableView.reloadData()
     }
     
     //这个方法和上面的方法是一样的,只是它是获取多个联系人的信息
-//    @available(iOS 9.0, *)
-//    func contactPicker(_ picker: CNContactPickerViewController, didSelect contacts: [CNContact]) {
-//        
-//    }
+    //    @available(iOS 9.0, *)
+    //    func contactPicker(_ picker: CNContactPickerViewController, didSelect contacts: [CNContact]) {
+    //
+    //    }
     
     @available(iOS 9.0, *)
     func contactPickerDidCancel(_ picker: CNContactPickerViewController) {

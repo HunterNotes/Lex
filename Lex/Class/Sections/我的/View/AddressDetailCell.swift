@@ -17,13 +17,13 @@ class AddressDetailCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.textView.placeholderColor = globalBGColor()
+        self.textView.placeholderColor = RGBA(188, g: 187, b: 195, a: 1)
         // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     

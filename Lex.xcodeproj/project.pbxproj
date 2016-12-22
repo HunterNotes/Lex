@@ -19,8 +19,7 @@
 		A5906D051E03CD0400D3909D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5906D041E03CD0400D3909D /* Main.storyboard */; };
 		A5906D081E03DF4600D3909D /* UserImgCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5906D061E03DF4600D3909D /* UserImgCell.xib */; };
 		A5906D091E03DF4600D3909D /* ZCommonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5906D071E03DF4600D3909D /* ZCommonCell.xib */; };
-		A5B50D9A1E0A678A00660A26 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B50D991E0A678A00660A26 /* AddressBook.framework */; };
-		A5B50D9C1E0A678F00660A26 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B50D9B1E0A678F00660A26 /* AddressBookUI.framework */; };
+		A5A38D951E0B7614000E2965 /* PresentNaBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A38D941E0B7614000E2965 /* PresentNaBarView.swift */; };
 		A5B50D9E1E0A80BE00660A26 /* Contacts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B50D9D1E0A80BE00660A26 /* Contacts.framework */; };
 		A5B50DA01E0A80C500660A26 /* ContactsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B50D9F1E0A80C500660A26 /* ContactsUI.framework */; };
 		A5C4430F1E039DB400C33517 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5C4430E1E039DB400C33517 /* Assets.xcassets */; };
@@ -32,12 +31,7 @@
 		A5C4439E1E03BCDF00C33517 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C4433D1E03BCDF00C33517 /* BaseViewController.swift */; };
 		A5C4439F1E03BCDF00C33517 /* ZNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C4433E1E03BCDF00C33517 /* ZNavigationController.swift */; };
 		A5C443A11E03BCDF00C33517 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C443431E03BCDF00C33517 /* UIView+Extension.swift */; };
-		A5C443A21E03BCDF00C33517 /* ZButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C443441E03BCDF00C33517 /* ZButton.swift */; };
 		A5C443A31E03BCDF00C33517 /* ZLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C443451E03BCDF00C33517 /* ZLabel.swift */; };
-		A5C443A41E03BCDF00C33517 /* ZSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C443461E03BCDF00C33517 /* ZSegmentedControl.swift */; };
-		A5C443A51E03BCDF00C33517 /* ZSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C443471E03BCDF00C33517 /* ZSlider.swift */; };
-		A5C443A61E03BCDF00C33517 /* ZTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C443481E03BCDF00C33517 /* ZTableViewCell.swift */; };
-		A5C443A71E03BCDF00C33517 /* ZTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5C443491E03BCDF00C33517 /* ZTableViewCell.xib */; };
 		A5C443A81E03BCDF00C33517 /* CCLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C4434D1E03BCDF00C33517 /* CCLocationManager.swift */; };
 		A5C443A91E03BCDF00C33517 /* CCSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C4434E1E03BCDF00C33517 /* CCSingleton.swift */; };
 		A5C443AA1E03BCDF00C33517 /* SavaImgHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C443511E03BCDF00C33517 /* SavaImgHelper.swift */; };
@@ -123,6 +117,7 @@
 		A5906D041E03CD0400D3909D /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		A5906D061E03DF4600D3909D /* UserImgCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserImgCell.xib; sourceTree = "<group>"; };
 		A5906D071E03DF4600D3909D /* ZCommonCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZCommonCell.xib; sourceTree = "<group>"; };
+		A5A38D941E0B7614000E2965 /* PresentNaBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentNaBarView.swift; sourceTree = "<group>"; };
 		A5B50D991E0A678A00660A26 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		A5B50D9B1E0A678F00660A26 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		A5B50D9D1E0A80BE00660A26 /* Contacts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Contacts.framework; path = System/Library/Frameworks/Contacts.framework; sourceTree = SDKROOT; };
@@ -143,12 +138,7 @@
 		A5C4433D1E03BCDF00C33517 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		A5C4433E1E03BCDF00C33517 /* ZNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZNavigationController.swift; sourceTree = "<group>"; };
 		A5C443431E03BCDF00C33517 /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
-		A5C443441E03BCDF00C33517 /* ZButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZButton.swift; sourceTree = "<group>"; };
 		A5C443451E03BCDF00C33517 /* ZLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZLabel.swift; sourceTree = "<group>"; };
-		A5C443461E03BCDF00C33517 /* ZSegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZSegmentedControl.swift; sourceTree = "<group>"; };
-		A5C443471E03BCDF00C33517 /* ZSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZSlider.swift; sourceTree = "<group>"; };
-		A5C443481E03BCDF00C33517 /* ZTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZTableViewCell.swift; sourceTree = "<group>"; };
-		A5C443491E03BCDF00C33517 /* ZTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZTableViewCell.xib; sourceTree = "<group>"; };
 		A5C4434D1E03BCDF00C33517 /* CCLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCLocationManager.swift; sourceTree = "<group>"; };
 		A5C4434E1E03BCDF00C33517 /* CCSingleton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCSingleton.swift; sourceTree = "<group>"; };
 		A5C443511E03BCDF00C33517 /* SavaImgHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavaImgHelper.swift; sourceTree = "<group>"; };
@@ -212,8 +202,6 @@
 			files = (
 				A5B50DA01E0A80C500660A26 /* ContactsUI.framework in Frameworks */,
 				A5B50D9E1E0A80BE00660A26 /* Contacts.framework in Frameworks */,
-				A5B50D9C1E0A678F00660A26 /* AddressBookUI.framework in Frameworks */,
-				A5B50D9A1E0A678A00660A26 /* AddressBook.framework in Frameworks */,
 				44B4DF923B6FD99E5E262F4C /* Pods_Lex.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -362,12 +350,8 @@
 			isa = PBXGroup;
 			children = (
 				A5C443431E03BCDF00C33517 /* UIView+Extension.swift */,
-				A5C443441E03BCDF00C33517 /* ZButton.swift */,
+				A5A38D941E0B7614000E2965 /* PresentNaBarView.swift */,
 				A5C443451E03BCDF00C33517 /* ZLabel.swift */,
-				A5C443461E03BCDF00C33517 /* ZSegmentedControl.swift */,
-				A5C443471E03BCDF00C33517 /* ZSlider.swift */,
-				A5C443481E03BCDF00C33517 /* ZTableViewCell.swift */,
-				A5C443491E03BCDF00C33517 /* ZTableViewCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -816,7 +800,6 @@
 				A5C443D11E03BCDF00C33517 /* UserInfoPhotoCell.xib in Resources */,
 				A5F1C6341E0A200000EA1F92 /* EditAddressCommonCell.xib in Resources */,
 				A5906D091E03DF4600D3909D /* ZCommonCell.xib in Resources */,
-				A5C443A71E03BCDF00C33517 /* ZTableViewCell.xib in Resources */,
 				A5906D011E03CC1000D3909D /* Detection.storyboard in Resources */,
 				A5F1C6381E0A26E300EA1F92 /* AddressDetailCell.xib in Resources */,
 				A5906CFD1E03CBE300D3909D /* UserCenter.storyboard in Resources */,
@@ -982,9 +965,9 @@
 				A5C443A81E03BCDF00C33517 /* CCLocationManager.swift in Sources */,
 				A5C443C71E03BCDF00C33517 /* UIImage+QRCode.swift in Sources */,
 				A5C443C61E03BCDF00C33517 /* String+QRCode.swift in Sources */,
-				A5C443A21E03BCDF00C33517 /* ZButton.swift in Sources */,
 				A5C4439F1E03BCDF00C33517 /* ZNavigationController.swift in Sources */,
 				A5C443D61E03BCDF00C33517 /* HomePageVC.swift in Sources */,
+				A5A38D951E0B7614000E2965 /* PresentNaBarView.swift in Sources */,
 				A5C4439E1E03BCDF00C33517 /* BaseViewController.swift in Sources */,
 				A5F1C6281E0A0ECE00EA1F92 /* ShowAddressCell.swift in Sources */,
 				A5C443C91E03BCDF00C33517 /* TabBarView.swift in Sources */,
@@ -1012,12 +995,10 @@
 				A5C443CC1E03BCDF00C33517 /* UserInfoCommonCell.swift in Sources */,
 				A5C443AD1E03BCDF00C33517 /* LoadingVC.swift in Sources */,
 				A5C443AB1E03BCDF00C33517 /* SaveUserImageHelper.swift in Sources */,
-				A5C443A41E03BCDF00C33517 /* ZSegmentedControl.swift in Sources */,
 				A5C443CA1E03BCDF00C33517 /* UserImgCell.swift in Sources */,
 				A5C443B31E03BCDF00C33517 /* DetectionModel.swift in Sources */,
 				A5C443AF1E03BCDF00C33517 /* UserGuideVC.swift in Sources */,
 				A5C443D91E03BCDF00C33517 /* Config.swift in Sources */,
-				A5C443A51E03BCDF00C33517 /* ZSlider.swift in Sources */,
 				A5C443D01E03BCDF00C33517 /* UserInfoPhotoCell.swift in Sources */,
 				A5C443C31E03BCDF00C33517 /* UserPhotoVC.swift in Sources */,
 				A55696E11E091D2F00E06E2D /* ScanCodeLoadingView.swift in Sources */,
@@ -1027,7 +1008,6 @@
 				A5C443B01E03BCDF00C33517 /* ZTabBarController.swift in Sources */,
 				A5C443B61E03BCDF00C33517 /* LoginViewController.swift in Sources */,
 				A5F1C6331E0A200000EA1F92 /* EditAddressCommonCell.swift in Sources */,
-				A5C443A61E03BCDF00C33517 /* ZTableViewCell.swift in Sources */,
 				A5F1C62C1E0A0EE700EA1F92 /* NewlyAddedAddressCell.swift in Sources */,
 				A5C443BC1E03BCDF00C33517 /* ScanCodeVC.swift in Sources */,
 			);

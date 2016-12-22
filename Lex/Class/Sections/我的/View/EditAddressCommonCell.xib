@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -19,7 +19,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7iw-jQ-svf">
-                        <rect key="frame" x="15" y="12" width="70" height="20"/>
+                        <rect key="frame" x="20" y="12" width="70" height="20"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="7dM-LF-0Dk"/>
                             <constraint firstAttribute="width" constant="70" id="Tbe-6c-jsA"/>
@@ -29,7 +29,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HXD-WB-bMJ">
-                        <rect key="frame" x="280" y="9.5" width="25" height="25"/>
+                        <rect key="frame" x="275" y="9.5" width="25" height="25"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="25" id="5fv-Na-hvL"/>
                             <constraint firstAttribute="height" constant="25" id="Omc-Wy-mn4"/>
@@ -37,7 +37,7 @@
                         <state key="normal" image="contacts"/>
                     </button>
                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lkI-46-UEd">
-                        <rect key="frame" x="90" y="12" width="185" height="20"/>
+                        <rect key="frame" x="95" y="12" width="175" height="20"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="w8i-Rs-60d"/>
                         </constraints>
@@ -50,8 +50,8 @@
                     <constraint firstItem="lkI-46-UEd" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="52h-UL-jbQ"/>
                     <constraint firstItem="HXD-WB-bMJ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="9.5" id="CMR-Qm-0Fq"/>
                     <constraint firstItem="7iw-jQ-svf" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="DBR-Zu-Bfx"/>
-                    <constraint firstAttribute="trailing" secondItem="HXD-WB-bMJ" secondAttribute="trailing" constant="15" id="OFy-u5-Dy4"/>
-                    <constraint firstItem="7iw-jQ-svf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="c2J-Hd-xUF"/>
+                    <constraint firstAttribute="trailing" secondItem="HXD-WB-bMJ" secondAttribute="trailing" constant="20" id="OFy-u5-Dy4"/>
+                    <constraint firstItem="7iw-jQ-svf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="c2J-Hd-xUF"/>
                     <constraint firstItem="lkI-46-UEd" firstAttribute="leading" secondItem="7iw-jQ-svf" secondAttribute="trailing" constant="5" id="icc-kh-SiE"/>
                     <constraint firstItem="HXD-WB-bMJ" firstAttribute="leading" secondItem="lkI-46-UEd" secondAttribute="trailing" constant="5" id="yKe-KU-S7t"/>
                 </constraints>
