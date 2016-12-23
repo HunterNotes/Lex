@@ -22,6 +22,8 @@
 		A5A38D951E0B7614000E2965 /* PresentNaBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A38D941E0B7614000E2965 /* PresentNaBarView.swift */; };
 		A5B50D9E1E0A80BE00660A26 /* Contacts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B50D9D1E0A80BE00660A26 /* Contacts.framework */; };
 		A5B50DA01E0A80C500660A26 /* ContactsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B50D9F1E0A80C500660A26 /* ContactsUI.framework */; };
+		A5BBA1DA1E0CC9EE00256ED7 /* AddressPickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5BBA1D91E0CC9EE00256ED7 /* AddressPickView.swift */; };
+		A5BBA1DC1E0CCFBD00256ED7 /* Address.plist in Resources */ = {isa = PBXBuildFile; fileRef = A5BBA1DB1E0CCFBD00256ED7 /* Address.plist */; };
 		A5C4430F1E039DB400C33517 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5C4430E1E039DB400C33517 /* Assets.xcassets */; };
 		A5C443121E039DB400C33517 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5C443101E039DB400C33517 /* LaunchScreen.storyboard */; };
 		A5C4431D1E039DB500C33517 /* LexTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C4431C1E039DB500C33517 /* LexTests.swift */; };
@@ -122,6 +124,8 @@
 		A5B50D9B1E0A678F00660A26 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		A5B50D9D1E0A80BE00660A26 /* Contacts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Contacts.framework; path = System/Library/Frameworks/Contacts.framework; sourceTree = SDKROOT; };
 		A5B50D9F1E0A80C500660A26 /* ContactsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ContactsUI.framework; path = System/Library/Frameworks/ContactsUI.framework; sourceTree = SDKROOT; };
+		A5BBA1D91E0CC9EE00256ED7 /* AddressPickView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressPickView.swift; sourceTree = "<group>"; };
+		A5BBA1DB1E0CCFBD00256ED7 /* Address.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Address.plist; sourceTree = "<group>"; };
 		A5C443041E039DB400C33517 /* Lex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lex.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5C4430E1E039DB400C33517 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A5C443111E039DB400C33517 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -254,6 +258,7 @@
 				A5C4430E1E039DB400C33517 /* Assets.xcassets */,
 				A5C443101E039DB400C33517 /* LaunchScreen.storyboard */,
 				A5C443131E039DB400C33517 /* Info.plist */,
+				A5BBA1DB1E0CCFBD00256ED7 /* Address.plist */,
 			);
 			path = Lex;
 			sourceTree = "<group>";
@@ -328,6 +333,7 @@
 			children = (
 				A5C4433D1E03BCDF00C33517 /* BaseViewController.swift */,
 				A5C4433E1E03BCDF00C33517 /* ZNavigationController.swift */,
+				A5BBA1D91E0CC9EE00256ED7 /* AddressPickView.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -804,6 +810,7 @@
 				A5F1C6381E0A26E300EA1F92 /* AddressDetailCell.xib in Resources */,
 				A5906CFD1E03CBE300D3909D /* UserCenter.storyboard in Resources */,
 				A5906D031E03CC2900D3909D /* HomePage.storyboard in Resources */,
+				A5BBA1DC1E0CCFBD00256ED7 /* Address.plist in Resources */,
 				A5C443CD1E03BCDF00C33517 /* UserInfoCommonCell.xib in Resources */,
 				A5C443B11E03BCDF00C33517 /* noticeMusic.caf in Resources */,
 				A5C443121E039DB400C33517 /* LaunchScreen.storyboard in Resources */,
@@ -987,6 +994,7 @@
 				A5C443B51E03BCDF00C33517 /* PageNavigationVC.swift in Sources */,
 				A5C443A11E03BCDF00C33517 /* UIView+Extension.swift in Sources */,
 				A5C443D41E03BCDF00C33517 /* ZCommonCell.swift in Sources */,
+				A5BBA1DA1E0CC9EE00256ED7 /* AddressPickView.swift in Sources */,
 				A5C4439C1E03BCDF00C33517 /* ZAppDelegate.swift in Sources */,
 				A5C443C81E03BCDF00C33517 /* ScanCodeView.swift in Sources */,
 				A5C443B81E03BCDF00C33517 /* MyQRCodeVC.swift in Sources */,

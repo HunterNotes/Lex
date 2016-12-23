@@ -26,6 +26,13 @@ class UpDateAddressVC: BaseViewController {
     var locality        : String? = ""
     var postalCode      : String? = ""
     
+    /* 地址 */
+    var state           : String? = ""
+    var city            : String? = ""
+    var area            : String? = ""
+    var isPopPickViwe   : Bool?   = false
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,9 +41,15 @@ class UpDateAddressVC: BaseViewController {
         //设置状态栏的文字颜色
         UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
         self.view.addSubview(self.naBar)
-        
+        self.view.addSubview(self.pickerView)
         titleArr = ["姓名", "手机号码", "选择地区", "", "邮编"]
         self.registerCell()
+    }
+    
+    func registerCell() {
+        
+        self.tableView.register(UINib.init(nibName: "EditAddressCommonCell", bundle: nil), forCellReuseIdentifier: "EditAddressCommonCell")
+        self.tableView.register(UINib.init(nibName: "AddressDetailCell", bundle: nil), forCellReuseIdentifier: "AddressDetailCell")
     }
     
     lazy var naBar: PresentNaBarView = {
@@ -49,10 +62,58 @@ class UpDateAddressVC: BaseViewController {
         return bar
     }()
     
-    func registerCell() {
+    lazy var pickerView : AddressPickView = {
         
-        self.tableView.register(UINib.init(nibName: "EditAddressCommonCell", bundle: nil), forCellReuseIdentifier: "EditAddressCommonCell")
-        self.tableView.register(UINib.init(nibName: "AddressDetailCell", bundle: nil), forCellReuseIdentifier: "AddressDetailCell")
+        let rec : CGRect = CGRect.init(x: 0, y: app_height, width: app_width, height: 244)
+        let pick : AddressPickView = AddressPickView.init(frame: rec)
+        pick.backgroundColor = UIColor.white
+        pick.adDelegate = self
+        return pick
+    }()
+    
+    func setPickViewFrame(_ hidden : Bool) {
+        
+        if self.isPopPickViwe == false {
+            
+            UIView.animate(withDuration: 0.25, delay: 0.0, options: .curveEaseIn, animations: {
+                
+                self.popPickerView()
+            }, completion: { (finish : Bool) in
+                
+                UIView.animate(withDuration: 0.25, delay: 0.0, options: .curveEaseIn, animations: {
+                    
+                    self.dismissPickerView()
+                }, completion: { (finished : Bool) in
+                    
+                    //                        self.pickerView.removeFromSuperview()
+                })
+            })
+        }
+        else {
+            
+            UIView.animate(withDuration: 0.25, delay: 0.0, options: .curveEaseIn, animations: {
+                
+                self.dismissPickerView()
+            }, completion: { (finish : Bool) in
+                
+                UIView.animate(withDuration: 0.25, delay: 0.0, options: .curveEaseIn, animations: {
+                    
+                    self.popPickerView()
+                }, completion: { (finished : Bool) in
+                    
+                })
+            })
+        }
+    }
+    
+    func popPickerView() {
+        
+        self.pickerView.frame = CGRect.init(x: 0, y: app_height - 244, width: app_width, height: 244)
+    }
+    
+    func dismissPickerView() {
+        
+        self.pickerView.frame = CGRect.init(x: 0, y: app_height, width: app_width, height: 244)
     }
     
     //MARK: action
@@ -92,6 +153,7 @@ class UpDateAddressVC: BaseViewController {
     }
 }
 
+//MARK: UITableViewDataSource UITableViewDelegate
 extension UpDateAddressVC : UITableViewDataSource, UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -179,16 +241,17 @@ extension UpDateAddressVC : UITableViewDataSource, UITableViewDelegate {
         
         let row     : Int = (indexPath as NSIndexPath).row
         
-        if row == 0 {
+        if row == 2 {
             
-            //            let vc = UIStoryboard.init(name: "UserCenter", bundle: nil).instantiateViewController(withIdentifier: "UserInfoVC") as! UserInfoVC
-            //            self.pushVC(self.view, vc)
+            self.isPopPickViwe = !self.isPopPickViwe!
+            self.setPickViewFrame(self.isPopPickViwe!)
+        }
+        else {
+            self.dismissPickerView()
         }
     }
 }
-
 //MARK: UITextViewDelegate
-
 extension UpDateAddressVC : UITextViewDelegate {
     
     func textViewDidBeginEditing(_ textView: UITextView) {
@@ -247,43 +310,10 @@ extension UpDateAddressVC:  CNContactPickerDelegate {
             self.phoneNum = num.replacingOccurrences(of: "-", with: "")
             print(self.phoneNum ?? "")
         }
-        
-        // 3.获取用户地址
-        let postalAddresses = contact.postalAddresses
-        for i in 0 ..< postalAddresses.count - 1 {
-            
-            let ad = postalAddresses[i]
-            print("\(ad)")
-            
-            //国家
-            _ = ad.value.country
-            
-            //省
-            let state : String = ad.value.state
-            
-            //市
-            let city : String = ad.value.city
-            
-            //街道
-            self.addressDetail = ad.value.street
-            
-            let arr = self.addressDetail?.components(separatedBy: "区")
-            
-            //区
-            var area : String? = ""
-            if arr?.count > 0 {
-                area = (arr?[0])! + "区"
-            }
-            
-            //邮编
-            self.postalCode = ad.value.postalCode
-            
-            self.address = "\(state)" + "   \(city)" + "   \(area!)"
-        }
         self.tableView.reloadData()
     }
     
-    //这个方法和上面的方法是一样的,只是它是获取多个联系人的信息
+    //获取多个联系人的信息
     //    @available(iOS 9.0, *)
     //    func contactPicker(_ picker: CNContactPickerViewController, didSelect contacts: [CNContact]) {
     //
@@ -292,5 +322,28 @@ extension UpDateAddressVC:  CNContactPickerDelegate {
     @available(iOS 9.0, *)
     func contactPickerDidCancel(_ picker: CNContactPickerViewController) {
         
+    }
+}
+
+extension UpDateAddressVC : AddressPickDelegate {
+    
+    func selectedCancel() {
+        
+        self.setPickViewFrame(false)
+    }
+    
+    func selectedConfirm(_ dic: Dictionary<String, Any>) {
+        
+        if dic.count > 0 {
+            
+            self.state = dic["state"] as! String?
+            self.city = dic["city"] as! String?
+            self.area = dic["area"] as! String?
+            
+            self.address = "\(self.state)" + "   \(self.city)" + "   \(self.area)"
+            self.tableView.reloadData()
+        }
+        
+        self.setPickViewFrame(false)
     }
 }
