@@ -27,7 +27,7 @@ import CoreLocation
 
 class CCLocationManager: NSObject {
     
-    private var manager             : CLLocationManager!
+    fileprivate var manager             : CLLocationManager!
     var locationList                : NSArray!
     var statusDelegate              : CCLocationManagerStatusDelegate!
     

@@ -11,6 +11,8 @@
 
 #import "UINavigationController+Extends.h"
 
+#import <MAMapKit/MAMapKit.h>
+#import <AMapFoundationKit/AMapFoundationKit.h>
 #import "sqlite3.h"
 #import <time.h>
 

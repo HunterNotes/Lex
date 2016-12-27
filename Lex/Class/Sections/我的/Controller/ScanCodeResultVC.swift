@@ -24,7 +24,7 @@ class ScanCodeResultVC: BaseViewController {
         self.navigationItem.title = "扫描结果"
         self.view.addSubview(webView)
         webView.delegate = self
-        webView.loadRequest(NSURLRequest(url: NSURL(string: urlStr)! as URL) as URLRequest)
+        webView.loadRequest(URLRequest(url: URL(string: urlStr)! as URL) as URLRequest)
     }
 }
 

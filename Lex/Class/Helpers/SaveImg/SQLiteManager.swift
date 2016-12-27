@@ -13,16 +13,16 @@ class SQLiteManager: NSObject {
     
     var db                  : Connection? = nil
     var arr                 : [AnyObject]!
-    private var table       : Table? = nil
+    fileprivate var table       : Table? = nil
     
     /**
      * 多个地方调用获取图片的方法，消耗性能，故将获取到的图片设置成属性， 增、删、改之后会将图片置为nil，确保重新获取图片时，获取到的是最新的图片
      */
-    private var userImg     : UIImage? = nil     //用户头像
-    private var qrImg       : UIImage? = nil     //用户二维码
+    fileprivate var userImg     : UIImage? = nil     //用户头像
+    fileprivate var qrImg       : UIImage? = nil     //用户二维码
     
-    private var userImgStr  : String? = nil      //用户头像名称
-    private var qrImgStr    : String? = nil      //用户二维码图片名称
+    fileprivate var userImgStr  : String? = nil      //用户头像名称
+    fileprivate var qrImgStr    : String? = nil      //用户二维码图片名称
     
     override init() {
         
@@ -58,7 +58,7 @@ class SQLiteManager: NSObject {
     //    }
     
     // 创建表
-    private func createTable(_ tableName : String!) -> Table {
+    fileprivate func createTable(_ tableName : String!) -> Table {
         
         //        _ = getConnection()
         

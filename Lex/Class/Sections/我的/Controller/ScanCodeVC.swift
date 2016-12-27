@@ -19,7 +19,7 @@ class ScanCodeVC : BaseViewController {
     
     var countDown                               : Int = 0
     
-    private let scanAnimationDuration           : Double = 3.0 //扫描时长
+    fileprivate let scanAnimationDuration           : Double = 3.0 //扫描时长
     var lightOn                                 : Bool = false //闪光灯
     var scanSession                             : AVCaptureSession?
     
@@ -73,7 +73,7 @@ class ScanCodeVC : BaseViewController {
         timer.fire()
     }
     
-    @objc private func loadingCountDown(timer : Timer) {
+    @objc fileprivate func loadingCountDown(_ timer : Timer) {
         
         countDown += 1
         if countDown == 2 {

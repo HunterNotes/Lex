@@ -15,6 +15,9 @@ class UpDateAddressVC: BaseViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
+    var currentField    : UITextField!
+    var textView        : UITextView!
+    
     var titleArr        : [String]!
     var index           : Int!
     
@@ -32,17 +35,16 @@ class UpDateAddressVC: BaseViewController {
     var area            : String? = ""
     var isPopPickViwe   : Bool?   = false
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.navigationItem.title = "修改地址"
         
         //设置状态栏的文字颜色
         UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
         self.view.addSubview(self.naBar)
+        self.naBar.naBarItem.text = "修改地址"
         self.view.addSubview(self.pickerView)
         titleArr = ["姓名", "手机号码", "选择地区", "", "邮编"]
+        
         self.registerCell()
     }
     
@@ -71,37 +73,38 @@ class UpDateAddressVC: BaseViewController {
         return pick
     }()
     
-    func setPickViewFrame(_ hidden : Bool) {
+    func setPickViewFrame() {
+        
+        self.isPopPickViwe = !self.isPopPickViwe!
         
         if self.isPopPickViwe == false {
             
             UIView.animate(withDuration: 0.25, delay: 0.0, options: .curveEaseIn, animations: {
                 
-                self.popPickerView()
+                self.dismissPickerView()
+                
             }, completion: { (finish : Bool) in
                 
-                UIView.animate(withDuration: 0.25, delay: 0.0, options: .curveEaseIn, animations: {
-                    
-                    self.dismissPickerView()
-                }, completion: { (finished : Bool) in
-                    
-                    //                        self.pickerView.removeFromSuperview()
-                })
+                //                UIView.animate(withDuration: 0.25, delay: 0.0, options: .curveEaseIn, animations: {
+                //
+                //                }, completion: { (finished : Bool) in
+                //
+                //                })
             })
         }
         else {
             
             UIView.animate(withDuration: 0.25, delay: 0.0, options: .curveEaseIn, animations: {
                 
-                self.dismissPickerView()
+                self.popPickerView()
+                
             }, completion: { (finish : Bool) in
                 
-                UIView.animate(withDuration: 0.25, delay: 0.0, options: .curveEaseIn, animations: {
-                    
-                    self.popPickerView()
-                }, completion: { (finished : Bool) in
-                    
-                })
+                //                UIView.animate(withDuration: 0.25, delay: 0.0, options: .curveEaseIn, animations: {
+                //
+                //                }, completion: { (finished : Bool) in
+                //
+                //                })
             })
         }
     }
@@ -149,7 +152,14 @@ class UpDateAddressVC: BaseViewController {
         }
         else if sender.tag == 2 {
             
+            let vc = UIStoryboard.init(name: "UserCenter", bundle: nil).instantiateViewController(withIdentifier: "LocationVC") as! LocationVC
+            self.present(vc, animated: true, completion: nil)
         }
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        self.isEditing = true
     }
 }
 
@@ -198,6 +208,7 @@ extension UpDateAddressVC : UITableViewDataSource, UITableViewDelegate {
                 as! EditAddressCommonCell
             cell1.selectionStyle = .none
             cell1.textField.isEnabled = true
+            cell1.textField.delegate = self
             cell1.button.tag = row
             cell1.button.addTarget(self, action: #selector(edit(_:)), for: .touchUpInside)
             cell1.leftLab.text = self.titleArr[row]
@@ -243,8 +254,7 @@ extension UpDateAddressVC : UITableViewDataSource, UITableViewDelegate {
         
         if row == 2 {
             
-            self.isPopPickViwe = !self.isPopPickViwe!
-            self.setPickViewFrame(self.isPopPickViwe!)
+            self.setPickViewFrame()
         }
         else {
             self.dismissPickerView()
@@ -256,6 +266,7 @@ extension UpDateAddressVC : UITextViewDelegate {
     
     func textViewDidBeginEditing(_ textView: UITextView) {
         
+        self.textView = textView
         self.naBar.saveBtn.isEnabled = true
     }
     
@@ -267,6 +278,8 @@ extension UpDateAddressVC : UITextViewDelegate {
         
         return true
     }
+    
+    
 }
 
 //MARK: UITextFieldDelegate
@@ -274,6 +287,7 @@ extension UpDateAddressVC : UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         
+        self.currentField = textField
         self.naBar.saveBtn.isEnabled = true
     }
     
@@ -284,6 +298,13 @@ extension UpDateAddressVC : UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
         return true
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        textField.resignFirstResponder()
+        return true
+        
     }
 }
 
@@ -325,11 +346,12 @@ extension UpDateAddressVC:  CNContactPickerDelegate {
     }
 }
 
+//MARK: AddressPickDelegate
 extension UpDateAddressVC : AddressPickDelegate {
     
     func selectedCancel() {
         
-        self.setPickViewFrame(false)
+        self.setPickViewFrame()
     }
     
     func selectedConfirm(_ dic: Dictionary<String, Any>) {
@@ -340,10 +362,10 @@ extension UpDateAddressVC : AddressPickDelegate {
             self.city = dic["city"] as! String?
             self.area = dic["area"] as! String?
             
-            self.address = "\(self.state)" + "   \(self.city)" + "   \(self.area)"
+            self.address = "\(self.state!)" + "   \(self.city!)" + "   \(self.area!)"
             self.tableView.reloadData()
         }
         
-        self.setPickViewFrame(false)
+        self.setPickViewFrame()
     }
 }

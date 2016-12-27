@@ -13,7 +13,7 @@ class UserCenterVC: BaseViewController {
     let cellID          : String = "UserImgCell"
     let cell1ID         : String = "ZCommonCell"
     
-    private var userImg : UIImage? = nil
+    fileprivate var userImg : UIImage? = nil
     
     
     var dataArr         : [[String]]!

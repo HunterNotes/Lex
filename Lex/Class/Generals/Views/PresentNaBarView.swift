@@ -32,6 +32,16 @@ class PresentNaBarView: UIView {
         return button
     }()
     
+    lazy var naBarItem : UILabel = {
+        
+        let label : UILabel = UILabel()
+        label.backgroundColor = UIColor.clear
+        label.textColor = UIColor.white
+        label.textAlignment = .center
+        label.font = UIFont.systemFont(ofSize: 17.0)
+        return label
+    }()
+    
     override init(frame: CGRect) {
         
         super.init(frame: frame)
@@ -42,14 +52,22 @@ class PresentNaBarView: UIView {
         self.cancelBtn.snp.makeConstraints { (make) -> Void in
             make.left.equalTo(15)
             make.bottom.equalTo(-7)
-            make.size.equalTo(CGSize.init(width: 30, height: 30))
+            make.size.equalTo(CGSize.init(width: 50, height: 30))
         }
         
         self.addSubview(self.saveBtn)
         self.saveBtn.snp.makeConstraints { (make) -> Void in
             make.right.equalTo(-15)
             make.bottom.equalTo(-7)
-            make.size.equalTo(CGSize.init(width: 30, height: 30))
+            make.size.equalTo(CGSize.init(width: 50, height: 30))
+        }
+        
+        self.addSubview(self.naBarItem)
+        self.naBarItem.snp.makeConstraints { (make) -> Void in
+            make.left.equalTo(65)
+            make.right.equalTo(-65)
+            make.bottom.equalTo(-7)
+            make.height.equalTo(30)
         }
     }
     

@@ -18,12 +18,14 @@ class ZAppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        self.window!.backgroundColor = UIColor.white
         self.registerAppNotificationSettings(launchOptions)
         self.getLocation()
         let manager : SQLiteManager = SQLiteManager.defaultManager()
         manager.delete(TABLENAME)
         _ = manager.getImageFromSQLite(USER_IMGNAME)
+        
+        AMapServices.shared().apiKey = APIKey
+
         return true
     }
     

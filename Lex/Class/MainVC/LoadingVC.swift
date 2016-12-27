@@ -22,7 +22,7 @@ class LoadingVC: UIViewController {
     }
     
     //MARK: - 检测app是不是第一次启动
-    private func getAppLaunchInfo() {
+    fileprivate func getAppLaunchInfo() {
         
         if !UserDefaults.standard.bool(forKey: FirstLaunch) {
             
@@ -40,7 +40,7 @@ class LoadingVC: UIViewController {
         timer.fire()
     }
 
-    private func setupUI() {
+    fileprivate func setupUI() {
         
         weak var weakSelf = self
         self.view.addSubview(self.progressView)

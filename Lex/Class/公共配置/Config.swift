@@ -177,21 +177,13 @@ let ScanCode_Height : CGFloat = app_height / 3
  */
 let ScanCode_Space : CGFloat = (app_width - (app_height / 3)) / 2
 
-//MARK: -------------------------- 网络请求相关 --------------------------
-/**
- * 服务器地址
- */
-let BASE_URL = "http://api.dantangapp.com/"
+//MARK: -------------------------- 高德地图 --------------------------
 
-/**
- * code 码 200 操作成功
- */
-let RETURN_OK = 200
+/* 使用高德地图API，请注册Key，注册地址：http://lbs.amap.com/dev/#/ */
 
-/**
- * 动画时长
- */
-let kAnimationDuration = 0.25
+let APIKey : String? = "1c325d78a960fd7eec1c2ec545317813"
+
+let TableID : String? = ""
 
 //MARK: -------------------------- 颜色 --------------------------
 /**
