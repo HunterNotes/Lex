@@ -8,22 +8,23 @@
 
 import UIKit
 
-class LocationVC: BaseViewController {
+class LocationVC: BaseViewController, SearchDelegate {
     
-    @IBOutlet weak var search: UISearchBar!
-    @IBOutlet weak var topView: UIView!
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var topView      : UIView!
+    @IBOutlet weak var tableView    : UITableView!
+    @IBOutlet weak var searchBtn    : UIButton!
     
-    var selectIndex : Int = 0
-    var mapView: MAMapView!
-    var gpsButton: UIButton!
+    var selectIndex                 : Int = 0
+    var mapView                     : MAMapView!
+    var gpsButton                   : UIButton!
+    var hiddenSearch                : Bool = false
+    var isEnlarge                   : Bool = false
+    var lastContentOffset           : CGFloat = 0.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
         self.view.addSubview(self.naBar)
-        self.naBar.naBarItem.text = "位置"
         
         initMapView()
         registerCell()
@@ -37,7 +38,9 @@ class LocationVC: BaseViewController {
     //MARK: 导航条相关
     lazy var naBar: PresentNaBarView = {
         
+        UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
         let bar : PresentNaBarView = PresentNaBarView.init(frame: CGRect.init(x: 0, y: 0, width: app_width, height: 64));
+        bar.naBarItem.text = "位置"
         bar.backgroundColor = nav_color()
         bar.saveBtn.isEnabled = false
         bar.saveBtn.setTitle("确定", for: .normal)
@@ -45,6 +48,7 @@ class LocationVC: BaseViewController {
         bar.saveBtn.addTarget(self, action: #selector(confirm), for: .touchUpInside)
         return bar
     }()
+    
     
     func cancel() {
         
@@ -56,7 +60,82 @@ class LocationVC: BaseViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-    //MARK: <# 根据背景图片和头像合成头像二维码#>
+    //MARK: 搜索框相关
+    lazy var search: Search = {
+        let se = Search.init(frame: UIScreen.main.bounds)
+        se.searchField.placeholder = "搜索地址"
+        se.delegate = self
+        return se
+    }()
+    
+    @IBAction func searchAction(_ sender: UIButton) {
+        
+        self.hiddenSearch = true
+        self.touchSearchAnimation()
+        
+        if let window = UIApplication.shared.keyWindow {
+            window.addSubview(self.search)
+            self.search.animate()
+        }
+    }
+    
+    func touchSearchAnimation() {
+        
+        weak var weakSelf = self
+        if self.hiddenSearch {
+            
+            UIView.animate(withDuration: 0.25, delay: 0.25, options: .curveEaseIn, animations: {
+                
+                weakSelf?.topView.snp.updateConstraints({ (make) in
+                    make.left.equalTo(0)
+                    make.top.equalTo(69)
+                    make.size.equalTo(CGSize.init(width: app_width, height: 270))
+                })
+                weakSelf?.tableView.snp.updateConstraints({ (make) in
+                    make.left.equalTo(0)
+                    make.top.equalTo(339)
+                    make.size.equalTo(CGSize.init(width: app_width, height: app_height - 339))
+                })
+                weakSelf?.searchBtn.isHidden = true
+                
+            }, completion: { (finish : Bool) in
+                
+            })
+        }
+        else {
+            
+            UIView.animate(withDuration: 0.25, delay: 0.25, options: .curveEaseIn, animations: {
+                
+                weakSelf?.topView.snp.updateConstraints({ (make) in
+                    make.left.equalTo(0)
+                    make.top.equalTo(109)
+                    make.size.equalTo(CGSize.init(width: app_width, height: 270))
+                })
+                weakSelf?.tableView.snp.updateConstraints({ (make) in
+                    make.left.equalTo(0)
+                    make.top.equalTo(379)
+                    make.size.equalTo(CGSize.init(width: app_width, height: app_height - 379))
+                })
+                weakSelf?.searchBtn.isHidden = false
+                
+            }, completion: { (finish : Bool) in
+                
+            })
+        }
+    }
+    
+    //MARK: SearchDelegate
+    func hideSearchView(status : Bool) {
+        
+        self.hiddenSearch = false
+        self.touchSearchAnimation()
+        
+        if status == true {
+            self.search.removeFromSuperview()
+        }
+    }
+    
+    //MARK: 高德地图相关
     func makeGPSButtonView() -> UIButton! {
         
         let ret = UIButton.init(frame: CGRect.init(x: 0, y: 0, width: 40, height: 40))
@@ -125,6 +204,152 @@ class LocationVC: BaseViewController {
             self.gpsButton.isSelected = true
         }
     }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        weak var weakSelf = self
+        let contentOffsety : CGFloat = scrollView.contentOffset.y
+        if contentOffsety < 0 {
+            var rect : CGRect = self.topView.frame
+            rect.size.height = self.topView.height - contentOffsety
+            rect.origin.y = 0
+            self.topView.frame = rect
+        }
+        else {
+            
+            var rect : CGRect = self.topView.frame
+            rect.size.height = self.topView.height
+            rect.origin.y = -contentOffsety
+            self.topView.frame = rect
+            
+        }
+
+        
+//        if (self.lastContentOffset > contentOffsety) {
+//            
+//            
+////            self.scaleAnimation(flag: 0)
+//                        UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseIn, animations: {
+//                            weakSelf?.topView.transform = CGAffineTransform.init(scaleX: 1, y: 0.5)
+//                            weakSelf?.tableView.transform = CGAffineTransform.init(scaleX: 1, y: (app_height - 244) / (app_height - 379))
+//            
+////                            weakSelf?.topView.snp.updateConstraints({ (make) in
+////                                make.left.equalTo(0)
+////                                make.top.equalTo(109)
+////                                make.size.equalTo(CGSize.init(width: app_width, height: 135))
+////                            })
+////                            weakSelf?.tableView.snp.updateConstraints({ (make) in
+////                                make.left.equalTo(0)
+////                                make.top.equalTo(244)
+////                                make.size.equalTo(CGSize.init(width: app_width, height: app_height - 244))
+////                            })
+//                        }, completion: { (finish : Bool) in
+//            
+//                        })
+//        }
+//        else {
+//            
+////            self.scaleAnimation(flag: 1)
+//            UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseIn, animations: {
+//                weakSelf?.topView.transform = CGAffineTransform.init(scaleX: 1, y: 2)
+//                weakSelf?.tableView.transform = CGAffineTransform.init(scaleX: 1, y: (app_height - 379) / (app_height - 244))
+//                
+////                weakSelf?.topView.snp.updateConstraints({ (make) in
+////                    make.left.equalTo(0)
+////                    make.top.equalTo(109)
+////                    make.size.equalTo(CGSize.init(width: app_width, height: 270))
+////                })
+////                weakSelf?.tableView.snp.updateConstraints({ (make) in
+////                    make.left.equalTo(0)
+////                    make.top.equalTo(379)
+////                    make.size.equalTo(CGSize.init(width: app_width, height: app_height - 379))
+////                })
+//                
+//            }, completion: { (finish : Bool) in
+//                
+//            })
+//        }
+    }
+    
+//    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+//        self.lastContentOffset = scrollView.contentOffset.y;
+//    }
+    
+    //MARK: 放大动画
+    func scaleAnimation(flag : Int) {
+        
+        weak var weakSelf = self
+        
+        // 设定为缩放
+        let animation : CABasicAnimation = CABasicAnimation.init(keyPath: "transform.scale.y")
+        animation.duration = 1.5
+        animation.repeatCount = 0
+        
+        // 动画结束时执行逆动画
+//        animation.autoreverses = true
+        
+        let animat : CABasicAnimation = CABasicAnimation.init(keyPath: "transform.scale.y")
+        animat.duration = 1.5
+        animat.repeatCount = 0
+        
+        // 动画结束时执行逆动画
+        animat.autoreverses = true
+        
+        if flag == 0 {
+            
+            weakSelf?.topView.snp.updateConstraints({ (make) in
+                make.left.equalTo(0)
+                make.top.equalTo(109)
+                make.size.equalTo(CGSize.init(width: app_width, height: 135))
+            })
+            weakSelf?.tableView.snp.updateConstraints({ (make) in
+                make.left.equalTo(0)
+                make.top.equalTo(244)
+                make.size.equalTo(CGSize.init(width: app_width, height: app_height - 244))
+            })
+            
+            // 缩放倍数
+            animation.fromValue = NSNumber.init(value: 1)
+            animation.toValue = NSNumber.init(value: 0.5)
+            
+            // 缩放倍数
+            animat.fromValue = NSNumber.init(value: 1)
+            
+            let num : Float = Float((app_height - 244) / (app_height - 379))
+            animat.toValue = NSNumber.init(value: num)
+        }
+        else {
+            
+            weakSelf?.topView.snp.updateConstraints({ (make) in
+                make.left.equalTo(0)
+                make.top.equalTo(109)
+                make.size.equalTo(CGSize.init(width: app_width, height: 270))
+            })
+            weakSelf?.tableView.snp.updateConstraints({ (make) in
+                make.left.equalTo(0)
+                make.top.equalTo(379)
+                make.size.equalTo(CGSize.init(width: app_width, height: app_height - 379))
+            })
+            
+            // 缩放倍数
+            animation.fromValue = NSNumber.init(value: 1)
+            animation.toValue = NSNumber.init(value: 2)
+            
+            // 缩放倍数
+            animat.fromValue = NSNumber.init(value: 1)
+            
+            let num : Float = Float((app_height - 379) / (app_height - 244))
+            animat.toValue = NSNumber.init(value: num)
+        }
+        
+        self.topView.layer.add(animation, forKey: "scale-layer")
+        self.tableView.layer.add(animat, forKey: "scale-layer1")
+    }
+    
+    //MARK: 缩小动画
+    func narrowedAnimation() {
+        
+    }
 }
 
 //MARK: MAMapViewDelegate
@@ -166,34 +391,6 @@ extension LocationVC : MAMapViewDelegate {
     }
 }
 
-//MARK: UISearchBarDelegate
-extension LocationVC : UISearchBarDelegate {
-    
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        
-        print("[ViewController searchBar] searchText: \(searchText)")
-        
-    }
-    
-    // 搜索触发事件，点击虚拟键盘上的search按钮时触发此方法
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        
-        searchBar.resignFirstResponder()
-    }
-    
-    // 书签按钮触发事件
-    func searchBarBookmarkButtonClicked(_ searchBar: UISearchBar) {
-        
-        print("搜索历史")
-    }
-    
-    // 取消按钮触发事件
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        // 搜索内容置空
-        
-    }
-}
-
 //MARK: UITableViewDataSource && UITableViewDelegate
 extension LocationVC : UITableViewDataSource, UITableViewDelegate {
     
@@ -228,7 +425,7 @@ extension LocationVC : UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         
-        return 0
+        return 1
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -237,4 +434,5 @@ extension LocationVC : UITableViewDataSource, UITableViewDelegate {
         self.selectIndex = row
         tableView.reloadData()
     }
+    
 }

@@ -183,55 +183,59 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" placeholder="搜索地点" translatesAutoresizingMaskIntoConstraints="NO" id="Auz-Ne-YSK">
-                                <rect key="frame" x="0.0" y="64" width="375" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="5hr-uP-SJa"/>
-                                </constraints>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="k5b-A2-Cbp" id="tIh-km-Y1P"/>
-                                </connections>
-                            </searchBar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NWp-p3-95J">
-                                <rect key="frame" x="0.0" y="108" width="375" height="260"/>
+                                <rect key="frame" x="0.0" y="109" width="375" height="270"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="260" id="VBq-G1-7Qt"/>
+                                    <constraint firstAttribute="height" constant="270" id="N8d-x0-nO3"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="0EG-yn-BJC">
-                                <rect key="frame" x="0.0" y="368" width="375" height="299"/>
+                                <rect key="frame" x="0.0" y="379" width="375" height="288"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <connections>
                                     <outlet property="dataSource" destination="k5b-A2-Cbp" id="fRl-i7-de5"/>
                                     <outlet property="delegate" destination="k5b-A2-Cbp" id="3jz-pI-bJw"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5gH-oz-kl9">
+                                <rect key="frame" x="10" y="74" width="355" height="25"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="Fbk-z2-wyu"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <state key="normal" title="🔍 搜索地址">
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="searchAction:" destination="k5b-A2-Cbp" eventType="touchUpInside" id="SRu-FD-0pR"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="I0U-Hf-ty4" firstAttribute="top" secondItem="0EG-yn-BJC" secondAttribute="bottom" id="1MN-ac-0qt"/>
-                            <constraint firstItem="Auz-Ne-YSK" firstAttribute="top" secondItem="Hbg-yv-i63" secondAttribute="top" constant="64" id="33K-uX-biu"/>
-                            <constraint firstItem="NWp-p3-95J" firstAttribute="top" secondItem="Auz-Ne-YSK" secondAttribute="bottom" id="3dj-Ao-M6J"/>
-                            <constraint firstAttribute="trailing" secondItem="NWp-p3-95J" secondAttribute="trailing" id="8kt-1S-BhN"/>
-                            <constraint firstAttribute="trailing" secondItem="Auz-Ne-YSK" secondAttribute="trailing" id="AQS-e3-zij"/>
-                            <constraint firstItem="0EG-yn-BJC" firstAttribute="top" secondItem="NWp-p3-95J" secondAttribute="bottom" id="HOq-oB-fw2"/>
-                            <constraint firstItem="0EG-yn-BJC" firstAttribute="leading" secondItem="Hbg-yv-i63" secondAttribute="leading" id="M18-fR-UNb"/>
-                            <constraint firstItem="Auz-Ne-YSK" firstAttribute="leading" secondItem="Hbg-yv-i63" secondAttribute="leading" id="SZC-Wd-QaU"/>
-                            <constraint firstAttribute="trailing" secondItem="0EG-yn-BJC" secondAttribute="trailing" id="nGB-yu-maH"/>
-                            <constraint firstItem="NWp-p3-95J" firstAttribute="leading" secondItem="Hbg-yv-i63" secondAttribute="leading" id="tDX-FG-IOn"/>
+                            <constraint firstItem="0EG-yn-BJC" firstAttribute="top" secondItem="NWp-p3-95J" secondAttribute="bottom" id="1SH-WZ-fbi"/>
+                            <constraint firstAttribute="trailing" secondItem="5gH-oz-kl9" secondAttribute="trailing" constant="10" id="6ZH-qP-xbG"/>
+                            <constraint firstItem="NWp-p3-95J" firstAttribute="top" secondItem="5gH-oz-kl9" secondAttribute="bottom" constant="10" id="GFg-d1-xFa"/>
+                            <constraint firstItem="NWp-p3-95J" firstAttribute="leading" secondItem="Hbg-yv-i63" secondAttribute="leading" id="Glt-sN-P4R"/>
+                            <constraint firstItem="I0U-Hf-ty4" firstAttribute="top" secondItem="0EG-yn-BJC" secondAttribute="bottom" id="OBQ-qs-b1W"/>
+                            <constraint firstItem="0EG-yn-BJC" firstAttribute="leading" secondItem="Hbg-yv-i63" secondAttribute="leading" id="cp5-k3-ayh"/>
+                            <constraint firstAttribute="trailing" secondItem="NWp-p3-95J" secondAttribute="trailing" id="qhw-pD-GpN"/>
+                            <constraint firstItem="5gH-oz-kl9" firstAttribute="leading" secondItem="Hbg-yv-i63" secondAttribute="leading" constant="10" id="teW-ha-olD"/>
+                            <constraint firstItem="5gH-oz-kl9" firstAttribute="top" secondItem="8gS-Ht-Jsr" secondAttribute="bottom" constant="54" id="tmG-Ir-Jvg"/>
+                            <constraint firstAttribute="trailing" secondItem="0EG-yn-BJC" secondAttribute="trailing" id="xUW-mF-4Dd"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="search" destination="Auz-Ne-YSK" id="oMZ-qs-SRi"/>
+                        <outlet property="searchBtn" destination="5gH-oz-kl9" id="iWd-W1-NJb"/>
                         <outlet property="tableView" destination="0EG-yn-BJC" id="AzG-Ux-ZnQ"/>
                         <outlet property="topView" destination="NWp-p3-95J" id="C41-l8-vuc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ad9-AA-bHB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1183.2" y="711.99400299850083"/>
+            <point key="canvasLocation" x="-1151.2" y="704.79760119940033"/>
         </scene>
         <!--二维码扫描结果-->
         <scene sceneID="pzn-e8-XLq">

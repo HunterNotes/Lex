@@ -71,6 +71,7 @@ class Search: UIView, UITableViewDelegate, UITableViewDataSource, UITextFieldDel
     }
     
     func animate()  {
+        
         UIView.animate(withDuration: 0.2, animations: {
             self.backgroundView.alpha = 0.5
             self.searchView.alpha = 1
