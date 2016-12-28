@@ -807,9 +807,9 @@
 				TargetAttributes = {
 					A5C443031E039DB400C33517 = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = PU39U8DFF5;
+						DevelopmentTeam = C8X66624WA;
 						LastSwiftMigration = 0820;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 					};
 					A5C443171E039DB500C33517 = {
 						CreatedOnToolsVersion = 8.1;
@@ -1219,8 +1219,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Zhang Chao (U9YF328994)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Zhang Chao (U9YF328994)";
-				DEVELOPMENT_TEAM = PU39U8DFF5;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = C8X66624WA;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",
@@ -1228,10 +1228,10 @@
 				INFOPLIST_FILE = Lex/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.nbcb.mobilebank.lex;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mr.zhou.Lex;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "71b7b5b1-7f2b-4bfe-9c2f-6a2e16b65fb8";
-				PROVISIONING_PROFILE_SPECIFIER = AlexSongDev;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Lex/Class/公共配置/Lex-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
@@ -1243,8 +1243,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Zhang Chao (U9YF328994)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Zhang Chao (U9YF328994)";
-				DEVELOPMENT_TEAM = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = C8X66624WA;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",
@@ -1252,10 +1252,10 @@
 				INFOPLIST_FILE = Lex/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.nbcb.mobilebank.lex;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mr.zhou.Lex;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "71b7b5b1-7f2b-4bfe-9c2f-6a2e16b65fb8";
-				PROVISIONING_PROFILE_SPECIFIER = AlexSongDev;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Lex/Class/公共配置/Lex-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};

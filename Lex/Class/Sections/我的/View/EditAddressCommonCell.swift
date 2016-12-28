@@ -16,7 +16,8 @@ class EditAddressCommonCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        self.button.imageEdgeInsets = UIEdgeInsets.init(top: 7.5, left: 7.5, bottom: 7.5, right: 7.5)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
