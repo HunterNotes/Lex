@@ -209,8 +209,8 @@ class LocationVC: BaseViewController, SearchDelegate {
     lazy var header : UIView = { //测试代码
         
         let view : UIView = UIView.init()
-        view.backgroundColor = globalBGColor()
-        view.frame = CGRect.init(x: 0, y: 0, width: app_width, height: 1)
+        view.backgroundColor = UIColor.red
+        view.frame = CGRect.init(x: 0, y: 0, width: app_width, height: 168)
         return view
     }()
     
@@ -223,25 +223,8 @@ class LocationVC: BaseViewController, SearchDelegate {
         
         if contentOffsety < 0 {   //下拉
             
-            for view : UIView in self.view.subviews { //测试代码
-                if view.tag == 100 {
-                    self.topView.removeFromSuperview()
-                    self.header.addSubview(self.topView)
-                    self.topView.tag = 100
-                }
-            }
-            //            UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseIn, animations: {
+                //            UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseIn, animations: {
             
-            var rect : CGRect = self.topView.frame
-            rect.size.width = self.topView.width
-            rect.size.height = topView_h - contentOffsety
-            if topView_h - contentOffsety > 270 {
-                rect.size.height = 270
-            }
-            rect.origin.x = 0
-            rect.origin.y = 0
-            self.topView.frame = rect
-            self.header.frame = rect //测试代码
             
             var rec : CGRect = self.tableView.frame
             rec.size.width = self.tableView.width
@@ -253,11 +236,18 @@ class LocationVC: BaseViewController, SearchDelegate {
                 rec.origin.y = 379
             }
             
-            rec.origin.y = 109 //测试代码
             rec.origin.x = 0
-            //                self.tableView.snp.removeConstraints()
             self.tableView.frame = rec
-            //                self.view.addSubview(self.tableView)
+            
+            var rect : CGRect = self.topView.frame
+            rect.size.width = self.topView.width
+            rect.size.height = topView_h - contentOffsety
+            if topView_h - contentOffsety > 270 {
+                rect.size.height = 270
+            }
+            rect.origin.x = 0
+            rect.origin.y = 109
+            self.topView.frame = rect
             
             //            }, completion: { (finish : Bool) in
             //
@@ -266,17 +256,6 @@ class LocationVC: BaseViewController, SearchDelegate {
         else {  //上拉
             
             //            UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseIn, animations: {
-            
-            if self.header.subviews.count > 0 {  //测试代码
-                for view : UIView in self.header.subviews {
-                    if view.tag == 100 {
-                        self.topView.removeFromSuperview()
-                        self.view.addSubview(self.topView)
-                        self.topView.tag = 100
-                        self.header.frame = CGRect.init(x: 0, y: 0, width: app_width, height: 1)
-                    }
-                }
-            }
             
             var rect : CGRect = self.topView.frame
             rect.size.width = self.topView.width
@@ -298,7 +277,6 @@ class LocationVC: BaseViewController, SearchDelegate {
                 rec.origin.y = 244
             }
             rec.origin.x = 0
-            //                self.tableView.snp.removeConstraints()
             self.tableView.frame = rec
             //                self.view.addSubview(self.tableView)
             
@@ -306,52 +284,55 @@ class LocationVC: BaseViewController, SearchDelegate {
             //
             //            })
         }
+        
         self.tableView.reloadData()
     }
     
-    //    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-    //
-    //        weak var weakSelf = self
-    //        let contentOffsety : CGFloat = scrollView.contentOffset.y
-    //
-    //        if contentOffsety < 0 {
-    //
-    //            UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseIn, animations: {
-    //
-    //                weakSelf?.topView.snp.updateConstraints({ (make) in
-    //                    make.left.equalTo(0)
-    //                    make.top.equalTo(109)
-    //                    make.size.equalTo(CGSize.init(width: app_width, height: 135))
-    //                })
-    //                weakSelf?.tableView.snp.updateConstraints({ (make) in
-    //                    make.left.equalTo(0)
-    //                    make.top.equalTo(244)
-    //                    make.size.equalTo(CGSize.init(width: app_width, height: app_height - 244))
-    //                })
-    //            }, completion: { (finish : Bool) in
-    //
-    //            })
-    //        }
-    //        else {
-    //
-    //            UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseIn, animations: {
-    //
-    //                weakSelf?.topView.snp.updateConstraints({ (make) in
-    //                    make.left.equalTo(0)
-    //                    make.top.equalTo(109)
-    //                    make.size.equalTo(CGSize.init(width: app_width, height: 270))
-    //                })
-    //                weakSelf?.tableView.snp.updateConstraints({ (make) in
-    //                    make.left.equalTo(0)
-    //                    make.top.equalTo(379)
-    //                    make.size.equalTo(CGSize.init(width: app_width, height: app_height - 379))
-    //                })
-    //
-    //            }, completion: { (finish : Bool) in
-    //
-    //            })
-    //        }
-    //    }
+        func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+    
+            weak var weakSelf = self
+            let contentOffsety : CGFloat = scrollView.contentOffset.y
+    
+            if contentOffsety < 0 {
+    
+                UIView.animate(withDuration: 0.1, delay: 0, options: .curveLinear, animations: {
+                    
+                    weakSelf?.topView.removeFromSuperview()
+                    weakSelf?.header.addSubview((weakSelf?.topView)!)
+                    weakSelf?.topView.snp.updateConstraints({ (make) in
+                        make.left.equalTo(0)
+                        make.top.equalTo(109)
+                        make.size.equalTo(CGSize.init(width: app_width, height: 135))
+                    })
+                    weakSelf?.tableView.snp.updateConstraints({ (make) in
+                        make.left.equalTo(0)
+                        make.top.equalTo(244)
+                        make.size.equalTo(CGSize.init(width: app_width, height: app_height - 244))
+                    })
+                }, completion: { (finish : Bool) in
+    
+                })
+            }
+            else {
+    
+                UIView.animate(withDuration: 0.1, delay: 0, options: .curveLinear, animations: {
+    
+                    weakSelf?.topView.snp.updateConstraints({ (make) in
+                        make.left.equalTo(0)
+                        make.top.equalTo(109)
+                        make.size.equalTo(CGSize.init(width: app_width, height: 270))
+                    })
+                    weakSelf?.tableView.snp.updateConstraints({ (make) in
+                        make.left.equalTo(0)
+                        make.top.equalTo(379)
+                        make.size.equalTo(CGSize.init(width: app_width, height: app_height - 379))
+                    })
+    
+                }, completion: { (finish : Bool) in
+    
+                })
+            }
+        }
 }
 
 //MARK: MAMapViewDelegate
