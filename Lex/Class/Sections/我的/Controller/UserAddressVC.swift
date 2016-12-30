@@ -15,7 +15,7 @@ class UserAddressVC: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.title = "我的地址"
+        self.navTitle = "我的地址"
         self.registerCell()
     }
     

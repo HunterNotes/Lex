@@ -23,19 +23,25 @@ class UserNameVC: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.title = "名字"
-        self.leftItem = UIBarButtonItem.init(title: "取消", style: .plain, target: self, action: #selector(left))
-        //        self.leftItem.tintColor = UIColor.white
-        self.rightItem = UIBarButtonItem.init(title: "保存", style: .plain, target: self, action: #selector(right))
-        //        self.rightItem.tintColor = UIColor.green
-        self.rightItem.isEnabled = false
-        self.navigationItem.leftBarButtonItem = self.leftItem
-        self.navigationItem.rightBarButtonItem = self.rightItem
-        
+        self.navTitle = "名字"
         self.iTextField.text = USERNAME
         if self.iTextField.text == nil {
             self.clearBtn.isHidden = true
         }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        super.viewDidAppear(animated)
+        self.leftItem = UIBarButtonItem.init(title: "取消", style: .plain, target: self, action: #selector(left))
+        self.leftItem.tintColor = UIColor.white
+        self.rightItem = UIBarButtonItem.init(title: "保存", style: .plain, target: self, action: #selector(right))
+        self.rightItem.tintColor = UIColor.green
+        self.rightItem.isEnabled = false
+        self.navigationItem.leftBarButtonItem = self.leftItem
+        self.navigationItem.rightBarButtonItem = self.rightItem
+        
+        self.iTextField.becomeFirstResponder()
     }
     
     func left() {
@@ -59,8 +65,11 @@ class UserNameVC: BaseViewController {
     
     @IBAction func clear(_ sender: AnyObject) {
         
-        self.iTextField.text = ""
-        self.clearBtn.isHidden = true
+        if self.iTextField.text != "" && self.iTextField.text != nil {
+            
+            self.iTextField.text = ""
+            self.clearBtn.isHidden = true
+        }
     }
 }
 
@@ -71,6 +80,20 @@ extension UserNameVC : UITextFieldDelegate {
         
         var text : String = textField.text!
         
+        if (self.iTextField.text == "" || self.iTextField.text == nil) {
+            
+            self.clearBtn.isHidden = true
+            if string != "" {
+                self.clearBtn.isHidden = false
+            }
+        }
+        else {
+            
+            self.clearBtn.isHidden = false
+            if self.iTextField.text?.characters.count == 1 && string == "" { //最后一位回删
+                self.clearBtn.isHidden = true
+            }
+        }
         if string == "" {
             
             //删除
@@ -116,5 +139,10 @@ extension UserNameVC : UITextFieldDelegate {
             self.doBack()
         }
         return true
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        self.iTextField.resignFirstResponder()
     }
 }

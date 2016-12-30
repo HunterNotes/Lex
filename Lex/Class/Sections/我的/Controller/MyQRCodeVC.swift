@@ -25,7 +25,7 @@ class MyQRCodeVC: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.title = "我的二维码"
+        self.navTitle = "我的二维码"
         self.view.backgroundColor = UIColor.black
         self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(image: UIImage.init(named: "ic_more"), style: .plain, target: self, action: #selector(edit))
         

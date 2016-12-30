@@ -55,7 +55,7 @@ class ScanCodeVC : BaseViewController {
         
         super.viewDidLoad()
         
-        self.navigationItem.title = "二维码扫描"
+        self.navTitle = "二维码扫描"
         
         loading()
         view.layoutIfNeeded()

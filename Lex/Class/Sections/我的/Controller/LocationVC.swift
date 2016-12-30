@@ -8,25 +8,50 @@
 
 import UIKit
 
+
+protocol LocationVCDelegate {
+    
+    // Tap handlers
+    func didTapOnMapView()
+    func didTapOnTableView()
+    
+    // TableView's move
+    func didTableViewMoveDown()
+    func didTableViewMoveUp()
+    
+}
+
 class LocationVC: BaseViewController, SearchDelegate {
     
-    @IBOutlet weak var topView      : UIView!
-    @IBOutlet weak var tableView    : UITableView!
     @IBOutlet weak var searchBtn    : UIButton!
     
     var selectIndex                 : Int = 0
-    var mapView                     : MAMapView!
     var gpsButton                   : UIButton!
     var hiddenSearch                : Bool = false
+    var displayMap                  : Bool = true  //地图状态：是否展开
+    
+    let minTableView_h              : CGFloat = app_height - 379
+    let maxTableView_h              : CGFloat = app_height - 244
+    let tableView_y                 : CGFloat = 379.0
+    let minMap_h                    : CGFloat = 135.0
+    let maxMap_h                    : CGFloat = 270.0
+    let headerYOffSet               : CGFloat = 109.0
+    let default_Y_tableView         : CGFloat = 244.0
+    
+    var contentOffsetY              : CGFloat = 0
+    
     //    var lastContentOffset           : CGFloat = 0.0
+    
+    var locDelegate                 : LocationVCDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.view.addSubview(self.naBar)
-        self.topView.tag = 100
+        UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
         
-        initMapView()
+        setupMapView()
+        setupTableView()
         registerCell()
     }
     
@@ -35,10 +60,14 @@ class LocationVC: BaseViewController, SearchDelegate {
         self.tableView.register(UINib.init(nibName: "LocationCell", bundle: nil), forCellReuseIdentifier: "LocationCell")
     }
     
+    func setupTableView() {
+        
+        self.view.addSubview(self.tableView)
+    }
+    
     //MARK: 导航条相关
     lazy var naBar: PresentNaBarView = {
         
-        UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
         let bar : PresentNaBarView = PresentNaBarView.init(frame: CGRect.init(x: 0, y: 0, width: app_width, height: 64));
         bar.naBarItem.text = "位置"
         bar.backgroundColor = nav_color()
@@ -70,12 +99,20 @@ class LocationVC: BaseViewController, SearchDelegate {
     
     @IBAction func searchAction(_ sender: UIButton) {
         
+        if self.mapView.height < self.maxMap_h {
+            self.displayMap = false
+        }
+        else {
+            self.displayMap = true
+        }
+        
         self.hiddenSearch = true
         self.touchSearchAnimation()
         
         if let window = UIApplication.shared.keyWindow {
             window.addSubview(self.search)
             self.search.animate()
+            UIApplication.shared.statusBarStyle = UIStatusBarStyle.default
         }
     }
     
@@ -84,18 +121,19 @@ class LocationVC: BaseViewController, SearchDelegate {
         weak var weakSelf = self
         if self.hiddenSearch {
             
-            UIView.animate(withDuration: 0.25, delay: 0.25, options: .curveEaseIn, animations: {
+            UIView.animate(withDuration: 0.25, delay: 0.01, options: .curveEaseIn, animations: {
                 
-                weakSelf?.topView.snp.updateConstraints({ (make) in
-                    make.left.equalTo(0)
-                    make.top.equalTo(69)
-                    make.size.equalTo(CGSize.init(width: app_width, height: 270))
-                })
-                weakSelf?.tableView.snp.updateConstraints({ (make) in
-                    make.left.equalTo(0)
-                    make.top.equalTo(339)
-                    make.size.equalTo(CGSize.init(width: app_width, height: app_height - 339))
-                })
+                if (weakSelf?.displayMap)! {
+                    weakSelf?.mapView.frame = CGRect.init(x: 0, y: 69, width: app_width, height: (weakSelf?.maxMap_h)!)
+                    weakSelf?.tableView.frame = CGRect.init(x: 0, y: 339, width: app_width, height: app_height - 339)
+                }
+                else {
+                    let originY : CGFloat = 339 - (weakSelf?.minMap_h)!
+                    let height : CGFloat = app_height - 339 + (weakSelf?.minMap_h)!
+                    
+                    weakSelf?.mapView.frame = CGRect.init(x: 0, y: 69, width: app_width, height: (weakSelf?.minMap_h)!)
+                    weakSelf?.tableView.frame = CGRect.init(x: 0, y: originY, width: app_width, height: height)
+                }
                 weakSelf?.searchBtn.isHidden = true
                 
             }, completion: { (finish : Bool) in
@@ -104,18 +142,20 @@ class LocationVC: BaseViewController, SearchDelegate {
         }
         else {
             
-            UIView.animate(withDuration: 0.25, delay: 0.25, options: .curveEaseIn, animations: {
+            UIView.animate(withDuration: 0.25, delay: 0.01, options: .curveEaseIn, animations: {
                 
-                weakSelf?.topView.snp.updateConstraints({ (make) in
-                    make.left.equalTo(0)
-                    make.top.equalTo(109)
-                    make.size.equalTo(CGSize.init(width: app_width, height: 270))
-                })
-                weakSelf?.tableView.snp.updateConstraints({ (make) in
-                    make.left.equalTo(0)
-                    make.top.equalTo(379)
-                    make.size.equalTo(CGSize.init(width: app_width, height: app_height - 379))
-                })
+                if (weakSelf?.displayMap)! {
+                    
+                    weakSelf?.mapView.frame = CGRect.init(x: 0, y: 109, width: app_width, height: (weakSelf?.maxMap_h)!)
+                    weakSelf?.tableView.frame = CGRect.init(x: 0, y: 379, width: app_width, height: app_height - 379)
+                }
+                else {
+                    let originY : CGFloat = 379 - (weakSelf?.minMap_h)!
+                    let height : CGFloat = app_height - 379 + (weakSelf?.minMap_h)!
+                    
+                    weakSelf?.mapView.frame = CGRect.init(x: 0, y: 109, width: app_width, height: (weakSelf?.minMap_h)!)
+                    weakSelf?.tableView.frame = CGRect.init(x: 0, y: originY, width: app_width, height: height)
+                }
                 weakSelf?.searchBtn.isHidden = false
                 
             }, completion: { (finish : Bool) in
@@ -132,6 +172,64 @@ class LocationVC: BaseViewController, SearchDelegate {
         
         if status == true {
             self.search.removeFromSuperview()
+            UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
+        }
+    }
+    
+    lazy var tableView : UITableView = {
+        
+        let tab : UITableView = UITableView.init(frame: CGRect.init(x: 0, y: self.tableView_y, width: app_width, height: self.minTableView_h), style: .grouped)
+        tab.tableHeaderView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: app_width, height: 1.0))
+        tab.tableHeaderView?.backgroundColor = globalBGColor()
+        tab.dataSource = self
+        tab.delegate = self
+        return tab
+    }()
+    
+    //MARK: 手势相关
+    lazy var tapMapGesture : UITapGestureRecognizer = {
+        
+        let tap : UITapGestureRecognizer = UITapGestureRecognizer.init(target: self, action: #selector(LocationVC.handleTapMapView(_:)))
+        return tap
+    }()
+    
+    func handleTapMapView(_ gesture : UIGestureRecognizer) {
+        
+        if !self.displayMap {
+            
+            self.openShutter()
+            self.locDelegate?.didTapOnMapView()
+        }
+    }
+    
+    //MARK: 展开地图
+    func openShutter() {
+        
+        weak var weakSelf = self
+        UIView.animate(withDuration: 0.25, delay: 0.01, options: .curveEaseOut, animations: {
+            
+            weakSelf?.tableView.tableHeaderView     = UIView.init(frame: CGRect.init(x: 0.0, y: 0.0, width: app_width, height:1.0))
+            weakSelf?.mapView.frame                 = CGRect.init(x: 0.0, y: (weakSelf?.headerYOffSet)!, width: (weakSelf?.mapView.width)!, height: (weakSelf?.maxMap_h)!)
+            weakSelf?.tableView.frame               = CGRect.init(x: 0.0, y: (weakSelf?.tableView_y)!, width: (weakSelf?.tableView.width)!, height: (weakSelf?.minTableView_h)!)
+        }) { (finish : Bool) in
+            
+            weakSelf?.displayMap = true
+        }
+    }
+    
+    //MARK: 收缩地图
+    func closeShutter() {
+        
+        weak var weakSelf = self
+        UIView.animate(withDuration: 0.25, delay: 0.01, options: .curveEaseOut, animations: {
+            
+            weakSelf?.mapView.frame             = CGRect.init(x: 0, y: (weakSelf?.headerYOffSet)!, width: (weakSelf?.mapView.width)!, height: (weakSelf?.minMap_h)!)
+            
+            weakSelf?.tableView.tableHeaderView = UIView.init(frame: CGRect.init(x: 0.0, y: (weakSelf?.default_Y_tableView)!, width: app_width, height: 1.0))
+            weakSelf?.tableView.frame           = CGRect.init(x: 0.0, y: (weakSelf?.default_Y_tableView)!, width: (weakSelf?.tableView.width)!, height: (weakSelf?.maxTableView_h)!)
+        }) { (finish : Bool) in
+            
+            weakSelf?.displayMap = false
         }
     }
     
@@ -143,48 +241,54 @@ class LocationVC: BaseViewController, SearchDelegate {
         ret.layer.cornerRadius = 4
         
         ret.setImage(UIImage.init(named: "gpsStat1"), for: UIControlState.normal)
-        ret.addTarget(self, action: #selector(self.gpsAction), for: UIControlEvents.touchUpInside)
+        ret.addTarget(self, action: #selector(LocationVC.gpsAction), for: UIControlEvents.touchUpInside)
         
         return ret
     }
     
-    func makeZoomPannelView() -> UIView {
+    lazy var makeZoomPannelView : UIView = {
         
-        let ret = UIView.init(frame: CGRect.init(x: 0, y: 0, width: 53, height: 98))
+        let ret = UIView.init(frame: CGRect.init(x: 0, y: 109, width: app_width, height: self.maxMap_h))
         
-        let incBtn = UIButton.init(frame: CGRect.init(x: 0, y: 0, width: 53, height: 49))
+        let incBtn = UIButton.init(frame: CGRect.init(x: app_width - 58, y: 49, width: 53, height: 49))
         incBtn.setImage(UIImage.init(named: "increase"), for: UIControlState.normal)
         incBtn.sizeToFit()
-        incBtn.addTarget(self, action: #selector(self.zoomPlusAction), for: UIControlEvents.touchUpInside)
+        incBtn.addTarget(self, action: #selector(LocationVC.zoomPlusAction), for: UIControlEvents.touchUpInside)
         
-        let decBtn = UIButton.init(frame: CGRect.init(x: 0, y: 49, width: 53, height: 49))
+        let decBtn = UIButton.init(frame: CGRect.init(x: app_width - 58, y: 98, width: 53, height: 49))
         decBtn.setImage(UIImage.init(named: "decrease"), for: UIControlState.normal)
         decBtn.sizeToFit()
-        decBtn.addTarget(self, action: #selector(self.zoomMinusAction), for: UIControlEvents.touchUpInside)
+        decBtn.addTarget(self, action: #selector(LocationVC.zoomMinusAction), for: UIControlEvents.touchUpInside)
         
         ret.addSubview(incBtn)
         ret.addSubview(decBtn)
         
         return ret
-    }
+    }()
     
-    func initMapView() {
+    lazy var mapView : MAMapView = {
         
-        mapView = MAMapView(frame: self.topView.bounds)
-        mapView.delegate = self
-        mapView.autoresizingMask = [UIViewAutoresizing.flexibleHeight, UIViewAutoresizing.flexibleWidth]
-        mapView.showsUserLocation = true
-        self.topView.addSubview(mapView)
+        let map : MAMapView = MAMapView(frame: CGRect.init(x: 0, y: 109, width: app_width, height: self.maxMap_h))
+        map.delegate = self
+        //        map.addGestureRecognizer(self.tapMapGesture)
+        map.autoresizingMask = [UIViewAutoresizing.flexibleHeight, UIViewAutoresizing.flexibleWidth]
+        map.showsUserLocation = true
+        return map
+    }()
+    
+    func setupMapView() {
         
-        let zoomPannelView = self.makeZoomPannelView()
-        zoomPannelView.center = CGPoint.init(x: self.topView.bounds.size.width -  zoomPannelView.bounds.width/2 - 10, y: self.topView.bounds.size.height -  zoomPannelView.bounds.width/2 - 30)
+        //        self.view.insertSubview(mapView, belowSubview: self.tableView)
+        self.view.addSubview(self.mapView)
+        let zoomPannelView = self.makeZoomPannelView
+        //        zoomPannelView.center = CGPoint.init(x: self.topView.bounds.size.width -  zoomPannelView.bounds.width/2 - 10, y: self.topView.bounds.size.height -  zoomPannelView.bounds.width/2 - 30)
         
         zoomPannelView.autoresizingMask = [UIViewAutoresizing.flexibleTopMargin , UIViewAutoresizing.flexibleLeftMargin]
-        self.topView.addSubview(zoomPannelView)
+        mapView.addSubview(zoomPannelView)
         
         gpsButton = self.makeGPSButtonView()
-        gpsButton.center = CGPoint.init(x: gpsButton.bounds.width / 2 + 10, y:self.topView.bounds.size.height -  gpsButton.bounds.width / 2 - 20)
-        self.topView.addSubview(gpsButton)
+        gpsButton.center = CGPoint.init(x: gpsButton.bounds.width / 2 + 10, y:mapView.bounds.size.height -  gpsButton.bounds.width / 2 - 20)
+        mapView.addSubview(gpsButton)
         gpsButton.autoresizingMask = [UIViewAutoresizing.flexibleTopMargin , UIViewAutoresizing.flexibleRightMargin]
     }
     
@@ -206,133 +310,36 @@ class LocationVC: BaseViewController, SearchDelegate {
         }
     }
     
-    lazy var header : UIView = { //测试代码
+    //MARK: scrollViewDelegate
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         
-        let view : UIView = UIView.init()
-        view.backgroundColor = UIColor.red
-        view.frame = CGRect.init(x: 0, y: 0, width: app_width, height: 168)
-        return view
-    }()
+        contentOffsetY = scrollView.contentOffset.y
+    }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
-        let topView_h : CGFloat = self.topView.height
-        let tableView_h : CGFloat = self.tableView.height
-        let contentOffsety : CGFloat = scrollView.contentOffset.y
-        weak var weakSelf = self
+        let scrollOffset : CGFloat = scrollView.contentOffset.y
         
-        if contentOffsety < 0 {   //下拉
+        if scrollView.isDragging { // 拖拽
             
-                //            UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseIn, animations: {
-            
-            
-            var rec : CGRect = self.tableView.frame
-            rec.size.width = self.tableView.width
-            rec.size.height = tableView_h + contentOffsety
-            rec.origin.y = 244 + contentOffsety
-            
-            if tableView_h + contentOffsety < (app_height - 379) {
-                rec.size.height = (app_height - 379)
-                rec.origin.y = 379
-            }
-            
-            rec.origin.x = 0
-            self.tableView.frame = rec
-            
-            var rect : CGRect = self.topView.frame
-            rect.size.width = self.topView.width
-            rect.size.height = topView_h - contentOffsety
-            if topView_h - contentOffsety > 270 {
-                rect.size.height = 270
-            }
-            rect.origin.x = 0
-            rect.origin.y = 109
-            self.topView.frame = rect
-            
-            //            }, completion: { (finish : Bool) in
-            //
-            //            })
-        }
-        else {  //上拉
-            
-            //            UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseIn, animations: {
-            
-            var rect : CGRect = self.topView.frame
-            rect.size.width = self.topView.width
-            rect.size.height = topView_h - contentOffsety
-            if rect.size.height < 135 {
-                rect.size.height = 135
-            }
-            rect.origin.x =  0
-            rect.origin.y = 109
-            self.topView.frame = rect
-            
-            var rec : CGRect = self.tableView.frame
-            rec.size.width = self.tableView.width
-            rec.size.height = tableView_h + contentOffsety
-            rec.origin.y = 379 - contentOffsety
-            
-            if rec.size.height  > app_height - 244 {
-                rec.size.height = app_height - 244
-                rec.origin.y = 244
-            }
-            rec.origin.x = 0
-            self.tableView.frame = rec
-            //                self.view.addSubview(self.tableView)
-            
-            //            }, completion: { (finish : Bool) in
-            //
-            //            })
-        }
-        
-        self.tableView.reloadData()
-    }
-    
-        func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-    
-            weak var weakSelf = self
-            let contentOffsety : CGFloat = scrollView.contentOffset.y
-    
-            if contentOffsety < 0 {
-    
-                UIView.animate(withDuration: 0.1, delay: 0, options: .curveLinear, animations: {
+            if (scrollOffset - contentOffsetY) > 0 { //向上拖拽
+                
+                if self.mapView.height == self.maxMap_h {
                     
-                    weakSelf?.topView.removeFromSuperview()
-                    weakSelf?.header.addSubview((weakSelf?.topView)!)
-                    weakSelf?.topView.snp.updateConstraints({ (make) in
-                        make.left.equalTo(0)
-                        make.top.equalTo(109)
-                        make.size.equalTo(CGSize.init(width: app_width, height: 135))
-                    })
-                    weakSelf?.tableView.snp.updateConstraints({ (make) in
-                        make.left.equalTo(0)
-                        make.top.equalTo(244)
-                        make.size.equalTo(CGSize.init(width: app_width, height: app_height - 244))
-                    })
-                }, completion: { (finish : Bool) in
-    
-                })
+                    self.displayMap = false
+                    self.closeShutter()
+                }
             }
-            else {
-    
-                UIView.animate(withDuration: 0.1, delay: 0, options: .curveLinear, animations: {
-    
-                    weakSelf?.topView.snp.updateConstraints({ (make) in
-                        make.left.equalTo(0)
-                        make.top.equalTo(109)
-                        make.size.equalTo(CGSize.init(width: app_width, height: 270))
-                    })
-                    weakSelf?.tableView.snp.updateConstraints({ (make) in
-                        make.left.equalTo(0)
-                        make.top.equalTo(379)
-                        make.size.equalTo(CGSize.init(width: app_width, height: app_height - 379))
-                    })
-    
-                }, completion: { (finish : Bool) in
-    
-                })
+            else if (contentOffsetY - scrollOffset) > 10 { //向下拖拽
+                
+                if self.mapView.height == self.minMap_h {
+                    
+                    self.displayMap = true
+                    self.openShutter()
+                }
             }
         }
+    }
 }
 
 //MARK: MAMapViewDelegate
@@ -366,6 +373,11 @@ extension LocationVC : MAMapViewDelegate {
     //地图将要发生缩放
     func mapView(_ mapView: MAMapView!, mapWillZoomByUser wasUserAction: Bool) {
         
+        if !self.displayMap {
+            
+            self.openShutter()
+            self.locDelegate?.didTapOnMapView()
+        }
     }
     
     //地图缩放结束
@@ -406,21 +418,10 @@ extension LocationVC : UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        
-        return self.header.height //测试代码
-    }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        
-        return self.header //测试代码
-    }
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let row: Int = (indexPath as NSIndexPath).row
         self.selectIndex = row
         tableView.reloadData()
     }
-    
 }

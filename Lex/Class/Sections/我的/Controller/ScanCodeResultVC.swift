@@ -21,7 +21,7 @@ class ScanCodeResultVC: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.title = "扫描结果"
+        self.navTitle = "扫描结果"
         self.view.addSubview(webView)
         webView.delegate = self
         webView.loadRequest(URLRequest(url: URL(string: urlStr)! as URL) as URLRequest)

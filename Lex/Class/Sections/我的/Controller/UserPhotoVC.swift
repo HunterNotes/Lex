@@ -30,7 +30,7 @@ class UserPhotoVC: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.title = "个人头像"
+        self.navTitle = "个人头像"
         self.view.backgroundColor = UIColor.black
         self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(image: UIImage.init(named: "ic_more"), style: .plain, target: self, action: #selector(editPhoto))
         self.addLongpress()

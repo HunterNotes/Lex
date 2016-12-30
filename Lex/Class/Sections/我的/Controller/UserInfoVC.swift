@@ -32,7 +32,7 @@ class UserInfoVC: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.title = "个人信息"
+        self.navTitle = "个人信息"
         self.initData()
         
         NotificationCenter.default.addObserver(self, selector: #selector(userImgStatus), name: NSNotification.Name("userImgChanged"), object: nil)
