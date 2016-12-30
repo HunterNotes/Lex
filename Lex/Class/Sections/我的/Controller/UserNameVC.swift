@@ -41,7 +41,7 @@ class UserNameVC: BaseViewController {
         self.navigationItem.leftBarButtonItem = self.leftItem
         self.navigationItem.rightBarButtonItem = self.rightItem
         
-        self.iTextField.becomeFirstResponder()
+//        self.iTextField.becomeFirstResponder()
     }
     
     func left() {
@@ -59,7 +59,6 @@ class UserNameVC: BaseViewController {
     
     func doBack() {
         
-        //        let vc : UserInfoVC = self.navigationController?.findvc(of: UserInfoVC.self) as! UserInfoVC
         _ = self.navigationController?.popViewController(animated: true)
     }
     
