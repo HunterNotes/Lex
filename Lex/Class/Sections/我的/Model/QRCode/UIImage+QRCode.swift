@@ -24,7 +24,7 @@ extension UIImage {
         return feature?.messageString
     }
     
-    //MARK: - 获取圆角图片
+    //MARK: - 获取圆角图片(不带边框)
     func getRoundRectImage(_ size : CGFloat, _ radius : CGFloat) -> UIImage {
         
         return getRoundRectImage(size, radius, nil, nil)

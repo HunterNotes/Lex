@@ -38,7 +38,7 @@ class PresentNaBarView: UIView {
         label.backgroundColor = UIColor.clear
         label.textColor = UIColor.white
         label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize: 17.0)
+        label.font = UIFont.systemFont(ofSize: 20.0)
         return label
     }()
     

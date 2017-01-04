@@ -27,6 +27,7 @@ class UserCenterVC: BaseViewController {
         self.dataArr = [[""], ["相册", "收藏", "钱包", "卡包"], ["表情"], ["设置"]]
         self.registerCell()
         
+        self.navTitle = "我的"
         manager = SQLiteManager.defaultManager()
         
         if Int((USERNAME?.characters.count)!) == 0 {

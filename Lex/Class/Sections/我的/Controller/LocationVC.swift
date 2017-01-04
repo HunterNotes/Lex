@@ -7,7 +7,8 @@
 //
 
 import UIKit
-
+import CoreLocation
+import MapKit
 
 protocol LocationVCDelegate {
     
@@ -26,7 +27,6 @@ class LocationVC: BaseViewController, SearchDelegate {
     @IBOutlet weak var searchBtn    : UIButton!
     
     var selectIndex                 : Int = 0
-    var gpsButton                   : UIButton!
     var hiddenSearch                : Bool = false
     var displayMap                  : Bool = true  //地图状态：是否展开
     
@@ -37,22 +37,27 @@ class LocationVC: BaseViewController, SearchDelegate {
     let maxMap_h                    : CGFloat = 270.0
     let headerYOffSet               : CGFloat = 109.0
     let default_Y_tableView         : CGFloat = 244.0
-    
     var contentOffsetY              : CGFloat = 0
-    
-    //    var lastContentOffset           : CGFloat = 0.0
     
     var locDelegate                 : LocationVCDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.addSubview(self.naBar)
         UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
         
-        setupMapView()
-        setupTableView()
-        registerCell()
+        self.view.addSubview(self.naBar)
+        self.setupMapView()
+        //        self.initAnnotations()
+        
+        self.setupTableView()
+        self.registerCell()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        super.viewDidAppear(animated)
+        self.gpsAction()
     }
     
     func registerCell() {
@@ -202,6 +207,160 @@ class LocationVC: BaseViewController, SearchDelegate {
         }
     }
     
+    //MARK: 高德地图相关
+    lazy var gpsButton : UIButton = {
+        
+        let rect : CGRect = CGRect.init(x: 0, y: 0, width: 40, height: 40)
+        let button = UIButton.init(frame: rect)
+        button.backgroundColor = UIColor.white
+        button.layer.cornerRadius = 4
+        button.setImage(UIImage.init(named: "gpsStat1"), for: UIControlState.normal)
+        button.addTarget(self, action: #selector(LocationVC.gpsAction), for: UIControlEvents.touchUpInside)
+        button.center = CGPoint.init(x: button.bounds.width / 2 + 10, y: self.mapView.bounds.size.height -  button.bounds.width / 2 - 20)
+        button.autoresizingMask = [UIViewAutoresizing.flexibleTopMargin , UIViewAutoresizing.flexibleRightMargin]
+        return button
+    }()
+    
+    lazy var makeZoomPannelView : UIView = {
+        
+        let ret = UIView.init(frame: CGRect.init(x: 0, y: 109, width: app_width, height: self.maxMap_h))
+        
+        let incBtn = UIButton.init(frame: CGRect.init(x: app_width - 58, y: 49, width: 53, height: 49))
+        incBtn.setImage(UIImage.init(named: "increase"), for: UIControlState.normal)
+        incBtn.sizeToFit()
+        incBtn.addTarget(self, action: #selector(LocationVC.zoomPlusAction), for: UIControlEvents.touchUpInside)
+        
+        let decBtn = UIButton.init(frame: CGRect.init(x: app_width - 58, y: 98, width: 53, height: 49))
+        decBtn.setImage(UIImage.init(named: "decrease"), for: UIControlState.normal)
+        decBtn.sizeToFit()
+        decBtn.addTarget(self, action: #selector(LocationVC.zoomMinusAction), for: UIControlEvents.touchUpInside)
+        
+        ret.addSubview(incBtn)
+        ret.addSubview(decBtn)
+        
+        return ret
+    }()
+    
+    lazy var mapView : MAMapView = {
+        
+        let map : MAMapView = MAMapView(frame: CGRect.init(x: 0, y: 109, width: app_width, height: self.maxMap_h))
+        map.delegate = self
+        map.desiredAccuracy = kCLLocationAccuracyBestForNavigation
+        map.autoresizingMask = [UIViewAutoresizing.flexibleHeight, UIViewAutoresizing.flexibleWidth]
+        map.showsUserLocation = true
+        
+        //最小更新距离
+        map.distanceFilter = 5
+        
+        //设置比例尺
+        map.zoomLevel = 50
+        return map
+    }()
+    
+    func setupMapView() {
+        
+        //        self.view.insertSubview(mapView, belowSubview: self.tableView)
+        self.view.addSubview(self.mapView)
+        let zoomPannelView = self.makeZoomPannelView
+        //        zoomPannelView.center = CGPoint.init(x: self.topView.bounds.size.width -  zoomPannelView.bounds.width/2 - 10, y: self.topView.bounds.size.height -  zoomPannelView.bounds.width/2 - 30)
+        
+        zoomPannelView.autoresizingMask = [UIViewAutoresizing.flexibleTopMargin , UIViewAutoresizing.flexibleLeftMargin]
+        self.mapView.addSubview(self.makeZoomPannelView)
+        self.mapView.addSubview(self.gpsButton)
+    }
+    
+    func zoomPlusAction() {
+        
+        let oldZoom = self.mapView.zoomLevel
+        self.mapView.setZoomLevel(oldZoom+1, animated: true)
+    }
+    
+    func zoomMinusAction() {
+        
+        let oldZoom = self.mapView.zoomLevel
+        self.mapView.setZoomLevel(oldZoom-1, animated: true)
+    }
+    
+    func gpsAction() {
+        
+        if(self.mapView.userLocation.isUpdating && self.mapView.userLocation.location != nil) {
+            
+            self.mapView.setCenter(self.mapView.userLocation.location.coordinate, animated: true)
+            self.gpsButton.isSelected = true
+            self.setPin()
+        }
+    }
+    
+    lazy var geoCoder: CLGeocoder = {
+        return CLGeocoder()
+    }()
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        let point = touches.first?.location(in: self.mapView)
+        let coordinate = self.mapView.convert(point!, toCoordinateFrom: self.mapView)
+        let annotation = addAnnotation(coordinate, title: "title", subTitle: "subTitle")//注意：占位标题与占位子标题
+        
+        let location = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
+        geoCoder.reverseGeocodeLocation(location) { (pls: [CLPlacemark]?, error: Error?) -> Void in
+            if error == nil {
+                let pl = pls?.first
+                print(pl ?? "")
+                annotation.title = pl?.locality//上海市
+                annotation.subtitle = pl?.name//金桥谷创意园
+            }
+        }
+    }
+    
+    //MARK: 放置大头针
+    
+    lazy var annotations : Array<CCAnnotation> = {
+        
+        let arr : NSArray = NSArray()
+        return arr as! [CCAnnotation]
+    }()
+    
+    lazy var annotation : CCAnnotation = {
+        
+        let annotation : CCAnnotation = CCAnnotation()
+        return annotation
+    }()
+    
+    func setPin() {
+        
+        self.annotation.coordinate = CLLocationCoordinate2DMake(CCSingleton.sharedUser().latitude, CCSingleton.sharedUser().longitude);
+        
+        //一个点放置大头针
+        self.mapView.addAnnotation(self.annotation)
+        
+        //多个点防止大头针
+        //        self.annotations.append(self.annotation)
+        //        self.mapView.addAnnotations(self.annotations)
+    }
+    
+    func addAnnotation(_ coordinate: CLLocationCoordinate2D, title: String, subTitle: String) -> CCAnnotation {
+        
+        if self.mapView.annotations.count > 0 {
+            
+            //删除一颗大头针
+            self.mapView.removeAnnotation(self.annotation)
+            
+            //删除全部大头针
+            //            self.mapView.removeAnnotations(self.annotations)
+        }
+        self.annotation.coordinate = coordinate
+        self.annotation.title = title
+        self.annotation.subtitle = subTitle
+        
+        //添加一颗大头针
+        self.mapView.addAnnotation(annotation)
+        
+        //添加多颗大头针
+        //        self.mapView.addAnnotations(self.annotations)
+        
+        return annotation
+    }
+    
     //MARK: 展开地图
     func openShutter() {
         
@@ -230,83 +389,6 @@ class LocationVC: BaseViewController, SearchDelegate {
         }) { (finish : Bool) in
             
             weakSelf?.displayMap = false
-        }
-    }
-    
-    //MARK: 高德地图相关
-    func makeGPSButtonView() -> UIButton! {
-        
-        let ret = UIButton.init(frame: CGRect.init(x: 0, y: 0, width: 40, height: 40))
-        ret.backgroundColor = UIColor.white
-        ret.layer.cornerRadius = 4
-        
-        ret.setImage(UIImage.init(named: "gpsStat1"), for: UIControlState.normal)
-        ret.addTarget(self, action: #selector(LocationVC.gpsAction), for: UIControlEvents.touchUpInside)
-        
-        return ret
-    }
-    
-    lazy var makeZoomPannelView : UIView = {
-        
-        let ret = UIView.init(frame: CGRect.init(x: 0, y: 109, width: app_width, height: self.maxMap_h))
-        
-        let incBtn = UIButton.init(frame: CGRect.init(x: app_width - 58, y: 49, width: 53, height: 49))
-        incBtn.setImage(UIImage.init(named: "increase"), for: UIControlState.normal)
-        incBtn.sizeToFit()
-        incBtn.addTarget(self, action: #selector(LocationVC.zoomPlusAction), for: UIControlEvents.touchUpInside)
-        
-        let decBtn = UIButton.init(frame: CGRect.init(x: app_width - 58, y: 98, width: 53, height: 49))
-        decBtn.setImage(UIImage.init(named: "decrease"), for: UIControlState.normal)
-        decBtn.sizeToFit()
-        decBtn.addTarget(self, action: #selector(LocationVC.zoomMinusAction), for: UIControlEvents.touchUpInside)
-        
-        ret.addSubview(incBtn)
-        ret.addSubview(decBtn)
-        
-        return ret
-    }()
-    
-    lazy var mapView : MAMapView = {
-        
-        let map : MAMapView = MAMapView(frame: CGRect.init(x: 0, y: 109, width: app_width, height: self.maxMap_h))
-        map.delegate = self
-        //        map.addGestureRecognizer(self.tapMapGesture)
-        map.autoresizingMask = [UIViewAutoresizing.flexibleHeight, UIViewAutoresizing.flexibleWidth]
-        map.showsUserLocation = true
-        return map
-    }()
-    
-    func setupMapView() {
-        
-        //        self.view.insertSubview(mapView, belowSubview: self.tableView)
-        self.view.addSubview(self.mapView)
-        let zoomPannelView = self.makeZoomPannelView
-        //        zoomPannelView.center = CGPoint.init(x: self.topView.bounds.size.width -  zoomPannelView.bounds.width/2 - 10, y: self.topView.bounds.size.height -  zoomPannelView.bounds.width/2 - 30)
-        
-        zoomPannelView.autoresizingMask = [UIViewAutoresizing.flexibleTopMargin , UIViewAutoresizing.flexibleLeftMargin]
-        mapView.addSubview(zoomPannelView)
-        
-        gpsButton = self.makeGPSButtonView()
-        gpsButton.center = CGPoint.init(x: gpsButton.bounds.width / 2 + 10, y:mapView.bounds.size.height -  gpsButton.bounds.width / 2 - 20)
-        mapView.addSubview(gpsButton)
-        gpsButton.autoresizingMask = [UIViewAutoresizing.flexibleTopMargin , UIViewAutoresizing.flexibleRightMargin]
-    }
-    
-    func zoomPlusAction() {
-        let oldZoom = self.mapView.zoomLevel
-        self.mapView.setZoomLevel(oldZoom+1, animated: true)
-    }
-    
-    func zoomMinusAction() {
-        let oldZoom = self.mapView.zoomLevel
-        self.mapView.setZoomLevel(oldZoom-1, animated: true)
-    }
-    
-    func gpsAction() {
-        
-        if(self.mapView.userLocation.isUpdating && self.mapView.userLocation.location != nil) {
-            self.mapView.setCenter(self.mapView.userLocation.location.coordinate, animated: true)
-            self.gpsButton.isSelected = true
         }
     }
     
@@ -363,11 +445,21 @@ extension LocationVC : MAMapViewDelegate {
     //地图将要发生移动
     func mapView(_ mapView: MAMapView!, mapWillMoveByUser wasUserAction: Bool) {
         
+        print(mapView.userLocation)
     }
     
     //地图移动结束后
     func mapView(_ mapView: MAMapView!, mapDidMoveByUser wasUserAction: Bool) {
         
+        print(mapView.userLocation)
+        
+        //经度
+        //mapView.userLocation.location.coordinate.longitude
+        
+        //纬度
+        //mapView.userLocation.location.coordinate.latitude
+        
+        //反编译地理位置
     }
     
     //地图将要发生缩放
@@ -384,6 +476,31 @@ extension LocationVC : MAMapViewDelegate {
     func mapView(_ mapView: MAMapView!, mapDidZoomByUser wasUserAction: Bool) {
         
     }
+    
+    //定位成功后生成指定的标注View
+    //    func mapView(_ mapView: MAMapView!, viewFor annotation: MAAnnotation!) -> MAAnnotationView! {
+    //
+    //        if annotation.isKind(of: MAPointAnnotation.self) {
+    //            let pointReuseIndetifier = "pointReuseIndetifier"
+    //            var annotationView: MAPinAnnotationView? = mapView.dequeueReusableAnnotationView(withIdentifier: pointReuseIndetifier) as! MAPinAnnotationView?
+    //
+    //            if annotationView == nil {
+    //                annotationView = MAPinAnnotationView(annotation: annotation, reuseIdentifier: pointReuseIndetifier)
+    //            }
+    //
+    //            annotationView!.canShowCallout = true
+    //            annotationView!.animatesDrop = true
+    //            annotationView!.isDraggable = true
+    //            annotationView!.rightCalloutAccessoryView = UIButton(type: UIButtonType.detailDisclosure)
+    //
+    //            let idx = annotations.index(of: annotation as! MAPointAnnotation)
+    //            annotationView!.pinColor = MAPinAnnotationColor(rawValue: idx!)!
+    //
+    //            return annotationView!
+    //        }
+    //        return nil
+    //    }
+    
 }
 
 //MARK: UITableViewDataSource && UITableViewDelegate
@@ -424,4 +541,12 @@ extension LocationVC : UITableViewDataSource, UITableViewDelegate {
         self.selectIndex = row
         tableView.reloadData()
     }
+}
+
+class CCAnnotation: NSObject, MAAnnotation {
+    
+    //大头针属性
+    var coordinate: CLLocationCoordinate2D = CLLocationCoordinate2DMake(0, 0)
+    var title: String?
+    var subtitle: String?
 }

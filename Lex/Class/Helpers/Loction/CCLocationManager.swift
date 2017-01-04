@@ -10,6 +10,8 @@ import UIKit
 import Foundation
 import CoreLocation
 
+//通过系统定位获取位置信息
+
 /**
  *  获取定位状态协议
  */

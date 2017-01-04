@@ -10,4 +10,11 @@ import UIKit
 
 class DetectionVC: BaseViewController {
     
+    override func viewDidLoad() {
+        
+        super.viewDidLoad()
+        
+        self.navTitle = "发现"
+    }
+
 }

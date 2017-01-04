@@ -43,8 +43,13 @@ class UpDateAddressVC: BaseViewController {
         self.view.addSubview(self.naBar)
         self.naBar.naBarItem.text = "修改地址"
         self.view.addSubview(self.pickerView)
-        titleArr = ["姓名", "手机号码", "选择地区", "", "邮编"]
         
+        titleArr = ["姓名", "手机号码", "选择地区", "", "邮编"]
+        self.name = USERNAME!
+        
+        let singleton : CCSingleton = CCSingleton.sharedUser()
+        self.locality = singleton.state! + "  " + singleton.city! + "  " + singleton.subLocality!
+                
         self.registerCell()
     }
     

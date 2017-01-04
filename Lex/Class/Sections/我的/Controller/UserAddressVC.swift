@@ -72,6 +72,7 @@ extension UserAddressVC : UITableViewDataSource, UITableViewDelegate {
                 as! ShowAddressCell
             cell.selectionStyle = .none
             cell.editAddressBtn.tag = row
+            cell.userLab.text = USERNAME
             cell.editAddressBtn.addTarget(self, action: #selector(editAddress), for: .touchUpInside)
             return cell
         }

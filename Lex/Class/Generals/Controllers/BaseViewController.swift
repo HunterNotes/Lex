@@ -17,7 +17,6 @@ class BaseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.title = self.navTitle
         view.backgroundColor = globalBGColor()
         navigationController?.fd_prefersNavigationBarHidden = true
         
@@ -29,6 +28,8 @@ class BaseViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        self.navigationItem.title = self.navTitle
         UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
         
     }

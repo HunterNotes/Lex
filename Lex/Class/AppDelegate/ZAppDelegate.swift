@@ -8,24 +8,37 @@
 
 import UIKit
 import UserNotifications
-import CoreLocation
-import Reachability
+//import CoreLocation
+//import Reachability
 
 @UIApplicationMain
 class ZAppDelegate: UIResponder, UIApplicationDelegate {
     
     var window          : UIWindow?
+    var locationManager:AMapLocationManager!
+    
+    //高德地图定位
+    private func configLocationManager() {
+        
+        self.locationManager = AMapLocationManager()
+        self.locationManager.delegate = self
+        self.locationManager.pausesLocationUpdatesAutomatically = false
+        self.locationManager.allowsBackgroundLocationUpdates = false
+    }
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         self.registerAppNotificationSettings(launchOptions)
-        self.getLocation()
+        //        self.getLocation()
         let manager : SQLiteManager = SQLiteManager.defaultManager()
         manager.delete(TABLENAME)
         _ = manager.getImageFromSQLite(USER_IMGNAME)
         
         AMapServices.shared().apiKey = APIKey
-
+        
+        self.configLocationManager()
+        self.locationManager.startUpdatingLocation()
+        
         return true
     }
     
@@ -41,7 +54,7 @@ class ZAppDelegate: UIResponder, UIApplicationDelegate {
                     print("iOS request notification success")
                 }
                 else {
-                    print(" iOS 10 request notification fail")
+                    print("iOS 10 request notification fail")
                 }
             }
         }
@@ -53,12 +66,12 @@ class ZAppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     //MARK: 获取地理位置信息
-    func getLocation() {
-        
-        let locationManager : CCLocationManager? = CCLocationManager.sharedManager()
-        locationManager?.statusDelegate = self
-        locationManager?.startLocation()
-    }
+    //    func getLocation() {
+    //
+    //        let locationManager : CCLocationManager? = CCLocationManager.sharedManager()
+    //        locationManager?.statusDelegate = self
+    //        locationManager?.startLocation()
+    //    }
     
     //MARK: 反编译地理位置
     func getLonLatToCity(_ loc : CLLocation) {
@@ -78,6 +91,9 @@ class ZAppDelegate: UIResponder, UIApplicationDelegate {
                 let array = placeMarks! as NSArray
                 
                 let mark = array.firstObject as! CLPlacemark
+                
+                singleton.longitude = loc.coordinate.longitude
+                singleton.latitude = loc.coordinate.latitude
                 
                 //国家
                 let country: String = (mark.addressDictionary! as NSDictionary).value(forKey: "Country") as! String
@@ -179,47 +195,64 @@ extension ZAppDelegate : UNUserNotificationCenterDelegate {
 }
 
 //MARK:- CCLocationManagerStatusDelegate
-extension ZAppDelegate : CCLocationManagerStatusDelegate {
+//extension ZAppDelegate : CCLocationManagerStatusDelegate {
+//
+//    func getLocationSuccess(_ location: CLLocation) {
+//
+//        let reachability = Reachability.forInternetConnection()
+//
+//        //判断网络链接状态
+//        if reachability!.isReachable() {
+//
+//            self.getLonLatToCity(location)
+//            print("网络连接可用")
+//        }
+//        else {
+//            print("网络连接不可用")
+//        }
+//
+//        //判断连接类型
+//        if reachability!.isReachableViaWiFi() {
+//
+//            reachabilityType = true
+//            print("连接类型：WiFi")
+//        }
+//        else if reachability!.isReachableViaWWAN() {
+//
+//            reachabilityType = true
+//            print("连接类型：蜂窝移动网络")
+//        }
+//        else {
+//            reachabilityType = false
+//            print("连接类型：没有网络连接")
+//        }
+//    }
+//
+//    func getLocationFailure() {
+//
+//        print("定位失败")
+//    }
+//
+//    func deniedLocation() {
+//
+//        print("权限被禁止，请在\"设置-隐私-定位服务\"中进行授权")
+//    }
+//}
+
+//MARK: AMapLocationManagerDelegate
+extension ZAppDelegate : AMapLocationManagerDelegate {
     
-    func getLocationSuccess(_ location: CLLocation) {
-        
-        let reachability = Reachability.forInternetConnection()
-        
-        //判断网络链接状态
-        if reachability!.isReachable() {
-            
-            self.getLonLatToCity(location)
-            print("网络连接可用")
-        }
-        else {
-            print("网络连接不可用")
-        }
-        
-        //判断连接类型
-        if reachability!.isReachableViaWiFi() {
-            
-            reachabilityType = true
-            print("连接类型：WiFi")
-        }
-        else if reachability!.isReachableViaWWAN() {
-            
-            reachabilityType = true
-            print("连接类型：蜂窝移动网络")
-        }
-        else {
-            reachabilityType = false
-            print("连接类型：没有网络连接")
-        }
+    // 发生了错误
+    func amapLocationManager(_ manager:AMapLocationManager, didFailWithError error:Error) {
+        print("error:\(error)")
     }
     
-    func getLocationFailure() {
+    // 更新定位
+    func amapLocationManager(_ manager: AMapLocationManager!, didUpdate location: CLLocation!, reGeocode: AMapLocationReGeocode!) {
         
-        print("定位失败")
-    }
-    
-    func deniedLocation() {
+        print("经度:\(location.coordinate.longitude), 纬度:\(location.coordinate.latitude)")
         
-        print("权限被禁止，请在\"设置-隐私-定位服务\"中进行授权")
+        self.getLonLatToCity(location)
+        self.locationManager.stopUpdatingLocation()
     }
 }
-

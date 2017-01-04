@@ -10,6 +10,7 @@ import UIKit
 
 class ShowAddressCell: UITableViewCell {
 
+    @IBOutlet weak var userLab: UILabel!
     @IBOutlet weak var address: UILabel!
     @IBOutlet weak var editAddressBtn: UIButton!
 

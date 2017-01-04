@@ -41,7 +41,13 @@ class UserNameVC: BaseViewController {
         self.navigationItem.leftBarButtonItem = self.leftItem
         self.navigationItem.rightBarButtonItem = self.rightItem
         
-//        self.iTextField.becomeFirstResponder()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        super.viewWillAppear(animated)
+        
+         self.iTextField.becomeFirstResponder()
     }
     
     func left() {

@@ -10,4 +10,11 @@ import UIKit
 
 class HomePageVC: BaseViewController {
     
+    override func viewDidLoad() {
+        
+        super.viewDidLoad()
+        
+        self.navTitle = "首页"
+    }
+
 }

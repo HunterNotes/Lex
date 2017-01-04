@@ -21,6 +21,7 @@ target 'Lex' do
     pod 'AMap3DMap'
     pod 'AMapFoundation'
     pod 'AMapSearch'
+    pod 'AMapLocation'
     #     pod 'SlackTextViewController'
     #     pod 'TextFieldEffects'
     #     pod 'LTMorphingLabel'

@@ -12,20 +12,27 @@ import UIKit
 class CCSingleton: NSObject {
     
     /* 用户位置信息 */
+    
+    //精度
+    var longitude                   : CLLocationDegrees = 116.2317
+    
+    //获取纬度
+    var latitude                    : CLLocationDegrees = 39.5427
+
     // 国家
-    var country                     : String! 
+    var country                     : String!
     
     // 国家代码
     var countryCode                 : String! 
     
     // 省
-    var state                       : String! 
+    var state                       : String? = "--"
     
     // 市
-    var city                        : String! 
+    var city                        : String? = "--"
     
     // 区
-    var subLocality                 : String! 
+    var subLocality                 : String? = "--"
     
     // 街道地址
     var formattedAddressLines       : String! 
