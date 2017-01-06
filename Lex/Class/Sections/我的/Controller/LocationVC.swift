@@ -7,8 +7,9 @@
 //
 
 import UIKit
-import CoreLocation
-import MapKit
+//import MapKit
+
+/// 当前位置默认显示在地图中心， 大头针默认定在地图中心
 
 protocol LocationVCDelegate {
     
@@ -22,12 +23,14 @@ protocol LocationVCDelegate {
     
 }
 
-class LocationVC: BaseViewController, SearchDelegate {
+class LocationVC: BaseViewController, LocationSearchDelegate, AMapSearchDelegate {
     
     @IBOutlet weak var searchBtn    : UIButton!
     
     var selectIndex                 : Int = 0
     var hiddenSearch                : Bool = false
+    var isFirstLoading              : Bool = true       //是否是第一次定位
+    
     var displayMap                  : Bool = true  //地图状态：是否展开
     
     let minTableView_h              : CGFloat = app_height - 379
@@ -40,24 +43,20 @@ class LocationVC: BaseViewController, SearchDelegate {
     var contentOffsetY              : CGFloat = 0
     
     var locDelegate                 : LocationVCDelegate?
+    var dataArray                   : Array<AMapPOI> = []
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
         UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
         
         self.view.addSubview(self.naBar)
-        self.setupMapView()
-        //        self.initAnnotations()
         
+        self.setupMapView()
+        self.initSearchs()
         self.setupTableView()
         self.registerCell()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        
-        super.viewDidAppear(animated)
-        self.gpsAction()
     }
     
     func registerCell() {
@@ -68,12 +67,27 @@ class LocationVC: BaseViewController, SearchDelegate {
     func setupTableView() {
         
         self.view.addSubview(self.tableView)
+        self.tableView.addSubview(self.activity)
+        
+        weak var weakSelf = self
+        self.activity.snp.makeConstraints { (make) in
+            make.centerX.equalTo((weakSelf?.tableView.centerX)!)
+            make.top.equalTo(10)
+            make.size.equalTo(CGSize.init(width: 37, height: 37))
+        }
     }
+    
+    lazy var activity : UIActivityIndicatorView = {
+        
+        let activity : UIActivityIndicatorView = UIActivityIndicatorView.init(activityIndicatorStyle: .gray)
+        activity.isHidden = true
+        return activity
+    }()
     
     //MARK: 导航条相关
     lazy var naBar: PresentNaBarView = {
         
-        let bar : PresentNaBarView = PresentNaBarView.init(frame: CGRect.init(x: 0, y: 0, width: app_width, height: 64));
+        let bar : PresentNaBarView = PresentNaBarView.init(frame: CGRect.init(x: 0, y: 0, width: app_width, height: 64))
         bar.naBarItem.text = "位置"
         bar.backgroundColor = nav_color()
         bar.saveBtn.isEnabled = false
@@ -94,9 +108,10 @@ class LocationVC: BaseViewController, SearchDelegate {
     }
     
     //MARK: 搜索框相关
-    lazy var search: Search = {
+    
+    lazy var search: LocationSearch = {
         
-        let se = Search.init(frame: UIScreen.main.bounds)
+        let se = LocationSearch.init(frame: UIScreen.main.bounds)
         se.searchField.placeholder = "搜索地址"
         se.delegate = self
         return se
@@ -169,15 +184,18 @@ class LocationVC: BaseViewController, SearchDelegate {
         }
     }
     
-    //MARK: SearchDelegate
+    //MARK: LocationSearchDelegate
     func hideSearchView(status : Bool) {
         
         self.hiddenSearch = false
         self.touchSearchAnimation()
         
         if status == true {
+            
             self.search.removeFromSuperview()
             UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
+            
+            self.mapView.centerCoordinate = CLLocationCoordinate2DMake(CCSingleton.sharedUser().latitude, CCSingleton.sharedUser().longitude)
         }
     }
     
@@ -208,6 +226,29 @@ class LocationVC: BaseViewController, SearchDelegate {
     }
     
     //MARK: 高德地图相关
+    lazy var mapView : MAMapView = {
+        
+        let map : MAMapView = MAMapView(frame: CGRect.init(x: 0, y: 109, width: app_width, height: self.maxMap_h))
+        map.desiredAccuracy = kCLLocationAccuracyBestForNavigation
+        map.autoresizingMask = [UIViewAutoresizing.flexibleHeight, UIViewAutoresizing.flexibleWidth]
+        map.showsUserLocation = true
+        map.touchPOIEnabled = true
+        map.pausesLocationUpdatesAutomatically = true
+        
+        //跟踪用户
+        map.userTrackingMode = .follow
+        
+        //最小更新距离
+        map.distanceFilter = 1
+        
+        //设置比例尺缩放级别
+        map.zoomLevel = 15.5
+        map.centerCoordinate = CLLocationCoordinate2DMake(CCSingleton.sharedUser().latitude, CCSingleton.sharedUser().longitude)
+        map.delegate = self
+        
+        return map
+    }()
+    
     lazy var gpsButton : UIButton = {
         
         let rect : CGRect = CGRect.init(x: 0, y: 0, width: 40, height: 40)
@@ -241,29 +282,10 @@ class LocationVC: BaseViewController, SearchDelegate {
         return ret
     }()
     
-    lazy var mapView : MAMapView = {
-        
-        let map : MAMapView = MAMapView(frame: CGRect.init(x: 0, y: 109, width: app_width, height: self.maxMap_h))
-        map.delegate = self
-        map.desiredAccuracy = kCLLocationAccuracyBestForNavigation
-        map.autoresizingMask = [UIViewAutoresizing.flexibleHeight, UIViewAutoresizing.flexibleWidth]
-        map.showsUserLocation = true
-        
-        //最小更新距离
-        map.distanceFilter = 5
-        
-        //设置比例尺
-        map.zoomLevel = 50
-        return map
-    }()
-    
     func setupMapView() {
         
-        //        self.view.insertSubview(mapView, belowSubview: self.tableView)
         self.view.addSubview(self.mapView)
         let zoomPannelView = self.makeZoomPannelView
-        //        zoomPannelView.center = CGPoint.init(x: self.topView.bounds.size.width -  zoomPannelView.bounds.width/2 - 10, y: self.topView.bounds.size.height -  zoomPannelView.bounds.width/2 - 30)
-        
         zoomPannelView.autoresizingMask = [UIViewAutoresizing.flexibleTopMargin , UIViewAutoresizing.flexibleLeftMargin]
         self.mapView.addSubview(self.makeZoomPannelView)
         self.mapView.addSubview(self.gpsButton)
@@ -283,11 +305,13 @@ class LocationVC: BaseViewController, SearchDelegate {
     
     func gpsAction() {
         
-        if(self.mapView.userLocation.isUpdating && self.mapView.userLocation.location != nil) {
+        self.isFirstLoading = false
+        
+        if (self.mapView.userLocation.isUpdating && self.mapView.userLocation.location != nil) {
             
+            //设置当前位置为地图中心的位置
             self.mapView.setCenter(self.mapView.userLocation.location.coordinate, animated: true)
             self.gpsButton.isSelected = true
-            self.setPin()
         }
     }
     
@@ -295,25 +319,7 @@ class LocationVC: BaseViewController, SearchDelegate {
         return CLGeocoder()
     }()
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
-        let point = touches.first?.location(in: self.mapView)
-        let coordinate = self.mapView.convert(point!, toCoordinateFrom: self.mapView)
-        let annotation = addAnnotation(coordinate, title: "title", subTitle: "subTitle")//注意：占位标题与占位子标题
-        
-        let location = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
-        geoCoder.reverseGeocodeLocation(location) { (pls: [CLPlacemark]?, error: Error?) -> Void in
-            if error == nil {
-                let pl = pls?.first
-                print(pl ?? "")
-                annotation.title = pl?.locality//上海市
-                annotation.subtitle = pl?.name//金桥谷创意园
-            }
-        }
-    }
-    
     //MARK: 放置大头针
-    
     lazy var annotations : Array<CCAnnotation> = {
         
         let arr : NSArray = NSArray()
@@ -328,19 +334,21 @@ class LocationVC: BaseViewController, SearchDelegate {
     
     func setPin() {
         
-        self.annotation.coordinate = CLLocationCoordinate2DMake(CCSingleton.sharedUser().latitude, CCSingleton.sharedUser().longitude);
+        self.annotation.coordinate = self.mapView.centerCoordinate
         
-        //一个点放置大头针
+        self.annotation.title = "title"
+        self.annotation.subtitle = "subTitle"
+        
+        if self.mapView.annotations.count == 2 {
+            self.mapView.removeAnnotation(self.annotation)
+        }
         self.mapView.addAnnotation(self.annotation)
-        
-        //多个点防止大头针
-        //        self.annotations.append(self.annotation)
-        //        self.mapView.addAnnotations(self.annotations)
     }
     
+    //MARK: 添加大头针
     func addAnnotation(_ coordinate: CLLocationCoordinate2D, title: String, subTitle: String) -> CCAnnotation {
         
-        if self.mapView.annotations.count > 0 {
+        if self.mapView.annotations.count == 1 {
             
             //删除一颗大头针
             self.mapView.removeAnnotation(self.annotation)
@@ -349,6 +357,7 @@ class LocationVC: BaseViewController, SearchDelegate {
             //            self.mapView.removeAnnotations(self.annotations)
         }
         self.annotation.coordinate = coordinate
+        
         self.annotation.title = title
         self.annotation.subtitle = subTitle
         
@@ -357,8 +366,57 @@ class LocationVC: BaseViewController, SearchDelegate {
         
         //添加多颗大头针
         //        self.mapView.addAnnotations(self.annotations)
-        
         return annotation
+    }
+    
+    //MARK: 搜索周边
+    lazy var mapSearch : AMapSearchAPI = {
+        
+        let mapSearch : AMapSearchAPI = AMapSearchAPI()
+        mapSearch.delegate = self
+        return mapSearch
+    }()
+    
+    lazy var mapRequest : AMapPOIAroundSearchRequest = {
+        
+        let request : AMapPOIAroundSearchRequest = AMapPOIAroundSearchRequest()
+        request.types = "风景名胜|商务住宅|政府机构及社会团体|地名地址信息"
+        request.sortrule = 0
+        request.requireExtension = true
+        return request
+    }()
+    
+    func initSearchs() {
+        
+        self.mapRequest.location = AMapGeoPoint.location(withLatitude: CGFloat(CCSingleton.sharedUser().latitude), longitude: CGFloat(CCSingleton.sharedUser().longitude))
+        self.mapSearch.aMapPOIAroundSearch(self.mapRequest) //搜索请求
+    }
+    
+    //MARK: AMapSearchDelegate
+    
+    //逆地理编码查询回调函数
+    func onReGeocodeSearchDone(_ request: AMapReGeocodeSearchRequest!, response: AMapReGeocodeSearchResponse!) {
+        
+        var str : NSString = response.regeocode.addressComponent.city as NSString // addressComponent包含用户当前地址
+        if str.length == 0 {
+            str = response.regeocode.addressComponent.province as NSString
+        }
+        
+        self.mapView.userLocation.title = str as String
+        self.mapView.userLocation.subtitle = response.regeocode.formattedAddress
+    }
+    
+    //POI查询回调函数
+    func onPOISearchDone(_ request: AMapPOISearchBaseRequest!, response: AMapPOISearchResponse!) {
+        
+        if response.pois.count == 0 {
+            return
+        }
+        
+        self.dataArray = response.pois as Array
+        self.activity.stopAnimating()
+        self.activity.isHidden = true
+        self.tableView.reloadData()
     }
     
     //MARK: 展开地图
@@ -432,7 +490,6 @@ extension LocationVC : MAMapViewDelegate {
         
     }
     
-    //地图加成功
     func mapViewDidFinishLoadingMap(_ mapView: MAMapView!) {
         
     }
@@ -445,21 +502,33 @@ extension LocationVC : MAMapViewDelegate {
     //地图将要发生移动
     func mapView(_ mapView: MAMapView!, mapWillMoveByUser wasUserAction: Bool) {
         
-        print(mapView.userLocation)
+        self.annotation.coordinate = mapView.userLocation.coordinate
     }
     
     //地图移动结束后
     func mapView(_ mapView: MAMapView!, mapDidMoveByUser wasUserAction: Bool) {
         
-        print(mapView.userLocation)
-        
-        //经度
-        //mapView.userLocation.location.coordinate.longitude
-        
-        //纬度
-        //mapView.userLocation.location.coordinate.latitude
-        
         //反编译地理位置
+        //        self.getLonLatToCity(mapView.userLocation.location)
+        
+        //位置发生变化后的操作
+        if CCSingleton.sharedUser().latitude != mapView.centerCoordinate.latitude && CCSingleton.sharedUser().longitude != mapView.centerCoordinate.longitude {
+            
+            if self.dataArray.count > 0 {
+                self.dataArray.removeAll()
+            }
+            
+            self.tableView.reloadData()
+            
+            self.activity.isHidden = false
+            self.activity.startAnimating()
+            
+            CCSingleton.sharedUser().latitude = self.mapView.centerCoordinate.latitude
+            CCSingleton.sharedUser().longitude = self.mapView.centerCoordinate.longitude
+            
+            self.setPin()
+            self.initSearchs()
+        }
     }
     
     //地图将要发生缩放
@@ -468,7 +537,7 @@ extension LocationVC : MAMapViewDelegate {
         if !self.displayMap {
             
             self.openShutter()
-            self.locDelegate?.didTapOnMapView()
+            //            self.locDelegate?.didTapOnMapView()
         }
     }
     
@@ -477,30 +546,24 @@ extension LocationVC : MAMapViewDelegate {
         
     }
     
-    //定位成功后生成指定的标注View
-    //    func mapView(_ mapView: MAMapView!, viewFor annotation: MAAnnotation!) -> MAAnnotationView! {
-    //
-    //        if annotation.isKind(of: MAPointAnnotation.self) {
-    //            let pointReuseIndetifier = "pointReuseIndetifier"
-    //            var annotationView: MAPinAnnotationView? = mapView.dequeueReusableAnnotationView(withIdentifier: pointReuseIndetifier) as! MAPinAnnotationView?
-    //
-    //            if annotationView == nil {
-    //                annotationView = MAPinAnnotationView(annotation: annotation, reuseIdentifier: pointReuseIndetifier)
-    //            }
-    //
-    //            annotationView!.canShowCallout = true
-    //            annotationView!.animatesDrop = true
-    //            annotationView!.isDraggable = true
-    //            annotationView!.rightCalloutAccessoryView = UIButton(type: UIButtonType.detailDisclosure)
-    //
-    //            let idx = annotations.index(of: annotation as! MAPointAnnotation)
-    //            annotationView!.pinColor = MAPinAnnotationColor(rawValue: idx!)!
-    //
-    //            return annotationView!
-    //        }
-    //        return nil
-    //    }
+    //位置或者设备方向更新后
+    func mapView(_ mapView: MAMapView!, didUpdate userLocation: MAUserLocation!, updatingLocation: Bool) {
+        
+        self.setPin()
+    }
     
+    //当touchPOIEnabled == YES时，单击地图使用该回调获取POI信息
+    func mapView(_ mapView: MAMapView!, didTouchPois pois: [Any]!) {
+        
+    }
+    
+    //单击地图回调，返回经纬度
+    func mapView(_ mapView: MAMapView!, didSingleTappedAt coordinate: CLLocationCoordinate2D) {
+        
+        CCSingleton.sharedUser().longitude = coordinate.longitude
+        CCSingleton.sharedUser().latitude = coordinate.latitude
+        self.initSearchs()
+    }
 }
 
 //MARK: UITableViewDataSource && UITableViewDelegate
@@ -513,25 +576,53 @@ extension LocationVC : UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return 10
+        if self.dataArray.count == 0 {
+            return 1
+        }
+        return self.dataArray.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        return tableView.height / 10.0
+        if self.dataArray.count == 1 {
+            return tableView.height
+        }
+        return 44
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let row: Int = (indexPath as NSIndexPath).row
         let cell = tableView.dequeueReusableCell(withIdentifier: "LocationCell", for: indexPath) as! LocationCell
-        if row == selectIndex {
-            cell.mark.isHidden = false
+        cell.selectionStyle = .none
+        if self.dataArray.count > 1 {
+            if row == selectIndex {
+                cell.mark.isHidden = false
+            }
+            else {
+                cell.mark.isHidden = true
+            }
+            
+            let mapPOI: AMapPOI = self.dataArray[row]
+            cell.title.text = mapPOI.name
+            
+            let province : String = mapPOI.province //省
+            let city : String = mapPOI.city //市
+            let district : String = mapPOI.district; //区
+            let address : String = mapPOI.address; //地址
+            
+            if district == address {
+                cell.detail.text = province + city + address
+            }
+            else {
+                cell.detail.text = province + city + district + address
+            }
         }
         else {
             cell.mark.isHidden = true
+            cell.title.text = ""
+            cell.detail.text = ""
         }
-        cell.selectionStyle = .none
         return cell
     }
     
