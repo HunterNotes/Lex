@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		86DCA0D831C89B2211EE8F5D /* Pods_LexTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F4F964113A6FCEC3396D41B /* Pods_LexTests.framework */; };
+		A542636B1E24829F0081F537 /* PopMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = A542636A1E24829F0081F537 /* PopMenu.swift */; };
+		A542636D1E24C1AC0081F537 /* CCMAMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A542636C1E24C1AC0081F537 /* CCMAMapView.swift */; };
+		A54263711E24DB2B0081F537 /* FinishBlockHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54263701E24DB2B0081F537 /* FinishBlockHelper.swift */; };
+		A54263751E24E0900081F537 /* ReturnLocationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54263741E24E0900081F537 /* ReturnLocationHelper.swift */; };
 		A55696E11E091D2F00E06E2D /* ScanCodeLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55696E01E091D2F00E06E2D /* ScanCodeLoadingView.swift */; };
 		A55696E31E09266B00E06E2D /* UserAddressVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55696E21E09266B00E06E2D /* UserAddressVC.swift */; };
 		A55B14D91E07924B008F3465 /* ScanCodeResultVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55B14D81E07924B008F3465 /* ScanCodeResultVC.swift */; };
@@ -114,6 +118,10 @@
 		6893F3029BE2526A3B1A76B4 /* Pods-LexUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LexUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LexUITests/Pods-LexUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		6D5251EBF330E33AC88BFDEA /* Pods-LexUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LexUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LexUITests/Pods-LexUITests.release.xcconfig"; sourceTree = "<group>"; };
 		809B7B3FCDF73E9626E62DB8 /* Pods-LexTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LexTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LexTests/Pods-LexTests.release.xcconfig"; sourceTree = "<group>"; };
+		A542636A1E24829F0081F537 /* PopMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopMenu.swift; sourceTree = "<group>"; };
+		A542636C1E24C1AC0081F537 /* CCMAMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCMAMapView.swift; sourceTree = "<group>"; };
+		A54263701E24DB2B0081F537 /* FinishBlockHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinishBlockHelper.swift; sourceTree = "<group>"; };
+		A54263741E24E0900081F537 /* ReturnLocationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReturnLocationHelper.swift; sourceTree = "<group>"; };
 		A542ADD91E1C7A0900187EEC /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		A55696E01E091D2F00E06E2D /* ScanCodeLoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanCodeLoadingView.swift; sourceTree = "<group>"; };
 		A55696E21E09266B00E06E2D /* UserAddressVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAddressVC.swift; sourceTree = "<group>"; };
@@ -380,6 +388,8 @@
 				A5C443451E03BCDF00C33517 /* ZLabel.swift */,
 				A5A2EE351E1F7A20008F64B7 /* Search.swift */,
 				A5A2EE361E1F7A20008F64B7 /* SettingsTable.swift */,
+				A542636A1E24829F0081F537 /* PopMenu.swift */,
+				A542636C1E24C1AC0081F537 /* CCMAMapView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -388,6 +398,7 @@
 			isa = PBXGroup;
 			children = (
 				A5770CC71E12662500ECE306 /* GlobalVariables.swift */,
+				A54263701E24DB2B0081F537 /* FinishBlockHelper.swift */,
 				A5C4434B1E03BCDF00C33517 /* CountDown */,
 				A5C4434C1E03BCDF00C33517 /* Loction */,
 				A5C4434F1E03BCDF00C33517 /* Network */,
@@ -408,6 +419,7 @@
 			children = (
 				A5C4434D1E03BCDF00C33517 /* CCLocationManager.swift */,
 				A5C4434E1E03BCDF00C33517 /* CCSingleton.swift */,
+				A54263741E24E0900081F537 /* ReturnLocationHelper.swift */,
 			);
 			path = Loction;
 			sourceTree = "<group>";
@@ -1021,6 +1033,7 @@
 				A5C443C91E03BCDF00C33517 /* TabBarView.swift in Sources */,
 				A5A2EE3A1E1F8681008F64B7 /* CAnnotation.swift in Sources */,
 				A5C443CE1E03BCDF00C33517 /* UserInfoCommonNoneCell.swift in Sources */,
+				A542636D1E24C1AC0081F537 /* CCMAMapView.swift in Sources */,
 				A5C443C11E03BCDF00C33517 /* UserNameVC.swift in Sources */,
 				A5C443A31E03BCDF00C33517 /* ZLabel.swift in Sources */,
 				A55B14D91E07924B008F3465 /* ScanCodeResultVC.swift in Sources */,
@@ -1035,7 +1048,9 @@
 				A5C443BF1E03BCDF00C33517 /* UserInfoVC.swift in Sources */,
 				A5C443C51E03BCDF00C33517 /* ScanCodeTool.swift in Sources */,
 				A5C443AA1E03BCDF00C33517 /* SavaImgHelper.swift in Sources */,
+				A54263751E24E0900081F537 /* ReturnLocationHelper.swift in Sources */,
 				A5C443B51E03BCDF00C33517 /* PageNavigationVC.swift in Sources */,
+				A54263711E24DB2B0081F537 /* FinishBlockHelper.swift in Sources */,
 				A5C443A11E03BCDF00C33517 /* UIView+Extension.swift in Sources */,
 				A5C443D41E03BCDF00C33517 /* ZCommonCell.swift in Sources */,
 				A5C4439C1E03BCDF00C33517 /* ZAppDelegate.swift in Sources */,
@@ -1055,6 +1070,7 @@
 				A5C443D91E03BCDF00C33517 /* Config.swift in Sources */,
 				A5C443D01E03BCDF00C33517 /* UserInfoPhotoCell.swift in Sources */,
 				A5C443C31E03BCDF00C33517 /* UserPhotoVC.swift in Sources */,
+				A542636B1E24829F0081F537 /* PopMenu.swift in Sources */,
 				A55696E11E091D2F00E06E2D /* ScanCodeLoadingView.swift in Sources */,
 				A5C443AC1E03BCDF00C33517 /* SQLiteManager.swift in Sources */,
 				A55696E31E09266B00E06E2D /* UserAddressVC.swift in Sources */,

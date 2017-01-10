@@ -30,14 +30,23 @@ class UserInfoVC: BaseViewController {
     var userImg                 : UIImage? = nil
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
         self.navTitle = "个人信息"
-        self.initData()
         
         NotificationCenter.default.addObserver(self, selector: #selector(userImgStatus), name: NSNotification.Name("userImgChanged"), object: nil)
         manager = SQLiteManager.defaultManager()
         self.registerCell()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+
+        super.viewWillAppear(animated)
+        
+        _ = self.getUserImageFromSQLite()
+        self.initData()
+        self.tableView.reloadData()
     }
     
     func userImgStatus(notification : Notification) {
@@ -51,14 +60,6 @@ class UserInfoVC: BaseViewController {
     deinit {
         
         NotificationCenter.default.removeObserver(self)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        
-        super.viewWillAppear(animated)
-        
-        _ = self.getUserImageFromSQLite()
-        self.tableView.reloadData()
     }
     
     func initData() {

@@ -21,8 +21,6 @@ class LocationSearch: UIView, UITableViewDelegate, UITableViewDataSource, UIText
         //        rec =  UIApplication.shared.statusBarFrame
         let st = UIView.init(frame: rec)
         st.backgroundColor = globalBGColor()
-        //        st.backgroundColor = UIColor.black
-        //        st.alpha = 0.15
         return st
     }()
     
@@ -38,7 +36,6 @@ class LocationSearch: UIView, UITableViewDelegate, UITableViewDataSource, UIText
         
         let sv = UIView.init(frame: CGRect.init(x: 0, y: 0, width: self.width, height: 68))
         sv.backgroundColor = globalBGColor()
-        //        sv.alpha = 0
         return sv
     }()
     
@@ -95,7 +92,6 @@ class LocationSearch: UIView, UITableViewDelegate, UITableViewDataSource, UIText
     lazy var tableView: UITableView = {
         
         let tv: UITableView = UITableView.init(frame: CGRect.init(x: 0, y: 68, width: self.width, height: app_height - 68), style: UITableViewStyle.plain)
-        //            .init(frame: CGRect.init(x: 0, y: 68, width: self.width, height: app_height - 68)) //288
         tv.backgroundColor = RGBA(245, g: 245, b: 245, a: 1.0)
         tv.delegate = self
         tv.dataSource = self
@@ -117,10 +113,6 @@ class LocationSearch: UIView, UITableViewDelegate, UITableViewDataSource, UIText
         
         let request : AMapInputTipsSearchRequest = AMapInputTipsSearchRequest()
         request.types = "汽车服务|汽车销售|汽车维修|摩托车服务|餐饮服务|购物服务|生活服务|体育休闲服务|医疗保健服务|住宿服务|风景名胜|商务住宅|政府机构及社会团体|科教文化服务|交通设施服务|金融保险服务|公司企业|道路附属设施|地名地址信息|公共设施"
-        
-        //城市
-        //        request.city = CCSingleton.sharedUser().city
-        
         return request
     }()
     
@@ -199,29 +191,6 @@ class LocationSearch: UIView, UITableViewDelegate, UITableViewDataSource, UIText
             //关键字
             self.mapRequest.keywords = textField.text
             self.mapSearch.aMapInputTipsSearch(self.mapRequest) //搜索请求
-            //            let _  = URLSession.shared.dataTask(with: requestSuggestionsURL(text: self.searchField.text!), completionHandler: { (data, response, error) in
-            //                if error == nil {
-            //                    do {
-            //                        let json  = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as! NSArray
-            ////                        self.items = json[1] as! [String]
-            //                        DispatchQueue.main.async(execute: {
-            //                            if self.items.count > 0  {
-            //                                self.addSubview(self.tableView)
-            //                            }
-            //                            else {
-            //                                self.tableView.removeFromSuperview()
-            //                            }
-            //                            self.tableView.reloadData()
-            //                        })
-            //                    }
-            //                    catch _ {
-            //                        print("Something wrong happened")
-            //                    }
-            //                }
-            //                else {
-            //                    print("error downloading suggestions")
-            //                }
-            //            }).resume()
         }
         return true
     }

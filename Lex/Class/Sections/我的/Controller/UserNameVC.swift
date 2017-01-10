@@ -22,6 +22,9 @@ class UserNameVC: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if Int((USERNAME?.characters.count)!) == 0 {
+            USERNAME = "风一样的CC"
+        }
         self.navTitle = "名字"
         self.iTextField.text = USERNAME
         if self.iTextField.text == nil {
@@ -39,14 +42,6 @@ class UserNameVC: BaseViewController {
         self.rightItem.isEnabled = false
         self.navigationItem.leftBarButtonItem = self.leftItem
         self.navigationItem.rightBarButtonItem = self.rightItem
-        
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        
-        super.viewWillAppear(animated)
-        
-         self.iTextField.becomeFirstResponder()
     }
     
     func left() {
@@ -73,6 +68,7 @@ class UserNameVC: BaseViewController {
             
             self.iTextField.text = ""
             self.clearBtn.isHidden = true
+            self.rightItem.isEnabled = false
         }
     }
 }
@@ -130,6 +126,8 @@ extension UserNameVC : UITextFieldDelegate {
         else {
             self.rightItem.isEnabled = true
         }
+        
+        self.rightItem.isEnabled = !self.clearBtn.isHidden
         return true
     }
     

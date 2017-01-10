@@ -24,9 +24,8 @@ class UpDateAddressVC: BaseViewController {
     /* 通讯录信息 */
     var name            : String? = ""
     var phoneNum        : String? = ""
-    var address         : String? = ""
+    var locality         : String? = ""
     var addressDetail   : String? = ""
-    var locality        : String? = ""
     var postalCode      : String? = ""
     
     /* 地址 */
@@ -49,8 +48,22 @@ class UpDateAddressVC: BaseViewController {
         
         let singleton : CCSingleton = CCSingleton.sharedUser()
         self.locality = singleton.state! + "  " + singleton.city! + "  " + singleton.subLocality!
-                
+        
         self.registerCell()
+        
+        weak var weakSelf = self
+        ReturnLocationHelper.sharedManager().locationBlock = { (isFinish : Bool, mapPOI : AMapPOI) -> () in
+            
+            if isFinish {
+                
+                let state       : String = mapPOI.province
+                let city        : String = mapPOI.city
+                let district    : String = mapPOI.district
+                
+                weakSelf?.locality = state + "  " + city + "  " + district
+                weakSelf?.tableView.reloadData()
+            }
+        }
     }
     
     func registerCell() {
@@ -232,7 +245,7 @@ extension UpDateAddressVC : UITableViewDataSource, UITableViewDelegate {
             case 2:
                 cell1.textField.placeholder = "地区信息"
                 cell1.textField.isEnabled = false
-                cell1.textField.text = self.address!
+                cell1.textField.text = self.locality!
                 cell1.button.isHidden = false
                 cell1.button.setImage(UIImage.init(named: "loaction"), for: .normal)
                 break
@@ -367,7 +380,7 @@ extension UpDateAddressVC : AddressPickDelegate {
             self.city = dic["city"] as! String?
             self.area = dic["area"] as! String?
             
-            self.address = "\(self.state!)" + "   \(self.city!)" + "   \(self.area!)"
+            self.locality = "\(self.state!)" + "   \(self.city!)" + "   \(self.area!)"
             self.tableView.reloadData()
         }
         

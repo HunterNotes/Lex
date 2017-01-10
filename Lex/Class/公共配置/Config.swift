@@ -165,7 +165,7 @@ let BASE64HEADER : String = "data:image/png;base64,"
 /**
  * 二维码内容
  */
-var QRTEXT : String = "https://www.baidu.com"
+var QRTEXT : String = "http://www.jianshu.com"
 
 /**
  * 二维码尺寸
