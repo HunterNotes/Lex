@@ -8,14 +8,17 @@
 
 import UIKit
 
-class UserAddressVC: BaseViewController {
+class UserAddressVC: BaseViewController, UpDateAddressVCDelegate {
     
     @IBOutlet weak var tableView: UITableView!
+    
+    var address  : String? = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.navTitle = "我的地址"
+        self.address = CCSingleton.sharedUser().name
         self.registerCell()
     }
     
@@ -33,7 +36,20 @@ class UserAddressVC: BaseViewController {
     func doGoUpDateAddressVC(_ index: Int) {
         
         let vc = UIStoryboard.init(name: "UserCenter", bundle: nil).instantiateViewController(withIdentifier: "UpDateAddressVC") as! UpDateAddressVC
+        vc.upDateAddressDelegate = self
+        if index == 0 {
+            vc.title = "修改地址"
+        }
+        else {
+            vc.title = "新增地址";
+        }
         self.present(vc, animated: true, completion: nil)
+    }
+    
+    func upDateAddress(_ address: String) {
+        
+        self.address = address
+        self.tableView.reloadData()
     }
 }
 
@@ -73,6 +89,7 @@ extension UserAddressVC : UITableViewDataSource, UITableViewDelegate {
             cell.selectionStyle = .none
             cell.editAddressBtn.tag = row
             cell.userLab.text = USERNAME
+            cell.address.text = self.address
             cell.editAddressBtn.addTarget(self, action: #selector(editAddress), for: .touchUpInside)
             return cell
         }
@@ -95,10 +112,6 @@ extension UserAddressVC : UITableViewDataSource, UITableViewDelegate {
         
         if row == 1 {
             doGoUpDateAddressVC(1)
-        }
-        else if row == 2 {
-            
-            
         }
     }
 }

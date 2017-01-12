@@ -20,10 +20,10 @@ class CCSingleton: NSObject {
     var latitude                    : CLLocationDegrees = 39.5427
 
     // 国家
-    var country                     : String!
+    var country                     : String? = "--"
     
     // 国家代码
-    var countryCode                 : String! 
+    var countryCode                 : String? = "--"
     
     // 省
     var state                       : String? = "--"
@@ -34,11 +34,17 @@ class CCSingleton: NSObject {
     // 区
     var subLocality                 : String? = "--"
     
-    // 街道地址
-    var formattedAddressLines       : String! 
+    //街道地址
+    var thoroughfare                : String? = "--"
+    
+    // 街道具体地址
+    var formattedAddressLines       : String? = "--"
     
     // 具体位置
-    var name                        : String! 
+    var name                        : String? = "--"
+    
+    //邮编
+    var postalCode                  : String? = "--"
     
     //防止内网下，反编译位置失败时，他处引用（此属性🔙nil）造成的crash
     // 去掉 "省"

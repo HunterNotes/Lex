@@ -19,6 +19,9 @@
 		A5770CC31E1252F600ECE306 /* LocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5770CC11E1252F600ECE306 /* LocationCell.swift */; };
 		A5770CC41E1252F600ECE306 /* LocationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5770CC21E1252F600ECE306 /* LocationCell.xib */; };
 		A5770CC81E12662500ECE306 /* GlobalVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5770CC71E12662500ECE306 /* GlobalVariables.swift */; };
+		A57B63941E2777B5002FAF82 /* GenderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57B63931E2777B5002FAF82 /* GenderVC.swift */; };
+		A57B63971E277886002FAF82 /* GenderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57B63951E277886002FAF82 /* GenderCell.swift */; };
+		A57B63981E277886002FAF82 /* GenderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A57B63961E277886002FAF82 /* GenderCell.xib */; };
 		A5906CFD1E03CBE300D3909D /* UserCenter.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5906CFC1E03CBE300D3909D /* UserCenter.storyboard */; };
 		A5906CFF1E03CBF900D3909D /* PageNavigation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5906CFE1E03CBF900D3909D /* PageNavigation.storyboard */; };
 		A5906D011E03CC1000D3909D /* Detection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5906D001E03CC1000D3909D /* Detection.storyboard */; };
@@ -130,6 +133,9 @@
 		A5770CC11E1252F600ECE306 /* LocationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationCell.swift; sourceTree = "<group>"; };
 		A5770CC21E1252F600ECE306 /* LocationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LocationCell.xib; sourceTree = "<group>"; };
 		A5770CC71E12662500ECE306 /* GlobalVariables.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalVariables.swift; sourceTree = "<group>"; };
+		A57B63931E2777B5002FAF82 /* GenderVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenderVC.swift; sourceTree = "<group>"; };
+		A57B63951E277886002FAF82 /* GenderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenderCell.swift; sourceTree = "<group>"; };
+		A57B63961E277886002FAF82 /* GenderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GenderCell.xib; sourceTree = "<group>"; };
 		A5906CFC1E03CBE300D3909D /* UserCenter.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UserCenter.storyboard; sourceTree = "<group>"; };
 		A5906CFE1E03CBF900D3909D /* PageNavigation.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PageNavigation.storyboard; sourceTree = "<group>"; };
 		A5906D001E03CC1000D3909D /* Detection.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Detection.storyboard; sourceTree = "<group>"; };
@@ -586,6 +592,7 @@
 				A55696E21E09266B00E06E2D /* UserAddressVC.swift */,
 				A5F1C62F1E0A187B00EA1F92 /* UpDateAddressVC.swift */,
 				A57532D81E10FBD2008D5DFD /* LocationVC.swift */,
+				A57B63931E2777B5002FAF82 /* GenderVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -638,6 +645,8 @@
 				A5770CC11E1252F600ECE306 /* LocationCell.swift */,
 				A5770CC21E1252F600ECE306 /* LocationCell.xib */,
 				A5A2EE331E1F79C4008F64B7 /* LocationSearch.swift */,
+				A57B63951E277886002FAF82 /* GenderCell.swift */,
+				A57B63961E277886002FAF82 /* GenderCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -852,6 +861,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A5C443D31E03BCDF00C33517 /* UserInfoQRCodeCell.xib in Resources */,
+				A57B63981E277886002FAF82 /* GenderCell.xib in Resources */,
 				A5906D051E03CD0400D3909D /* Main.storyboard in Resources */,
 				A5C443D11E03BCDF00C33517 /* UserInfoPhotoCell.xib in Resources */,
 				A5F1C6341E0A200000EA1F92 /* EditAddressCommonCell.xib in Resources */,
@@ -1031,6 +1041,7 @@
 				A57532D91E10FBD2008D5DFD /* LocationVC.swift in Sources */,
 				A5F1C6281E0A0ECE00EA1F92 /* ShowAddressCell.swift in Sources */,
 				A5C443C91E03BCDF00C33517 /* TabBarView.swift in Sources */,
+				A57B63971E277886002FAF82 /* GenderCell.swift in Sources */,
 				A5A2EE3A1E1F8681008F64B7 /* CAnnotation.swift in Sources */,
 				A5C443CE1E03BCDF00C33517 /* UserInfoCommonNoneCell.swift in Sources */,
 				A542636D1E24C1AC0081F537 /* CCMAMapView.swift in Sources */,
@@ -1062,6 +1073,7 @@
 				A5C4439D1E03BCDF00C33517 /* UINavigationController+Extends.m in Sources */,
 				A5C443CC1E03BCDF00C33517 /* UserInfoCommonCell.swift in Sources */,
 				A5C443AD1E03BCDF00C33517 /* LoadingVC.swift in Sources */,
+				A57B63941E2777B5002FAF82 /* GenderVC.swift in Sources */,
 				A5A2EE381E1F7A20008F64B7 /* SettingsTable.swift in Sources */,
 				A5C443AB1E03BCDF00C33517 /* SaveUserImageHelper.swift in Sources */,
 				A5C443CA1E03BCDF00C33517 /* UserImgCell.swift in Sources */,

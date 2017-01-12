@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UserInfoVC: BaseViewController {
+class UserInfoVC: BaseViewController, GenderVCDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -18,12 +18,12 @@ class UserInfoVC: BaseViewController {
     let userInfoQRCodeCell      : String = "UserInfoQRCodeCell"
     
     /* 部分用户信息 */
-    var address                 : String!
-    var gender                  : String!
-    var location                : String!
-    var signature               : String!
+    var address                 : String? = ""
+    var gender                  : String? = ""
+    var location                : String? = ""
+    var signature               : String? = ""
     
-    var titleArr                : [[String]]!
+    var titleArr                : [[String]]! 
     var detailArr               : [[String]]!
     
     var manager                 : SQLiteManager!
@@ -64,13 +64,8 @@ class UserInfoVC: BaseViewController {
     
     func initData() {
         
-        address = ""
-        gender = ""
-        location = ""
-        signature = ""
-        
-        titleArr = [["头像", "名字", "xx号", "我的二维码", "我的地址"], ["性别", "地区", "个性签名"], ["Linkedln账号"]]
-        detailArr = [["", USERNAME!, "HunterNotes  ", "我的二维码", address], [gender, location, signature], ["展示"]]
+        self.titleArr = [["头像", "名字", "xx号", "我的二维码", "我的地址"], ["性别", "地区", "个性签名"], ["Linkedln账号"]]
+        self.detailArr = [["", USERNAME!, "HunterNotes  ", "我的二维码", self.address!], [self.gender!, self.location!, self.signature!], ["展示"]]
     }
     
     func registerCell() {
@@ -92,6 +87,12 @@ class UserInfoVC: BaseViewController {
             self.userImg = image
         }
         return self.userImg!
+    }
+    
+    //MARK: GenderVCDelegate
+    func seletedGender(_ gender: String) {
+        
+        self.gender = gender
     }
 }
 
@@ -148,8 +149,8 @@ extension UserInfoVC : UITableViewDataSource, UITableViewDelegate {
             
             let commonNoneCell = tableView.dequeueReusableCell(withIdentifier: userInfoCommonNoneCell, for: indexPath) as! UserInfoCommonNoneCell
             commonNoneCell.selectionStyle = .none
-            commonNoneCell.leftLab.text = titleArr[section][row]
-            commonNoneCell.rightLab.text = detailArr[section][row]
+            commonNoneCell.leftLab.text = self.titleArr[section][row]
+            commonNoneCell.rightLab.text = self.detailArr[section][row]
             return commonNoneCell
         }
         else {
@@ -157,8 +158,11 @@ extension UserInfoVC : UITableViewDataSource, UITableViewDelegate {
             let commonCell = tableView.dequeueReusableCell(withIdentifier: userInfoCommonCell, for: indexPath) as! UserInfoCommonCell
             commonCell.selectionStyle = .none
             commonCell.accessoryType = .disclosureIndicator
-            commonCell.leftLab.text = titleArr[section][row]
-            commonCell.rightLab.text = detailArr[section][row]
+            commonCell.leftLab.text = self.titleArr[section][row]
+            commonCell.rightLab.text = self.detailArr[section][row]
+            if section == 1 && row == 0 {
+                print(self.detailArr[section][row])
+            }
             return commonCell
         }
     }
@@ -215,7 +219,9 @@ extension UserInfoVC : UITableViewDataSource, UITableViewDelegate {
         case 1:
             switch row {
             case 0:
-                
+                let vc = UIStoryboard.init(name: "UserCenter", bundle: nil).instantiateViewController(withIdentifier: "GenderVC") as! GenderVC
+                vc.seletGenderDelegate = self
+                self.navigationController?.pushViewController(vc, animated: true)
                 break
             case 1:
                 

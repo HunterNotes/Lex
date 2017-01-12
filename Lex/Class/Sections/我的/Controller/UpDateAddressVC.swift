@@ -11,6 +11,12 @@ import SVProgressHUD
 import Contacts
 import ContactsUI
 
+
+protocol UpDateAddressVCDelegate {
+    
+    func upDateAddress(_ address : String)
+}
+
 class UpDateAddressVC: BaseViewController {
     
     @IBOutlet weak var tableView: UITableView!
@@ -23,10 +29,10 @@ class UpDateAddressVC: BaseViewController {
     
     /* 通讯录信息 */
     var name            : String? = ""
-    var phoneNum        : String? = ""
-    var locality         : String? = ""
+    var phoneNum        : String? = "18888888888"
+    var locality        : String? = ""
     var addressDetail   : String? = ""
-    var postalCode      : String? = ""
+    var postalCode      : String? = CCSingleton.sharedUser().postalCode
     
     /* 地址 */
     var state           : String? = ""
@@ -34,13 +40,15 @@ class UpDateAddressVC: BaseViewController {
     var area            : String? = ""
     var isPopPickViwe   : Bool?   = false
     
+    var upDateAddressDelegate : UpDateAddressVCDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //设置状态栏的文字颜色
         UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
         self.view.addSubview(self.naBar)
-        self.naBar.naBarItem.text = "修改地址"
+        self.naBar.naBarItem.text = self.title
         self.view.addSubview(self.pickerView)
         
         titleArr = ["姓名", "手机号码", "选择地区", "", "邮编"]
@@ -48,6 +56,7 @@ class UpDateAddressVC: BaseViewController {
         
         let singleton : CCSingleton = CCSingleton.sharedUser()
         self.locality = singleton.state! + "  " + singleton.city! + "  " + singleton.subLocality!
+        self.addressDetail = singleton.thoroughfare!
         
         self.registerCell()
         
@@ -56,11 +65,13 @@ class UpDateAddressVC: BaseViewController {
             
             if isFinish {
                 
-                let state       : String = mapPOI.province
-                let city        : String = mapPOI.city
-                let district    : String = mapPOI.district
+                weakSelf?.state = mapPOI.province
+                weakSelf?.city = mapPOI.city
+                weakSelf?.area = mapPOI.district
+                weakSelf?.postalCode = mapPOI.postcode
                 
-                weakSelf?.locality = state + "  " + city + "  " + district
+                weakSelf?.locality = weakSelf!.state! + "  " + weakSelf!.city! + "  " + weakSelf!.area!
+                weakSelf?.addressDetail = mapPOI.address
                 weakSelf?.tableView.reloadData()
             }
         }
@@ -76,7 +87,6 @@ class UpDateAddressVC: BaseViewController {
         
         let bar : PresentNaBarView = PresentNaBarView.init(frame: CGRect.init(x: 0, y: 0, width: app_width, height: 64));
         bar.backgroundColor = nav_color()
-        bar.saveBtn.isEnabled = false
         bar.cancelBtn.addTarget(self, action: #selector(cancel), for: .touchUpInside)
         bar.saveBtn.addTarget(self, action: #selector(save), for: .touchUpInside)
         return bar
@@ -103,11 +113,6 @@ class UpDateAddressVC: BaseViewController {
                 
             }, completion: { (finish : Bool) in
                 
-                //                UIView.animate(withDuration: 0.25, delay: 0.0, options: .curveEaseIn, animations: {
-                //
-                //                }, completion: { (finished : Bool) in
-                //
-                //                })
             })
         }
         else {
@@ -118,11 +123,6 @@ class UpDateAddressVC: BaseViewController {
                 
             }, completion: { (finish : Bool) in
                 
-                //                UIView.animate(withDuration: 0.25, delay: 0.0, options: .curveEaseIn, animations: {
-                //
-                //                }, completion: { (finished : Bool) in
-                //
-                //                })
             })
         }
     }
@@ -151,6 +151,14 @@ class UpDateAddressVC: BaseViewController {
     }
     
     func save() {
+        
+        if self.addressDetail?.characters.count > 0 {
+            if self.upDateAddressDelegate != nil {
+                
+                let address : String = "\(self.state!)" + "\(self.city!)" + "\(self.area!)" + "\(self.addressDetail!)"
+                self.upDateAddressDelegate?.upDateAddress(address)
+            }
+        }
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -251,7 +259,7 @@ extension UpDateAddressVC : UITableViewDataSource, UITableViewDelegate {
                 break
             case 4:
                 cell1.textField.placeholder = "邮政编码"
-                cell1.textField.text = self.postalCode!
+                cell1.textField.text = self.postalCode
                 cell1.button.isHidden = true
                 break
             default:

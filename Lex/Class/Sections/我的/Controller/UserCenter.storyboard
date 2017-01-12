@@ -249,6 +249,43 @@
             </objects>
             <point key="canvasLocation" x="-3506" y="712"/>
         </scene>
+        <!--性别-->
+        <scene sceneID="eBT-Ed-Ke8">
+            <objects>
+                <viewController storyboardIdentifier="GenderVC" id="jUd-fI-sSu" userLabel="性别" customClass="GenderVC" customModule="Lex" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="lUr-Rl-WcK"/>
+                        <viewControllerLayoutGuide type="bottom" id="atb-H8-v3n"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="6He-qO-62D">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="xrj-fG-CvX">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="jUd-fI-sSu" id="31B-52-eXd"/>
+                                    <outlet property="delegate" destination="jUd-fI-sSu" id="Zn5-EQ-Kpw"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="atb-H8-v3n" firstAttribute="top" secondItem="xrj-fG-CvX" secondAttribute="bottom" id="TKK-Sy-ipV"/>
+                            <constraint firstItem="xrj-fG-CvX" firstAttribute="top" secondItem="6He-qO-62D" secondAttribute="top" id="avw-fN-K6Q"/>
+                            <constraint firstAttribute="trailing" secondItem="xrj-fG-CvX" secondAttribute="trailing" id="cOi-OT-tJp"/>
+                            <constraint firstItem="xrj-fG-CvX" firstAttribute="leading" secondItem="6He-qO-62D" secondAttribute="leading" id="e4g-GH-dC7"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="xrj-fG-CvX" id="hdY-zH-sKw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uWF-Bk-hCQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3506" y="1419"/>
+        </scene>
         <!--用户头像-->
         <scene sceneID="h84-A1-gkB">
             <objects>

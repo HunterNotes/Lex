@@ -91,42 +91,51 @@ class ZAppDelegate: UIResponder, UIApplicationDelegate {
                 let array = placeMarks! as NSArray
                 
                 let mark = array.firstObject as! CLPlacemark
-                
+                let dic : Dictionary = mark.addressDictionary!
+
                 singleton.longitude = loc.coordinate.longitude
                 singleton.latitude = loc.coordinate.latitude
                 
                 //国家
-                let country: String = (mark.addressDictionary! as NSDictionary).value(forKey: "Country") as! String
+                let country: String? = dic["Country"] as! String?
                 singleton.country = country
                 
                 //国家代码
-                let countryCode: String = (mark.addressDictionary! as NSDictionary).value(forKey: "CountryCode") as! String
+                let countryCode: String? = dic["CountryCode"] as! String?
                 singleton.countryCode = countryCode
                 
                 //省
-                let state: String = (mark.addressDictionary! as NSDictionary).value(forKey: "State") as! String
+                let state: String? = dic["State"] as! String?
                 singleton.state = state
                 
                 //市
-                let city: String = (mark.addressDictionary! as NSDictionary).value(forKey: "City") as! String
+                let city: String? = dic["City"] as! String?
                 singleton.city = city
                 
                 //区
-                let subLocality: String = (mark.addressDictionary! as NSDictionary).value(forKey: "SubLocality") as! String
+                let subLocality: String? = dic["SubLocality"] as! String?
                 singleton.subLocality = subLocality
                 
-                //街道位置
-                let formattedAddressLines: String = ((mark.addressDictionary! as NSDictionary).value(forKey: "FormattedAddressLines") as AnyObject).firstObject as! String
+                //街道
+                let thoroughfare : String? = dic["Thoroughfare"] as! String?
+                singleton.thoroughfare = thoroughfare
+
+                //街道具体位置
+                let formattedAddressLines: String? = (dic["FormattedAddressLines"] as AnyObject).firstObject as! String?
                 singleton.formattedAddressLines = formattedAddressLines
-                print(formattedAddressLines)
+                print(formattedAddressLines ?? "")
+                
+                //邮编
+                let postalCode: String? = dic["postalCode"] as? String
+                singleton.postalCode = postalCode
                 
                 //具体位置
-                let name: String = (mark.addressDictionary! as NSDictionary).value(forKey: "Name") as! String
+                let name: String? = dic["Name"] as? String
                 singleton.name = name
                 
                 //我在这里去掉了“省”和“市” 项目需求 可以忽略
-                singleton.state_Format = state.replacingOccurrences(of: "省", with: "") as String
-                singleton.city_Format = city.replacingOccurrences(of: "市", with: "") as String
+                singleton.state_Format = (state?.replacingOccurrences(of: "省", with: ""))! as String
+                singleton.city_Format = (city?.replacingOccurrences(of: "市", with: ""))! as String
             }
             else {
                 

@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Lex/Class/Sections/&#x6211;&#x7684;/Controller/ScanCodeResultVC.swift"
-            timestampString = "505722716.551139"
+            filePath = "Lex/Class/Sections/&#x6211;&#x7684;/Controller/UserNameVC.swift"
+            timestampString = "505725044.55126"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "27"
-            endingLineNumber = "27"
-            landmarkName = "viewDidLoad()"
+            startingLineNumber = "130"
+            endingLineNumber = "130"
+            landmarkName = "textField(_:shouldChangeCharactersIn:replacementString:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -25,13 +25,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Lex/Class/Sections/&#x6211;&#x7684;/Controller/UserNameVC.swift"
-            timestampString = "505725044.55126"
+            filePath = "Lex/Class/Sections/&#x6211;&#x7684;/Controller/UpDateAddressVC.swift"
+            timestampString = "505901345.140299"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "130"
-            endingLineNumber = "130"
-            landmarkName = "textField(_:shouldChangeCharactersIn:replacementString:)"
+            startingLineNumber = "391"
+            endingLineNumber = "391"
+            landmarkName = "selectedConfirm(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

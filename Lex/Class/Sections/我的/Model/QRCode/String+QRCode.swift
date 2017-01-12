@@ -118,7 +118,7 @@ extension String {
         
         guard let QRCodeLogo = logo else { return image }
         
-        let logoWidth = image.size.width/4
+        let logoWidth = image.size.width / 4
         let logoFrame = CGRect(x: (image.size.width - logoWidth) /  2, y: (image.size.width - logoWidth) / 2, width: logoWidth, height: logoWidth)
         
         // 绘制logo
