@@ -195,6 +195,7 @@ class LocationVC: BaseViewController, LocationSearchDelegate, AMapSearchDelegate
         let tab : UITableView = UITableView.init(frame: CGRect.init(x: 0, y: self.tableView_y, width: app_width, height: self.minTableView_h), style: .grouped)
         tab.tableHeaderView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: app_width, height: 1.0))
         tab.tableHeaderView?.backgroundColor = globalBGColor()
+        tab.tableFooterView = UIView()
         tab.dataSource = self
         tab.delegate = self
         return tab
@@ -363,8 +364,7 @@ class LocationVC: BaseViewController, LocationSearchDelegate, AMapSearchDelegate
             weakSelf?.tableView.tableHeaderView     = UIView.init(frame: CGRect.init(x: 0.0, y: 0.0, width: app_width, height:1.0))
             weakSelf?.mapView.frame                 = CGRect.init(x: 0.0, y: (weakSelf?.headerYOffSet)!, width: (weakSelf?.mapView.width)!, height: (weakSelf?.maxMap_h)!)
             weakSelf?.tableView.frame               = CGRect.init(x: 0.0, y: (weakSelf?.tableView_y)!, width: (weakSelf?.tableView.width)!, height: (weakSelf?.minTableView_h)!)
-            weakSelf?.pin.center = CGPoint.init(x: (weakSelf?.mapView.center.x)!, y: (weakSelf?.mapView.center.y)! / 2.0 * 3)
-            
+            weakSelf?.pin.center = CGPoint.init(x: (weakSelf?.mapView.center.x)!, y: (weakSelf?.mapView.center.y)! - (weakSelf?.pin.height)! / 2.0 * 3)
         }) { (finish : Bool) in
             
             weakSelf?.displayMap = true
@@ -381,7 +381,7 @@ class LocationVC: BaseViewController, LocationSearchDelegate, AMapSearchDelegate
             
             weakSelf?.tableView.tableHeaderView = UIView.init(frame: CGRect.init(x: 0.0, y: (weakSelf?.default_Y_tableView)!, width: app_width, height: 1.0))
             weakSelf?.tableView.frame           = CGRect.init(x: 0.0, y: (weakSelf?.default_Y_tableView)!, width: (weakSelf?.tableView.width)!, height: (weakSelf?.maxTableView_h)!)
-            weakSelf?.pin.center = CGPoint.init(x: (weakSelf?.mapView.center.x)!, y: (weakSelf?.mapView.center.y)! / 2.0 * 3)
+            weakSelf?.pin.center = CGPoint.init(x: (weakSelf?.mapView.center.x)!, y: (weakSelf?.mapView.center.y)! - (weakSelf?.pin.height)! / 2.0 * 3)
             
         }) { (finish : Bool) in
             
@@ -434,6 +434,7 @@ extension LocationVC : MAMapViewDelegate {
                 self.dataArray.removeAll()
             }
             
+            self.tableView.rowHeight = self.tableView.height
             self.tableView.reloadData()
             
             self.activity.isHidden = false
@@ -487,7 +488,7 @@ extension LocationVC : UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        if self.dataArray.count == 1 {
+        if self.dataArray.count == 0 {
             return tableView.height
         }
         return 44
