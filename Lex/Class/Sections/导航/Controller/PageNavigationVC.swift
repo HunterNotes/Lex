@@ -46,8 +46,9 @@ class PageNavigationVC : BaseViewController, PopMenuDelegate {
             break
         case 1:
             //拍照
-            let vc = UIStoryboard.init(name: "UserCenter", bundle: nil).instantiateViewController(withIdentifier: "UserPhotoVC") as! UserPhotoVC
-            self.navigationController?.pushViewController(vc, animated: true)
+            let vc = UIStoryboard.init(name: "PageNavigation", bundle: nil).instantiateViewController(withIdentifier: "CustomCameraViC") as! CustomCameraViC
+            self.tabBarController?.tabBar.alpha = 0
+            self.present(vc, animated: true, completion: nil)
             break
         case 2:
             //扫描二维码

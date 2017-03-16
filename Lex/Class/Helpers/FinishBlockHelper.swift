@@ -22,9 +22,12 @@ import UIKit
  typealias funcBlockC = (Int, Int) -> (String) -> String
  */
 
-/// 有参数无返回值
+//保存用户图片Block
 typealias SaveUserImageBlock = (String) -> ()
 
 //选择位置后返回位置Block
 typealias ReturnLocationBlock = (Bool, AMapPOI) -> ()
+
+//拍照完成选中图片Block
+typealias SeletedPicBlock = (UIImage) -> ()
 

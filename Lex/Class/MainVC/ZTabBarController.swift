@@ -62,6 +62,12 @@ class ZTabBarController: UITabBarController {
         nav.addChildViewController(vc)
         addChildViewController(nav)
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.tabBar.alpha = 1
+    }
 }
 
 extension ZTabBarController: UITabBarControllerDelegate {

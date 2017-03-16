@@ -16,6 +16,25 @@
 		A55696E11E091D2F00E06E2D /* ScanCodeLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55696E01E091D2F00E06E2D /* ScanCodeLoadingView.swift */; };
 		A55696E31E09266B00E06E2D /* UserAddressVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55696E21E09266B00E06E2D /* UserAddressVC.swift */; };
 		A55B14D91E07924B008F3465 /* ScanCodeResultVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55B14D81E07924B008F3465 /* ScanCodeResultVC.swift */; };
+		A566A8B21E78E06F00520B89 /* FDFullscreenPopGesture.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A566A89A1E78E06F00520B89 /* FDFullscreenPopGesture.framework */; };
+		A566A8B51E78E06F00520B89 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A566A89D1E78E06F00520B89 /* Kingfisher.framework */; };
+		A566A8BB1E78E06F00520B89 /* Reachability.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A566A8A31E78E06F00520B89 /* Reachability.framework */; };
+		A566A8BC1E78E06F00520B89 /* REFormattedNumberField.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A566A8A41E78E06F00520B89 /* REFormattedNumberField.framework */; };
+		A566A8BD1E78E06F00520B89 /* RETableViewManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A566A8A51E78E06F00520B89 /* RETableViewManager.framework */; };
+		A566A8C01E78E06F00520B89 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A566A8A81E78E06F00520B89 /* SnapKit.framework */; };
+		A566A8C11E78E06F00520B89 /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A566A8A91E78E06F00520B89 /* SQLite.framework */; };
+		A566A8C21E78E06F00520B89 /* SVProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A566A8AA1E78E06F00520B89 /* SVProgressHUD.framework */; };
+		A566A8C51E78E0A100520B89 /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A566A8C41E78E0A100520B89 /* Photos.framework */; };
+		A566A8C71E78E0AF00520B89 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A566A8C61E78E0AF00520B89 /* AssetsLibrary.framework */; };
+		A566A8C91E78E0BB00520B89 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A566A8C81E78E0BB00520B89 /* AVFoundation.framework */; };
+		A566A8CB1E78EFC100520B89 /* TopBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A566A8CA1E78EFC100520B89 /* TopBar.swift */; };
+		A566A8CE1E792A4A00520B89 /* DCCameraAlbum.swift in Sources */ = {isa = PBXBuildFile; fileRef = A566A8CC1E792A4A00520B89 /* DCCameraAlbum.swift */; };
+		A566A8CF1E792A4A00520B89 /* UIImage-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A566A8CD1E792A4A00520B89 /* UIImage-Extension.swift */; };
+		A566A8D21E79354900520B89 /* TakePicListCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A566A8D01E79354900520B89 /* TakePicListCollectionView.swift */; };
+		A566A8D31E79354900520B89 /* TakePicListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A566A8D11E79354900520B89 /* TakePicListCollectionViewCell.swift */; };
+		A566A8D51E79410D00520B89 /* DCAlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A566A8D41E79410D00520B89 /* DCAlbumViewController.swift */; };
+		A566A8D81E7941B200520B89 /* DCAlbumTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A566A8D61E7941B200520B89 /* DCAlbumTableViewCell.swift */; };
+		A566A8D91E7941B200520B89 /* DCAlbumTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A566A8D71E7941B200520B89 /* DCAlbumTableViewCell.xib */; };
 		A57532D91E10FBD2008D5DFD /* LocationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57532D81E10FBD2008D5DFD /* LocationVC.swift */; };
 		A5770CC31E1252F600ECE306 /* LocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5770CC11E1252F600ECE306 /* LocationCell.swift */; };
 		A5770CC41E1252F600ECE306 /* LocationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5770CC21E1252F600ECE306 /* LocationCell.xib */; };
@@ -35,6 +54,7 @@
 		A5A2EE381E1F7A20008F64B7 /* SettingsTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A2EE361E1F7A20008F64B7 /* SettingsTable.swift */; };
 		A5A38D951E0B7614000E2965 /* PresentNaBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A38D941E0B7614000E2965 /* PresentNaBarView.swift */; };
 		A5B3D98F1E11F91700FF1C0B /* AddressPickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B3D98E1E11F91700FF1C0B /* AddressPickView.swift */; };
+		A5B749191E77E22A001B03EA /* CustomCameraViC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B749181E77E22A001B03EA /* CustomCameraViC.swift */; };
 		A5BBA1DC1E0CCFBD00256ED7 /* Address.plist in Resources */ = {isa = PBXBuildFile; fileRef = A5BBA1DB1E0CCFBD00256ED7 /* Address.plist */; };
 		A5C4430F1E039DB400C33517 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5C4430E1E039DB400C33517 /* Assets.xcassets */; };
 		A5C443121E039DB400C33517 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5C443101E039DB400C33517 /* LaunchScreen.storyboard */; };
@@ -129,6 +149,41 @@
 		A55696E01E091D2F00E06E2D /* ScanCodeLoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanCodeLoadingView.swift; sourceTree = "<group>"; };
 		A55696E21E09266B00E06E2D /* UserAddressVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAddressVC.swift; sourceTree = "<group>"; };
 		A55B14D81E07924B008F3465 /* ScanCodeResultVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanCodeResultVC.swift; sourceTree = "<group>"; };
+		A566A8941E78E06F00520B89 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "Pods/../build/Debug-iphoneos/Alamofire/Alamofire.framework"; sourceTree = "<group>"; };
+		A566A8951E78E06F00520B89 /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = "Pods/../build/Debug-iphoneos/AlamofireImage/AlamofireImage.framework"; sourceTree = "<group>"; };
+		A566A8961E78E06F00520B89 /* AlamofireNetworkActivityIndicator.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireNetworkActivityIndicator.framework; path = "Pods/../build/Debug-iphoneos/AlamofireNetworkActivityIndicator/AlamofireNetworkActivityIndicator.framework"; sourceTree = "<group>"; };
+		A566A8971E78E06F00520B89 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = "Pods/../build/Debug-iphoneos/Bolts/Bolts.framework"; sourceTree = "<group>"; };
+		A566A8981E78E06F00520B89 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = "Pods/../build/Debug-iphoneos/FBSDKCoreKit/FBSDKCoreKit.framework"; sourceTree = "<group>"; };
+		A566A8991E78E06F00520B89 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = "Pods/../build/Debug-iphoneos/FBSDKShareKit/FBSDKShareKit.framework"; sourceTree = "<group>"; };
+		A566A89A1E78E06F00520B89 /* FDFullscreenPopGesture.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FDFullscreenPopGesture.framework; path = "../../../../Library/Developer/Xcode/DerivedData/Lex-giuiqnuwpmnwiuhhwtxhoikuasmh/Build/Products/Debug-iphoneos/FDFullscreenPopGesture/FDFullscreenPopGesture.framework"; sourceTree = "<group>"; };
+		A566A89B1E78E06F00520B89 /* FLAnimatedImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FLAnimatedImage.framework; path = "Pods/../build/Debug-iphoneos/FLAnimatedImage/FLAnimatedImage.framework"; sourceTree = "<group>"; };
+		A566A89C1E78E06F00520B89 /* KeychainAccess.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeychainAccess.framework; path = "../../../../Library/Developer/Xcode/DerivedData/Lex-giuiqnuwpmnwiuhhwtxhoikuasmh/Build/Products/Debug-iphoneos/KeychainAccess/KeychainAccess.framework"; sourceTree = "<group>"; };
+		A566A89D1E78E06F00520B89 /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = "Pods/../build/Debug-iphoneos/Kingfisher/Kingfisher.framework"; sourceTree = "<group>"; };
+		A566A89E1E78E06F00520B89 /* Obfuscator.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Obfuscator.framework; path = "Pods/../build/Debug-iphoneos/Obfuscator/Obfuscator.framework"; sourceTree = "<group>"; };
+		A566A89F1E78E06F00520B89 /* PINCache.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PINCache.framework; path = "Pods/../build/Debug-iphoneos/PINCache/PINCache.framework"; sourceTree = "<group>"; };
+		A566A8A01E78E06F00520B89 /* PINRemoteImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PINRemoteImage.framework; path = "Pods/../build/Debug-iphoneos/PINRemoteImage/PINRemoteImage.framework"; sourceTree = "<group>"; };
+		A566A8A11E78E06F00520B89 /* Pods_LexTests.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_LexTests.framework; path = "Pods/../build/Debug-iphoneos/Pods_LexTests.framework"; sourceTree = "<group>"; };
+		A566A8A21E78E06F00520B89 /* Pods_LexUITests.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_LexUITests.framework; path = "Pods/../build/Debug-iphoneos/Pods_LexUITests.framework"; sourceTree = "<group>"; };
+		A566A8A31E78E06F00520B89 /* Reachability.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Reachability.framework; path = "../../../../Library/Developer/Xcode/DerivedData/Lex-giuiqnuwpmnwiuhhwtxhoikuasmh/Build/Products/Debug-iphoneos/Reachability/Reachability.framework"; sourceTree = "<group>"; };
+		A566A8A41E78E06F00520B89 /* REFormattedNumberField.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = REFormattedNumberField.framework; path = "../../../../Library/Developer/Xcode/DerivedData/Lex-giuiqnuwpmnwiuhhwtxhoikuasmh/Build/Products/Debug-iphoneos/REFormattedNumberField/REFormattedNumberField.framework"; sourceTree = "<group>"; };
+		A566A8A51E78E06F00520B89 /* RETableViewManager.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RETableViewManager.framework; path = "../../../../Library/Developer/Xcode/DerivedData/Lex-giuiqnuwpmnwiuhhwtxhoikuasmh/Build/Products/Debug-iphoneos/RETableViewManager/RETableViewManager.framework"; sourceTree = "<group>"; };
+		A566A8A61E78E06F00520B89 /* REValidation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = REValidation.framework; path = "../../../../Library/Developer/Xcode/DerivedData/Lex-giuiqnuwpmnwiuhhwtxhoikuasmh/Build/Products/Debug-iphoneos/REValidation/REValidation.framework"; sourceTree = "<group>"; };
+		A566A8A71E78E06F00520B89 /* RHBOrientationObjC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RHBOrientationObjC.framework; path = "Pods/../build/Debug-iphoneos/RHBOrientationObjC/RHBOrientationObjC.framework"; sourceTree = "<group>"; };
+		A566A8A81E78E06F00520B89 /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = "../../../../Library/Developer/Xcode/DerivedData/Lex-giuiqnuwpmnwiuhhwtxhoikuasmh/Build/Products/Debug-iphoneos/SnapKit/SnapKit.framework"; sourceTree = "<group>"; };
+		A566A8A91E78E06F00520B89 /* SQLite.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SQLite.framework; path = "../../../../Library/Developer/Xcode/DerivedData/Lex-giuiqnuwpmnwiuhhwtxhoikuasmh/Build/Products/Debug-iphoneos/SQLite.swift/SQLite.framework"; sourceTree = "<group>"; };
+		A566A8AA1E78E06F00520B89 /* SVProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SVProgressHUD.framework; path = "../../../../Library/Developer/Xcode/DerivedData/Lex-giuiqnuwpmnwiuhhwtxhoikuasmh/Build/Products/Debug-iphoneos/SVProgressHUD/SVProgressHUD.framework"; sourceTree = "<group>"; };
+		A566A8AB1E78E06F00520B89 /* VK_ios_sdk.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VK_ios_sdk.framework; path = "Pods/../build/Debug-iphoneos/VK-ios-sdk/VK_ios_sdk.framework"; sourceTree = "<group>"; };
+		A566A8C41E78E0A100520B89 /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
+		A566A8C61E78E0AF00520B89 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		A566A8C81E78E0BB00520B89 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		A566A8CA1E78EFC100520B89 /* TopBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopBar.swift; sourceTree = "<group>"; };
+		A566A8CC1E792A4A00520B89 /* DCCameraAlbum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DCCameraAlbum.swift; sourceTree = "<group>"; };
+		A566A8CD1E792A4A00520B89 /* UIImage-Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage-Extension.swift"; sourceTree = "<group>"; };
+		A566A8D01E79354900520B89 /* TakePicListCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TakePicListCollectionView.swift; sourceTree = "<group>"; };
+		A566A8D11E79354900520B89 /* TakePicListCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TakePicListCollectionViewCell.swift; sourceTree = "<group>"; };
+		A566A8D41E79410D00520B89 /* DCAlbumViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DCAlbumViewController.swift; sourceTree = "<group>"; };
+		A566A8D61E7941B200520B89 /* DCAlbumTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DCAlbumTableViewCell.swift; sourceTree = "<group>"; };
+		A566A8D71E7941B200520B89 /* DCAlbumTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DCAlbumTableViewCell.xib; sourceTree = "<group>"; };
 		A57532D81E10FBD2008D5DFD /* LocationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationVC.swift; sourceTree = "<group>"; };
 		A5770CC11E1252F600ECE306 /* LocationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationCell.swift; sourceTree = "<group>"; };
 		A5770CC21E1252F600ECE306 /* LocationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LocationCell.xib; sourceTree = "<group>"; };
@@ -151,6 +206,7 @@
 		A5B3D98E1E11F91700FF1C0B /* AddressPickView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressPickView.swift; sourceTree = "<group>"; };
 		A5B50D9D1E0A80BE00660A26 /* Contacts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Contacts.framework; path = System/Library/Frameworks/Contacts.framework; sourceTree = SDKROOT; };
 		A5B50D9F1E0A80C500660A26 /* ContactsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ContactsUI.framework; path = System/Library/Frameworks/ContactsUI.framework; sourceTree = SDKROOT; };
+		A5B749181E77E22A001B03EA /* CustomCameraViC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCameraViC.swift; sourceTree = "<group>"; };
 		A5BBA1DB1E0CCFBD00256ED7 /* Address.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Address.plist; sourceTree = "<group>"; };
 		A5C443041E039DB400C33517 /* Lex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lex.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5C4430E1E039DB400C33517 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -240,6 +296,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A566A8C91E78E0BB00520B89 /* AVFoundation.framework in Frameworks */,
+				A566A8C71E78E0AF00520B89 /* AssetsLibrary.framework in Frameworks */,
+				A566A8C51E78E0A100520B89 /* Photos.framework in Frameworks */,
+				A566A8B21E78E06F00520B89 /* FDFullscreenPopGesture.framework in Frameworks */,
+				A566A8B51E78E06F00520B89 /* Kingfisher.framework in Frameworks */,
+				A566A8BB1E78E06F00520B89 /* Reachability.framework in Frameworks */,
+				A566A8BC1E78E06F00520B89 /* REFormattedNumberField.framework in Frameworks */,
+				A566A8BD1E78E06F00520B89 /* RETableViewManager.framework in Frameworks */,
+				A566A8C01E78E06F00520B89 /* SnapKit.framework in Frameworks */,
+				A566A8C11E78E06F00520B89 /* SQLite.framework in Frameworks */,
+				A566A8C21E78E06F00520B89 /* SVProgressHUD.framework in Frameworks */,
 				9EA532EE9083DC7F1B960791 /* Pods_Lex.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -548,6 +615,8 @@
 			children = (
 				A5906CFE1E03CBF900D3909D /* PageNavigation.storyboard */,
 				A5C443681E03BCDF00C33517 /* PageNavigationVC.swift */,
+				A5B749181E77E22A001B03EA /* CustomCameraViC.swift */,
+				A566A8D41E79410D00520B89 /* DCAlbumViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -555,6 +624,8 @@
 		A5C443691E03BCDF00C33517 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A566A8CC1E792A4A00520B89 /* DCCameraAlbum.swift */,
+				A566A8CD1E792A4A00520B89 /* UIImage-Extension.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -562,6 +633,11 @@
 		A5C4436A1E03BCDF00C33517 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A566A8D01E79354900520B89 /* TakePicListCollectionView.swift */,
+				A566A8D11E79354900520B89 /* TakePicListCollectionViewCell.swift */,
+				A566A8D61E7941B200520B89 /* DCAlbumTableViewCell.swift */,
+				A566A8D71E7941B200520B89 /* DCAlbumTableViewCell.xib */,
+				A566A8CA1E78EFC100520B89 /* TopBar.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -704,6 +780,33 @@
 		A92A4BC9952F9CF59D834469 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A566A8C81E78E0BB00520B89 /* AVFoundation.framework */,
+				A566A8C61E78E0AF00520B89 /* AssetsLibrary.framework */,
+				A566A8C41E78E0A100520B89 /* Photos.framework */,
+				A566A8941E78E06F00520B89 /* Alamofire.framework */,
+				A566A8951E78E06F00520B89 /* AlamofireImage.framework */,
+				A566A8961E78E06F00520B89 /* AlamofireNetworkActivityIndicator.framework */,
+				A566A8971E78E06F00520B89 /* Bolts.framework */,
+				A566A8981E78E06F00520B89 /* FBSDKCoreKit.framework */,
+				A566A8991E78E06F00520B89 /* FBSDKShareKit.framework */,
+				A566A89A1E78E06F00520B89 /* FDFullscreenPopGesture.framework */,
+				A566A89B1E78E06F00520B89 /* FLAnimatedImage.framework */,
+				A566A89C1E78E06F00520B89 /* KeychainAccess.framework */,
+				A566A89D1E78E06F00520B89 /* Kingfisher.framework */,
+				A566A89E1E78E06F00520B89 /* Obfuscator.framework */,
+				A566A89F1E78E06F00520B89 /* PINCache.framework */,
+				A566A8A01E78E06F00520B89 /* PINRemoteImage.framework */,
+				A566A8A11E78E06F00520B89 /* Pods_LexTests.framework */,
+				A566A8A21E78E06F00520B89 /* Pods_LexUITests.framework */,
+				A566A8A31E78E06F00520B89 /* Reachability.framework */,
+				A566A8A41E78E06F00520B89 /* REFormattedNumberField.framework */,
+				A566A8A51E78E06F00520B89 /* RETableViewManager.framework */,
+				A566A8A61E78E06F00520B89 /* REValidation.framework */,
+				A566A8A71E78E06F00520B89 /* RHBOrientationObjC.framework */,
+				A566A8A81E78E06F00520B89 /* SnapKit.framework */,
+				A566A8A91E78E06F00520B89 /* SQLite.framework */,
+				A566A8AA1E78E06F00520B89 /* SVProgressHUD.framework */,
+				A566A8AB1E78E06F00520B89 /* VK_ios_sdk.framework */,
 				A5A2EE311E1F2FBB008F64B7 /* CoreGraphics.framework */,
 				A542ADD91E1C7A0900187EEC /* MapKit.framework */,
 				A5DC56CB1E120170009B3C36 /* libstdc++.6.0.9.tbd */,
@@ -867,6 +970,7 @@
 				A5F1C6341E0A200000EA1F92 /* EditAddressCommonCell.xib in Resources */,
 				A5906D091E03DF4600D3909D /* ZCommonCell.xib in Resources */,
 				A5906D011E03CC1000D3909D /* Detection.storyboard in Resources */,
+				A566A8D91E7941B200520B89 /* DCAlbumTableViewCell.xib in Resources */,
 				A5F1C6381E0A26E300EA1F92 /* AddressDetailCell.xib in Resources */,
 				A5906CFD1E03CBE300D3909D /* UserCenter.storyboard in Resources */,
 				A5906D031E03CC2900D3909D /* HomePage.storyboard in Resources */,
@@ -1044,9 +1148,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A566A8D51E79410D00520B89 /* DCAlbumViewController.swift in Sources */,
 				A5F1C6301E0A187B00EA1F92 /* UpDateAddressVC.swift in Sources */,
 				A5C443A81E03BCDF00C33517 /* CCLocationManager.swift in Sources */,
 				A5C443C71E03BCDF00C33517 /* UIImage+QRCode.swift in Sources */,
+				A566A8CE1E792A4A00520B89 /* DCCameraAlbum.swift in Sources */,
 				A5C443C61E03BCDF00C33517 /* String+QRCode.swift in Sources */,
 				A5C4439F1E03BCDF00C33517 /* ZNavigationController.swift in Sources */,
 				A5C443D61E03BCDF00C33517 /* HomePageVC.swift in Sources */,
@@ -1057,6 +1163,7 @@
 				A5F1C6281E0A0ECE00EA1F92 /* ShowAddressCell.swift in Sources */,
 				A5C443C91E03BCDF00C33517 /* TabBarView.swift in Sources */,
 				A57B63971E277886002FAF82 /* GenderCell.swift in Sources */,
+				A566A8D31E79354900520B89 /* TakePicListCollectionViewCell.swift in Sources */,
 				A5C443CE1E03BCDF00C33517 /* UserInfoCommonNoneCell.swift in Sources */,
 				A542636D1E24C1AC0081F537 /* CCMAMapView.swift in Sources */,
 				A5C443C11E03BCDF00C33517 /* UserNameVC.swift in Sources */,
@@ -1075,6 +1182,7 @@
 				A5C443AA1E03BCDF00C33517 /* SavaImgHelper.swift in Sources */,
 				A54263751E24E0900081F537 /* ReturnLocationHelper.swift in Sources */,
 				A5C443B51E03BCDF00C33517 /* PageNavigationVC.swift in Sources */,
+				A5B749191E77E22A001B03EA /* CustomCameraViC.swift in Sources */,
 				A54263711E24DB2B0081F537 /* FinishBlockHelper.swift in Sources */,
 				A5C443A11E03BCDF00C33517 /* UIView+Extension.swift in Sources */,
 				A5C443D41E03BCDF00C33517 /* ZCommonCell.swift in Sources */,
@@ -1090,6 +1198,8 @@
 				A57B63941E2777B5002FAF82 /* GenderVC.swift in Sources */,
 				A5A2EE381E1F7A20008F64B7 /* SettingsTable.swift in Sources */,
 				A5C443AB1E03BCDF00C33517 /* SaveUserImageHelper.swift in Sources */,
+				A566A8CB1E78EFC100520B89 /* TopBar.swift in Sources */,
+				A566A8CF1E792A4A00520B89 /* UIImage-Extension.swift in Sources */,
 				A5C443CA1E03BCDF00C33517 /* UserImgCell.swift in Sources */,
 				A5C443B31E03BCDF00C33517 /* DetectionModel.swift in Sources */,
 				A5C443AF1E03BCDF00C33517 /* UserGuideVC.swift in Sources */,
@@ -1099,12 +1209,14 @@
 				A542636B1E24829F0081F537 /* PopMenu.swift in Sources */,
 				A55696E11E091D2F00E06E2D /* ScanCodeLoadingView.swift in Sources */,
 				A5C443AC1E03BCDF00C33517 /* SQLiteManager.swift in Sources */,
+				A566A8D21E79354900520B89 /* TakePicListCollectionView.swift in Sources */,
 				A55696E31E09266B00E06E2D /* UserAddressVC.swift in Sources */,
 				A5C443BA1E03BCDF00C33517 /* RegisterViewController.swift in Sources */,
 				A5C443B01E03BCDF00C33517 /* ZTabBarController.swift in Sources */,
 				A5C443B61E03BCDF00C33517 /* LoginViewController.swift in Sources */,
 				A5F1C6331E0A200000EA1F92 /* EditAddressCommonCell.swift in Sources */,
 				A5F1C62C1E0A0EE700EA1F92 /* NewlyAddedAddressCell.swift in Sources */,
+				A566A8D81E7941B200520B89 /* DCAlbumTableViewCell.swift in Sources */,
 				A5C443BC1E03BCDF00C33517 /* ScanCodeVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1256,9 +1368,23 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/Alamofire",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/AlamofireImage",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/AlamofireNetworkActivityIndicator",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/Bolts",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/FBSDKCoreKit",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/FBSDKShareKit",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/FLAnimatedImage",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/Kingfisher",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/Obfuscator",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/PINCache",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/PINRemoteImage",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/RHBOrientationObjC",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/VK-ios-sdk",
 				);
 				INFOPLIST_FILE = Lex/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mr.zhou.Lex;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1266,6 +1392,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Lex/Class/公共配置/Lex-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1280,9 +1407,23 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/Alamofire",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/AlamofireImage",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/AlamofireNetworkActivityIndicator",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/Bolts",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/FBSDKCoreKit",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/FBSDKShareKit",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/FLAnimatedImage",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/Kingfisher",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/Obfuscator",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/PINCache",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/PINRemoteImage",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/RHBOrientationObjC",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/VK-ios-sdk",
 				);
 				INFOPLIST_FILE = Lex/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mr.zhou.Lex;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1290,6 +1431,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Lex/Class/公共配置/Lex-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

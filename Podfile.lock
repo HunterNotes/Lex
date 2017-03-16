@@ -7,6 +7,7 @@ PODS:
   - AMapSearch (4.3.0):
     - AMapFoundation (~> 1.2)
   - FDFullscreenPopGesture (1.1)
+  - Kingfisher (3.2.0)
   - Reachability (3.2)
   - REFormattedNumberField (1.1.6)
   - RETableViewManager (1.7):
@@ -25,6 +26,7 @@ DEPENDENCIES:
   - AMapLocation
   - AMapSearch
   - FDFullscreenPopGesture
+  - Kingfisher
   - Reachability
   - RETableViewManager
   - SnapKit (~> 3.0)
@@ -37,6 +39,7 @@ SPEC CHECKSUMS:
   AMapLocation: 3f2005c6dec6a7a1107258d0cde43b9d7399d217
   AMapSearch: c90cc018a6c5281af17af6058ca99218a4d4b442
   FDFullscreenPopGesture: a8a620179e3d9c40e8e00256dcee1c1a27c6d0f0
+  Kingfisher: 50407d1d5dbc34965009d425a286342ff36a84ea
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   REFormattedNumberField: 70fc5fb1218ebd5ee9983820defd12806d5c6ec6
   RETableViewManager: 0f24d796c42c0890d38c79cc9aeb3871e186726e
@@ -45,6 +48,6 @@ SPEC CHECKSUMS:
   SQLite.swift: 9a26273607d3077a2e5a8d33486e9989f8404c7d
   SVProgressHUD: b0830714205bea1317ea1a2ebc71e5633af334d4
 
-PODFILE CHECKSUM: ca7a9aea9604bbfdc4c57ff712a0729dd72a837d
+PODFILE CHECKSUM: 93eae70c880f13b73f4d61c3e69704e81b1c0a30
 
-COCOAPODS: 1.1.1
+COCOAPODS: 1.2.0
