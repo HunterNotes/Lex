@@ -30,11 +30,6 @@
 		A566A8CB1E78EFC100520B89 /* TopBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A566A8CA1E78EFC100520B89 /* TopBar.swift */; };
 		A566A8CE1E792A4A00520B89 /* DCCameraAlbum.swift in Sources */ = {isa = PBXBuildFile; fileRef = A566A8CC1E792A4A00520B89 /* DCCameraAlbum.swift */; };
 		A566A8CF1E792A4A00520B89 /* UIImage-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A566A8CD1E792A4A00520B89 /* UIImage-Extension.swift */; };
-		A566A8D21E79354900520B89 /* TakePicListCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A566A8D01E79354900520B89 /* TakePicListCollectionView.swift */; };
-		A566A8D31E79354900520B89 /* TakePicListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A566A8D11E79354900520B89 /* TakePicListCollectionViewCell.swift */; };
-		A566A8D51E79410D00520B89 /* DCAlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A566A8D41E79410D00520B89 /* DCAlbumViewController.swift */; };
-		A566A8D81E7941B200520B89 /* DCAlbumTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A566A8D61E7941B200520B89 /* DCAlbumTableViewCell.swift */; };
-		A566A8D91E7941B200520B89 /* DCAlbumTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A566A8D71E7941B200520B89 /* DCAlbumTableViewCell.xib */; };
 		A57532D91E10FBD2008D5DFD /* LocationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57532D81E10FBD2008D5DFD /* LocationVC.swift */; };
 		A5770CC31E1252F600ECE306 /* LocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5770CC11E1252F600ECE306 /* LocationCell.swift */; };
 		A5770CC41E1252F600ECE306 /* LocationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5770CC21E1252F600ECE306 /* LocationCell.xib */; };
@@ -55,6 +50,9 @@
 		A5A38D951E0B7614000E2965 /* PresentNaBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A38D941E0B7614000E2965 /* PresentNaBarView.swift */; };
 		A5B3D98F1E11F91700FF1C0B /* AddressPickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B3D98E1E11F91700FF1C0B /* AddressPickView.swift */; };
 		A5B749191E77E22A001B03EA /* CustomCameraViC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B749181E77E22A001B03EA /* CustomCameraViC.swift */; };
+		A5BB22D61E7B76AF00966D6B /* AlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5BB22D51E7B76AF00966D6B /* AlbumViewController.swift */; };
+		A5BB22DC1E7B782500966D6B /* AlbumCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5BB22DB1E7B782500966D6B /* AlbumCollectionViewCell.swift */; };
+		A5BB22DE1E7B786700966D6B /* AlbumCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5BB22DD1E7B786700966D6B /* AlbumCollectionView.swift */; };
 		A5BBA1DC1E0CCFBD00256ED7 /* Address.plist in Resources */ = {isa = PBXBuildFile; fileRef = A5BBA1DB1E0CCFBD00256ED7 /* Address.plist */; };
 		A5C4430F1E039DB400C33517 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5C4430E1E039DB400C33517 /* Assets.xcassets */; };
 		A5C443121E039DB400C33517 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5C443101E039DB400C33517 /* LaunchScreen.storyboard */; };
@@ -106,6 +104,8 @@
 		A5C443D71E03BCDF00C33517 /* HomePageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C443951E03BCDF00C33517 /* HomePageCell.swift */; };
 		A5C443D81E03BCDF00C33517 /* HomePageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5C443961E03BCDF00C33517 /* HomePageCell.xib */; };
 		A5C443D91E03BCDF00C33517 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C4439A1E03BCDF00C33517 /* Config.swift */; };
+		A5E0BDC81E7B7BE100085F19 /* PicListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E0BDC71E7B7BE100085F19 /* PicListCell.swift */; };
+		A5E0BDCA1E7B7BFC00085F19 /* PicListCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E0BDC91E7B7BFC00085F19 /* PicListCollectionView.swift */; };
 		A5F1C6281E0A0ECE00EA1F92 /* ShowAddressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F1C6261E0A0ECE00EA1F92 /* ShowAddressCell.swift */; };
 		A5F1C6291E0A0ECE00EA1F92 /* ShowAddressCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5F1C6271E0A0ECE00EA1F92 /* ShowAddressCell.xib */; };
 		A5F1C62C1E0A0EE700EA1F92 /* NewlyAddedAddressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F1C62A1E0A0EE700EA1F92 /* NewlyAddedAddressCell.swift */; };
@@ -179,11 +179,6 @@
 		A566A8CA1E78EFC100520B89 /* TopBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopBar.swift; sourceTree = "<group>"; };
 		A566A8CC1E792A4A00520B89 /* DCCameraAlbum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DCCameraAlbum.swift; sourceTree = "<group>"; };
 		A566A8CD1E792A4A00520B89 /* UIImage-Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage-Extension.swift"; sourceTree = "<group>"; };
-		A566A8D01E79354900520B89 /* TakePicListCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TakePicListCollectionView.swift; sourceTree = "<group>"; };
-		A566A8D11E79354900520B89 /* TakePicListCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TakePicListCollectionViewCell.swift; sourceTree = "<group>"; };
-		A566A8D41E79410D00520B89 /* DCAlbumViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DCAlbumViewController.swift; sourceTree = "<group>"; };
-		A566A8D61E7941B200520B89 /* DCAlbumTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DCAlbumTableViewCell.swift; sourceTree = "<group>"; };
-		A566A8D71E7941B200520B89 /* DCAlbumTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DCAlbumTableViewCell.xib; sourceTree = "<group>"; };
 		A57532D81E10FBD2008D5DFD /* LocationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationVC.swift; sourceTree = "<group>"; };
 		A5770CC11E1252F600ECE306 /* LocationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationCell.swift; sourceTree = "<group>"; };
 		A5770CC21E1252F600ECE306 /* LocationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LocationCell.xib; sourceTree = "<group>"; };
@@ -207,6 +202,9 @@
 		A5B50D9D1E0A80BE00660A26 /* Contacts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Contacts.framework; path = System/Library/Frameworks/Contacts.framework; sourceTree = SDKROOT; };
 		A5B50D9F1E0A80C500660A26 /* ContactsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ContactsUI.framework; path = System/Library/Frameworks/ContactsUI.framework; sourceTree = SDKROOT; };
 		A5B749181E77E22A001B03EA /* CustomCameraViC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCameraViC.swift; sourceTree = "<group>"; };
+		A5BB22D51E7B76AF00966D6B /* AlbumViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumViewController.swift; sourceTree = "<group>"; };
+		A5BB22DB1E7B782500966D6B /* AlbumCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumCollectionViewCell.swift; sourceTree = "<group>"; };
+		A5BB22DD1E7B786700966D6B /* AlbumCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumCollectionView.swift; sourceTree = "<group>"; };
 		A5BBA1DB1E0CCFBD00256ED7 /* Address.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Address.plist; sourceTree = "<group>"; };
 		A5C443041E039DB400C33517 /* Lex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lex.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5C4430E1E039DB400C33517 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -276,6 +274,8 @@
 		A5DC56D31E1201C8009B3C36 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		A5DC56D51E1201D8009B3C36 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		A5DC56D71E1201DF009B3C36 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		A5E0BDC71E7B7BE100085F19 /* PicListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PicListCell.swift; sourceTree = "<group>"; };
+		A5E0BDC91E7B7BFC00085F19 /* PicListCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PicListCollectionView.swift; sourceTree = "<group>"; };
 		A5F1C6261E0A0ECE00EA1F92 /* ShowAddressCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowAddressCell.swift; sourceTree = "<group>"; };
 		A5F1C6271E0A0ECE00EA1F92 /* ShowAddressCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShowAddressCell.xib; sourceTree = "<group>"; };
 		A5F1C62A1E0A0EE700EA1F92 /* NewlyAddedAddressCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewlyAddedAddressCell.swift; sourceTree = "<group>"; };
@@ -616,7 +616,7 @@
 				A5906CFE1E03CBF900D3909D /* PageNavigation.storyboard */,
 				A5C443681E03BCDF00C33517 /* PageNavigationVC.swift */,
 				A5B749181E77E22A001B03EA /* CustomCameraViC.swift */,
-				A566A8D41E79410D00520B89 /* DCAlbumViewController.swift */,
+				A5BB22D51E7B76AF00966D6B /* AlbumViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -633,10 +633,10 @@
 		A5C4436A1E03BCDF00C33517 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				A566A8D01E79354900520B89 /* TakePicListCollectionView.swift */,
-				A566A8D11E79354900520B89 /* TakePicListCollectionViewCell.swift */,
-				A566A8D61E7941B200520B89 /* DCAlbumTableViewCell.swift */,
-				A566A8D71E7941B200520B89 /* DCAlbumTableViewCell.xib */,
+				A5E0BDC71E7B7BE100085F19 /* PicListCell.swift */,
+				A5E0BDC91E7B7BFC00085F19 /* PicListCollectionView.swift */,
+				A5BB22DD1E7B786700966D6B /* AlbumCollectionView.swift */,
+				A5BB22DB1E7B782500966D6B /* AlbumCollectionViewCell.swift */,
 				A566A8CA1E78EFC100520B89 /* TopBar.swift */,
 			);
 			path = View;
@@ -970,7 +970,6 @@
 				A5F1C6341E0A200000EA1F92 /* EditAddressCommonCell.xib in Resources */,
 				A5906D091E03DF4600D3909D /* ZCommonCell.xib in Resources */,
 				A5906D011E03CC1000D3909D /* Detection.storyboard in Resources */,
-				A566A8D91E7941B200520B89 /* DCAlbumTableViewCell.xib in Resources */,
 				A5F1C6381E0A26E300EA1F92 /* AddressDetailCell.xib in Resources */,
 				A5906CFD1E03CBE300D3909D /* UserCenter.storyboard in Resources */,
 				A5906D031E03CC2900D3909D /* HomePage.storyboard in Resources */,
@@ -1148,7 +1147,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A566A8D51E79410D00520B89 /* DCAlbumViewController.swift in Sources */,
 				A5F1C6301E0A187B00EA1F92 /* UpDateAddressVC.swift in Sources */,
 				A5C443A81E03BCDF00C33517 /* CCLocationManager.swift in Sources */,
 				A5C443C71E03BCDF00C33517 /* UIImage+QRCode.swift in Sources */,
@@ -1163,10 +1161,11 @@
 				A5F1C6281E0A0ECE00EA1F92 /* ShowAddressCell.swift in Sources */,
 				A5C443C91E03BCDF00C33517 /* TabBarView.swift in Sources */,
 				A57B63971E277886002FAF82 /* GenderCell.swift in Sources */,
-				A566A8D31E79354900520B89 /* TakePicListCollectionViewCell.swift in Sources */,
+				A5BB22D61E7B76AF00966D6B /* AlbumViewController.swift in Sources */,
 				A5C443CE1E03BCDF00C33517 /* UserInfoCommonNoneCell.swift in Sources */,
 				A542636D1E24C1AC0081F537 /* CCMAMapView.swift in Sources */,
 				A5C443C11E03BCDF00C33517 /* UserNameVC.swift in Sources */,
+				A5E0BDC81E7B7BE100085F19 /* PicListCell.swift in Sources */,
 				A5C443A31E03BCDF00C33517 /* ZLabel.swift in Sources */,
 				A55B14D91E07924B008F3465 /* ScanCodeResultVC.swift in Sources */,
 				A5C443D71E03BCDF00C33517 /* HomePageCell.swift in Sources */,
@@ -1186,6 +1185,7 @@
 				A54263711E24DB2B0081F537 /* FinishBlockHelper.swift in Sources */,
 				A5C443A11E03BCDF00C33517 /* UIView+Extension.swift in Sources */,
 				A5C443D41E03BCDF00C33517 /* ZCommonCell.swift in Sources */,
+				A5BB22DE1E7B786700966D6B /* AlbumCollectionView.swift in Sources */,
 				A5C4439C1E03BCDF00C33517 /* ZAppDelegate.swift in Sources */,
 				A5A2EE341E1F79C4008F64B7 /* LocationSearch.swift in Sources */,
 				A5770CC81E12662500ECE306 /* GlobalVariables.swift in Sources */,
@@ -1200,6 +1200,7 @@
 				A5C443AB1E03BCDF00C33517 /* SaveUserImageHelper.swift in Sources */,
 				A566A8CB1E78EFC100520B89 /* TopBar.swift in Sources */,
 				A566A8CF1E792A4A00520B89 /* UIImage-Extension.swift in Sources */,
+				A5E0BDCA1E7B7BFC00085F19 /* PicListCollectionView.swift in Sources */,
 				A5C443CA1E03BCDF00C33517 /* UserImgCell.swift in Sources */,
 				A5C443B31E03BCDF00C33517 /* DetectionModel.swift in Sources */,
 				A5C443AF1E03BCDF00C33517 /* UserGuideVC.swift in Sources */,
@@ -1208,15 +1209,14 @@
 				A5C443C31E03BCDF00C33517 /* UserPhotoVC.swift in Sources */,
 				A542636B1E24829F0081F537 /* PopMenu.swift in Sources */,
 				A55696E11E091D2F00E06E2D /* ScanCodeLoadingView.swift in Sources */,
+				A5BB22DC1E7B782500966D6B /* AlbumCollectionViewCell.swift in Sources */,
 				A5C443AC1E03BCDF00C33517 /* SQLiteManager.swift in Sources */,
-				A566A8D21E79354900520B89 /* TakePicListCollectionView.swift in Sources */,
 				A55696E31E09266B00E06E2D /* UserAddressVC.swift in Sources */,
 				A5C443BA1E03BCDF00C33517 /* RegisterViewController.swift in Sources */,
 				A5C443B01E03BCDF00C33517 /* ZTabBarController.swift in Sources */,
 				A5C443B61E03BCDF00C33517 /* LoginViewController.swift in Sources */,
 				A5F1C6331E0A200000EA1F92 /* EditAddressCommonCell.swift in Sources */,
 				A5F1C62C1E0A0EE700EA1F92 /* NewlyAddedAddressCell.swift in Sources */,
-				A566A8D81E7941B200520B89 /* DCAlbumTableViewCell.swift in Sources */,
 				A5C443BC1E03BCDF00C33517 /* ScanCodeVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

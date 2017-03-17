@@ -44,7 +44,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1oJ-wy-aK8" userLabel="setting">
-                                        <rect key="frame" x="187.5" y="0.0" width="94" height="44"/>
+                                        <rect key="frame" x="188" y="0.0" width="93" height="44"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <state key="normal" image="settings"/>
                                         <connections>
@@ -52,14 +52,14 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZG3-NQ-zL6" userLabel="switchLight">
-                                        <rect key="frame" x="94" y="0.0" width="93.5" height="44"/>
+                                        <rect key="frame" x="94" y="0.0" width="94" height="44"/>
                                         <state key="normal" image="flash"/>
                                         <connections>
                                             <action selector="switchLight:" destination="OVr-br-maE" eventType="touchUpInside" id="Me4-9e-913"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YdN-uW-Nxu" userLabel="cameraType">
-                                        <rect key="frame" x="281.5" y="0.0" width="93.5" height="44"/>
+                                        <rect key="frame" x="281" y="0.0" width="94" height="44"/>
                                         <state key="normal" image="flip"/>
                                         <connections>
                                             <action selector="cameraType:" destination="OVr-br-maE" eventType="touchUpInside" id="LDN-iH-wDg"/>
@@ -67,7 +67,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="URI-0L-UOi" userLabel="dismiss">
                                         <rect key="frame" x="0.0" y="0.0" width="94" height="44"/>
-                                        <state key="normal" image="back"/>
+                                        <state key="normal" image="cross"/>
                                         <connections>
                                             <action selector="dismiss:" destination="OVr-br-maE" eventType="touchUpInside" id="sgH-2V-2AM"/>
                                         </connections>
@@ -102,7 +102,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NWT-xl-e1u" userLabel="bottomView">
                                 <rect key="frame" x="0.0" y="497" width="375" height="170"/>
                                 <subviews>
-                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="g0C-7p-lmL" userLabel="图片展示" customClass="TakePicListCollectionView" customModule="Lex" customModuleProvider="target">
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="g0C-7p-lmL" userLabel="图片展示" customClass="PicListCollectionView" customModule="Lex" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <constraints>
@@ -115,14 +115,14 @@
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="kCellID" id="GPg-2q-UX9" customClass="TakePicListCollectionViewCell" customModule="Lex" customModuleProvider="target">
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PicListCell" id="GPg-2q-UX9" customClass="PicListCell" customModule="Lex" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                     <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="o7p-OJ-nFg">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="o7p-OJ-nFg" userLabel="ImgView">
                                                             <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                                                         </imageView>
                                                     </subviews>
@@ -135,7 +135,7 @@
                                                     <constraint firstItem="o7p-OJ-nFg" firstAttribute="top" secondItem="GPg-2q-UX9" secondAttribute="top" id="tYd-ge-XM0"/>
                                                 </constraints>
                                                 <connections>
-                                                    <outlet property="img" destination="o7p-OJ-nFg" id="fm9-R3-ggJ"/>
+                                                    <outlet property="imgView" destination="o7p-OJ-nFg" id="sKg-9V-ts8"/>
                                                 </connections>
                                             </collectionViewCell>
                                         </cells>
@@ -210,7 +210,7 @@
                     <connections>
                         <outlet property="cameraView" destination="3Aq-RD-rkZ" id="uG7-wD-Bl6"/>
                         <outlet property="focusView" destination="Q4d-LY-rFY" id="K87-xu-hJy"/>
-                        <outlet property="takePicListCollectionView" destination="g0C-7p-lmL" id="ovi-A6-yLV"/>
+                        <outlet property="picListCollectionView" destination="g0C-7p-lmL" id="qZK-pL-zPS"/>
                         <outlet property="topBar" destination="8HG-lT-NSA" id="4M5-Se-CIy"/>
                     </connections>
                 </viewController>
@@ -218,10 +218,93 @@
             </objects>
             <point key="canvasLocation" x="1" y="-231"/>
         </scene>
+        <!--Album View Controller-->
+        <scene sceneID="j82-2n-dJQ">
+            <objects>
+                <viewController storyboardIdentifier="AlbumViewController" id="9TJ-MG-Tq0" customClass="AlbumViewController" customModule="Lex" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Vxj-F1-ds3"/>
+                        <viewControllerLayoutGuide type="bottom" id="BER-lU-qxP"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="vku-rZ-OoF">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="hh3-Wk-dS0" userLabel="相册图片" customClass="AlbumCollectionView" customModule="Lex" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="44" width="375" height="623"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="697-K7-2S0">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AlbumCollectionViewCell" id="rWf-0S-7If" customClass="AlbumCollectionViewCell" customModule="Lex" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1kZ-F2-fWQ" userLabel="ImgView">
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                </imageView>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="1kZ-F2-fWQ" firstAttribute="top" secondItem="rWf-0S-7If" secondAttribute="topMargin" constant="-8" id="GM7-0d-o3V"/>
+                                            <constraint firstAttribute="trailing" secondItem="1kZ-F2-fWQ" secondAttribute="trailing" id="j1b-hL-tg2"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="1kZ-F2-fWQ" secondAttribute="bottom" constant="-8" id="jus-Sj-MHd"/>
+                                            <constraint firstItem="1kZ-F2-fWQ" firstAttribute="leading" secondItem="rWf-0S-7If" secondAttribute="leading" id="tGM-gf-kIQ"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="imgView" destination="1kZ-F2-fWQ" id="hMJ-ed-wKY"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k3u-Oi-WN4">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="CtT-qY-3W3"/>
+                                </constraints>
+                                <color key="barTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <items>
+                                    <navigationItem title="相册" id="LBD-7o-Zrw">
+                                        <barButtonItem key="leftBarButtonItem" image="back" id="Upv-ok-gZ0">
+                                            <connections>
+                                                <action selector="dismiss:" destination="9TJ-MG-Tq0" id="xAo-Tj-eFC"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="hh3-Wk-dS0" firstAttribute="top" secondItem="k3u-Oi-WN4" secondAttribute="bottom" id="DC0-0N-vWi"/>
+                            <constraint firstAttribute="trailing" secondItem="k3u-Oi-WN4" secondAttribute="trailing" id="Kpa-Jn-D1b"/>
+                            <constraint firstItem="k3u-Oi-WN4" firstAttribute="leading" secondItem="vku-rZ-OoF" secondAttribute="leading" id="QJ8-dK-5MO"/>
+                            <constraint firstItem="BER-lU-qxP" firstAttribute="top" secondItem="hh3-Wk-dS0" secondAttribute="bottom" id="bSU-vl-O4f"/>
+                            <constraint firstAttribute="trailing" secondItem="hh3-Wk-dS0" secondAttribute="trailing" id="cVJ-fm-WHT"/>
+                            <constraint firstItem="k3u-Oi-WN4" firstAttribute="top" secondItem="vku-rZ-OoF" secondAttribute="top" id="kXC-PN-eDt"/>
+                            <constraint firstItem="hh3-Wk-dS0" firstAttribute="leading" secondItem="vku-rZ-OoF" secondAttribute="leading" id="xhK-8K-uX8"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="albumCollectionView" destination="hh3-Wk-dS0" id="0z1-Qj-z2v"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="szj-8K-C8X" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="549.60000000000002" y="-261.31934032983509"/>
+        </scene>
     </scenes>
     <resources>
         <image name="QRCode_ScanBox" width="180" height="180"/>
         <image name="back" width="44" height="44"/>
+        <image name="cross" width="15" height="15"/>
         <image name="flash" width="44" height="44"/>
         <image name="flip" width="44" height="44"/>
         <image name="instagram" width="44" height="44"/>

@@ -17,7 +17,7 @@ class CustomCameraViC: BaseViewController, AVCapturePhotoCaptureDelegate, UIImag
     @IBOutlet weak var topBar: UIView!
     @IBOutlet weak var cameraView: UIView!      //相机显示
     @IBOutlet weak var focusView: UIImageView!  //聚焦图片
-    @IBOutlet weak var takePicListCollectionView: TakePicListCollectionView!//展示列表
+    @IBOutlet weak var picListCollectionView: PicListCollectionView!//展示列表
     fileprivate lazy var imgView : UIImageView = UIImageView()
     
     override func viewDidLoad() {
@@ -25,7 +25,7 @@ class CustomCameraViC: BaseViewController, AVCapturePhotoCaptureDelegate, UIImag
         initAVCapture()
         
         weak var weakSelf = self
-        self.takePicListCollectionView.seletedPic = { (_ picture : UIImage) -> Void in
+        self.picListCollectionView.selPicBlock = { (_ picture : UIImage) -> Void in
             
             weakSelf?.showImageView(picture)
         }
@@ -116,17 +116,18 @@ class CustomCameraViC: BaseViewController, AVCapturePhotoCaptureDelegate, UIImag
         
         DCCameraAlbum.shareCamera().takePhoto { [unowned self] (image) in
             self.imgArr.append(image)
-            self.takePicListCollectionView.imgArr = self.imgArr
+            self.picListCollectionView.imgArr = self.imgArr
         }
     }
     
     //相册
     @IBAction func album(_ sender: UIButton) {
         
-        let vc = DCAlbumViewController()
-        vc.dcAlbumItem =  DCCameraAlbum.shareCamera().getAlbumItem()
-        present(vc, animated: true, completion: nil)
+        let vc = UIStoryboard.init(name: "PageNavigation", bundle: nil).instantiateViewController(withIdentifier: "AlbumViewController") as! AlbumViewController
         
+        vc.imgArr = self.imgArr
+        //        self.navigationController?.pushViewController(vc, animated: true)
+        present(vc, animated: true, completion: nil)
     }
     
     @IBAction func dismiss(_ sender: UIButton) {

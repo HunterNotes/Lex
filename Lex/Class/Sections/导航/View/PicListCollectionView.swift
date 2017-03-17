@@ -1,18 +1,18 @@
 //
-//  TakePicListCollectionView.swift
-//  swiftCameraAlbum
+//  PicListCollectionView.swift
+//  Lex
 //
-//  Created by point on 2016/11/28.
-//  Copyright © 2016年 dacai. All rights reserved.
+//  Created by nbcb on 2017/3/17.
+//  Copyright © 2017年 ZQC. All rights reserved.
 //
 
 import UIKit
 
-private let kCellID = "kCellID"
+private let picListCellID = "PicListCell"
 
-class TakePicListCollectionView: UICollectionView {
+class PicListCollectionView: UICollectionView {
     
-    var seletedPic : SeletedPicBlock?
+    var selPicBlock : SeletedPicBlock?
     
     var imgArr = [UIImage]() {
         
@@ -28,7 +28,7 @@ class TakePicListCollectionView: UICollectionView {
         
         dataSource = self
         delegate = self
-        //self.register(UINib(nibName: "TakePicListCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: kCellID)
+        
         let layout = collectionViewLayout as! UICollectionViewFlowLayout
         layout.itemSize = CGSize(width: 80, height: 80)
         layout.scrollDirection = .horizontal
@@ -52,7 +52,7 @@ class TakePicListCollectionView: UICollectionView {
 }
 
 // MARK:- UICollectionViewDataSource UICollectionViewDelegate UICollectionViewDelegateFlowLayout
-extension TakePicListCollectionView: UICollectionViewDataSource, UICollectionViewDelegate,UICollectionViewDelegateFlowLayout {
+extension PicListCollectionView: UICollectionViewDataSource, UICollectionViewDelegate,UICollectionViewDelegateFlowLayout {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1;
@@ -64,9 +64,8 @@ extension TakePicListCollectionView: UICollectionViewDataSource, UICollectionVie
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: kCellID, for: indexPath) as! TakePicListCollectionViewCell
-        let img = imgArr[indexPath.item]
-        cell.img.image =  img
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: picListCellID, for: indexPath) as! PicListCell
+        cell.imgView.image = imgArr[indexPath.item]
         return cell
     }
     
@@ -74,8 +73,9 @@ extension TakePicListCollectionView: UICollectionViewDataSource, UICollectionVie
         
         let item : Int = (indexPath as NSIndexPath).item
         
-        if (self.seletedPic) != nil {
-            self.seletedPic!(self.imgArr[item])
+        if (self.selPicBlock) != nil {
+            self.selPicBlock!(self.imgArr[item])
         }
     }
 }
+

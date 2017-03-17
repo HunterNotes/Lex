@@ -11,7 +11,9 @@ import AVFoundation
 import Photos
 
 struct Platform {
+    
     static let isSimulator: Bool = {
+        
         var isSim = false
         #if arch(i386) || arch(x86_64)
             isSim = true
@@ -21,6 +23,7 @@ struct Platform {
 }
 
 enum flashMode:Int {
+    
     case off
     case on
     case auto
@@ -90,8 +93,10 @@ class DCAlbumItem {
 
 // MARK: - 获取相册集合
 extension DCCameraAlbum {
+    
     // MARK: - 获取指定图片
     func getOriginalPicture(picAsset:PHAsset , finishedCallback: @escaping (_ image: UIImage) -> ()) {
+        
         PHImageManager.default().requestImage(for: picAsset,
                                               targetSize: PHImageManagerMaximumSize , contentMode: .aspectFit,
                                               options: nil, resultHandler: {
@@ -102,6 +107,7 @@ extension DCCameraAlbum {
     
     // MARK: - 获取指定的相册缩略图列表
     func getAlbumItemFetchResults(assetsFetchResults: PHFetchResult<PHAsset> , thumbnailSize: CGSize , finishedCallback: @escaping (_ result : [UIImage] ) -> ()){
+        
         cachingImageManager()
         let imageArr = fetchImage(assetsFetchResults: assetsFetchResults, thumbnailSize: thumbnailSize)
         finishedCallback(imageArr)
@@ -109,16 +115,18 @@ extension DCCameraAlbum {
     
     // MARK: - 获取默认的照相机照片缩略图列表
     func getAlbumItemFetchResultsDefault(thumbnailSize: CGSize , finishedCallback: @escaping (_ result : [UIImage] ) -> ()) {
+        
         cachingImageManager()
         let allPhotosOptions = PHFetchOptions()
+        
         //按照创建时间倒序排列
         allPhotosOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate",ascending: false)]
+        
         //只获取图片
         allPhotosOptions.predicate = NSPredicate(format: "mediaType = %d",PHAssetMediaType.image.rawValue)
         let assetsFetchResults = PHAsset.fetchAssets(with: .image, options: allPhotosOptions)
         let imageArr = fetchImage(assetsFetchResults: assetsFetchResults, thumbnailSize: thumbnailSize)
         finishedCallback(imageArr)
-        
     }
     
     //缓存管理
@@ -129,6 +137,7 @@ extension DCCameraAlbum {
     
     //获取图片
     fileprivate func fetchImage(assetsFetchResults:  PHFetchResult<PHAsset> , thumbnailSize: CGSize) -> [UIImage] {
+        
         var imageArr:[UIImage] = []
         for i in 0..<assetsFetchResults.count {
             print(i)
@@ -146,7 +155,9 @@ extension DCCameraAlbum {
 
 // MARK: - 获取相册列表
 extension DCCameraAlbum {
-    func getAlbumItem() -> [DCAlbumItem]{
+    
+    func getAlbumItem() -> [DCAlbumItem] {
+        
         dCAlbumItems.removeAll()
         let smartOptions = PHFetchOptions()
         let smartAlbums = PHAssetCollection.fetchAssetCollections(with: .smartAlbum,
@@ -163,13 +174,13 @@ extension DCCameraAlbum {
             return item1.fetchResult.count > item2.fetchResult.count
         }
         return dCAlbumItems
-        
     }
     
     //转化处理获取到的相簿
-    fileprivate func convertCollection(_ collection:PHFetchResult<AnyObject>){
+    fileprivate func convertCollection(_ collection:PHFetchResult<AnyObject>) {
         
-        for i in 0..<collection.count{
+        for i in 0..<collection.count {
+            
             //获取出但前相簿内的图片
             let resultsOptions = PHFetchOptions()
             resultsOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate",
@@ -178,8 +189,9 @@ extension DCCameraAlbum {
                                                    PHAssetMediaType.image.rawValue)
             guard let c = collection[i] as? PHAssetCollection else { return }
             let assetsFetchResult = PHAsset.fetchAssets(in: c,options: resultsOptions)
+            
             //没有图片的空相簿不显示
-            if assetsFetchResult.count > 0{
+            if assetsFetchResult.count > 0 {
                 self.dCAlbumItems.append(DCAlbumItem(title: c.localizedTitle, fetchResult: assetsFetchResult ))
             }
         }
@@ -191,6 +203,7 @@ extension DCCameraAlbum {
 extension DCCameraAlbum {
     
     func start(view: UIView , frame: CGRect) {
+        
         currentView = view
         addPrviewLayerToView(frame: frame)
         setUpGesture() //添加手势
@@ -233,6 +246,7 @@ extension DCCameraAlbum {
     
     //图片中截取图片
     func getImageFromImage(oldImage:UIImage,newImageRect:CGRect) ->UIImage {
+        
         let imageRef = oldImage.cgImage;
         let subImageRef = imageRef!.cropping(to: newImageRect);
         return UIImage(cgImage: subImageRef!)
@@ -377,6 +391,7 @@ extension DCCameraAlbum:UIGestureRecognizerDelegate {
             }
         }
         
+        //如果当天是缩放状态，对焦时恢复原大小
         self.effectiveScale = 1.0;
         self.priviewLayer?.setAffineTransform(CGAffineTransform(scaleX: self.effectiveScale, y: self.effectiveScale))
     }
