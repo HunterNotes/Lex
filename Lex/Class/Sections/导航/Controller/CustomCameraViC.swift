@@ -123,11 +123,9 @@ class CustomCameraViC: BaseViewController, AVCapturePhotoCaptureDelegate, UIImag
     //相册
     @IBAction func album(_ sender: UIButton) {
         
-        let vc = UIStoryboard.init(name: "PageNavigation", bundle: nil).instantiateViewController(withIdentifier: "AlbumViewController") as! AlbumViewController
-        
-        vc.imgArr = self.imgArr
-        //        self.navigationController?.pushViewController(vc, animated: true)
-        present(vc, animated: true, completion: nil)
+//        let vc = UIStoryboard.init(name: "PageNavigation", bundle: nil).instantiateViewController(withIdentifier: "AlbumViewController") as! AlbumViewController
+//        vc.imgArr = self.imgArr
+//        present(vc, animated: true, completion: nil)
     }
     
     @IBAction func dismiss(_ sender: UIButton) {
