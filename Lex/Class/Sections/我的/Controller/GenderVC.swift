@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 protocol GenderVCDelegate {
 
     func seletedGender(_ gender : String)
