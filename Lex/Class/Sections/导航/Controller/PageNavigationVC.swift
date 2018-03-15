@@ -33,7 +33,7 @@ class PageNavigationVC : BaseViewController, PopMenuDelegate {
     }()
     
     func didClickMenu(_ index: Int) {
-        print("click at \(index)")
+        CCLog("click at \(index)")
         
         switch index {
         case 0:

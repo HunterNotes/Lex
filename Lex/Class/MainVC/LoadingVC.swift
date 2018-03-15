@@ -17,6 +17,11 @@ class LoadingVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+      
+    }
+    
+    func judjeCrashInfo()  {
+        
         setupUI()
         getAppLaunchInfo()
     }

@@ -152,7 +152,7 @@ class UpDateAddressVC: BaseViewController {
     
     func save() {
         
-        if self.addressDetail?.characters.count > 0 {
+        if self.addressDetail?.count > 0 {
             if self.upDateAddressDelegate != nil {
                 
                 let address : String = "\(self.state!)" + "\(self.city!)" + "\(self.area!)" + "\(self.addressDetail!)"
@@ -344,18 +344,18 @@ extension UpDateAddressVC:  CNContactPickerDelegate {
         let lastname = contact.familyName
         let firstname = contact.givenName
         self.name = lastname + firstname
-        print("姓名:", self.name ?? "")
+        CCLog("姓名:"+(self.name ?? ""))
         
         // 2.获取用户电话号码(ABMultivalue)
         let phones = contact.phoneNumbers
         for phone in phones {
             let phoneLabel = phone.label
             let phoneValue = phone.value.stringValue
-            print("phoneLabel:\(phoneLabel). phoneValue:\(phoneValue)")
+            CCLog("phoneLabel:\(phoneLabel ?? ""). phoneValue:\(phoneValue)")
             
             let num : String = "\(phoneValue)"
             self.phoneNum = num.replacingOccurrences(of: "-", with: "")
-            print(self.phoneNum ?? "")
+            CCLog(self.phoneNum ?? "")
         }
         self.tableView.reloadData()
     }
@@ -388,7 +388,7 @@ extension UpDateAddressVC : AddressPickDelegate {
             self.city = dic["city"] as! String?
             self.area = dic["area"] as! String?
             
-            self.locality = "\(self.state!)" + "   \(self.city!)" + "   \(self.area!)"
+            self.locality = "\(self.state!) +   \(self.city!) +   \(self.area!)"
             self.tableView.reloadData()
         }
         

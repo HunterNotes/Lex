@@ -48,6 +48,6 @@ extension ScanCodeResultVC : UIWebViewDelegate {
     func webView(_ webView: UIWebView, didFailLoadWithError error: Error) {
         
         SVProgressHUD.showError(withStatus: error.localizedDescription)
-        print(error.localizedDescription)
+        CCLog(error.localizedDescription)
     }
 }

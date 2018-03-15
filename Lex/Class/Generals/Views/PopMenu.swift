@@ -134,7 +134,7 @@ class PopMenu: UIView {
     
     func clickMenu(_ sender: AnyObject) {
         
-        print("clickMenu")
+        CCLog("clickMenu")
         let index = (sender as! UIButton).tag
         hideMenuView()
         delegate?.didClickMenu(index)
@@ -142,13 +142,13 @@ class PopMenu: UIView {
     
     func handleTap(_ sender: AnyObject) {
         
-        print("handleTap")
+        CCLog("handleTap")
         hideMenuView()
     }
     
     fileprivate func hideMenuView() {
         
-        print("hideMenuView")
+        CCLog("hideMenuView")
         if isHidding {
             return
         }
@@ -188,7 +188,7 @@ class PopMenu: UIView {
     
     func showMenuView() {
         
-        print("showMenuView")
+        CCLog("showMenuView")
         
         self.isHidden = false
         

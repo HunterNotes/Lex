@@ -73,7 +73,7 @@ class SavaImgHelper: NSObject {
     
     func rangeOfString(_ subString : String?, _ allString : String?) -> Int {
         
-        if Int(subString!.characters.count) != 0 && Int(allString!.characters.count) != 0 {
+        if Int(subString!.count) != 0 && Int(allString!.count) != 0 {
             
             guard (allString?.range(of: subString!)) != nil else {
                 return 0

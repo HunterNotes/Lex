@@ -72,7 +72,7 @@ class UserPhotoVC: BaseViewController {
                 return
             }
             self.camera()
-            print("File camera")
+            CCLog("File camera")
         })
         let photoAction = UIAlertAction.init(title: "从相册选择", style: .default, handler: {
             (alert: UIAlertAction!) -> Void in
@@ -82,7 +82,7 @@ class UserPhotoVC: BaseViewController {
                 return
             }
             self.photo()
-            print("File photo")
+            CCLog("File photo")
         })
         let saveAction = UIAlertAction.init(title: "保存图片", style: .default, handler: {
             (alert: UIAlertAction!) -> Void in
@@ -92,12 +92,12 @@ class UserPhotoVC: BaseViewController {
                 return
             }
             self.save()
-            print("File Saved")
+            CCLog("File Saved")
         })
         
         let cancelAction = UIAlertAction.init(title: "取消", style: .cancel, handler: {
             (alert: UIAlertAction!) -> Void in
-            print("Cancelled")
+            CCLog("Cancelled")
         })
         
         optionMenu.addAction(cameraAction)
@@ -187,8 +187,8 @@ class UserPhotoVC: BaseViewController {
             
             if qrStr == "--" {
                 
-                let qrImgSize : Int = qrStr.characters.count / 1024
-                print("二维码大小为", qrImgSize, "KB");
+                let qrImgSize : Int = qrStr.count / 1024
+                CCLog("二维码大小为"+"\(qrImgSize)"+"KB")
             }
             
             //先清空表

@@ -97,7 +97,7 @@ class CCLocationManager: NSObject {
             self.manager.startUpdatingLocation()
         }
         else {
-            print("权限被禁止，请在\"设置-隐私-定位服务\"中进行授权")
+            CCLog("权限被禁止，请在\"设置-隐私-定位服务\"中进行授权")
         }
     }
     

@@ -103,7 +103,7 @@ class SQLiteManager: NSObject {
         let qrName   : Expression<String?> = arr![3] as! Expression<String?>
         let insert = self.table?.insert(name <- userName, imgName <- imageName,  qrName <- qrImgName)
         let rowid = (try! db?.run(insert!))!
-        print(rowid);
+        CCLog(rowid);
     }
     
     //查询数据
@@ -119,8 +119,8 @@ class SQLiteManager: NSObject {
         
         var dic = Dictionary<String, String>()
         for user in (try! db?.prepare(self.table!))! {
-            //            print("Query: id========================== \(user[id]), \n name=========================== \(user[name]), \n imgName========================== \(user[imgName]), \n qrName =====================\(user[qrName])")
-            dic = [USER_ID : "\(user[id])", USER_NAME : "\(user[name])", USER_IMGNAME : "\(user[imgName])", USER_QRIMGNAME : "\(user[qrName])"]
+            //            CCLog("Query: id========================== \(user[id]), \n name=========================== \(user[name]), \n imgName========================== \(user[imgName]), \n qrName =====================\(user[qrName])")
+            dic = [USER_ID : "\(user[id])", USER_NAME : "\(user[name] ?? "")", USER_IMGNAME : "\(user[imgName] ?? "")", USER_QRIMGNAME : "\(user[qrName] ?? "")"]
         }
         return dic
     }
@@ -150,13 +150,15 @@ class SQLiteManager: NSObject {
                 
                 //更新数据
                 _ = try! db?.run((list?.update(name <- name.replace(user[name]!, with: USERNAME!)))!)
-                print("Update: id==================== \(user[id]), \n name==================== \(user[name]), \n imgName==================== \(user[imgName])\n qrName==================== \(user[qrName])")
+                
+                CCLog("Update: id==================== \(user[id]), \n name==================== \(String(describing: user[name])), \n imgName==================== \(String(describing: user[imgName]))\n qrName==================== \(user[qrName] ?? "")")
             }
         }
         
         //读取数据
         for user in (try! db?.prepare((self.table?.filter(name == USERNAME))!))! {
-            print("Update: id==================== \(user[id]), \n name==================== \(user[name]), \n imgName==================== \(user[imgName])\n qrName==================== \(user[qrName])")
+            
+            CCLog("Update: id==================== \(user[id]), \n name==================== \(String(describing: user[name])), \n imgName==================== \(user[imgName] ?? "")\n qrName==================== \(user[qrName] ?? "")")
         }
     }
     
@@ -180,7 +182,7 @@ class SQLiteManager: NSObject {
             _ = try! db?.run((self.table?.filter(id == user[id]).delete())!)
         }
         for user in (try! db?.prepare(self.table!))! {
-            print("Update: id==================== \(user[id]), \n name==================== \(user[name]), \n imgName==================== \(user[imgName])\n qrName==================== \(user[qrName])")
+            CCLog("Update: id==================== \(user[id]), \n name==================== \(user[name] ?? ""), \n imgName==================== \(user[imgName] ?? "")\n qrName==================== \(user[qrName] ?? "")")
         }
     }
     
@@ -197,11 +199,11 @@ class SQLiteManager: NSObject {
                     
                     //获取数据库中存取图片名称
                     self.userImgStr = dic?[USER_IMGNAME]
-                    if Int((self.userImgStr?.characters.count)!) > 0  {
+                    if Int((self.userImgStr?.count)!) > 0  {
                         if self.userImg == nil {
                             
                             self.userImg = SavaImgHelper.base64StringToImage(self.userImgStr!)
-                            print("成功获取数据库中的用户头像")
+                            CCLog("成功获取数据库中的用户头像")
                         }
                     }
                 }
@@ -224,11 +226,11 @@ class SQLiteManager: NSObject {
                     //获取数据库中存取图片名称
                     self.qrImgStr = dic?[USER_QRIMGNAME]
                     
-                    if  Int((self.qrImgStr?.characters.count)!) > 0  {
+                    if  Int((self.qrImgStr?.count)!) > 0  {
                         if self.qrImg == nil {
                             
                             self.qrImg = SavaImgHelper.base64StringToImage(self.qrImgStr!)
-                            print("成功获取数据库中的二维码图片")
+                            CCLog("成功获取数据库中的二维码图片")
                         }
                     }
                 }
@@ -244,8 +246,8 @@ class SQLiteManager: NSObject {
                     
                     if self.qrImgStr != "--" {
                         
-                        let qrImgSize : Int = self.qrImgStr!.characters.count / 1024
-                        print("二维码大小为", qrImgSize, "KB");
+                        let qrImgSize : Int = self.qrImgStr!.count / 1024
+                        CCLog("二维码大小为"+"\(qrImgSize)"+"KB")
                     }
                     
                     //压缩图片

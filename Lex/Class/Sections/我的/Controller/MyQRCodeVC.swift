@@ -55,7 +55,7 @@ class MyQRCodeVC: BaseViewController {
     func getLocation () {
         
         if(CLLocationManager.authorizationStatus() != .denied) {
-            print("应用拥有定位权限")
+            CCLog("应用拥有定位权限")
         }
         else {
             let aleat = UIAlertController(title: "打开定位开关", message:"权限被禁止，请在\"设置-隐私-定位服务\"中进行授权", preferredStyle: .alert)
@@ -85,7 +85,7 @@ class MyQRCodeVC: BaseViewController {
                 return
             }
             self.save()
-            print("File Saved")
+            CCLog("File Saved")
         })
         optionMenu.addAction(saveAction)
         
@@ -104,14 +104,14 @@ class MyQRCodeVC: BaseViewController {
 //                    //动画
 //                })
                 self.navigationController?.pushViewController(vc, animated: true)
-                print("File camera")
+                CCLog("File camera")
             })
             optionMenu.addAction(scanAction)
         }
         
         let cancelAction = UIAlertAction.init(title: "取消", style: .cancel, handler: {
             (alert: UIAlertAction!) -> Void in
-            print("Cancelled")
+            CCLog("Cancelled")
         })
         
         optionMenu.addAction(cancelAction)

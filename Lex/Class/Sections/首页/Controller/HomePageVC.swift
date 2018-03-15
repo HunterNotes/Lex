@@ -16,5 +16,4 @@ class HomePageVC: BaseViewController {
         
         self.navTitle = "首页"
     }
-
 }

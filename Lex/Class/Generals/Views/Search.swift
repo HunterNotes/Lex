@@ -111,10 +111,10 @@ class Search: UIView, UITableViewDelegate, UITableViewDataSource, UITextFieldDel
                             self.tableView.reloadData()
                         })
                     } catch _ {
-                        print("Something wrong happened")
+                        CCLog("Something wrong happened")
                     }
                 } else {
-                    print("error downloading suggestions")
+                    CCLog("error downloading suggestions")
                 }
             }).resume()
         }

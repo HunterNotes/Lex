@@ -9,9 +9,14 @@
 import UIKit
 import UserNotifications
 //import CoreLocation
-//import Reachability
+import Reachability
+import SVProgressHUD
+
+/** Bundle ID ：com.mr.zhou.Lex，一对一绑定， 不要改动，否则会导致无法定位
+ */
 
 @UIApplicationMain
+
 class ZAppDelegate: UIResponder, UIApplicationDelegate {
     
     var window          : UIWindow?
@@ -39,8 +44,70 @@ class ZAppDelegate: UIResponder, UIApplicationDelegate {
         self.configLocationManager()
         self.locationManager.startUpdatingLocation()
         
+        readCrashInfo();
+        
         return true
     }
+    
+    func readCrashInfo() {
+        
+        weak var weakSelf = self
+        
+        DispatchQueue.global().async {
+            
+            if CrashManager.readAllCrashInfo().count == 0 {
+                
+                DispatchQueue.main.async {
+                    
+                    weakSelf?.goToLoadingVC()
+                    return
+                }
+            }
+        }
+        
+        //crash捕获
+        crashHandle { (crashInfoArr) in
+            
+            CCLog(crashInfoArr.count)
+            
+            for info in crashInfoArr {
+                
+                //将上一次崩溃信息显示在屏幕上
+                DispatchQueue.main.async {
+                    
+                    let textView = UITextView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height))
+                    textView.backgroundColor = .gray
+                    textView.textColor = .white
+                    textView.isEditable = false
+                    textView.text = info
+                    
+                    let tap = UITapGestureRecognizer(target: weakSelf, action: #selector(weakSelf?.tapGesture(_:)))
+                    textView.addGestureRecognizer(tap)
+                    UIApplication.shared.keyWindow?.addSubview(textView)
+                }
+            }
+        }
+    }
+    
+    func tapGesture(_ tap: UITapGestureRecognizer) {
+        
+        let label = UIApplication.shared.keyWindow?.subviews.last
+        label?.removeFromSuperview()
+        self.goToLoadingVC()
+        tap.removeTarget(self, action: #selector(self.tapGesture(_:)))
+    }
+    
+    func goToLoadingVC() {
+        
+        self.loadingVC.judjeCrashInfo()
+        //        UIApplication.shared.keyWindow?.rootViewController = self.loadingVC
+    }
+    
+    lazy var loadingVC : LoadingVC = {
+        
+        let loadingVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoadingVC") as! LoadingVC
+        return loadingVC
+    }()
     
     //MARK: 注册消息推送
     fileprivate func registerAppNotificationSettings(_ launchOptions: [UIApplicationLaunchOptionsKey: Any]?) {
@@ -51,14 +118,15 @@ class ZAppDelegate: UIResponder, UIApplicationDelegate {
             let types = UNAuthorizationOptions(arrayLiteral: [.alert, .badge, .sound])
             notifiCenter.requestAuthorization(options: types) { (flag, error) in
                 if flag {
-                    print("iOS request notification success")
+                    CCLog("iOS request notification success")
                 }
                 else {
-                    print("iOS 10 request notification fail")
+                    CCLog("iOS 10 request notification fail")
                 }
             }
         }
         else { //iOS8, iOS9注册通知
+            
             let setting = UIUserNotificationSettings.init(types: [.alert, .badge, .sound], categories: nil)
             UIApplication.shared.registerUserNotificationSettings(setting)
         }
@@ -66,12 +134,12 @@ class ZAppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     //MARK: 获取地理位置信息
-    //    func getLocation() {
+    //        func getLocation() {
     //
-    //        let locationManager : CCLocationManager? = CCLocationManager.sharedManager()
-    //        locationManager?.statusDelegate = self
-    //        locationManager?.startLocation()
-    //    }
+    //            let locationManager : CCLocationManager? = CCLocationManager.sharedManager()
+    //            locationManager?.statusDelegate = self
+    //            locationManager?.startLocation()
+    //        }
     
     //MARK: 反编译地理位置
     func getLonLatToCity(_ loc : CLLocation) {
@@ -84,7 +152,7 @@ class ZAppDelegate: UIResponder, UIApplicationDelegate {
             let errors : Error? = error
             
             //不能用(placeMarks?.count)! > 0 去判断，因WiFi下无法判断连接的是内网还是外网, 内网下(placeMarks?.count)!为nil会直接crash
-            if (errors == nil) {
+            if (errors == nil) { //外网
                 
                 reachabilityType = true
                 
@@ -92,7 +160,7 @@ class ZAppDelegate: UIResponder, UIApplicationDelegate {
                 
                 let mark = array.firstObject as! CLPlacemark
                 let dic : Dictionary = mark.addressDictionary!
-
+                
                 singleton.longitude = loc.coordinate.longitude
                 singleton.latitude = loc.coordinate.latitude
                 
@@ -119,11 +187,11 @@ class ZAppDelegate: UIResponder, UIApplicationDelegate {
                 //街道
                 let thoroughfare : String? = dic["Thoroughfare"] as! String?
                 singleton.thoroughfare = thoroughfare
-
+                
                 //街道具体位置
                 let formattedAddressLines: String? = (dic["FormattedAddressLines"] as AnyObject).firstObject as! String?
                 singleton.formattedAddressLines = formattedAddressLines
-                print(formattedAddressLines ?? "")
+                CCLog(formattedAddressLines ?? "")
                 
                 //邮编
                 let postalCode: String? = dic["postalCode"] as? String
@@ -137,10 +205,25 @@ class ZAppDelegate: UIResponder, UIApplicationDelegate {
                 singleton.state_Format = (state?.replacingOccurrences(of: "省", with: ""))! as String
                 singleton.city_Format = (city?.replacingOccurrences(of: "市", with: ""))! as String
             }
-            else {
+            else { //内网
                 
-                reachabilityType = false
-                print("请确认连接的是外网")
+                let reachability = Reachability.forInternetConnection()
+                
+                //判断网络链接状态
+                if reachability!.isReachable() {
+                    
+                    if reachability!.isReachableViaWiFi() {
+                        
+                        reachabilityType = false
+                        CCLog("网络连接类型：内网WiFi")
+                        
+                        SVProgressHUD.showError(withStatus: "请确认连接的是外网")
+                    }
+                }
+                else {
+                    
+                    SVProgressHUD.showError(withStatus: "网络连接不可用，请确认网络已连接")
+                }
             }
         })
     }
@@ -169,7 +252,7 @@ class ZAppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Swift.Void) {
         
-        print("收到新消息Active\(userInfo)")
+        CCLog("收到新消息Active\(userInfo)")
         if application.applicationState == UIApplicationState.active {
             // 代表从前台接受消息app
         }
@@ -188,7 +271,7 @@ extension ZAppDelegate : UNUserNotificationCenterDelegate {
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         
         let userInfo = notification.request.content.userInfo
-        print("userInfo10:\(userInfo)")
+        CCLog("userInfo10:\(userInfo)")
         completionHandler([.sound,.alert])
         
     }
@@ -198,7 +281,7 @@ extension ZAppDelegate : UNUserNotificationCenterDelegate {
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         
         let userInfo = response.notification.request.content.userInfo
-        print("userInfo10:\(userInfo)")
+        CCLog("userInfo10:\(userInfo)")
         completionHandler()
     }
 }
@@ -214,37 +297,38 @@ extension ZAppDelegate : UNUserNotificationCenterDelegate {
 //        if reachability!.isReachable() {
 //
 //            self.getLonLatToCity(location)
-//            print("网络连接可用")
+//            CCLog("网络连接可用")
 //        }
 //        else {
-//            print("网络连接不可用")
+//            CCLog("网络连接不可用")
 //        }
 //
 //        //判断连接类型
 //        if reachability!.isReachableViaWiFi() {
 //
 //            reachabilityType = true
-//            print("连接类型：WiFi")
+//            CCLog("连接类型：WiFi")
 //        }
 //        else if reachability!.isReachableViaWWAN() {
 //
 //            reachabilityType = true
-//            print("连接类型：蜂窝移动网络")
+//            CCLog("连接类型：蜂窝移动网络")
 //        }
 //        else {
 //            reachabilityType = false
-//            print("连接类型：没有网络连接")
+//            CCLog("连接类型：没有网络连接")
+//            SVProgressHUD.showError(withStatus: "请确认网络已连接")
 //        }
 //    }
 //
 //    func getLocationFailure() {
 //
-//        print("定位失败")
+//        CCLog("定位失败")
 //    }
 //
 //    func deniedLocation() {
 //
-//        print("权限被禁止，请在\"设置-隐私-定位服务\"中进行授权")
+//        CCLog("权限被禁止，请在\"设置-隐私-定位服务\"中进行授权")
 //    }
 //}
 
@@ -253,13 +337,13 @@ extension ZAppDelegate : AMapLocationManagerDelegate {
     
     // 发生了错误
     func amapLocationManager(_ manager:AMapLocationManager, didFailWithError error:Error) {
-        print("error:\(error)")
+        CCLog("error:\(error)")
     }
     
     // 更新定位
     func amapLocationManager(_ manager: AMapLocationManager!, didUpdate location: CLLocation!, reGeocode: AMapLocationReGeocode!) {
         
-        print("经度:\(location.coordinate.longitude), 纬度:\(location.coordinate.latitude)")
+        CCLog("经度:\(location.coordinate.longitude), 纬度:\(location.coordinate.latitude)")
         
         self.getLonLatToCity(location)
         self.locationManager.stopUpdatingLocation()

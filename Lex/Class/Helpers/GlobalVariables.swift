@@ -69,7 +69,7 @@ func requestSuggestionsURL(text: String) -> URL {
 }
 
 func showNotification() {
-    print("Please check your internet connection")
+    CCLog("Please check your internet connection")
 }
 
 

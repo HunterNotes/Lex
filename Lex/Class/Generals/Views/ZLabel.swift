@@ -78,11 +78,11 @@ import UIKit
         
         guard self.over == false else {
             
-            print("Animation is already over")
+            CCLog("Animation is already over")
             return
         }
         guard self.over == true else {
-            print("Animation is not stopped")
+            CCLog("Animation is not stopped")
             return
         }
         self.stopped = false
@@ -96,7 +96,7 @@ import UIKit
         }
         DispatchQueue.global(qos: DispatchQoS.QoSClass.userInteractive).async {
             
-            for (index, char) in typedText.characters.enumerated() {
+            for (index, char) in typedText.enumerated() {
                 guard self.stopped == false else {
                     //guard 语句：类似if语句。保证条件满足情况下，才会通过，否则只能else返回！切记else中一定需要有返回的语句，比如return、continue、break、throw
                     self.stoppedSubString = typedText.substring(from: typedText.characters.index(typedText.startIndex, offsetBy: index))

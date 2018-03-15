@@ -33,7 +33,7 @@ class DCCameraAlbum: NSObject {
     
     // MARK:- 相机属性
     fileprivate lazy var session : AVCaptureSession = AVCaptureSession()
-    fileprivate lazy var inputDevice : AVCaptureDeviceInput = AVCaptureDeviceInput() //输入源
+    fileprivate var inputDevice : AVCaptureDeviceInput! //输入源
     fileprivate lazy var imageOutput : AVCaptureStillImageOutput = AVCaptureStillImageOutput() //输出
     var priviewLayer : AVCaptureVideoPreviewLayer?
     fileprivate var currentView: UIView! //管理控制器
@@ -69,7 +69,7 @@ class DCCameraAlbum: NSObject {
     override init() {
         super.init()
         if Platform.isSimulator {
-            print("请不要使用模拟器测试")
+            CCLog("请不要使用模拟器测试")
         }
         else {
             installCameraDevice() //初始化摄像机
@@ -140,7 +140,7 @@ extension DCCameraAlbum {
         
         var imageArr:[UIImage] = []
         for i in 0..<assetsFetchResults.count {
-            print(i)
+            CCLog(i)
             let asset = assetsFetchResults[i]
             self.imageManager.requestImage(for: asset, targetSize: thumbnailSize,
                                            contentMode: PHImageContentMode.aspectFill,

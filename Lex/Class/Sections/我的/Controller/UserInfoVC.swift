@@ -161,7 +161,7 @@ extension UserInfoVC : UITableViewDataSource, UITableViewDelegate {
             commonCell.leftLab.text = self.titleArr[section][row]
             commonCell.rightLab.text = self.detailArr[section][row]
             if section == 1 && row == 0 {
-                print(self.detailArr[section][row])
+                CCLog(self.detailArr[section][row])
             }
             return commonCell
         }
