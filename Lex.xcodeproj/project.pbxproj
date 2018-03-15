@@ -903,9 +903,9 @@
 				TargetAttributes = {
 					A5C443031E039DB400C33517 = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = PU39U8DFF5;
+						DevelopmentTeam = C8X66624WA;
 						LastSwiftMigration = 0820;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 					};
 					A5C443171E039DB500C33517 = {
 						CreatedOnToolsVersion = 8.1;
@@ -1368,8 +1368,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Zhihao Song (5Z36TS2C63)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = PU39U8DFF5;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = C8X66624WA;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",
@@ -1393,10 +1393,10 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\"";
 				"OTHER_SWIFT_FLAGS[arch=*]" = "-DDEBUG";
-				PRODUCT_BUNDLE_IDENTIFIER = com.nbcb.zhou.Lex;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mr.zhou.Lex;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "18fdbc50-af37-4f73-be51-b53f37c1579b";
-				PROVISIONING_PROFILE_SPECIFIER = AlexSongDev;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Lex/Class/Config/Lex-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1410,8 +1410,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Zhihao Song (5Z36TS2C63)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = C8X66624WA;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",
@@ -1435,7 +1435,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\"";
 				"OTHER_SWIFT_FLAGS[arch=*]" = " -DRELEASE";
-				PRODUCT_BUNDLE_IDENTIFIER = com.nbcb.zhou.Lex;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mr.zhou.Lex;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
