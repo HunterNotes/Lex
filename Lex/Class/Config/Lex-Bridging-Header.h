@@ -17,5 +17,6 @@
 #import <AMapFoundationKit/AMapFoundationKit.h>
 #import "sqlite3.h"
 #import <time.h>
+#import "SlideAdressTool.h"
 
 #endif /* Lex_Bridging_Header_h */

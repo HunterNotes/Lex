@@ -165,7 +165,7 @@ let BASE64HEADER : String = "data:image/png;base64,"
 /**
  * 二维码内容
  */
-var QRTEXT : String = "http://www.jianshu.com"
+var QRTEXT : String = "https://github.com/UpupupDone"
 
 /**
  * 二维码尺寸
@@ -229,3 +229,15 @@ func enterMainInterface() {
     let zTabBarVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ZTabBarController") as! ZTabBarController
     UIApplication.shared.keyWindow?.rootViewController = zTabBarVC
 }
+
+/**
+ * 输出函数 DEBUG模式下输出 （类名、方法、log行数, 消息）
+ */
+func CCLog<T>(_ message: T, file: String = #file, methodName: String = #function, lineNumber: Int = #line) {
+    
+    #if DEBUG
+        let fileName = (file as NSString).lastPathComponent
+        print("\(fileName):\(methodName):[\(lineNumber)]\n\(message)")
+    #endif
+}
+
